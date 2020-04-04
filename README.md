@@ -50,7 +50,7 @@ of concept on the Smartcar platform without the need for access to the hardware.
 
 - CMake >= 3.13
 - A C++2a capable toolchain
-- Prebuilt Urho3D (1.7.1) or its build dependencies
+- Prebuilt Urho3D (1.7.1)
 - This git repository's submodules in `thirdparty/`
 
 ### Supported compilers

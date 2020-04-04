@@ -1,0 +1,99 @@
+/*
+ *  concepts
+ *  Copyright 2020 AeroStun
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+#ifndef SMARTCAR_EMUL_INCLUDE_STDPOLYFILLS_HPP
+#define SMARTCAR_EMUL_INCLUDE_STDPOLYFILLS_HPP
+
+#if defined(__cpp_lib_concepts) && __cpp_lib_concepts >= 201806L
+#error "Concepts library polyfill included but standard library has <concepts>"
+#endif
+
+#include <type_traits>
+#include <concepts/concepts.hpp>
+
+namespace std {
+
+using concepts::derived_from;
+using concepts::same_as;
+
+using concepts::convertible_to;
+
+using concepts::common_reference_with;
+
+using concepts::common_with;
+
+using concepts::integral;
+using concepts::signed_integral;
+using concepts::unsigned_integral;
+
+template <class T> concept floating_point = is_floating_point_v<T>;
+
+using concepts::assignable_from;
+using concepts::constructible_from;
+using concepts::destructible;
+using concepts::swappable;
+using concepts::swappable_with;
+template <class T> concept default_initializable =
+    std::constructible_from<T>&& requires { T{}; }
+        &&/* T t; is well-formed */ true; // Cannot detect well-formedness of a declaration
+using concepts::copy_constructible;
+using concepts::move_constructible;
+
+using concepts::copyable;
+using concepts::movable;
+using concepts::regular;
+using concepts::semiregular;
+
+template <class B>
+concept boolean = movable<remove_cvref_t<B>>&& requires(const remove_reference_t<B>& b1, const remove_reference_t<B>& b2, const bool a) {
+    { b1 } -> convertible_to<bool>;
+    { !b1 } -> convertible_to<bool>;
+    { b1&& b2 } -> same_as<bool>;
+    { b1&& a } -> same_as<bool>;
+    { a&& b2 } -> same_as<bool>;
+    { b1 || b2 } -> same_as<bool>;
+    { b1 || a } -> same_as<bool>;
+    { a || b2 } -> same_as<bool>;
+    { b1 == b2 } -> convertible_to<bool>;
+    { b1 == a } -> convertible_to<bool>;
+    { a == b2 } -> convertible_to<bool>;
+    { b1 != b2 } -> convertible_to<bool>;
+    { b1 != a } -> convertible_to<bool>;
+    { a != b2 } -> convertible_to<bool>;
+};
+using concepts::equality_comparable;
+using concepts::equality_comparable_with;
+using concepts::totally_ordered;
+using concepts::totally_ordered_with;
+
+template <class F, class... Args> concept invocable = requires(F&& f, Args&&... args) {
+    invoke(std::forward<F>(f), std::forward<Args>(args)...);
+    // not required to be equality-preserving
+};
+
+template <class F, class... Args> concept regular_invocable = invocable<F, Args...>;
+
+template <class F, class... Args> concept predicate = regular_invocable<F, Args...>&& boolean<invoke_result_t<F, Args...>>;
+
+template <class R, class T, class U> concept relation = predicate<R, T, T>&& predicate<R, U, U>&& predicate<R, T, U>&& predicate<R, U, T>;
+
+template <class R, class T, class U> concept equivalence_relation = relation<R, T, U>;
+
+template <class R, class T, class U> concept strict_weak_order = relation<R, T, U>;
+} // namespace std
+
+#endif // SMARTCAR_EMUL_INCLUDE_STDPOLYFILLS_HPP
