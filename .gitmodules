@@ -1,0 +1,27 @@
+[submodule "thirdparty/fmt"]
+	path = thirdparty/fmt
+	url = https://github.com/fmtlib/fmt
+[submodule "thirdparty/range-v3"]
+	path = thirdparty/range-v3
+	url = https://github.com/ericniebler/range-v3
+[submodule "thirdparty/nameof"]
+	path = thirdparty/nameof
+	url = https://github.com/Neargye/nameof
+[submodule "thirdparty/magic_enum"]
+	path = thirdparty/magic_enum
+	url = https://github.com/Neargye/magic_enum
+[submodule "thirdparty/Urho3D"]
+	path = thirdparty/Urho3D
+	url = https://github.com/urho3d/Urho3D
+[submodule "thirdparty/GSL"]
+	path = thirdparty/GSL
+	url = https://github.com/microsoft/GSL
+[submodule "thirdparty/smartcar_shield"]
+	path = thirdparty/smartcar_shield
+	url = https://github.com/platisd/smartcar_shield
+[submodule "thirdparty/Catch2"]
+	path = thirdparty/Catch2
+	url = https://github.com/catchorg/Catch2
+[submodule "thirdparty/Boost.DLL"]
+	path = thirdparty/Boost.DLL
+	url = https://github.com/apolukhin/Boost.DLL

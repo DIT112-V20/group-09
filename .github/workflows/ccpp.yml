@@ -1,0 +1,111 @@
+name: Emul C++ CI
+on: [push, pull_request]
+jobs:
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        compiler: # No we will not use ICC; MSVC-Wine is feasible on Azure but only on request
+          - c: gcc-9
+            cxx: g++-9
+          - c: clang-10
+            cxx: clang++-10
+          - c: clang-11
+            cxx: clang++-11
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Install compiler
+        run: if [ $(echo "$CC" | grep -oP "^clang-") ]; then sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" llvm.sh $(echo "$CC" | grep -oP "clang-\K(\d+)$"); fi
+      - uses: actions/cache@v1
+        name: Cache-check Urho3D
+        id: cache-urho
+        with:
+          path: deps/Urho3D
+          key: ${{ runner.os }}-deps-Urho3D
+      - name: Pull Urho3D in cache
+        if: steps.cache-urho.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p deps/Urho3D
+          wget -nv --timeout=5 --waitretry=0 --tries=20 --retry-connrefused -O deps/Urho3D/1.7.1.deb "https://sourceforge.net/projects/urho3d/files/Urho3D/1.7.1/Urho3D-1.7.1-Linux-64bit-SHARED.deb/download"
+      - name: Install deps
+        run: |
+          sudo apt install libgl1-mesa-dev libglu1-mesa-dev ninja-build
+          sudo apt install ./deps/Urho3D/1.7.1.deb
+      - name: configure
+        run: mkdir build && pushd build && cmake -G Ninja .. && popd
+      - name: build
+        run: pwd && cmake --build build
+      - name: test
+        run: pushd build && ctest && popd
+    env:
+      CC: ${{ matrix.compiler.c }}
+      CXX: ${{ matrix.compiler.cxx }}
+
+
+  build-windows: # This one needs to be split-off because we want to test both GCC and Clang in Ubuntu
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Install deps
+        run: |
+          cmd /C "md Urho3D-build && pushd Urho3D-build && cmake -DURHO3D_SAMPLES=0 -DURHO3D_C++11=1 ../thirdparty/Urho3D && cmake --build . && popd"
+          dir Urho3D-build
+      - name: configure
+        run: mkdir build && cd build && cmake -DURHO3D_HOME_RELATIVE="Urho3D-build" .. && popd
+      - name: build
+        run: cmake --build build
+      - name: test
+        run: cd build && ctest
+
+  build-macos: # We have to split this one off because AppleClang does not yet support Concepts at all
+    runs-on: macos-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler:
+          - c: gcc-9
+            cxx: g++-9
+          - c: clang-10
+            cxx: clang++-10
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - uses: actions/cache@v1
+        name: Cache-check Urho3D.tgz
+        id: cache-urho
+        with:
+          path: deps/Urho3D
+          key: ${{ runner.os }}-deps-Urho3D
+      - name: Pull Urho3D.tgz in cache
+        if: steps.cache-urho.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p deps/Urho3D
+          wget -nv --timeout=5 --waitretry=0 --tries=5 --retry-connrefused -O deps/Urho3D/1.7.1.tgz "https://sourceforge.net/projects/urho3d/files/Urho3D/1.7.1/Urho3D-1.7.1-macOS-64bit-SHARED.tar.gz/download"
+      - name: Install dependencies
+        run: |
+          brew update
+          brew install --force-bottle coreutils ninja
+          if [ $(echo "$CC" | grep -Ei "^clang-") ]; then brew upgrade --force-bottle llvm; fi
+          tar xf deps/Urho3D/1.7.1.tgz
+          find . -maxdepth 1 -name "Urho3D-*" -exec mv '{}' Urho3D \;
+      - name: configure
+        run: |
+          if [ $(echo "$CC" | grep -Ei "^clang-") ]; then
+            export CC=/usr/local/opt/llvm/bin/clang;
+            export CXX=/usr/local/opt/llvm/bin/clang++;
+          fi
+          mkdir build && pushd build && URHO3D_HOME=$(realpath ../Urho3D) cmake -G Ninja .. && popd
+      - name: build
+        run: cmake --build build
+      - name: test
+        run: pushd build && ctest && popd
+    env:
+      CC: ${{ matrix.compiler.c }}
+      CXX: ${{ matrix.compiler.cxx }}
+
+
