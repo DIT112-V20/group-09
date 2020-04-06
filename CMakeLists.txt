@@ -19,6 +19,7 @@ cmake_minimum_required (VERSION 3.13)
 project (smartcar_emul LANGUAGES CXX C)
 
 set (CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Modules")
+set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/Catch2/contrib")
 
 set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -36,6 +37,8 @@ add_subdirectory (thirdparty/range-v3)
 
 include (SetupUrho3D)
 include (StdPolyfills)
+
+add_subdirectory (modules)
 
 add_library (smartcar_emul_deps INTERFACE)
 target_link_libraries (smartcar_emul_deps INTERFACE
@@ -66,7 +69,6 @@ target_link_libraries (smartcar_emul_tests PRIVATE
         Catch2)
 
 
-set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/Catch2/contrib")
 include (CTest)
 include (Catch)
 catch_discover_tests (smartcar_emul_tests)
