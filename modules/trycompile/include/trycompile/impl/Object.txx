@@ -32,7 +32,7 @@ template <class R, class... Args>
 [[nodiscard]] R invoke(const SketchLoadedObject& obj, const char* symbol, Args&&... args) {
     if (!obj.dl.has(symbol))
         throw std::runtime_error{"Could not find requested symbol"};
-    return std::invoke(obj.dl.get<F>(symbol, ec), std::forward<Args>(args)...);
+    return std::invoke(obj.dl.get<R(decltype(args)...)>(symbol), std::forward<Args>(args)...);
 }
 
 }

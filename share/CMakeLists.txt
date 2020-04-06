@@ -27,7 +27,7 @@ set (HOME_DIRNAME ${CMAKE_SOURCE_DIR})
 
 # FIXME: add sketch handling
 add_library (${BUILD_DIRNAME} MODULE)
-target_sources (${BUILD_DIRNAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/${SOURCE_FILE}")
+target_sources (${BUILD_DIRNAME} PRIVATE "${SOURCE_FILE}")
 add_custom_command (
 		TARGET ${BUILD_DIRNAME}
 		POST_BUILD

@@ -12,26 +12,30 @@
 #  limitations under the License.
 #
 
+
 add_library (TryCompile INTERFACE)
 
 target_include_directories (TryCompile INTERFACE
         ${CMAKE_SOURCE_DIR}/thirdparty/Boost.DLL/include
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/trycompile)
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/trycompile
+        ${CMAKE_SOURCE_DIR}/include)
 target_sources (TryCompile INTERFACE
         include/trycompile/Source.hxx
         include/trycompile/Object.hxx
         include/trycompile/impl/Object.txx
         include/trycompile/Runtime.hxx
-        src/Runtime.cxx
         include/trycompile/Toolchain.hxx
-        src/Object.cxx)
-target_link_libraries (TryCompile INTERFACE
-        Boost::dll
-        stdpolyfills::stdpolyfills)
+        src/Runtime.cxx
+        src/Object.cxx
+        src/Toolchain.cxx)
+target_compile_definitions (TryCompile INTERFACE BOOST_DLL_USE_STD_FS=1)
+target_link_libraries (TryCompile INTERFACE stdpolyfills::stdpolyfills fmt::fmt Boost::dll)
 
-add_executable (TestsTryCompile)
+file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+add_executable (TestsTryCompile test/simple_compile.cxx)
 set_target_properties (TestsTryCompile PROPERTIES LINKER_LANGUAGE CXX)
-target_link_libraries (TestsTryCompile TryCompile)
+target_link_libraries (TestsTryCompile TryCompile Catch2)
 
 include (CTest)
 include (Catch)

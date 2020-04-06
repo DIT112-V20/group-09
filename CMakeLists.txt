@@ -35,6 +35,7 @@ add_subdirectory (thirdparty/Boost.ThrowException)
 add_subdirectory (thirdparty/Boost.TypeTraits)
 add_subdirectory (thirdparty/Boost.SmartPtr)
 add_subdirectory (thirdparty/Boost.WinAPI)
+add_subdirectory (thirdparty/Catch2)
 add_subdirectory (thirdparty/fmt)
 add_subdirectory (thirdparty/GSL)
 add_subdirectory (thirdparty/magic_enum)
@@ -61,6 +62,7 @@ target_link_libraries (smartcar_emul_deps INTERFACE
         range-v3::range-v3
         Urho3D::Urho3D
         stdpolyfills::stdpolyfills
+        TryCompile
         )
 
 add_executable (smartcar_emul src/main.cxx)
@@ -73,7 +75,6 @@ target_sources (smartcar_emul PRIVATE
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 
-add_subdirectory (thirdparty/Catch2)
 add_executable (smartcar_emul_tests test/sanity.cxx)
 target_link_libraries (smartcar_emul_tests PRIVATE
         smartcar_emul_deps

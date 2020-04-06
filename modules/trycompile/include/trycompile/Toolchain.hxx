@@ -1,6 +1,6 @@
 /*
- *  Toolchain.hpp
- *  Copyright 2020 AeroStun
+ *  Toolchain.hxx
+ *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -19,16 +19,27 @@
 #ifndef SMARTCAR_EMUL_TRYCOMPILE_SKETCH_TOOLCHAIN_HXX
 #define SMARTCAR_EMUL_TRYCOMPILE_SKETCH_TOOLCHAIN_HXX
 
-#include "Source.hxx"
 #include <exception>
+#include <filesystem>
 #include <variant>
+#include "boost/predef/os.h"
+#include "Object.hxx"
+#include "Source.hxx"
 
 namespace smce {
+namespace stdfs = std::filesystem;
 
-class SketchObject;
-using CompilationResults = std::variant<SketchObject, std::exception>;
-CompilationResults compile_sketch(SketchSource);
+#ifdef BOOST_PREDEF_OS_UNIX_H
+constexpr std::string_view silent_output = "/dev/null";
+#elif BOOST_PREDEF_OS_WINDOWS_H
+constexpr std::string_view silent_output = "NUL";
+#else
+constexpr std::string_view silent_output = "null.txt"; // just in case
+#endif
 
-}
+using CompilationResults = std::variant<SketchObject, std::runtime_error>;
+CompilationResults compile_sketch(SketchSource, stdfs::path);
+
+} // namespace smce
 
 #endif // SMARTCAR_EMUL_TRYCOMPILE_SKETCH_TOOLCHAIN_HXX
