@@ -58,4 +58,12 @@ template <Numeric From, Numeric To>
 template <std::floating_point F>
 constexpr F deg2rad(F deg) noexcept { return deg * M_PI / 180.0f; }
 
+template <typename... Base>
+struct Visitor : Base... {
+    using Base::operator()...;
+};
+
+template <typename... T>
+Visitor(T...) -> Visitor<T...>;
+
 #endif // SMARTCAR_EMUL_INCLUDE_UTILITY_HXX

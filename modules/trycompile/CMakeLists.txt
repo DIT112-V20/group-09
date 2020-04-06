@@ -33,9 +33,10 @@ target_link_libraries (TryCompile INTERFACE stdpolyfills::stdpolyfills fmt::fmt 
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-add_executable (TestsTryCompile test/simple_compile.cxx)
+add_executable (TestsTryCompile test/compile.cxx test/load.cxx)
 set_target_properties (TestsTryCompile PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries (TestsTryCompile TryCompile Catch2)
 
 catch_discover_tests (TestsTryCompile)
 add_dependencies(TestTag TestsTryCompile)
+

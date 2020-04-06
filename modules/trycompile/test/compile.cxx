@@ -1,8 +1,8 @@
 #define CATCH_CONFIG_MAIN
 #include <filesystem>
-#include <string_view>
 #include <catch2/catch.hpp>
 #include "Toolchain.hxx"
+#include "test_utility.hxx"
 
 namespace stdfs = std::filesystem;
 
