@@ -19,6 +19,8 @@
 #ifndef SMARTCAR_EMUL_TRYCOMPILE_SKETCH_OBJECT_HXX
 #define SMARTCAR_EMUL_TRYCOMPILE_SKETCH_OBJECT_HXX
 
+#include <string> // Workaroud Boost.DLL bug on MSVC19.25
+#include <vector> // Workaroud Boost.DLL bug on macOS Clang10
 #include <boost/dll.hpp>
 #include <concepts>
 #include <filesystem>

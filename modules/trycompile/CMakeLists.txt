@@ -25,8 +25,9 @@ target_sources (TryCompile INTERFACE
         src/Runtime.cxx
         include/trycompile/Toolchain.hxx
         src/Object.cxx)
-target_compile_definitions (TryCompile INTERFACE BOOST_DLL_USE_STD_FS=1)
-target_link_libraries (TryCompile INTERFACE stdpolyfills::stdpolyfills)
+target_link_libraries (TryCompile INTERFACE
+        Boost::dll
+        stdpolyfills::stdpolyfills)
 
 add_executable (TestsTryCompile)
 set_target_properties (TestsTryCompile PROPERTIES LINKER_LANGUAGE CXX)

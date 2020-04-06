@@ -25,6 +25,16 @@ set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 set (CMAKE_CXX_EXTENSIONS OFF)
 
+add_subdirectory (thirdparty/Boost.Assert)
+add_subdirectory (thirdparty/Boost.Config)
+add_subdirectory (thirdparty/Boost.Core)
+add_subdirectory (thirdparty/Boost.Predef)
+add_subdirectory (thirdparty/Boost.StaticAssert)
+add_subdirectory (thirdparty/Boost.Move)
+add_subdirectory (thirdparty/Boost.ThrowException)
+add_subdirectory (thirdparty/Boost.TypeTraits)
+add_subdirectory (thirdparty/Boost.SmartPtr)
+add_subdirectory (thirdparty/Boost.WinAPI)
 add_subdirectory (thirdparty/fmt)
 add_subdirectory (thirdparty/GSL)
 add_subdirectory (thirdparty/magic_enum)
@@ -37,11 +47,13 @@ add_subdirectory (thirdparty/range-v3)
 
 include (SetupUrho3D)
 include (StdPolyfills)
+include (BoostDLL)
 
 add_subdirectory (modules)
 
 add_library (smartcar_emul_deps INTERFACE)
 target_link_libraries (smartcar_emul_deps INTERFACE
+        Boost::dll
         fmt::fmt
         Microsoft.GSL::GSL
         magic_enum::magic_enum
@@ -52,10 +64,7 @@ target_link_libraries (smartcar_emul_deps INTERFACE
         )
 
 add_executable (smartcar_emul src/main.cxx)
-target_include_directories (smartcar_emul PRIVATE
-        thirdparty/Boost.DLL/include
-        include
-        )
+target_include_directories (smartcar_emul PRIVATE include)
 target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps)
 target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 
