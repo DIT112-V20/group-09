@@ -16,8 +16,8 @@
  *
  */
 
-#include <iostream>
 #include <fmt/format.h>
+#include <boost/predef/os.h>
 #include "Toolchain.hxx"
 #include "utility.hxx"
 
@@ -40,8 +40,16 @@ CompilationResults compile_sketch(SketchSource src, stdfs::path prefix) {
         stdfs::remove_all(build_dir);
     stdfs::create_directory(build_dir);
 
-    const auto configure_cmd = fmt::format(R"(cmake -DSOURCE_FILE="{}" -S "{}" -B "{}"  > {} && cmake --build "{}" > {})", src.location.string(),
-                                           share_dir.string(), build_dir.string(), silent_output, build_dir.string(), silent_output);
+#if BOOST_OS_UNIX
+    constexpr std::string_view silent_output = "/dev/null";
+#elif BOOST_OS_WINDOWS
+    constexpr std::string_view silent_output = "NUL";
+#else
+    constexpr std::string_view silent_output = "null.txt"; // just in case
+#endif
+
+    const auto configure_cmd = fmt::format(R"(cmake -DSOURCE_FILE="{0}" -S "{1}" -B "{2}" > {3} && cmake --build "{4}" > {3} 2<&1)",
+                                           src.location.string(), share_dir.string(), build_dir.string(), silent_output, build_dir.string());
     std::system(configure_cmd.c_str());
 
     auto obj_path = build_dir / loc_hash;

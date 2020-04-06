@@ -23,20 +23,11 @@
 #include <filesystem>
 #include <future>
 #include <variant>
-#include "boost/predef/os.h"
 #include "Object.hxx"
 #include "Source.hxx"
 
 namespace smce {
 namespace stdfs = std::filesystem;
-
-#ifdef BOOST_PREDEF_OS_UNIX_H
-constexpr std::string_view silent_output = "/dev/null";
-#elif BOOST_PREDEF_OS_WINDOWS_H
-constexpr std::string_view silent_output = "NUL";
-#else
-constexpr std::string_view silent_output = "null.txt"; // just in case
-#endif
 
 using CompilationResults = std::variant<SketchObject, std::runtime_error>;
 /**
