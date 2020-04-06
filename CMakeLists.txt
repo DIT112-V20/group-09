@@ -62,6 +62,8 @@ target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permiss
 target_sources (smartcar_emul PRIVATE
         )
 
+file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
+
 add_subdirectory (thirdparty/Catch2)
 add_executable (smartcar_emul_tests test/sanity.cxx)
 target_link_libraries (smartcar_emul_tests PRIVATE
