@@ -21,6 +21,7 @@
 
 #include <exception>
 #include <filesystem>
+#include <future>
 #include <variant>
 #include "boost/predef/os.h"
 #include "Object.hxx"
@@ -38,7 +39,15 @@ constexpr std::string_view silent_output = "null.txt"; // just in case
 #endif
 
 using CompilationResults = std::variant<SketchObject, std::runtime_error>;
-CompilationResults compile_sketch(SketchSource, stdfs::path);
+/**
+ * Attempts to compile a sketch file
+ * \param src The source file to compile
+ * \param location SMCE_HOME
+ * \return the results of the compilation (see CompilationResults)
+ **/
+CompilationResults compile_sketch(SketchSource src, stdfs::path location);
+
+[[nodiscard]] inline auto launch_compile(SketchSource src, stdfs::path location) { return std::async(std::launch::async, compile_sketch, std::move(src), std::move(location)); }
 
 } // namespace smce
 
