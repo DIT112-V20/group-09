@@ -8,11 +8,14 @@
 
 namespace stdfs = std::filesystem;
 
+#define xstr(a) str(a)
+#define str(a) #a
+
 TEST_CASE("Arduino format compile and load"
           "[Arduino compile]") {
-    constexpr std::string_view src = R"(extern "C" bool init() { return true; }
-extern "C" void setup() {}
-extern "C" void loop() {})";
+    constexpr std::string_view src = R"(extern "C" )" xstr(BOOST_SYMBOL_EXPORT) R"( bool init() { return true; }
+extern "C" )" xstr(BOOST_SYMBOL_EXPORT) R"( void setup() {}
+extern "C" )" xstr(BOOST_SYMBOL_EXPORT) R"( void loop() {})";
     constexpr std::string_view src_name = "arduino.cpp";
 
     REQUIRE(write_file(src_name, src));
