@@ -37,8 +37,8 @@ jobs:
         run: mkdir build && pushd build && cmake -G Ninja .. && popd
       - name: build
         run: pwd && cmake --build build
-      - name: test
-        run: pushd build && ctest && popd
+#      - name: test
+#        run: pushd build && ctest && popd
     env:
       CC: ${{ matrix.compiler.c }}
       CXX: ${{ matrix.compiler.cxx }}
@@ -58,8 +58,8 @@ jobs:
         run: mkdir build && cd build && cmake -DURHO3D_HOME_RELATIVE="Urho3D-build" .. && popd
       - name: build
         run: cmake --build build
-      - name: test
-        run: cd build && ctest
+#      - name: test
+#        run: cd build && ctest
 
   build-macos: # We have to split this one off because AppleClang does not yet support Concepts at all
     runs-on: macos-latest
@@ -101,9 +101,12 @@ jobs:
           fi
           mkdir build && pushd build && URHO3D_HOME=$(realpath ../Urho3D) cmake -G Ninja .. && popd
       - name: build
-        run: cmake --build build
-      - name: test
-        run: pushd build && ctest && popd
+        run: |
+          export CC=cc;
+          export CXX=c++;
+          cmake --build build
+#      - name: test
+#        run: pushd build && ctest && popd
     env:
       CC: ${{ matrix.compiler.c }}
       CXX: ${{ matrix.compiler.cxx }}

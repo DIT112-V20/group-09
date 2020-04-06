@@ -32,6 +32,7 @@ check_cxx_source_compiles ("${CHECK_SRC}" CXX_STDLIB_CONCEPTS_AVAILABLE)
 unset (CHECK_SRC)
 if  (NOT CXX_STDLIB_CONCEPTS_AVAILABLE)
     target_include_directories (stdpolyfills SYSTEM INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include/stdpolyfills/polyfill_concepts)
+    target_link_libraries (stdpolyfills INTERFACE range-v3::range-v3)
 endif  (NOT CXX_STDLIB_CONCEPTS_AVAILABLE)
 
 find_package (Threads REQUIRED) # For std::thread
