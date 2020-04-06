@@ -37,6 +37,5 @@ add_executable (TestsTryCompile test/simple_compile.cxx)
 set_target_properties (TestsTryCompile PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries (TestsTryCompile TryCompile Catch2)
 
-include (CTest)
-include (Catch)
 catch_discover_tests (TestsTryCompile)
+add_dependencies(TestTag TestsTryCompile)

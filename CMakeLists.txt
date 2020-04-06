@@ -46,6 +46,9 @@ set (RANGES_PREFER_REAL_CONCEPTS ON CACHE BOOL "")
 set (RANGES_DEEP_STL_INTEGRATION ON CACHE BOOL "")
 add_subdirectory (thirdparty/range-v3)
 
+add_custom_target (TestTag)
+include (CTest)
+include (Catch)
 include (SetupUrho3D)
 include (StdPolyfills)
 include (BoostDLL)
@@ -76,11 +79,11 @@ target_sources (smartcar_emul PRIVATE
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 
 add_executable (smartcar_emul_tests test/sanity.cxx)
+add_dependencies(smartcar_emul_tests TestTag)
 target_link_libraries (smartcar_emul_tests PRIVATE
         smartcar_emul_deps
         Catch2)
 
 
-include (CTest)
-include (Catch)
 catch_discover_tests (smartcar_emul_tests)
+add_custom_command(TARGET smartcar_emul_tests POST_BUILD COMMAND ctest --output-on-failure)

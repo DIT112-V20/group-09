@@ -19,7 +19,9 @@
 #ifndef SMARTCAR_EMUL_INCLUDE_UTILITY_HXX
 #define SMARTCAR_EMUL_INCLUDE_UTILITY_HXX
 
+#ifndef M_PI
 #define M_PI 3.14159265358979323846
+#endif
 
 #include <algorithm>
 #include <cmath>
