@@ -1,5 +1,5 @@
 /*
- *  Object.hpp
+ *  Object.hxx
  *  Copyright 2020 AeroStun
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,9 @@
 #define SMARTCAR_EMUL_TRYCOMPILE_SKETCH_OBJECT_HXX
 
 #include <boost/dll.hpp>
+#include <concepts>
 #include <filesystem>
+#include <type_traits>
 
 namespace smce {
 
@@ -56,10 +58,14 @@ struct SketchLoadedObject {
     boost::dll::shared_library dl;
 
     friend SketchLoadedObject load(SketchObject);
+    template <class R, class... Args>
+    friend R invoke(const SketchLoadedObject&, const char* symbol, Args&&...);
 };
 
 [[nodiscard]] SketchLoadedObject load(SketchObject);
 
 }
+
+#include "impl/Object.txx"
 
 #endif // SMARTCAR_EMUL_TRYCOMPILE_SKETCH_OBJECT_HXX

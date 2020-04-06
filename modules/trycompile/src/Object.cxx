@@ -1,6 +1,6 @@
 /*
- *  Source.hxx
- *  Copyright 2020 ItJustWorksTM
+ *  Object.cpp
+ *  Copyright 2020 AeroStun
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,17 +16,25 @@
  *
  */
 
-#ifndef SMARTCAR_EMUL_TRYCOMPILE_SKETCH_SOURCE_HXX
-#define SMARTCAR_EMUL_TRYCOMPILE_SKETCH_SOURCE_HXX
-
-#include <filesystem>
+#include "Object.hxx"
 
 namespace smce {
 
-struct SketchSource {
-    std::filesystem::path location;
-};
+SketchLoadedObject load(SketchObject so) {
+    SketchLoadedObject ret;
+    std::error_code ec;
+    ret.dl.load(so.location, ec);
+    if(ec)
+        return {};
 
+
+    if (ret.dl.has("init"))
+        ret.init = ret.dl.get<SketchLoadedObject::InitType>("init");
+    if (ret.dl.has("setup"))
+        ret.setup = ret.dl.get<SketchLoadedObject::SetupType>("setup");
+    if (ret.dl.has("loop"))
+        ret.loop = ret.dl.get<SketchLoadedObject::LoopType>("loop");
+    return ret;
 }
 
-#endif // SMARTCAR_EMUL_TRYCOMPILE_SKETCH_SOURCE_HPP
+}
