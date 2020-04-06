@@ -28,7 +28,11 @@ set (HOME_DIRNAME ${CMAKE_SOURCE_DIR})
 # FIXME: add sketch handling
 add_library (${BUILD_DIRNAME} MODULE)
 target_sources (${BUILD_DIRNAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/${SOURCE_FILE}")
-file (RENAME <TARGET_FILE:${BUILD_DIRNAME}> ${BUILD_DIRNAME})
+add_custom_command (
+		TARGET ${BUILD_DIRNAME}
+		POST_BUILD
+		COMMAND ${CMAKE_COMMAND}
+ 		ARGS -E rename $<TARGET_FILE:${BUILD_DIRNAME}> ${CMAKE_CURRENT_BINARY_DIR}/${BUILD_DIRNAME})
 
 #add_library (ArdRuntime STATIC IMPORTED)
 #set_target_properties (ArdRuntime PROPERTIES
