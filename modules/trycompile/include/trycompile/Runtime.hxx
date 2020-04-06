@@ -26,6 +26,9 @@ namespace smce {
 
 class VehicleData;
 
+/**
+ * Runtime in which a sktech is to be executed
+ **/
 struct SketchRuntime {
     SketchRuntime() = default; // FIXME: do we need it?
     SketchRuntime(const SketchRuntime&) = delete;
@@ -37,10 +40,17 @@ struct SketchRuntime {
 
     /**
      * Runs the sketch's `setup()` function if sketch is loaded
-     * */
+     **/
     bool start() noexcept;
+    /**
+     * Resumes calling `loop()` if it was stalled; no-op otherwise
+     **/
     bool resume() noexcept;
+    /**
+     * Do not execute `loop()` anymore if it running; no-op otherwise
+     **/
     void pause_on_next_loop() noexcept;
+
 
     bool set_sketch_and_car(SketchObject, VehicleData&) noexcept; // Should we really pass the data instead of the config?
     bool clear();

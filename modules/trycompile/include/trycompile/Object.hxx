@@ -28,12 +28,18 @@
 
 namespace smce {
 
+/**
+ * Sketch shared object
+ **/
 struct SketchObject {
-    std::filesystem::path location;
+    std::filesystem::path location; /// Full filesystem path to the file
 };
 
 class VehicleData;
 
+/**
+ *  Sketch shared object which is loaded
+ **/
 struct SketchLoadedObject {
     using WriteByte = bool(*)(unsigned char);
     using WriteBuf = std::size_t (*)(const unsigned char*, size_t);
@@ -42,8 +48,11 @@ struct SketchLoadedObject {
     using SetupType = void();
     using LoopType = void();
 
+    /// initializer function for the Arduino runtime
     InitType* init = nullptr;
+    /// Arduino setup function
     SetupType* setup = nullptr;
+    /// Arduino loop function
     LoopType* loop = nullptr;
 
     SketchLoadedObject() noexcept = default;
@@ -54,6 +63,10 @@ struct SketchLoadedObject {
     SketchLoadedObject& operator=(const SketchLoadedObject&) = delete;
     SketchLoadedObject& operator=(SketchLoadedObject&&) noexcept = default;
 
+    /**
+     * Checks if the object is valid
+     * \return true if the object's contents can be used, false otherwise
+     **/
     [[nodiscard]] inline explicit operator bool() const { return dl.is_loaded(); }
 
   private:
@@ -64,7 +77,12 @@ struct SketchLoadedObject {
     friend R invoke(const SketchLoadedObject&, const char* symbol, Args&&...);
 };
 
-[[nodiscard]] SketchLoadedObject load(SketchObject);
+/**
+ *  Loads a sketch shared library object
+ *  \param in input sketch
+ *  \return valid loaded sketch, or invalid if failed to load
+ **/
+[[nodiscard]] SketchLoadedObject load(SketchObject in);
 
 }
 
