@@ -66,6 +66,7 @@ of concept on the Smartcar platform without the need for access to the hardware.
 git clone --recurse-submodules \
     https://github.com/DIT112-V20/group-09 # Fetch sources
 mkdir build                                # Create build location
+cd build
 cmake ..                                   # Configure
 cmake --build .                            # Build
 ctest                                      # Optional: run tests
