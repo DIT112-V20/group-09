@@ -12,7 +12,7 @@ bool write_file(const stdfs::path& source_path, std::string_view src) {
     return false;
 }
 
-TEST_CASE("Load config file", "load config") {
+TEST_CASE("Load config file", "[load config]") {
     constexpr auto ini = R"([paths]
 preprocessor_bin=testing
 smce_home=testing
@@ -35,7 +35,7 @@ cpp_std=14
     REQUIRE(config.cpp_std == 14);
 }
 
-TEST_CASE("Non existent directories", "load bad dirs config") {
+TEST_CASE("Non existent directories", "[load bad dirs config]") {
     constexpr auto ini = R"([paths]
 preprocessor_bin=nottesting
 smce_home=nottesting
@@ -54,7 +54,7 @@ cpp_std=17
     REQUIRE(config.cpp_std == 17);
 }
 
-TEST_CASE("Parsing fail config", "Parse fail") {
+TEST_CASE("Parsing fail config", "[Parse fail]") {
     constexpr auto ini = R"(ths]
 preprocessor_bin=nottesting
 lib_path=nottesting
@@ -70,4 +70,23 @@ cpp_std17
     REQUIRE(config.smce_home == ".");
     REQUIRE(config.lib_path == ".");
     REQUIRE(config.cpp_std == 17);
+}
+
+TEST_CASE("Export config", "[Export config]") {
+    std::error_code e;
+    std::filesystem::create_directory("helloworld", e);
+    REQUIRE(!e);
+
+    auto test = smce::ProgramOptions{};
+    test.cpp_std = 11;
+    test.smce_home = "helloworld";
+
+    const auto out = stdfs::path{"export.ini"};
+    smce::ExportPorgramOptions(test, out);
+    const auto comp = smce::LoadProgramOptions(out);
+
+    REQUIRE(test.preprocessor_bin == comp.preprocessor_bin);
+    REQUIRE(test.smce_home == comp.smce_home);
+    REQUIRE(test.lib_path == comp.lib_path);
+    REQUIRE(test.cpp_std == comp.cpp_std);
 }

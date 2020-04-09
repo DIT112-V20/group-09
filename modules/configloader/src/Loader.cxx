@@ -16,7 +16,9 @@
  *
  */
 
+#include <fstream>
 #include <string>
+#include "fmt/format.h"
 #include "INIReader.h"
 #include "Loader.hxx"
 namespace smce {
@@ -38,6 +40,14 @@ ProgramOptions LoadProgramOptions(const stdfs::path& path) {
                           reader.GetInteger("versions", "cpp_std", ProgramOptions::DEFAULT_CPP_STD));
 
     return config;
+}
+
+void ExportPorgramOptions(const ProgramOptions& co, const stdfs::path& path) {
+    if (std::ofstream out(path, std::ios::out | std::ios::binary); out) {
+        auto ret = fmt::format("[paths]\npreprocessor_bin={}\nsmce_home={}\nlib_path={}\n[versions]\ncpp_std={}\n", co.preprocessor_bin.string(),
+                               co.smce_home.string(), co.lib_path.string(), co.cpp_std);
+        out.write(ret.data(), ret.size());
+    }
 }
 
 } // namespace smce

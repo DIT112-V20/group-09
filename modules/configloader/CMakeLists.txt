@@ -23,7 +23,7 @@ target_sources(ConfigLoader INTERFACE
         include/configloader/Loader.hxx
         src/Loader.cxx)
 
-target_link_libraries(TryCompile INTERFACE stdpolyfills::stdpolyfills)
+target_link_libraries(ConfigLoader INTERFACE stdpolyfills::stdpolyfills fmt::fmt)
 
 add_executable(TestsConfigLoader test/load.cxx)
 
