@@ -13,3 +13,4 @@
 #
 
 add_subdirectory (trycompile)
+add_subdirectory (configloader)
