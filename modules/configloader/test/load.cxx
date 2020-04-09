@@ -48,7 +48,7 @@ cpp_std=17
     REQUIRE(write_file(ini_name, ini));
     auto config = smce::LoadProgramOptions(ini_name);
 
-    REQUIRE(config.preprocessor_bin == "bin");
+    REQUIRE(config.preprocessor_bin == "");
     REQUIRE(config.smce_home == ".");
     REQUIRE(config.lib_path == ".");
     REQUIRE(config.cpp_std == 17);
@@ -66,7 +66,7 @@ cpp_std17
     REQUIRE(write_file(ini_name, ini));
     auto config = smce::LoadProgramOptions(ini_name);
 
-    REQUIRE(config.preprocessor_bin == "bin");
+    REQUIRE(config.preprocessor_bin == "");
     REQUIRE(config.smce_home == ".");
     REQUIRE(config.lib_path == ".");
     REQUIRE(config.cpp_std == 17);
@@ -82,7 +82,7 @@ TEST_CASE("Export config", "[Export config]") {
     test.smce_home = "helloworld";
 
     const auto out = stdfs::path{"export.ini"};
-    smce::ExportPorgramOptions(test, out);
+    smce::ExportProgramOptions(test, out);
     const auto comp = smce::LoadProgramOptions(out);
 
     REQUIRE(test.preprocessor_bin == comp.preprocessor_bin);

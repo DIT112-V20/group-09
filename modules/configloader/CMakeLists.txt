@@ -17,7 +17,7 @@ add_library(ConfigLoader INTERFACE)
 target_include_directories(ConfigLoader INTERFACE
         ${CMAKE_CURRENT_SOURCE_DIR}/include/configloader
         ${CMAKE_SOURCE_DIR}/include
-        ${CMAKE_SOURCE_DIR}/thirdparty/inih)
+        ${CMAKE_SOURCE_DIR}/thirdparty)
 
 target_sources(ConfigLoader INTERFACE
         include/configloader/Loader.hxx

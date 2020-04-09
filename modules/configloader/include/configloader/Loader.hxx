@@ -24,7 +24,7 @@ namespace smce {
 namespace stdfs = std::filesystem;
 
 struct ProgramOptions {
-    static constexpr auto DEFAULT_PREPROCESSOR_BIN = "bin";
+    static constexpr auto DEFAULT_PREPROCESSOR_BIN = "";
     static constexpr auto DEFAULT_SMCE_HOME = ".";
     static constexpr auto DEFAULT_LIB_PATH = ".";
     static constexpr int DEFAULT_CPP_STD = 17;
@@ -42,7 +42,7 @@ struct ProgramOptions {
 };
 
 ProgramOptions LoadProgramOptions(const stdfs::path& file);
-void ExportPorgramOptions(const ProgramOptions& config, const stdfs::path& path);
+void ExportProgramOptions(const ProgramOptions& config, const stdfs::path& path);
 
 } // namespace smce
 

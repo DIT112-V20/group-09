@@ -18,9 +18,10 @@
 
 #include <fstream>
 #include <string>
-#include "fmt/format.h"
-#include "INIReader.h"
+#include <fmt/format.h>
+#include <inih/INIReader.h>
 #include "Loader.hxx"
+
 namespace smce {
 
 ProgramOptions LoadProgramOptions(const stdfs::path& path) {
@@ -42,7 +43,7 @@ ProgramOptions LoadProgramOptions(const stdfs::path& path) {
     return config;
 }
 
-void ExportPorgramOptions(const ProgramOptions& co, const stdfs::path& path) {
+void ExportProgramOptions(const ProgramOptions& co, const stdfs::path& path) {
     if (std::ofstream out(path, std::ios::out | std::ios::binary); out) {
         auto ret = fmt::format("[paths]\npreprocessor_bin={}\nsmce_home={}\nlib_path={}\n[versions]\ncpp_std={}\n", co.preprocessor_bin.string(),
                                co.smce_home.string(), co.lib_path.string(), co.cpp_std);
