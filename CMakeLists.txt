@@ -90,6 +90,19 @@ target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permiss
 target_sources (smartcar_emul PRIVATE
         )
 
+file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
+set (SMCE_SHARE ${CMAKE_BINARY_DIR}/share/smce)
+
+if (EXISTS ${URHO3D_HOME}/share/Urho3D/Resources)
+    set (URHO3D_RESOURCES ${URHO3D_HOME}/share/Urho3D/Resources)
+else ()
+    set (URHO3D_RESOURCES ${URHO3D_HOME}/bin)
+endif ()
+
+execute_process (COMMAND "${CMAKE_COMMAND}" -E make_directory "${SMCE_SHARE}/Resources")
+execute_process (COMMAND "${CMAKE_COMMAND}" -E copy_directory "${URHO3D_RESOURCES}/Autoload" "${SMCE_SHARE}/Resources/Autoload")
+execute_process (COMMAND "${CMAKE_COMMAND}" -E copy_directory "${URHO3D_RESOURCES}/CoreData" "${SMCE_SHARE}/Resources/CoreData")
+execute_process (COMMAND "${CMAKE_COMMAND}" -E copy_directory "${URHO3D_RESOURCES}/Data" "${SMCE_SHARE}/Resources/Data")
 
 add_executable (smartcar_emul_tests test/sanity.cxx)
 add_dependencies(smartcar_emul_tests TestTag)
