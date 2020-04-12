@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['writebuf_46',['WriteBuf',['../structsmce_1_1_sketch_loaded_object.html#a5ae8759bb5a154e9c96a834fb4aa08d9',1,'smce::SketchLoadedObject']]],
-  ['writebyte_47',['WriteByte',['../structsmce_1_1_sketch_loaded_object.html#a4e403ea4340c7026897ad534f16f9518',1,'smce::SketchLoadedObject']]]
+  ['visitor_58',['Visitor',['../struct_visitor.html',1,'Visitor&lt; Base &gt;'],['../utility_8hxx.html#a22eabbb90380dcf6bd3686c92b580560',1,'Visitor(T...) -&gt; Visitor&lt; T... &gt;:&#160;utility.hxx']]]
 ];

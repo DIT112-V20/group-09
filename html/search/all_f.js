@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7esketchloadedobject_48',['~SketchLoadedObject',['../structsmce_1_1_sketch_loaded_object.html#abf93a7236f314adeae46bf1edaab08ff',1,'smce::SketchLoadedObject']]],
-  ['_7esketchruntime_49',['~SketchRuntime',['../structsmce_1_1_sketch_runtime.html#ae15918390d2b50d206da9fa2cd82e47e',1,'smce::SketchRuntime']]]
+  ['writebuf_59',['WriteBuf',['../structsmce_1_1_sketch_loaded_object.html#a5ae8759bb5a154e9c96a834fb4aa08d9',1,'smce::SketchLoadedObject']]],
+  ['writebyte_60',['WriteByte',['../structsmce_1_1_sketch_loaded_object.html#a4e403ea4340c7026897ad534f16f9518',1,'smce::SketchLoadedObject']]]
 ];

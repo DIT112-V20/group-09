@@ -74,6 +74,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_program_options.html">ProgramOptions</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_loaded_object.html">SketchLoadedObject</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_object.html">SketchObject</a></td></tr>
@@ -90,6 +92,10 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a0c7e3a6d747acf56f6eeec5f706e4f5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsmce_1_1_program_options.html">ProgramOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#a0c7e3a6d747acf56f6eeec5f706e4f5d">LoadProgramOptions</a> (const stdfs::path &amp;file)</td></tr>
+<tr class="separator:a0c7e3a6d747acf56f6eeec5f706e4f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51543fb41ff85a6896c4398d0ad9e090"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#a51543fb41ff85a6896c4398d0ad9e090">ExportProgramOptions</a> (const <a class="el" href="structsmce_1_1_program_options.html">ProgramOptions</a> &amp;config, const stdfs::path &amp;path)</td></tr>
+<tr class="separator:a51543fb41ff85a6896c4398d0ad9e090"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a964f0a051cf1cbe40f8e2f94de46a08b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsmce_1_1_sketch_loaded_object.html">SketchLoadedObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#a964f0a051cf1cbe40f8e2f94de46a08b">load</a> (<a class="el" href="structsmce_1_1_sketch_object.html">SketchObject</a> in)</td></tr>
 <tr class="separator:a964f0a051cf1cbe40f8e2f94de46a08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e81c6fa8ab9d9cece01b062cbf0bfbf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacesmce.html#a1435f7ccfcf3883a49aebfdf625b3047">CompilationResults</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#a7e81c6fa8ab9d9cece01b062cbf0bfbf">compile_sketch</a> (<a class="el" href="structsmce_1_1_sketch_source.html">SketchSource</a> src, stdfs::path location)</td></tr>
@@ -146,6 +152,34 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the results of the compilation (see CompilationResults) </dd></dl>
+
+</div>
+</div>
+<a id="a51543fb41ff85a6896c4398d0ad9e090"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51543fb41ff85a6896c4398d0ad9e090">&#9670;&nbsp;</a></span>ExportProgramOptions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void smce::ExportProgramOptions </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structsmce_1_1_program_options.html">ProgramOptions</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const stdfs::path &amp;&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -207,6 +241,24 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>valid loaded sketch, or invalid if failed to load </dd></dl>
+
+</div>
+</div>
+<a id="a0c7e3a6d747acf56f6eeec5f706e4f5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c7e3a6d747acf56f6eeec5f706e4f5d">&#9670;&nbsp;</a></span>LoadProgramOptions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsmce_1_1_program_options.html">ProgramOptions</a> smce::LoadProgramOptions </td>
+          <td>(</td>
+          <td class="paramtype">const stdfs::path &amp;&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['is_5frunning_71',['is_running',['../structsmce_1_1_sketch_runtime.html#a4dd57a183ff59486d269c518b7279e53',1,'smce::SketchRuntime']]]
+  ['exportprogramoptions_87',['ExportProgramOptions',['../namespacesmce.html#a51543fb41ff85a6896c4398d0ad9e090',1,'smce']]]
 ];
