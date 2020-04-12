@@ -69,7 +69,7 @@ target_link_libraries (smartcar_emul_deps INTERFACE
         )
 
 add_executable (smartcar_emul src/main.cxx)
-target_include_directories (smartcar_emul PRIVATE include)
+target_include_directories (smartcar_emul PRIVATE include thirdparty/inih)
 target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps)
 target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 
