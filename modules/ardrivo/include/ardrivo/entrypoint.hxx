@@ -1,5 +1,5 @@
 /*
- *  entrypoint.cxx
+ *  entrypoint.hxx
  *  Copyright 2020 AeroStun
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +16,9 @@
  *
  */
 
-#include "entrypoint.hxx"
+#ifndef SMARTCAR_EMUL_ENTRYPOINT_HXX
+#define SMARTCAR_EMUL_ENTRYPOINT_HXX
 
-bool init(void*) { return true; }
+bool init(void*);
+
+#endif // SMARTCAR_EMUL_ENTRYPOINT_HXX

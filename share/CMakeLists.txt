@@ -15,7 +15,20 @@
 #  limitations under the License.
 #
 
+#
+# Input variables:
+# SOURCE_FILE: Path to the source file
+# SOURCE_TYPE:
+#       - "sketch" for single .cpp/.ino/.pde
+#       - "sketch_dir" for GLOBing .ino/.pde files in parent directory
+#       - "sketch_dir_recurse" for GLOB_RECURSEing .ino/.pde files in parent directory (unsupported)
+# ARDUINOCLI: Path to ArduinoCLI
+#
+
 cmake_minimum_required (VERSION 3.13)
+
+set (SILENCE_UNUSED ${ARDUINOCLI_PATH})
+message (STATUS "Processing ${SOURCE_FILE}")
 
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_EXTENSIONS OFF)
@@ -25,7 +38,15 @@ project (${BUILD_DIRNAME} LANGUAGES CXX)
 set (HOME_DIRNAME ${CMAKE_SOURCE_DIR})
 
 
-# FIXME: add sketch handling
+set (CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/Modules)
+include (Preproc)
+
+fetch_ardcli ("${ARDUINOCLI_PATH}")
+identify_source (${SOURCE_FILE} ${SOURCE_TYPE})
+if (SOURCE_IS_INO)
+    ino_preprocess ("${SOURCE_FILE}" "${ARDUINOCLI_PATH}")
+endif ()
+
 add_library (${BUILD_DIRNAME} MODULE)
 target_sources (${BUILD_DIRNAME} PRIVATE "${SOURCE_FILE}")
 add_custom_command (
@@ -34,16 +55,16 @@ add_custom_command (
 		COMMAND ${CMAKE_COMMAND}
  		ARGS -E rename $<TARGET_FILE:${BUILD_DIRNAME}> ${CMAKE_CURRENT_BINARY_DIR}/${BUILD_DIRNAME})
 
-#add_library (ArdRuntime STATIC IMPORTED)
-#set_target_properties (ArdRuntime PROPERTIES
-#        IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/lib/ArduinoRuntime")
-#target_include_directories (ArdRuntime SYSTEM INTERFACE ${CMAKE_SOURCE_DIR}/include/ardpolyfills)
+if (SOURCE_IS_INO)
+    target_sources (${BUILD_DIRNAME} PRIVATE "${CMAKE_SOURCE_DIR}/Fragments/symbols.cxx")
+endif ()
+
+include (ArduinoRuntimeLocation)
+add_library (ArdRuntime STATIC IMPORTED)
+set_target_properties (ArdRuntime PROPERTIES
+        IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/lib/${ARDUINO_RUNTIME_FILENAME}")
+target_include_directories (ArdRuntime SYSTEM INTERFACE ${CMAKE_SOURCE_DIR}/include/ardpolyfills)
 
 set (CMAKE_POSITION_INDEPENDENT_CODE ON)
-#set (SMARTCAR_SOURCE_PATH "${CMAKE_SOURCE_DIR}/libraries/smartcar_shield/src")
-#file (GLOB_RECURSE SMARTCAR_SOURCES ${SMARTCAR_SOURCE_PATH}/*)
-#add_library (SmartcarShield STATIC ${SMARTCAR_SOURCES})
-#target_include_directories (SmartcarShield PUBLIC ${SMARTCAR_SOURCE_PATH})
-#target_link_libraries (SmartcarShield PUBLIC ArdRuntime)
 
-#target_link_libraries (${BUILD_DIRNAME} PRIVATE SmartcarShield ArdRuntime)
+target_link_libraries (${BUILD_DIRNAME} PRIVATE ArdRuntime)

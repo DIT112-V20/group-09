@@ -27,10 +27,10 @@ target_sources (Ardrivo INTERFACE
 target_compile_definitions (Ardrivo INTERFACE)
 target_link_libraries (Ardrivo INTERFACE stdpolyfills::stdpolyfills)
 
-#add_executable (TestsArdrivo)
-#set_target_properties (TestsArdrivo PROPERTIES LINKER_LANGUAGE CXX)
-#target_link_libraries (TestsArdrivo Ardrivo Catch2)
+add_executable (TestsArdrivo test/entrypoint.cxx)
+set_target_properties (TestsArdrivo PROPERTIES LINKER_LANGUAGE CXX)
+target_link_libraries (TestsArdrivo Ardrivo Catch2)
 
-#catch_discover_tests (TestsArdrivo)
-#add_dependencies(TestTag TestsArdrivo)
+catch_discover_tests (TestsArdrivo)
+add_dependencies(TestTag TestsArdrivo)
 
