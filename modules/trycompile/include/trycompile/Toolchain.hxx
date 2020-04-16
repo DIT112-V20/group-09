@@ -29,16 +29,23 @@
 namespace smce {
 namespace stdfs = std::filesystem;
 
+enum struct SourceType {
+    sketch,
+    sktech_dir,
+    sketch_dir_recurse,
+};
+
 using CompilationResults = std::variant<SketchObject, std::runtime_error>;
 /**
  * Attempts to compile a sketch file
- * \param src The source file to compile
+ * \param src The source file/project to compile
  * \param location SMCE_HOME
+ * \param type What the sketch consists of
  * \return the results of the compilation (see CompilationResults)
  **/
-CompilationResults compile_sketch(SketchSource src, stdfs::path location);
+CompilationResults compile_sketch(SketchSource src, stdfs::path location, SourceType type = SourceType::sketch);
 
-[[nodiscard]] inline auto launch_compile(SketchSource src, stdfs::path location) { return std::async(std::launch::async, compile_sketch, std::move(src), std::move(location)); }
+[[nodiscard]] inline auto launch_compile(SketchSource src, stdfs::path location, SourceType type) { return std::async(std::launch::async, compile_sketch, std::move(src), std::move(location), type); }
 
 } // namespace smce
 

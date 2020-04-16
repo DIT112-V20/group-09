@@ -1,4 +1,7 @@
 #
+#  CMakeLists.txt
+#  Copyright 2020 ItJustWorksTM
+#
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
 #  You may obtain a copy of the License at
@@ -30,8 +33,6 @@ target_sources (TryCompile INTERFACE
         src/Toolchain.cxx)
 target_compile_definitions (TryCompile INTERFACE BOOST_DLL_USE_STD_FS=1)
 target_link_libraries (TryCompile INTERFACE stdpolyfills::stdpolyfills fmt::fmt Boost::dll)
-
-file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable (TestsTryCompile test/compile.cxx test/load.cxx)
 set_target_properties (TestsTryCompile PROPERTIES LINKER_LANGUAGE CXX)

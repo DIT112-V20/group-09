@@ -55,6 +55,20 @@ include (BoostDLL)
 
 add_subdirectory (modules)
 
+add_library(ArduinoRuntime STATIC)
+target_link_libraries(ArduinoRuntime PUBLIC Ardrivo)
+add_custom_command (TARGET ArduinoRuntime POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/share" "${CMAKE_BINARY_DIR}/share"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/include/ardpolyfills" "${CMAKE_BINARY_DIR}/share/include/ardpolyfills"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/share/lib"
+        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ArduinoRuntime>" "${CMAKE_BINARY_DIR}/share/lib/"
+        )
+file (GENERATE
+        OUTPUT "${CMAKE_BINARY_DIR}/share/Modules/ArduinoRuntimeLocation.cmake"
+        CONTENT "set (ARDUINO_RUNTIME_FILENAME $<TARGET_FILE_NAME:ArduinoRuntime>)")
+add_dependencies(TestTag ArduinoRuntime)
+
+
 add_library (smartcar_emul_deps INTERFACE)
 target_link_libraries (smartcar_emul_deps INTERFACE
         Boost::dll
@@ -76,7 +90,6 @@ target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permiss
 target_sources (smartcar_emul PRIVATE
         )
 
-file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 
 add_executable (smartcar_emul_tests test/sanity.cxx)
 add_dependencies(smartcar_emul_tests TestTag)

@@ -18,7 +18,7 @@ bool test_compile(std::string_view src_name, std::string_view src) {
     if (!write_file(src_name, src))
         return false;
     const auto source_path = stdfs::absolute(stdfs::path(src_name));
-    const auto ret = smce::compile_sketch(smce::SketchSource{source_path}, ".");
+    const auto ret = smce::compile_sketch(smce::SketchSource{source_path}, "../../");
     return !std::holds_alternative<std::runtime_error>(ret);
 }
 
@@ -40,4 +40,18 @@ TEST_CASE("Non compliant file compile", "[Non compliant compile]") {
     constexpr auto test = R"(int main() { std::cout << "Hello world" << std::endl })";
     constexpr auto src_name = "error.cpp";
     REQUIRE(!test_compile(src_name, test));
+}
+
+TEST_CASE("simple sketch compile", "[simple compile]") {
+    constexpr auto test = R"( void setup() {} void loop() {})";
+    constexpr auto src_name = "sketch.ino";
+    REQUIRE(test_compile(src_name, test));
+}
+
+TEST_CASE("simple sketch-pp compile", "[simple compile]") {
+    constexpr auto test = R"( void setup() { f();
+; } void loop() {} void f() {}
+)";
+    constexpr auto src_name = "sketch-pp.ino";
+    REQUIRE(test_compile(src_name, test));
 }
