@@ -33,7 +33,7 @@ CompilationResults compile_sketch(SketchSource src, stdfs::path prefix, SourceTy
     if (!stdfs::exists(src.location))
         return CompilationResults{std::runtime_error{"Src location not found"}};
 
-    const auto share_dir = prefix / "share" / "smce" / "toolchain";
+    const auto share_dir = prefix / "share/smce/toolchain";
 
     if (!stdfs::exists(share_dir))
         return CompilationResults{std::runtime_error{"Share location not found"}};
