@@ -55,16 +55,17 @@ include (BoostDLL)
 
 add_subdirectory (modules)
 
+execute_process(
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/share" "${CMAKE_BINARY_DIR}/share"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/include/ardpolyfills" "${CMAKE_BINARY_DIR}/share/smce/toolchain/include/ardpolyfills"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib")
+
 add_library(ArduinoRuntime STATIC)
 target_link_libraries(ArduinoRuntime PUBLIC Ardrivo)
 add_custom_command (TARGET ArduinoRuntime POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/share" "${CMAKE_BINARY_DIR}/share"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/include/ardpolyfills" "${CMAKE_BINARY_DIR}/share/include/ardpolyfills"
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/share/lib"
-        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ArduinoRuntime>" "${CMAKE_BINARY_DIR}/share/lib/"
-        )
+        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ArduinoRuntime>" "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib/")
 file (GENERATE
-        OUTPUT "${CMAKE_BINARY_DIR}/share/Modules/ArduinoRuntimeLocation.cmake"
+        OUTPUT "${CMAKE_BINARY_DIR}/share/smce/toolchain/Modules/ArduinoRuntimeLocation.cmake"
         CONTENT "set (ARDUINO_RUNTIME_FILENAME $<TARGET_FILE_NAME:ArduinoRuntime>)")
 add_dependencies(TestTag ArduinoRuntime)
 
@@ -90,6 +91,20 @@ target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permiss
 target_sources (smartcar_emul PRIVATE
         )
 
+file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
+set (SMCE_SHARE ${CMAKE_BINARY_DIR}/share/smce)
+
+if (EXISTS ${URHO3D_HOME}/share/Urho3D/Resources)
+    set (URHO3D_RESOURCES ${URHO3D_HOME}/share/Urho3D/Resources)
+else ()
+    set (URHO3D_RESOURCES ${URHO3D_HOME}/bin)
+endif ()
+
+execute_process (
+        COMMAND "${CMAKE_COMMAND}" -E make_directory "${SMCE_SHARE}/Resources"
+        COMMAND "${CMAKE_COMMAND}" -E copy_directory "${URHO3D_RESOURCES}/Autoload" "${SMCE_SHARE}/Resources/Autoload"
+        COMMAND "${CMAKE_COMMAND}" -E copy_directory "${URHO3D_RESOURCES}/CoreData" "${SMCE_SHARE}/Resources/CoreData"
+        COMMAND "${CMAKE_COMMAND}" -E copy_directory "${URHO3D_RESOURCES}/Data" "${SMCE_SHARE}/Resources/Data")
 
 add_executable (smartcar_emul_tests test/sanity.cxx)
 add_dependencies(smartcar_emul_tests TestTag)
