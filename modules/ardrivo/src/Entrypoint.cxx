@@ -1,5 +1,5 @@
 /*
- *  entrypoint.cxx
+ *  Entrypoint.cxx
  *  Copyright 2020 AeroStun
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +16,10 @@
  *
  */
 
-#include "entrypoint.hxx"
+#include "Entrypoint.hxx"
+std::chrono::steady_clock::time_point start_time;
 
-bool init(void*) { return true; }
+bool init(void*) {
+    start_time = std::chrono::steady_clock::now();
+    return true;
+}
