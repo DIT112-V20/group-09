@@ -90,7 +90,7 @@ jobs:
         run: |
           brew update
           brew install --force-bottle coreutils ninja
-          if [ $(echo "$CC" | grep -Ei "^clang-") ]; then brew upgrade --force-bottle llvm; fi
+          if [ $(echo "$CC" | grep -Ei "^clang-") ]; then brew install z3 --force-bottle; brew upgrade --force-bottle llvm; fi
           tar xf deps/Urho3D/1.7.1.tgz
           find . -maxdepth 1 -name "Urho3D-*" -exec mv '{}' Urho3D \;
       - name: configure
