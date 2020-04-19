@@ -16,7 +16,7 @@
  *
  */
 
-#include <Arduino.h>
+#include "Arduino.h"
 
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(__CYGWIN__)
 #  define SYM_EXPORT __declspec(dllexport)
@@ -28,11 +28,12 @@
 #  define SYM_EXPORT __attribute__((__visibility__("default")))
 #endif
 
+struct BoardData;
 
-extern bool init(void*);
+extern bool init(BoardData*);
 
 namespace {
-extern "C" SYM_EXPORT bool init(void* p) { return ::init(p); }
+extern "C" SYM_EXPORT bool init(BoardData* p) { return ::init(p); }
 
 extern "C" SYM_EXPORT void setup() { ::setup(); }
 

@@ -1,5 +1,5 @@
 /*
- *  entrypoint.cxx
+ *  Entrypoint.cxx
  *  Copyright 2020 AeroStun
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +16,12 @@
  *
  */
 
-#include "entrypoint.hxx"
+#include "BoardData.hxx"
+#include "Entrypoint.hxx"
 
-bool init(void*) { return true; }
+BoardData* board_data;
+
+bool init(BoardData* ptr) {
+    board_data = ptr;
+    return true;
+}

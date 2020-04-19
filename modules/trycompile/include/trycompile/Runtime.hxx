@@ -19,12 +19,11 @@
 #ifndef SMARTCAR_EMUL_TRYCOMPILE_SKETCH_RUNTIME_HPP
 #define SMARTCAR_EMUL_TRYCOMPILE_SKETCH_RUNTIME_HPP
 
+#include "BoardData.hxx"
 #include "Object.hxx"
 #include <thread>
 
 namespace smce {
-
-class VehicleData;
 
 /**
  * Runtime in which a sktech is to be executed
@@ -52,7 +51,7 @@ struct SketchRuntime {
     void pause_on_next_loop() noexcept;
 
 
-    bool set_sketch_and_car(SketchObject, VehicleData&) noexcept; // Should we really pass the data instead of the config?
+    bool set_sketch_and_car(SketchObject, BoardData&) noexcept; // Should we really pass the data instead of the config?
     bool clear();
 
     [[nodiscard]] constexpr bool is_running() noexcept { return running; }
@@ -60,7 +59,7 @@ struct SketchRuntime {
   private:
     void launch_thread_unchecked();
 
-    VehicleData* vehicle_dat{}; // This will probably end up a value member
+    BoardData* vehicle_dat{};
     SketchLoadedObject curr_sketch;
     std::thread thr; // warn: RAII
     std::atomic_bool stop_tok{};

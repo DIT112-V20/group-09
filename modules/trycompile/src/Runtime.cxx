@@ -18,7 +18,6 @@
 
 #include "Runtime.hxx"
 #include "Object.hxx"
-#include <iostream>
 #include <utility>
 
 namespace {
@@ -61,21 +60,14 @@ bool SketchRuntime::resume() noexcept {
 
 void SketchRuntime::pause_on_next_loop() noexcept { stop_tok = true; }
 
-bool SketchRuntime::set_sketch_and_car(SketchObject so, VehicleData& vdata) noexcept {
+bool SketchRuntime::set_sketch_and_car(SketchObject so, BoardData& bdata) noexcept {
     if (running)
         return false;
     curr_sketch = load(std::move(so));
     if (!curr_sketch)
         return false;
-    curr_sketch.init(
-        &vdata, +[](unsigned char c) -> bool {
-          return static_cast<bool>(std::cout.put(c));
-        },
-        +[](const unsigned char* buf, std::size_t len) -> std::size_t {
-          std::cout.write(reinterpret_cast<const char*>(buf), len);
-          return std::cout ? len : 0;
-        });
-    vehicle_dat = &vdata;
+    curr_sketch.init(&bdata);
+    vehicle_dat = &bdata;
     return true;
 }
 

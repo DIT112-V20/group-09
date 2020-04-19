@@ -1,6 +1,6 @@
 /*
- *  main.cxx
- *  Copyright 2020 ItJustWorksTM
+ *  BoardDataDef.hxx
+ *  Copyright 2020 AeroStun
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -13,5 +13,14 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+ *
  */
-int main() {}
+
+#ifndef SMARTCAR_EMUL_BOARDDATADEF_HXX
+#define SMARTCAR_EMUL_BOARDDATADEF_HXX
+
+#include "BoardData.hxx"
+
+extern BoardData* board_data;
+
+#endif // SMARTCAR_EMUL_BOARDDATADEF_HXX

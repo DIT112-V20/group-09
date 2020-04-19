@@ -26,6 +26,8 @@
 #include <filesystem>
 #include <type_traits>
 
+struct BoardData;
+
 namespace smce {
 
 /**
@@ -35,16 +37,13 @@ struct SketchObject {
     std::filesystem::path location; /// Full filesystem path to the file
 };
 
-class VehicleData;
 
 /**
  *  Sketch shared object which is loaded
  **/
 struct SketchLoadedObject {
-    using WriteByte = bool(*)(unsigned char);
-    using WriteBuf = std::size_t (*)(const unsigned char*, size_t);
 
-    using InitType = bool(VehicleData*, WriteByte, WriteBuf);
+    using InitType = bool(BoardData*);
     using SetupType = void();
     using LoopType = void();
 
