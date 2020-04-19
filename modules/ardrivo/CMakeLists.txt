@@ -23,7 +23,9 @@ target_include_directories (Ardrivo INTERFACE
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/include/ardpolyfills)
 target_sources (Ardrivo INTERFACE
-        src/entrypoint.cxx)
+        src/entrypoint.cxx
+        src/HardwareSerial.cxx
+        src/Stream.cxx)
 target_compile_definitions (Ardrivo INTERFACE)
 target_link_libraries (Ardrivo INTERFACE stdpolyfills::stdpolyfills)
 

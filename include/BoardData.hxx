@@ -13,15 +13,24 @@
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
+ *
  */
 
 #ifndef SMARTCAR_EMUL_BOARDDATA_HXX
 #define SMARTCAR_EMUL_BOARDDATA_HXX
+
+#include <mutex>
+#include <utility>
 #include <vector>
 
-std::vector<std::pair<void (*)(), int>> interrupts_handlers;
-enum interruptMode { LOW = 1, HIGH = 2, CHANGE = 3, RISING = 4, FALLING = 5 };
+struct BoardData {
+    bool (*write_byte)(unsigned char);
+    size_t (*write_buf)(const unsigned char*, size_t);
 
+    std::vector<char> uart_rx_buf;
+    std::mutex uart_rx_buf_mutex;
 
+    std::vector<std::pair<void (*)(), int>> interrupts_handlers;
+};
 
 #endif // SMARTCAR_EMUL_BOARDDATA_HXX

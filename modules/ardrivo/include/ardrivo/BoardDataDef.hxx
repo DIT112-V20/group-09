@@ -1,5 +1,5 @@
 /*
- *  entrypoint.hxx
+ *  BoardDataDef.hxx
  *  Copyright 2020 AeroStun
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,11 @@
  *
  */
 
-#ifndef SMARTCAR_EMUL_ENTRYPOINT_HXX
-#define SMARTCAR_EMUL_ENTRYPOINT_HXX
+#ifndef SMARTCAR_EMUL_BOARDDATADEF_HXX
+#define SMARTCAR_EMUL_BOARDDATADEF_HXX
 
-#include "BoardDataDef.hxx"
+#include "BoardData.hxx"
 
-BoardData* board_data;
-bool init(BoardData*);
+extern BoardData* board_data;
 
-#endif // SMARTCAR_EMUL_ENTRYPOINT_HXX
+#endif // SMARTCAR_EMUL_BOARDDATADEF_HXX
