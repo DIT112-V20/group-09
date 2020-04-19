@@ -23,6 +23,32 @@
 #include <cstdlib>
 #include <algorithm>
 
+enum SignificantBit : bool { RIGHTMOSTBIT, LEFTMOSTBIT };
+
+enum DigitalValue : bool { LOW, HIGH };
+
+// Digital and analog i/o
+void pinMode(uint8_t pin, uint8_t mode);
+void digitalWrite(uint8_t pin, bool val);
+int digitalRead(uint8_t pin);
+int analogRead(uint8_t pin);
+void analogReference(uint8_t mode);
+void analogWrite(uint16_t pin, uint16_t val);
+
+// advanced i/o
+void tone(uint8_t pin, unsigned int frequency, unsigned long duration);
+void noTone(uint8_t _pin);
+unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout);
+unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout);
+void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val);
+uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder);
+
+// time
+void delay(unsigned long duration);
+void delayMicroseconds(unsigned int duration);
+unsigned long micros();
+unsigned long millis();
+
 // Arduino Math functions
 using std::abs;
 long constrain(long amt, long low, long high);

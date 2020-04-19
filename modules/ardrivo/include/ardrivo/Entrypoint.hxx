@@ -1,5 +1,5 @@
 /*
- *  entrypoint.cxx
+ *  Entrypoint.hxx
  *  Copyright 2020 AeroStun
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +16,15 @@
  *
  */
 
-#include "entrypoint.hxx"
+#ifndef SMARTCAR_EMUL_ENTRYPOINT_HXX
+#define SMARTCAR_EMUL_ENTRYPOINT_HXX
+#include <chrono>
 
-bool init(void*) { return true; }
+extern std::chrono::steady_clock::time_point start_time;
+
+#include "BoardDataDef.hxx"
+
+BoardData* board_data;
+bool init(BoardData*);
+
+#endif // SMARTCAR_EMUL_ENTRYPOINT_HXX
