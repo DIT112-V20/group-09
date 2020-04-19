@@ -23,7 +23,7 @@
 #include <cstdint>
 #include <cstring>
 #include <iterator>
-#include "Arduino.h"
+#include "WString.h"
 
 class Print {
     int write_error = 0;

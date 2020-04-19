@@ -25,7 +25,10 @@ void HardwareSerial::begin(unsigned long, uint8_t) { begun = true; }
 
 void HardwareSerial::end() { begun = false; }
 
-int HardwareSerial::available() { return std::numeric_limits<int>::max(); }
+int HardwareSerial::available() {
+    std::scoped_lock lock{board_data->uart_buses[0].rx_mutex};
+    return board_data->uart_buses[0].rx.size();
+}
 
 int HardwareSerial::availableForWrite() { return std::numeric_limits<int>::max(); }
 
@@ -46,15 +49,15 @@ size_t HardwareSerial::write(const uint8_t* buf, std::size_t n) {
 int HardwareSerial::peek() {
     if (!begun)
         return -1;
-    std::lock_guard guard{board_data->uart_rx_buf_mutex};
-    return board_data->uart_rx_buf.front();
+    std::lock_guard guard{board_data->uart_buses[0].rx_mutex};
+    return static_cast<int>(board_data->uart_buses[0].rx.front());
 }
 
 int HardwareSerial::read() {
     if (!begun)
         return -1;
-    std::lock_guard guard{board_data->uart_rx_buf_mutex};
-    int firstByte = +board_data->uart_rx_buf.front();
-    board_data->uart_rx_buf.erase(board_data->uart_rx_buf.begin());
-    return firstByte;
+    std::lock_guard guard{board_data->uart_buses[0].rx_mutex};
+    const int first_byte = static_cast<int>(board_data->uart_buses[0].rx.front());
+    board_data->uart_buses[0].rx.erase(board_data->uart_buses[0].rx.begin());
+    return first_byte;
 }

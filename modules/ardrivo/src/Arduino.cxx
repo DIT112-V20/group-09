@@ -17,11 +17,13 @@
  */
 
 #include <climits>
+#include <thread>
 #include "Arduino.h"
 #include "BoardData.hxx"
+#include "BoardDataDef.hxx"
 #include "Entrypoint.hxx"
-using namespace std::literals;
 
+using namespace std::literals;
 
 void pinMode(uint8_t pin, uint8_t mode) { board_data->pin_modes[pin] = mode; }
 
@@ -107,13 +109,13 @@ void delayMicroseconds(unsigned int duration) { std::this_thread::sleep_for(std:
 
 unsigned long micros() {
     const auto current_time = std::chrono::steady_clock::now();
-    const unsigned long duration = std::chrono::duration_cast<std::chrono::microseconds>(current_time - start_time).count();
+    const unsigned long duration = std::chrono::duration_cast<std::chrono::microseconds>(current_time - board_data->start_time).count();
     return duration;
 }
 
 unsigned long millis() {
     const auto current_time = std::chrono::steady_clock::now();
-    const unsigned long duration = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - start_time).count();
+    const unsigned long duration = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - board_data->start_time).count();
     return duration;
 }
 
@@ -125,7 +127,7 @@ long map(long x, long in_min, long in_max, long out_min, long out_max) { return 
 // Arduino Characters functions
 bool isAlpha(char thisChar) { return std::isalpha(thisChar); }
 bool isAlphaNumeric(char thisChar) { return std::isalnum(thisChar); }
-bool isAscii(char thisChar) { return static_cast<unsigned char>(thisChar) < 128 }
+bool isAscii(char thisChar) { return static_cast<unsigned char>(thisChar) < 128; }
 bool isControl(char thisChar) { return std::iscntrl(thisChar); }
 bool isDigit(char thisChar) { return std::isdigit(thisChar); }
 bool isGraph(char thisChar) { return std::isgraph(thisChar); }
@@ -144,10 +146,10 @@ void randomSeed(unsigned long seed) { return std::srand(seed); }
 
 // Arduino External Interrupts functions
 void attachInterrupt(uint8_t interruptNum, void (*userFunc)(void), int mode) {
-    if (interruptNum < interruptsHandlers.size())
-        interruptsHandlers[interruptNum] = std::pair{userFunc, mode};
+    if (interruptNum < board_data->interrupts_handlers.size())
+        board_data->interrupts_handlers[interruptNum] = std::pair{userFunc, mode};
 }
 void detachInterrupt(uint8_t interruptNum) {
-    if (interruptNum < interruptsHandlers.size())
-        interruptsHandlers.erase(interruptsHandlers.begin() + interruptNum);
+    if (interruptNum < board_data->interrupts_handlers.size())
+        board_data->interrupts_handlers.erase(board_data->interrupts_handlers.begin() + interruptNum);
 }

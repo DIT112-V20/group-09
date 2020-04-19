@@ -61,6 +61,7 @@ execute_process(
         COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib")
 
 add_library(ArduinoRuntime STATIC)
+set_target_properties (ArduinoRuntime PROPERTIES POSITION_INDEPENDENT_CODE True)
 target_link_libraries(ArduinoRuntime PUBLIC Ardrivo)
 add_custom_command (TARGET ArduinoRuntime POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ArduinoRuntime>" "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib/")
@@ -87,6 +88,7 @@ add_executable (smartcar_emul src/main.cxx)
 target_include_directories (smartcar_emul PRIVATE include thirdparty/inih)
 target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps)
 target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
+add_dependencies (smartcar_emul ArduinoRuntime)
 
 target_sources (smartcar_emul PRIVATE
         )

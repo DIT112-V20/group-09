@@ -21,7 +21,6 @@
 
 #include <cstddef>
 #include <cstdint>
-#include "BoardData.hxx"
 #include "Stream.h"
 
 #define SERIAL_5N1 0x00
@@ -68,7 +67,7 @@ struct HardwareSerial : Stream {
     inline size_t write(unsigned int n) { return write((std::uint8_t)n); }
     inline size_t write(int n) { return write((std::uint8_t)n); }
     using Print::write;
-    [[nodiscard]] constexpr explicit(false) operator bool() noexcept { return true; }
+    [[nodiscard]] constexpr /* explicit(false) */ operator bool() noexcept { return true; }
 
   private:
     bool begun = false;

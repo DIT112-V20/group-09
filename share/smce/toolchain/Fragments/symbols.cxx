@@ -16,8 +16,7 @@
  *
  */
 
-#include <Arduino.h>
-#include "BoardData.hxx"
+#include "Arduino.h"
 
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(__CYGWIN__)
 #  define SYM_EXPORT __declspec(dllexport)
@@ -29,6 +28,7 @@
 #  define SYM_EXPORT __attribute__((__visibility__("default")))
 #endif
 
+struct BoardData;
 
 extern bool init(BoardData*);
 

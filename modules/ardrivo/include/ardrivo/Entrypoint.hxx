@@ -18,13 +18,8 @@
 
 #ifndef SMARTCAR_EMUL_ENTRYPOINT_HXX
 #define SMARTCAR_EMUL_ENTRYPOINT_HXX
-#include <chrono>
 
-extern std::chrono::steady_clock::time_point start_time;
-
-#include "BoardDataDef.hxx"
-
-BoardData* board_data;
+struct BoardData;
 bool init(BoardData*);
 
 #endif // SMARTCAR_EMUL_ENTRYPOINT_HXX

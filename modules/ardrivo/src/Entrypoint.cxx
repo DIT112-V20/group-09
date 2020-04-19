@@ -16,10 +16,12 @@
  *
  */
 
+#include "BoardData.hxx"
 #include "Entrypoint.hxx"
-std::chrono::steady_clock::time_point start_time;
 
-bool init(void*) {
-    start_time = std::chrono::steady_clock::now();
+BoardData* board_data;
+
+bool init(BoardData* ptr) {
+    board_data = ptr;
     return true;
 }

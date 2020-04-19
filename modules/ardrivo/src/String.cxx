@@ -18,8 +18,8 @@
 #include <range/v3/algorithm/transform.hpp>
 #include "WString.h"
 
-[[nodiscard]] auto String::c_str() const noexcept { return m_u.c_str(); }
-[[nodiscard]] auto String::length() const noexcept { return m_u.length(); }
+[[nodiscard]] const char* String::c_str() const noexcept { return m_u.c_str(); }
+[[nodiscard]] std::size_t String::length() const noexcept { return m_u.length(); }
 [[nodiscard]] auto String::charAt(unsigned idx) const noexcept { return m_u.at(idx); }
 [[nodiscard]] auto& String::charAt(unsigned idx) noexcept { return m_u.at(idx); }
 [[nodiscard]] auto String::operator[](unsigned idx) const noexcept { return m_u[idx]; }

@@ -94,11 +94,14 @@ void randomSeed(unsigned long seed);
 #define lowByte(w) ((uint8_t)((w) & 0xff))
 
 // Arduino External Interrupts functions
-void attachInterrupt(uint8_t interruptNum, void (*userFunc)(void), int mode);
+enum InterruptMode { CHANGE = 1, FALLING, RISING  };
+void attachInterrupt(uint8_t interruptNum, void (*userFunc)(), int mode);
 void detachInterrupt(uint8_t interruptNum);
 
 // User defined functions
 extern void setup();
 extern void loop();
 
+#include "WString.h"
+#include "HardwareSerial.h"
 #endif // Arduino_h

@@ -2,11 +2,11 @@
 #include "Stream.h"
 
 void Stream::setTimeout(long timeout) { _timeout = timeout; }
-bool Stream::findUntil(char* target, int length, char terminal) {
+bool Stream::findUntil(char* target, int length, char terminal) noexcept {
     int count = -1;
     while (true) {
         int c = read();
-        if (c < 0 | c == terminal)
+        if (c < 0 || c == terminal)
             break;
         if (c == *target)
             ++count;

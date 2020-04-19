@@ -19,7 +19,9 @@
 #ifndef SMARTCAR_EMUL_BOARDDATA_HXX
 #define SMARTCAR_EMUL_BOARDDATA_HXX
 
+#include <array>
 #include <atomic>
+#include <chrono>
 #include <mutex>
 #include <utility>
 #include <vector>
@@ -56,6 +58,7 @@ struct BoardData {
 
     bool (*write_byte)(unsigned char);
     size_t (*write_buf)(const unsigned char*, size_t);
+    std::chrono::steady_clock::time_point start_time;
 
     std::vector<std::pair<void (*)(), int>> interrupts_handlers;
 };

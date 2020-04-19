@@ -22,11 +22,17 @@ target_include_directories (Ardrivo INTERFACE
         ${CMAKE_SOURCE_DIR}/include
         ${CMAKE_SOURCE_DIR}/include/ardpolyfills)
 target_sources (Ardrivo INTERFACE
+        include/ardrivo/BoardDataDef.hxx
+        include/ardrivo/Entrypoint.hxx
         src/Arduino.cxx
         src/Entrypoint.cxx
-        src/HardwareSerial.cxx)
+        src/HardwareSerial.cxx
+        src/Stream.cxx
+        src/String.cxx)
 target_compile_definitions (Ardrivo INTERFACE)
-target_link_libraries (Ardrivo INTERFACE stdpolyfills::stdpolyfills)
+target_link_libraries (Ardrivo INTERFACE
+        stdpolyfills::stdpolyfills
+        range-v3::range-v3)
 
 add_executable (TestsArdrivo test/Entrypoint.cxx)
 set_target_properties (TestsArdrivo PROPERTIES LINKER_LANGUAGE CXX)

@@ -71,8 +71,8 @@ class String {
     // template <class T, class = std::enable_if_t<std::is_floating_point<T>::value>>
     // String(T val, int precision); // unimplemented
 
-    [[nodiscard]] auto c_str() const noexcept;
-    [[nodiscard]] auto length() const noexcept;
+    [[nodiscard]] const char* c_str() const noexcept;
+    [[nodiscard]] std::size_t length() const noexcept;
     [[nodiscard]] auto charAt(unsigned idx) const noexcept;
     [[nodiscard]] auto& charAt(unsigned idx) noexcept;
     [[nodiscard]] auto operator[](unsigned idx) const noexcept;
