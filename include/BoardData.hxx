@@ -1,6 +1,6 @@
 /*
- *  entrypoint.hxx
- *  Copyright 2020 AeroStun
+ *  BoardData.hxx
+ *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,12 +16,19 @@
  *
  */
 
-#ifndef SMARTCAR_EMUL_ENTRYPOINT_HXX
-#define SMARTCAR_EMUL_ENTRYPOINT_HXX
+#ifndef SMARTCAR_EMUL_BOARDDATA_HXX
+#define SMARTCAR_EMUL_BOARDDATA_HXX
 
-#include "BoardDataDef.hxx"
+#include <deque>
+#include <mutex>
+#include <vector>
 
-BoardData* board_data;
-bool init(BoardData*);
+struct BoardData {
+    bool (*write_byte)(unsigned char);
+    size_t (*write_buf)(const unsigned char*, size_t);
 
-#endif // SMARTCAR_EMUL_ENTRYPOINT_HXX
+    std::vector<char> uart_rx_buf;
+    std::mutex uart_rx_buf_mutex;
+};
+
+#endif // SMARTCAR_EMUL_BOARDDATA_HXX

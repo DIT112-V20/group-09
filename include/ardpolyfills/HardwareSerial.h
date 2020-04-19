@@ -16,13 +16,13 @@
  *
  */
 
-#ifndef SMARTCAR_EMUL_HARDWARESERIAL_H
-#define SMARTCAR_EMUL_HARDWARESERIAL_H
+#ifndef HardwareSerial_h
+#define HardwareSerial_h
 
-#include "Print.h"
-#include "BoardData.h"
 #include <cstddef>
 #include <cstdint>
+#include "BoardData.hxx"
+#include "Stream.h"
 
 #define SERIAL_5N1 0x00
 #define SERIAL_6N1 0x02
@@ -49,43 +49,26 @@
 #define SERIAL_7O2 0x3C
 #define SERIAL_8O2 0x3E
 
-struct HardwareSerial : Print /* FIXME: implement Stream */ {
-
-    BoardData board_data;
+struct HardwareSerial : Stream {
 
     void begin(unsigned long baud) { begin(baud, SERIAL_8N1); }
     void begin(unsigned long, std::uint8_t);
     void end();
-    int available();
-    //virtual int peek() override;
-    //int read() override;
-    int availableForWrite() override;
-    bool find(char target);
-    bool find(char* target, size_t length);
-    bool findUntil(char* target, char terminal);
-    float parseFloat();
-    float parseFloat(std::string lookahead);
-    float parseFloat(std::string lookahead, char ignore);
-    int parseInt();
-    int parseInt(std::string lookahead);
-    int parseInt(std::string lookahead, char ignore);
-    void flush() override;
-    int peek();
+
+    [[nodiscard]] int available() override;
+    [[nodiscard]] int read() override;
+    [[nodiscard]] int peek() override;
+
+    [[nodiscard]] int availableForWrite() override;
+
     size_t write(std::uint8_t) override;
     size_t write(const std::uint8_t*, size_t) override;
     inline size_t write(unsigned long n) { return write((std::uint8_t)n); }
     inline size_t write(long n) { return write((std::uint8_t)n); }
     inline size_t write(unsigned int n) { return write((std::uint8_t)n); }
     inline size_t write(int n) { return write((std::uint8_t)n); }
-    using Print::write; // pull in string printers
-    int read();
-    int readBytes(char buffer[], int length);
-    int readBytesUntil(char character, char buffer[], int length);
-    std::string readString();
-    std::string readStringUntil(char terminator);
-
+    using Print::write;
     [[nodiscard]] constexpr explicit(false) operator bool() noexcept { return true; }
-    long timeout;
 
   private:
     bool begun = false;
@@ -94,4 +77,4 @@ struct HardwareSerial : Print /* FIXME: implement Stream */ {
 inline HardwareSerial Serial;
 #define HAVE_HWSERIAL0
 
-#endif // SMARTCAR_EMUL_HARDWARESERIAL_H
+#endif // HardwareSerial_h

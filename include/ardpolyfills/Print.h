@@ -16,8 +16,8 @@
  *
  */
 
-#ifndef PRINT_H
-#define PRINT_H
+#ifndef Print_h
+#define Print_h
 
 #include <cstddef>
 #include <cstdint>
@@ -79,4 +79,4 @@ class Print {
     inline virtual void flush() {} // Empty implementation for backward compatibility
 };
 
-#endif // PRINT_H
+#endif // Print_h
