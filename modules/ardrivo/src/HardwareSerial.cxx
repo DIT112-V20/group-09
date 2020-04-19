@@ -47,14 +47,14 @@ size_t HardwareSerial::write(const uint8_t* buf, std::size_t n) {
 }
 
 int HardwareSerial::peek() {
-    if (!begun)
+    if (!begun || available() == 0)
         return -1;
     std::lock_guard guard{board_data->uart_buses[0].rx_mutex};
     return static_cast<int>(board_data->uart_buses[0].rx.front());
 }
 
 int HardwareSerial::read() {
-    if (!begun)
+    if (!begun || available() == 0)
         return -1;
     std::lock_guard guard{board_data->uart_buses[0].rx_mutex};
     const int first_byte = static_cast<int>(board_data->uart_buses[0].rx.front());

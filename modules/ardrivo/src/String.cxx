@@ -41,8 +41,8 @@
     return (m_u.compare(m_u.length() - s.m_u.length(), s.m_u.length(), s.m_u) == 0);
 }
 
-void String::getBytes(byte buffer[], unsigned length) const noexcept{
-    std::transform(m_u.begin(), m_u.end(), buffer, [](unsigned char c) -> byte { return c; });
+void String::getBytes(byte* buffer, unsigned length) const noexcept{
+    std::transform(m_u.begin(), (length > m_u.length()) ? m_u.end() : m_u.begin() + length, buffer, [](unsigned char c) -> byte { return c; });
 }
 
 [[nodiscard]] int String::indexOf(const char* c) const noexcept { return m_u.find(c); }

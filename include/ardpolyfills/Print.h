@@ -62,7 +62,7 @@ class Print {
     template <class Int, class = std::enable_if_t<std::is_integral<Int>::value>> inline std::size_t print(Int val, StringBaseConv base = DEC) {
         return print(String(val, base));
     }
-    // inline std::size_t print(double val, int pr0oec = 2) { return print(String(val, prec)); }
+    // inline std::size_t print(double val, int prec = 2) { return print(String(val, prec)); }
     std::size_t print(const struct Printable&); // FIXME: implement base Printable
 
     template <std::size_t N> std::size_t println(const char (&lit)[N]) { return write(lit, N) + println(); }
