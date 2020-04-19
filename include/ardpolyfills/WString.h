@@ -107,13 +107,13 @@ class String {
 
     void reserve(unsigned size);
 
-    void setCharAt(unsigned index, const char* c);
+    void setCharAt(unsigned index, char c);
 
     [[nodiscard]] String substring(unsigned from) const;
 
     [[nodiscard]] String substring(unsigned from, unsigned to) const;
 
-    void toCharArray(const char* buffer[], unsigned length) noexcept;
+    void toCharArray(char* buffer, unsigned length) noexcept;
 
     [[nodiscard]] long toInt() const noexcept;
 
