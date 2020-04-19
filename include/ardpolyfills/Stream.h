@@ -45,9 +45,8 @@ struct Stream : Print {
     [[nodiscard]] bool findUntil(char* target, int length, char terminal) noexcept;
     size_t readBytes(char* buffer, int length) { return readBytesUntil(NO_IGNORE_CHAR, buffer, length); }
     size_t readBytesUntil(char character, char* buffer, int length);
-    // Needs String implementation
-    // String readString();
-    // String readStringUntil(char terminator);
+    String readString() { return readStringUntil(NO_IGNORE_CHAR); }
+    String readStringUntil(char terminator);
     long parseInt(LookaheadMode lookahead = SKIP_ALL, char ignore = NO_IGNORE_CHAR);
     float parseFloat(LookaheadMode lookahead = SKIP_ALL, char ignore = NO_IGNORE_CHAR);
     void setTimeout(long time);

@@ -112,3 +112,14 @@ size_t Stream::readBytesUntil(char terminator, char* buffer, int length) {
     }
     return index;
 }
+
+String Stream::readStringUntil(char terminator) {
+    String ret;
+    while (true) {
+        int c = read();
+        if (c < 0 || c == terminator)
+            break;
+        ret.concat(static_cast<char>(c));
+    }
+    return ret;
+}
