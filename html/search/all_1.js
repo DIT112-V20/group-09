@@ -1,8 +1,14 @@
 var searchData=
 [
-  ['clear_3',['clear',['../structsmce_1_1_sketch_runtime.html#a3a42240689ab25b70bb4ea25b8d62472',1,'smce::SketchRuntime']]],
-  ['cmakelists_2etxt_4',['CMakeLists.txt',['../ardrivo_2_c_make_lists_8txt.html',1,'(Global Namespace)'],['../_c_make_lists_8txt.html',1,'(Global Namespace)'],['../configloader_2_c_make_lists_8txt.html',1,'(Global Namespace)'],['../trycompile_2_c_make_lists_8txt.html',1,'(Global Namespace)']]],
-  ['compilationresults_5',['CompilationResults',['../namespacesmce.html#a1435f7ccfcf3883a49aebfdf625b3047',1,'smce']]],
-  ['compile_5fsketch_6',['compile_sketch',['../namespacesmce.html#abfcb3a50cf9f92ab01f71bca88f4847d',1,'smce']]],
-  ['cpp_5fstd_7',['cpp_std',['../structsmce_1_1_program_options.html#adcd68f2ce8a3ad24ef61ae2371e0a439',1,'smce::ProgramOptions']]]
+  ['add_5flibrary_1',['add_library',['../ardrivo_2_c_make_lists_8txt.html#acb7eb718abbcd86dc6e03a65fb6cad51',1,'add_library(Ardrivo INTERFACE) target_include_directories(Ardrivo INTERFACE $:&#160;CMakeLists.txt'],['../configloader_2_c_make_lists_8txt.html#a6495c474b0e6d89e218d893f12177801',1,'add_library(ConfigLoader INTERFACE) target_include_directories(ConfigLoader INTERFACE $:&#160;CMakeLists.txt'],['../trycompile_2_c_make_lists_8txt.html#a46a9a35330d467ba1117197e4fe64d6d',1,'add_library(TryCompile INTERFACE) target_include_directories(TryCompile INTERFACE $:&#160;CMakeLists.txt']]],
+  ['analog_5fpin_5fvalues_2',['analog_pin_values',['../struct_board_data.html#aae0f8cd78495dd49c03f6cbc43c4f5e5',1,'BoardData']]],
+  ['analogread_3',['analogRead',['../_arduino_8cxx.html#a2eda513a6bb35bf13675a24711d4e864',1,'analogRead(uint8_t pin):&#160;Arduino.cxx'],['../_arduino_8h.html#a2eda513a6bb35bf13675a24711d4e864',1,'analogRead(uint8_t pin):&#160;Arduino.cxx']]],
+  ['analogreference_4',['analogReference',['../_arduino_8cxx.html#a529863849f86a63b517cd96cbcd47705',1,'analogReference(uint8_t mode):&#160;Arduino.cxx'],['../_arduino_8h.html#a529863849f86a63b517cd96cbcd47705',1,'analogReference(uint8_t mode):&#160;Arduino.cxx']]],
+  ['analogwrite_5',['analogWrite',['../_arduino_8cxx.html#a7cd99e00586774325da766f614837947',1,'analogWrite(uint16_t pin, uint16_t val):&#160;Arduino.cxx'],['../_arduino_8h.html#a7cd99e00586774325da766f614837947',1,'analogWrite(uint16_t pin, uint16_t val):&#160;Arduino.cxx']]],
+  ['anonymous_5fnamespace_7bruntime_2ecxx_7d_6',['anonymous_namespace{Runtime.cxx}',['../namespaceanonymous__namespace_02_runtime_8cxx_03.html',1,'']]],
+  ['arduino_2ecxx_7',['Arduino.cxx',['../_arduino_8cxx.html',1,'']]],
+  ['arduino_2eh_8',['Arduino.h',['../_arduino_8h.html',1,'']]],
+  ['attachinterrupt_9',['attachInterrupt',['../_arduino_8cxx.html#ad0d73becebba7c663f8e9ed73efee544',1,'attachInterrupt(uint8_t interruptNum, void(*userFunc)(void), int mode):&#160;Arduino.cxx'],['../_arduino_8h.html#a3d0c1f37b8b457ad4ab7aa6cddcca1e7',1,'attachInterrupt(uint8_t interruptNum, void(*userFunc)(), int mode):&#160;Arduino.h']]],
+  ['available_10',['available',['../struct_hardware_serial.html#a3ba8028d63deb239fc732ff4dcaa5596',1,'HardwareSerial::available()'],['../struct_stream.html#a9c98a763395005c08ce95afb2f06c7b1',1,'Stream::available()']]],
+  ['availableforwrite_11',['availableForWrite',['../struct_hardware_serial.html#a6f2fe7a97168416a977d1b4190193c20',1,'HardwareSerial::availableForWrite()'],['../class_print.html#ae278602698f895c25820f18da4e765be',1,'Print::availableForWrite()']]]
 ];

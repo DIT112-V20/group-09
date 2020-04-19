@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setuptype_140',['SetupType',['../structsmce_1_1_sketch_loaded_object.html#a11c8138dcb4b844b7b13265a4532e42a',1,'smce::SketchLoadedObject']]]
+  ['looptype_454',['LoopType',['../structsmce_1_1_sketch_loaded_object.html#ab85189b6370f542bf39715c2855e9620',1,'smce::SketchLoadedObject']]]
 ];

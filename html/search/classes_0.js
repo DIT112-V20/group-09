@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['programoptions_71',['ProgramOptions',['../structsmce_1_1_program_options.html',1,'smce']]]
+  ['bidirmutexes_252',['BidirMutexes',['../struct_bidir_mutexes.html',1,'']]],
+  ['boarddata_253',['BoardData',['../struct_board_data.html',1,'']]]
 ];

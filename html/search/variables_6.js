@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['setup_133',['setup',['../structsmce_1_1_sketch_loaded_object.html#a2e8ca1939e7e3a4474cf528899b81fda',1,'smce::SketchLoadedObject']]],
-  ['smce_5fhome_134',['smce_home',['../structsmce_1_1_program_options.html#a5f391b585914ffd6fc2776ffb6fc894a',1,'smce::ProgramOptions']]]
+  ['lib_5fpath_428',['lib_path',['../structsmce_1_1_program_options.html#a91760ae5f2993ba0e47c70bb85fd99f8',1,'smce::ProgramOptions']]],
+  ['location_429',['location',['../structsmce_1_1_sketch_object.html#ab8561549902b2bcc69e9c78fa45598fb',1,'smce::SketchObject::location()'],['../structsmce_1_1_sketch_source.html#a8eb095f9f9daf98282bff9d3e4f6b869',1,'smce::SketchSource::location()']]],
+  ['loop_430',['loop',['../structsmce_1_1_sketch_loaded_object.html#a4eb19d9d609c04b068ffa99430a1fa76',1,'smce::SketchLoadedObject']]]
 ];
