@@ -45,9 +45,9 @@ class String {
     String& operator=(const String&) = default;
     String& operator=(String&&) = default;
 
-    template <std::size_t N> inline String(const char (&charr)[N]) : m_u{charr, N} {}
-    inline String(const char* cstr) : m_u{cstr} {}
-    inline explicit String(char c) : m_u{1, c} {}
+    template <std::size_t N> inline /* explicit(false) */ String(const char (&charr)[N]) : m_u{charr, N} {}
+    inline /* explicit(false) */ String(const char* cstr) : m_u{cstr} {}
+    inline explicit String(char c) : m_u(1, c) {}
     template <class T, class = std::enable_if_t<std::is_integral<T>::value>> inline String(T val, StringBaseConv base) {
         constexpr static auto base2len_upperbound = [](StringBaseConv base) /*constexpr*/ {
             switch (base) {
@@ -89,7 +89,7 @@ class String {
 
     [[nodiscard]] bool endsWith(const String& s) const noexcept;
 
-    void getBytes(byte buffer[], unsigned length) const noexcept;
+    void getBytes(byte* buffer, unsigned length) const noexcept;
 
     [[nodiscard]] int indexOf(const char* c) const noexcept;
 
