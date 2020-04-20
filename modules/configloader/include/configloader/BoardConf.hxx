@@ -29,6 +29,8 @@ namespace smce {
 
 namespace stdfs = std::filesystem;
 
+extern const char* board_conf_schema;
+
 struct BoardConf {
     struct Uart {
         std::uint16_t rx_pin;

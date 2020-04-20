@@ -25,6 +25,7 @@
 #pragma clang diagnostic push
 #include <rapidjson/document.h>
 #include <rapidjson/istreamwrapper.h>
+#include <rapidjson/schema.h>
 #pragma clang diagnostic pop
 
 #include "BoardConf.hxx"
@@ -74,7 +75,14 @@ void transpose_integral(const JO& json_obj, typename MpKP::ClassType& c, MpKP mk
 namespace smce {
 
 [[nodiscard]] std::optional<BoardConf> load(const rapidjson::Document& json_doc) noexcept {
-    // TODO: add check against schema
+
+    rapidjson::Document sd;
+    if (sd.Parse(board_conf_schema).HasParseError()) [[unlikely]]
+        return std::nullopt;
+
+    rapidjson::SchemaValidator schema_validator{rapidjson::SchemaDocument{sd}};
+    if(!json_doc.Accept(schema_validator)) [[unlikely]]
+        return std::nullopt;
 
     std::optional<BoardConf> ret;
     auto& brd = ret.emplace();
@@ -123,10 +131,13 @@ namespace smce {
 [[nodiscard]] std::optional<BoardConf> load(const stdfs::path& file_location) noexcept {
     rapidjson::Document doc;
     std::ifstream ifs{file_location};
-    if(!ifs)
+    if(!ifs) [[unlikely]]
         return std::nullopt;
+
     rapidjson::IStreamWrapper isw(ifs);
-    doc.ParseStream(isw);
+    if(doc.ParseStream(isw).HasParseError()) [[unlikely]]
+        return std::nullopt;
+
     return load(doc);
 }
 

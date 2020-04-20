@@ -22,6 +22,7 @@ target_include_directories(ConfigLoader INTERFACE
 target_sources(ConfigLoader INTERFACE
         include/configloader/BoardConf.hxx
         src/BoardConf.cxx
+        src/BoardConfSchema.cxx
         include/configloader/ProgramOptions.hxx
         src/ProgramOptions.cxx)
 
