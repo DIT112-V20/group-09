@@ -21,8 +21,8 @@
 #include <optional>
 #include <nameof.hpp>
 #include <range/v3/algorithm/transform.hpp>
-#pragma clang diagnostic ignored "-Wambiguous-reversed-operator"
 #pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wambiguous-reversed-operator"
 #include <rapidjson/document.h>
 #include <rapidjson/istreamwrapper.h>
 #include <rapidjson/schema.h>
@@ -76,13 +76,16 @@ namespace smce {
 
 [[nodiscard]] std::optional<BoardConf> load(const rapidjson::Document& json_doc) noexcept {
 
-    rapidjson::Document sd;
-    if (sd.Parse(board_conf_schema).HasParseError()) [[unlikely]]
-        return std::nullopt;
+    {
+        rapidjson::Document sd;
+        if (sd.Parse(board_conf_schema).HasParseError())
+            [[unlikely]] return std::nullopt;
 
-    rapidjson::SchemaValidator schema_validator{rapidjson::SchemaDocument{sd}};
-    if(!json_doc.Accept(schema_validator)) [[unlikely]]
-        return std::nullopt;
+        rapidjson::SchemaDocument schema_doc{sd};
+        rapidjson::SchemaValidator schema_validator{schema_doc};
+        if (!json_doc.Accept(schema_validator))
+            [[unlikely]] return std::nullopt;
+    }
 
     std::optional<BoardConf> ret;
     auto& brd = ret.emplace();
@@ -131,12 +134,12 @@ namespace smce {
 [[nodiscard]] std::optional<BoardConf> load(const stdfs::path& file_location) noexcept {
     rapidjson::Document doc;
     std::ifstream ifs{file_location};
-    if(!ifs) [[unlikely]]
-        return std::nullopt;
+    if(!ifs)
+        [[unlikely]] return std::nullopt;
 
     rapidjson::IStreamWrapper isw(ifs);
-    if(doc.ParseStream(isw).HasParseError()) [[unlikely]]
-        return std::nullopt;
+    if(doc.ParseStream(isw).HasParseError())
+        [[unlikely]] return std::nullopt;
 
     return load(doc);
 }
