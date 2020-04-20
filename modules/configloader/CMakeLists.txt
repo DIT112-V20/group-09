@@ -20,10 +20,14 @@ target_include_directories(ConfigLoader INTERFACE
         ${CMAKE_SOURCE_DIR}/thirdparty)
 
 target_sources(ConfigLoader INTERFACE
-        include/configloader/Loader.hxx
-        src/Loader.cxx)
+        include/configloader/ProgramOptions.hxx
+        include/configloader/BoardConf.hxx
+        src/ProgramOptions.cxx)
 
-target_link_libraries(ConfigLoader INTERFACE stdpolyfills::stdpolyfills fmt::fmt)
+target_link_libraries(ConfigLoader INTERFACE
+        stdpolyfills::stdpolyfills
+        Urho3D-rapidjson
+        fmt::fmt)
 
 add_executable(TestsConfigLoader test/load.cxx)
 

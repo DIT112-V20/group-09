@@ -1,5 +1,5 @@
 /*
- *  Loader.hxx
+ *  ProgramOptions.hxx
  *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
  *
  */
 
-#ifndef SMARTCAR_EMUL_LOADER_HXX
-#define SMARTCAR_EMUL_LOADER_HXX
+#ifndef SMARTCAR_EMUL_PROGRAMOPTIONS_HXX
+#define SMARTCAR_EMUL_PROGRAMOPTIONS_HXX
 #include <filesystem>
 
 namespace smce {
@@ -29,16 +29,15 @@ struct ProgramOptions {
     static constexpr auto DEFAULT_LIB_PATH = ".";
     static constexpr int DEFAULT_CPP_STD = 17;
 
-    stdfs::path preprocessor_bin;
-    stdfs::path smce_home;
-    stdfs::path lib_path;
-    int cpp_std;
+    stdfs::path preprocessor_bin = DEFAULT_PREPROCESSOR_BIN;
+    stdfs::path smce_home = DEFAULT_SMCE_HOME;
+    stdfs::path lib_path = DEFAULT_LIB_PATH;
+    int cpp_std = DEFAULT_CPP_STD;
 
     ProgramOptions(stdfs::path preprocessor_bin, stdfs::path smce_home, stdfs::path lib_path, int cpp_std)
         : preprocessor_bin{std::move(preprocessor_bin)}, smce_home{std::move(smce_home)}, lib_path{std::move(lib_path)}, cpp_std{cpp_std} {}
 
-    ProgramOptions()
-        : preprocessor_bin{DEFAULT_PREPROCESSOR_BIN}, smce_home{DEFAULT_SMCE_HOME}, lib_path{DEFAULT_LIB_PATH}, cpp_std{DEFAULT_CPP_STD} {}
+    ProgramOptions() = default;
 };
 
 ProgramOptions LoadProgramOptions(const stdfs::path& file);
@@ -46,4 +45,4 @@ void ExportProgramOptions(const ProgramOptions& config, const stdfs::path& path)
 
 } // namespace smce
 
-#endif // SMARTCAR_EMUL_LOADER_HXX
+#endif // SMARTCAR_EMUL_PROGRAMOPTIONS_HXX

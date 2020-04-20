@@ -94,3 +94,7 @@ foreach  (LIB ${URHO_LIBS})
 endforeach  ()
 
 add_library (Urho3D::Urho3D ALIAS Urho3D)
+
+add_library (Urho3D-rapidjson INTERFACE)
+target_link_libraries (Urho3D-rapidjson INTERFACE Urho3D::Urho3D)
+target_include_directories (Urho3D-rapidjson INTERFACE "${CMAKE_SOURCE_DIR}/thirdparty/Urho3D/Source/ThirdParty/rapidjson/include")
