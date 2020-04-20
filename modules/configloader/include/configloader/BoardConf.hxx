@@ -21,6 +21,7 @@
 
 #include <cstdint>
 #include <filesystem>
+#include <optional>
 #include <vector>
 #include <rapidjson/document.h>
 
@@ -34,6 +35,8 @@ struct BoardConf {
         std::uint16_t tx_pin;
     };
 
+    std::string name;
+    std::string fqbn; // ArduinoCLI Fully Qualified Board Name
     std::uint16_t digital_pin_count;
     std::uint16_t analog_pin_count;
 
@@ -42,8 +45,8 @@ struct BoardConf {
     std::vector<Uart> uart_pairs;
 };
 
-[[nodiscard]] BoardConf load(const rapidjson::Document& json_doc) noexcept;
-[[nodiscard]] BoardConf load(const stdfs::path& file_location) noexcept;
+[[nodiscard]] std::optional<BoardConf> load(const rapidjson::Document& json_doc) noexcept;
+[[nodiscard]] std::optional<BoardConf> load(const stdfs::path& file_location) noexcept;
 
 }
 
