@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['lowbyte_489',['lowByte',['../_arduino_8h.html#a57600234f6e26049357fbecfbdca9537',1,'Arduino.h']]]
+  ['have_5fhwserial0_536',['HAVE_HWSERIAL0',['../_hardware_serial_8h.html#a988062c9e3b63c85ee29acc1bc9a31ee',1,'HardwareSerial.h']]],
+  ['highbyte_537',['highByte',['../_arduino_8h.html#a32fff07c58e569ce66ad409fe85c73bb',1,'Arduino.h']]]
 ];

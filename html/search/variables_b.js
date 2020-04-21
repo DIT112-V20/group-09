@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['tx_443',['tx',['../struct_fix_buffer_bus.html#af40e5e421685b02a07a0463fc45bc1f9',1,'FixBufferBus::tx()'],['../struct_dyna_buffer_bus.html#a41b55bea94047e4a03e631896eebb32d',1,'DynaBufferBus::tx()']]],
-  ['tx_5fmutex_444',['tx_mutex',['../struct_bidir_mutexes.html#ab582ab7fd77b2fb7c5cc6e3bb0930b33',1,'BidirMutexes']]],
-  ['tx_5fused_5fsize_445',['tx_used_size',['../struct_fix_buffer_bus.html#a55c43c9a1c75f9e968b8fe57f43b2050',1,'FixBufferBus']]],
-  ['type2str_446',['type2str',['../namespacesmce.html#ae644019b0b6079feeb9e034c5748727f',1,'smce']]]
+  ['pin_5ffrequency_474',['pin_frequency',['../struct_board_data.html#a813ddcb257975dad74fef249e01d2025',1,'BoardData']]],
+  ['pin_5fmodes_475',['pin_modes',['../struct_board_data.html#a464d293afcea79a85cc2877f1b10f8c1',1,'BoardData']]],
+  ['preprocessor_5fbin_476',['preprocessor_bin',['../structsmce_1_1_program_options.html#acc216bfd1a9e5e790fb62462ce205b3a',1,'smce::ProgramOptions']]],
+  ['pwm_5fcapable_5fpins_477',['pwm_capable_pins',['../structsmce_1_1_board_conf.html#a35b4d38f75a22541f196c6146c1212df',1,'smce::BoardConf']]]
 ];

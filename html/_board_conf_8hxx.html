@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SmartCar Emul: modules/configloader/include/configloader/Loader.hxx File Reference</title>
+<title>SmartCar Emul: modules/configloader/include/configloader/BoardConf.hxx File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,18 +70,25 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Loader.hxx File Reference</div>  </div>
+<div class="title">BoardConf.hxx File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;filesystem&gt;</code><br />
+<div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
+<code>#include &lt;filesystem&gt;</code><br />
+<code>#include &lt;optional&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;rapidjson/document.h&gt;</code><br />
 </div>
-<p><a href="_loader_8hxx_source.html">Go to the source code of this file.</a></p>
+<p><a href="_board_conf_8hxx_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_program_options.html">smce::ProgramOptions</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html">smce::BoardConf</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf_1_1_uart.html">smce::BoardConf::Uart</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -91,10 +98,15 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0c7e3a6d747acf56f6eeec5f706e4f5d"><td class="memItemLeft" align="right" valign="top">ProgramOptions&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#a0c7e3a6d747acf56f6eeec5f706e4f5d">smce::LoadProgramOptions</a> (const stdfs::path &amp;file)</td></tr>
-<tr class="separator:a0c7e3a6d747acf56f6eeec5f706e4f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51543fb41ff85a6896c4398d0ad9e090"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#a51543fb41ff85a6896c4398d0ad9e090">smce::ExportProgramOptions</a> (const ProgramOptions &amp;config, const stdfs::path &amp;path)</td></tr>
-<tr class="separator:a51543fb41ff85a6896c4398d0ad9e090"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a367efa7468f52b339a0112d64c39d3d3"><td class="memItemLeft" align="right" valign="top">std::optional&lt; BoardConf &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#a367efa7468f52b339a0112d64c39d3d3">smce::load</a> (const rapidjson::Document &amp;json_doc) noexcept</td></tr>
+<tr class="separator:a367efa7468f52b339a0112d64c39d3d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34be0c05177d40c25779f888faab29c7"><td class="memItemLeft" align="right" valign="top">std::optional&lt; BoardConf &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#a34be0c05177d40c25779f888faab29c7">smce::load</a> (const stdfs::path &amp;file_location) noexcept</td></tr>
+<tr class="separator:a34be0c05177d40c25779f888faab29c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a470b1452d35cddaa4411d3b95fcecd6c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#a470b1452d35cddaa4411d3b95fcecd6c">smce::board_conf_schema</a></td></tr>
+<tr class="separator:a470b1452d35cddaa4411d3b95fcecd6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

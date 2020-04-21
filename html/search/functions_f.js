@@ -1,11 +1,19 @@
 var searchData=
 [
-  ['tochararray_404',['toCharArray',['../class_string.html#ad5cd15a60114f477a3149c8c3fa268d9',1,'String']]],
-  ['todouble_405',['toDouble',['../class_string.html#a6c536db17d8ca796bff219bde26c051d',1,'String']]],
-  ['tofloat_406',['toFloat',['../class_string.html#a7ef454e90998359e3573146beb0de91d',1,'String']]],
-  ['toint_407',['toInt',['../class_string.html#a5641a82bfb902b1d600d88ca120fd0bc',1,'String']]],
-  ['tolowercase_408',['toLowerCase',['../class_string.html#a1379cf8652255bbf8c8008fba88265dd',1,'String']]],
-  ['tone_409',['tone',['../_arduino_8cxx.html#a50a33c8e1567480d7ae0221a7945d9a8',1,'tone(uint8_t pin, unsigned int frequency, unsigned long duration):&#160;Arduino.cxx'],['../_arduino_8h.html#a50a33c8e1567480d7ae0221a7945d9a8',1,'tone(uint8_t pin, unsigned int frequency, unsigned long duration):&#160;Arduino.cxx']]],
-  ['touppercase_410',['toUpperCase',['../class_string.html#ac922af3914e07ebc82e3b1e15891ae43',1,'String']]],
-  ['trim_411',['trim',['../class_string.html#a1ac20730bd874180653b94a1394c5eeb',1,'String']]]
+  ['set_5fsketch_5fand_5fcar_420',['set_sketch_and_car',['../structsmce_1_1_sketch_runtime.html#aace6b93461e03f8155b090a8ee9e3493',1,'smce::SketchRuntime']]],
+  ['setcharat_421',['setCharAt',['../class_string.html#a731ec0906bc99b0423297f0c71a2a96f',1,'String']]],
+  ['settimeout_422',['setTimeout',['../struct_stream.html#a8b127a957e24ccbab3d37069fbad6fa3',1,'Stream']]],
+  ['setup_423',['setup',['../_arduino_8h.html#a4fc01d736fe50cf5b977f755b675f11d',1,'Arduino.h']]],
+  ['setwriteerror_424',['setWriteError',['../class_print.html#a0ab7960321a5f532e17ae3bb6e04111a',1,'Print']]],
+  ['shiftin_425',['shiftIn',['../_arduino_8cxx.html#a1efecc975119046403adc60af645015d',1,'shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder):&#160;Arduino.cxx'],['../_arduino_8h.html#a1efecc975119046403adc60af645015d',1,'shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder):&#160;Arduino.cxx']]],
+  ['shiftout_426',['shiftOut',['../_arduino_8cxx.html#ac44afc7b9d1ec5feb1179b2e3454690a',1,'shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val):&#160;Arduino.cxx'],['../_arduino_8h.html#ac44afc7b9d1ec5feb1179b2e3454690a',1,'shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val):&#160;Arduino.cxx']]],
+  ['sketchloadedobject_427',['SketchLoadedObject',['../structsmce_1_1_sketch_loaded_object.html#a8660e1e883953a4011fa8b605288f344',1,'smce::SketchLoadedObject::SketchLoadedObject() noexcept=default'],['../structsmce_1_1_sketch_loaded_object.html#a83fee8c92fa0d051da67bb76a7700130',1,'smce::SketchLoadedObject::SketchLoadedObject(const SketchLoadedObject &amp;)=delete'],['../structsmce_1_1_sketch_loaded_object.html#af046a8676853de6eb047c3c219f0d166',1,'smce::SketchLoadedObject::SketchLoadedObject(SketchLoadedObject &amp;&amp;) noexcept=default']]],
+  ['sketchruntime_428',['SketchRuntime',['../structsmce_1_1_sketch_runtime.html#a7f5877e053a148782d4c4c05365072b9',1,'smce::SketchRuntime::SketchRuntime()=default'],['../structsmce_1_1_sketch_runtime.html#aedadc3788831103bb6889323a6b476fa',1,'smce::SketchRuntime::SketchRuntime(const SketchRuntime &amp;)=delete'],['../structsmce_1_1_sketch_runtime.html#a41ef52434ee0e536bfded2d7bf18c59c',1,'smce::SketchRuntime::SketchRuntime(SketchRuntime &amp;&amp;)=delete']]],
+  ['slurp_5ffile_429',['slurp_file',['../utility_8hxx.html#abae29e0711fc72356eeba5f8a7d031f4',1,'utility.hxx']]],
+  ['sq_430',['sq',['../_arduino_8h.html#a2e50ca1131ca16a5964bff998f574962',1,'Arduino.h']]],
+  ['start_431',['start',['../structsmce_1_1_sketch_runtime.html#a04327f745b92f7b1c836754eab91260e',1,'smce::SketchRuntime']]],
+  ['startswith_432',['startsWith',['../class_string.html#a8eb8d0ae6b8661e682766ff383a29dc8',1,'String']]],
+  ['stream_433',['Stream',['../struct_stream.html#a896ad753b3ff726ee3be1ba3153f3ee4',1,'Stream']]],
+  ['string_434',['String',['../class_string.html#a7bf336147e61bee901c69a286569446c',1,'String::String() noexcept=default'],['../class_string.html#ab636c1e6dc35b37157b9cf698657b259',1,'String::String(const String &amp;)=default'],['../class_string.html#a47934374f79df5ec5f4e46186a3ac939',1,'String::String(String &amp;&amp;) noexcept=default'],['../class_string.html#aa33f18f81ab472a3c0e053c46847dfa1',1,'String::String(const char(&amp;charr)[N])'],['../class_string.html#ab8e29badab15b29ba073e3c8fad38344',1,'String::String(const char *cstr)'],['../class_string.html#a1fdfe981d2c5e0075c1669dd94553082',1,'String::String(char c)'],['../class_string.html#ac78c8eb5310e4b3ce123e9356c655e29',1,'String::String(T val, StringBaseConv base)']]],
+  ['substring_435',['substring',['../class_string.html#a13931b6b63f4e55b9166d7507fb4f7b1',1,'String::substring(unsigned from) const'],['../class_string.html#a79e670f8496626163c765b443a177f4b',1,'String::substring(unsigned from, unsigned to) const']]]
 ];
