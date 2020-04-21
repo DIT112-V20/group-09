@@ -34,19 +34,25 @@ target_include_directories (Urho3D INTERFACE ${URHO3D_INCLUDE_DIRS})
 target_link_libraries (Urho3D INTERFACE ${URHO3D_LIBRARIES})
 target_compile_options (Urho3D INTERFACE "$<$<CXX_COMPILER_ID:GNU,Clang>:-Wno-invalid-offsetof>")
 
+include (Patcher)
+
 # Urho3D includes a version of Bullet which is broken on new Apple compilers
 # We force-patch the source
 if  (APPLE)
-    set (BULLET_FILE_TO_PATCH ${URHO3D_HOME}/include/Urho3D/ThirdParty/Bullet/LinearMath/btVector3.h)
-    file (READ ${BULLET_FILE_TO_PATCH} BULLET_PATCH_IN)
-    string (REPLACE "#define BT_SHUFFLE (x,y,z,w)  ( (w)<<6 |  (z)<<4 |  (y)<<2 |  (x))"
-            "#define BT_SHUFFLE (x, y, z, w)  ( ( (w) << 6 |  (z) << 4 |  (y) << 2 |  (x)) & 0xff)"
-            BULLET_PATCH_OUT "${BULLET_PATCH_IN}")
-    file (WRITE "${BULLET_FILE_TO_PATCH}" "${BULLET_PATCH_OUT}")
-    unset (BULLET_FILE_TO_PATCH)
-    unset (BULLET_PATCH_IN)
-    unset (BULLET_PATCH_OUT)
+    hard_patch (${URHO3D_HOME}/include/Urho3D/ThirdParty/Bullet/LinearMath/btVector3.h
+            "#define BT_SHUFFLE (x,y,z,w) ((w)<<6 |  (z)<<4 |  (y)<<2 |  (x))"
+            "#define BT_SHUFFLE (x, y, z, w)  (((w) << 6 |  (z) << 4 |  (y) << 2 |  (x)) & 0xff)")
 endif  (APPLE)
+
+
+
+# Urho3D's rapidjson is definitely not C++20 ready
+# Gotta patch comparison since Clang/LLVM 10 errors instead of generating a compatibility warning
+# Only need to patch on the submodule
+hard_patch (${CMAKE_SOURCE_DIR}/thirdparty/Urho3D/Source/ThirdParty/rapidjson/include/rapidjson/document.h
+        "bool operator!=(ConstIterator that) const { return ptr_ != that.ptr_; }"
+        "#if __cplusplus <= 201703L || (__GNUC__ <= 9 && !defined(__clang__))\nbool operator!=(ConstIterator that) const { return that.ptr_ != ptr_; }\n#endif")
+
 
 if  (WIN32)
     target_compile_definitions (Urho3D INTERFACE URHO3D_WIN32_CONSOLE=1)
@@ -94,3 +100,7 @@ foreach  (LIB ${URHO_LIBS})
 endforeach  ()
 
 add_library (Urho3D::Urho3D ALIAS Urho3D)
+
+add_library (Urho3D-rapidjson INTERFACE)
+target_link_libraries (Urho3D-rapidjson INTERFACE Urho3D::Urho3D)
+target_include_directories (Urho3D-rapidjson INTERFACE "${CMAKE_SOURCE_DIR}/thirdparty/Urho3D/Source/ThirdParty/rapidjson/include")

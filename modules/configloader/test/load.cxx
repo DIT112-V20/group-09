@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
-#include "Loader.hxx"
+#include "ProgramOptions.hxx"
 
 namespace stdfs = std::filesystem;
 

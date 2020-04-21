@@ -82,6 +82,7 @@ target_link_libraries (smartcar_emul_deps INTERFACE
         Urho3D::Urho3D
         stdpolyfills::stdpolyfills
         TryCompile
+        ConfigLoader
         )
 
 add_executable (smartcar_emul src/main.cxx)
