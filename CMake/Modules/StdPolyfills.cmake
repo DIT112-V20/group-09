@@ -23,17 +23,17 @@ check_cxx_source_compiles ("${CHECK_SRC}" NEEDS_FCONCEPTS)
 unset (CMAKE_REQUIRED_FLAGS)
 unset (CHECK_SRC)
 
-if  (NEEDS_FCONCEPTS)
+if (NEEDS_FCONCEPTS)
     target_compile_options (stdpolyfills INTERFACE "-fconcepts")
-endif  (NEEDS_FCONCEPTS)
+endif (NEEDS_FCONCEPTS)
 
 file (READ "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Check/lib_concepts_avail.cpp" CHECK_SRC)
 check_cxx_source_compiles ("${CHECK_SRC}" CXX_STDLIB_CONCEPTS_AVAILABLE)
 unset (CHECK_SRC)
-if  (NOT CXX_STDLIB_CONCEPTS_AVAILABLE)
+if (NOT CXX_STDLIB_CONCEPTS_AVAILABLE)
     target_include_directories (stdpolyfills SYSTEM INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include/stdpolyfills/polyfill_concepts)
     target_link_libraries (stdpolyfills INTERFACE range-v3::range-v3)
-endif  (NOT CXX_STDLIB_CONCEPTS_AVAILABLE)
+endif (NOT CXX_STDLIB_CONCEPTS_AVAILABLE)
 
 find_package (Threads REQUIRED) # For std::thread
 target_link_libraries (stdpolyfills INTERFACE Threads::Threads)

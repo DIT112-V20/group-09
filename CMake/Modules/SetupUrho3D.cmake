@@ -20,9 +20,9 @@
 list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/Urho3D/CMake/Modules")
 set (URHO3D_64BIT ON) # We don't want to support 32bit nor require multilib toolchains on 64bit systems
 
-if  (URHO3D_HOME_RELATIVE)
+if (URHO3D_HOME_RELATIVE)
     set (URHO3D_HOME ${CMAKE_CURRENT_SOURCE_DIR}/${URHO3D_HOME_RELATIVE})
-endif  (URHO3D_HOME_RELATIVE)
+endif (URHO3D_HOME_RELATIVE)
 
 find_package (Urho3D REQUIRED)
 add_library (Urho3D INTERFACE)
@@ -38,12 +38,11 @@ include (Patcher)
 
 # Urho3D includes a version of Bullet which is broken on new Apple compilers
 # We force-patch the source
-if  (APPLE)
+if (APPLE)
     hard_patch (${URHO3D_HOME}/include/Urho3D/ThirdParty/Bullet/LinearMath/btVector3.h
-            "#define BT_SHUFFLE (x,y,z,w) ((w)<<6 |  (z)<<4 |  (y)<<2 |  (x))"
-            "#define BT_SHUFFLE (x, y, z, w)  (((w) << 6 |  (z) << 4 |  (y) << 2 |  (x)) & 0xff)")
-endif  (APPLE)
-
+            "#define BT_SHUFFLE(x,y,z,w) ((w)<<6 | (z)<<4 | (y)<<2 | (x))"
+            "#define BT_SHUFFLE(x,y,z,w) (((w)<<6 | (z)<<4 | (y)<<2 | (x)) & 0xff)")
+endif (APPLE)
 
 
 # Urho3D's rapidjson is definitely not C++20 ready
@@ -54,50 +53,50 @@ hard_patch (${CMAKE_SOURCE_DIR}/thirdparty/Urho3D/Source/ThirdParty/rapidjson/in
         "#if __cplusplus <= 201703L || (__GNUC__ <= 9 && !defined(__clang__))\nbool operator!=(ConstIterator that) const { return that.ptr_ != ptr_; }\n#endif")
 
 
-if  (WIN32)
+if (WIN32)
     target_compile_definitions (Urho3D INTERFACE URHO3D_WIN32_CONSOLE=1)
     list (APPEND URHO_LIBS Imm32 winmm Version)
-    if  (URHO3D_MINIDUMPS)
+    if (URHO3D_MINIDUMPS)
         list (APPEND LIBS dbghelp)
-    endif  ()
-elseif  (APPLE)
-    if  (ARM)
+    endif ()
+elseif (APPLE)
+    if (ARM)
         list (APPEND URHO_LIBS "-framework AudioToolbox" "-framework AVFoundation" "-framework CoreAudio" "-framework CoreGraphics" "-framework CoreMotion" "-framework Foundation" "-framework GameController" "-framework OpenGLES" "-framework QuartzCore" "-framework UIKit")
-    else  ()
+    else ()
         list (APPEND URHO_LIBS "-framework AudioToolbox" "-framework Carbon" "-framework Cocoa" "-framework CoreFoundation" "-framework SystemConfiguration" "-framework CoreAudio" "-framework CoreServices" "-framework CoreVideo" "-framework ForceFeedback" "-framework IOKit" "-framework OpenGL")
-    endif  ()
-endif  ()
+    endif ()
+endif ()
 
 # Graphics
-if  (URHO3D_OPENGL)
-    if  (APPLE)
+if (URHO3D_OPENGL)
+    if (APPLE)
         # Do nothing
-    elseif  (WIN32)
+    elseif (WIN32)
         list (APPEND URHO_LIBS opengl32)
-    else  ()
+    else ()
         list (APPEND URHO_LIBS GL dl)
-    endif  ()
-elseif  (WIN32)
+    endif ()
+elseif (WIN32)
     set (DIRECTX_REQUIRED_COMPONENTS)
     set (DIRECTX_OPTIONAL_COMPONENTS DInput DSound XAudio2 XInput)
-    if  (NOT URHO3D_OPENGL)
-        if  (URHO3D_D3D11)
+    if (NOT URHO3D_OPENGL)
+        if (URHO3D_D3D11)
             list (APPEND DIRECTX_REQUIRED_COMPONENTS D3D11)
-        else  ()
+        else ()
             list (APPEND DIRECTX_REQUIRED_COMPONENTS D3D)
-        endif  ()
-    endif  ()
+        endif ()
+    endif ()
     find_package (DirectX REQUIRED ${DIRECTX_REQUIRED_COMPONENTS} OPTIONAL_COMPONENTS ${DIRECTX_OPTIONAL_COMPONENTS})
-    if  (DIRECTX_FOUND)
+    if (DIRECTX_FOUND)
         target_include_directories (Urho3D INTERFACE SYSTEM ${DIRECTX_INCLUDE_DIRS})
         target_link_directories (Urho3D INTERFACE ${DIRECTX_LIBRARY_DIRS})
-    endif  ()
+    endif ()
     list (APPEND URHO_LIBS ${DIRECT3D_LIBRARIES})
-endif  ()
+endif ()
 
-foreach  (LIB ${URHO_LIBS})
+foreach (LIB ${URHO_LIBS})
     target_link_libraries (Urho3D INTERFACE ${LIB})
-endforeach  ()
+endforeach ()
 
 add_library (Urho3D::Urho3D ALIAS Urho3D)
 
