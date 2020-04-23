@@ -24,6 +24,8 @@
 #include <optional>
 #include <vector>
 #include <rapidjson/document.h>
+#include "BoardData.hxx"
+#include "BoardInfo.hxx"
 
 namespace smce {
 
@@ -32,23 +34,42 @@ namespace stdfs = std::filesystem;
 extern const char* board_conf_schema;
 
 struct BoardConf {
+    struct I2c {
+        std::uint16_t sda_pin;
+        std::uint16_t scl_pin;
+    };
     struct Uart {
         std::uint16_t rx_pin;
         std::uint16_t tx_pin;
+        std::uint16_t cts_pin; // Clear to send (in)
+        std::uint16_t rts_pin; // Request to send (out)
+    };
+    struct Spi {
+        std::uint16_t mosi_pin;
+        std::uint16_t miso_pin;
+        std::uint16_t clk_pin;
+        std::uint16_t cs_pin;
     };
 
     std::string name;
     std::string fqbn; // ArduinoCLI Fully Qualified Board Name
-    std::uint16_t digital_pin_count;
-    std::uint16_t analog_pin_count;
+    std::uint16_t pin_count;
 
-    std::vector<std::uint16_t> interruptable_digital_pins;
+    std::vector<std::uint16_t> digital_in_unable_pins;
+    std::vector<std::uint16_t> digital_out_unable_pins;
+    std::vector<std::uint16_t> analog_in_capable_pins;
+    std::vector<std::uint16_t> analog_out_capable_pins;
     std::vector<std::uint16_t> pwm_capable_pins;
-    std::vector<Uart> uart_pairs;
+    std::vector<std::uint16_t> interruptable_pins;
+    std::vector<Uart> uart_quads;
+    std::vector<I2c> i2c_pairs;
+    std::vector<Spi> spi_quads;
 };
 
 [[nodiscard]] std::optional<BoardConf> load(const rapidjson::Document& json_doc) noexcept;
 [[nodiscard]] std::optional<BoardConf> load(const stdfs::path& file_location) noexcept;
+[[nodiscard]] BoardData as_data(const BoardConf& conf) noexcept;
+[[nodiscard]] BoardInfo as_info(const BoardConf& conf) noexcept;
 
 }
 

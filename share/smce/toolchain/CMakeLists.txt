@@ -33,6 +33,10 @@ message (STATUS "Processing ${SOURCE_FILE}")
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_EXTENSIONS OFF)
 
+if (WIN32)
+    add_compile_definitions (VC_EXTRALEAN WIN32_LEAN_AND_MEAN)
+endif ()
+
 get_filename_component (BUILD_DIRNAME ${CMAKE_BINARY_DIR} NAME)
 project (${BUILD_DIRNAME} LANGUAGES CXX)
 set (HOME_DIRNAME ${CMAKE_SOURCE_DIR})

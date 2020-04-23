@@ -20,7 +20,9 @@
 #define SMARTCAR_EMUL_BOARDDATADEF_HXX
 
 #include "BoardData.hxx"
+#include "BoardInfo.hxx"
 
 extern BoardData* board_data;
+extern const BoardInfo* board_info;
 
 #endif // SMARTCAR_EMUL_BOARDDATADEF_HXX

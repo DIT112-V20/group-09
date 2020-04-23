@@ -27,6 +27,7 @@
 #include <type_traits>
 
 struct BoardData;
+struct BoardInfo;
 
 namespace smce {
 
@@ -43,7 +44,7 @@ struct SketchObject {
  **/
 struct SketchLoadedObject {
 
-    using InitType = bool(BoardData*);
+    using InitType = bool(BoardData*, const BoardInfo*);
     using SetupType = void();
     using LoopType = void();
 

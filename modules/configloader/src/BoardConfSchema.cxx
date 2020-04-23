@@ -21,12 +21,40 @@ namespace smce {
 const char* board_conf_schema = R"(
 {
     "type": "object",
+    "required": [
+        "name",
+        "fqbn",
+        "pin_count",
+        "digital_in_unable_pins",
+        "digital_out_unable_pins",
+        "analog_in_capable_pins",
+        "analog_out_capable_pins",
+        "interruptable_pins",
+        "pwm_capable_pins",
+        "uart_quads",
+        "i2c_pairs"
+    ],
     "properties": {
         "name": { "type": "string" },
         "fqbn": { "type": "string" },
-        "digital_pin_count": { "type": "integer" },
-        "analog_pin_count": { "type": "integer" },
-        "interruptable_digital_pins": {
+        "pin_count": { "type": "integer" },
+        "analog_in_capable_pins": {
+            "type": "array",
+            "items": { "type": "integer" }
+        },
+        "analog_out_capable_pins": {
+            "type": "array",
+            "items": { "type": "integer" }
+        },
+        "digital_in_unable_pins": {
+            "type": "array",
+            "items": { "type": "integer" }
+        },
+        "digital_out_unable_pins": {
+            "type": "array",
+            "items": { "type": "integer" }
+        },
+        "interruptable_pins": {
             "type": "array",
             "items": { "type": "integer" }
         },
@@ -34,17 +62,53 @@ const char* board_conf_schema = R"(
             "type": "array",
             "items": { "type": "integer" }
         },
-        "uart_pairs": {
+        "uart_quads": {
             "type": "array",
             "items": {
                 "type": "object",
                 "required": [
                     "rx_pin",
-                    "tx_pin"
+                    "tx_pin",
+                    "cts_pin",
+                    "rts_pin"
                 ],
                 "properties": {
                     "rx_pin": { "type": "integer" },
-                    "tx_pin": { "type": "integer" }
+                    "tx_pin": { "type": "integer" },
+                    "cts_pin": { "type": "integer" },
+                    "rts_pin": { "type": "integer" }
+                }
+            }
+        },
+        "i2c_pairs": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "sda_pin",
+                    "scl_pin"
+                ],
+                "properties": {
+                    "sda_pin": { "type": "integer" },
+                    "scl_pin": { "type": "integer" }
+                }
+            }
+        },
+        "spi_quads": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "mosi_pin",
+                    "miso_pin",
+                    "clk_pin",
+                    "cs_pin"
+                ],
+                "properties": {
+                    "mosi_pin": { "type": "integer" },
+                    "miso_pin": { "type": "integer" },
+                    "clk_pin": { "type": "integer" },
+                    "cs_pin": { "type": "integer" }
                 }
             }
         }

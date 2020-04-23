@@ -56,10 +56,12 @@ struct BoardData {
     std::vector<I2cBus> i2c_buses;
     std::vector<std::atomic_uint8_t> pin_modes;
 
-    bool (*write_byte)(unsigned char);
-    size_t (*write_buf)(const unsigned char*, size_t);
+    bool (*write_byte)(unsigned char){};
+    size_t (*write_buf)(const unsigned char*, size_t){};
     std::chrono::steady_clock::time_point start_time;
 
     std::vector<std::pair<void (*)(), int>> interrupts_handlers;
+
+    bool silence_errors{};
 };
 #endif // SMARTCAR_EMUL_BOARDDATA_HXX

@@ -1,5 +1,5 @@
 /*
- *  Entrypoint.hxx
+ *  Error.hxx
  *  Copyright 2020 AeroStun
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,21 @@
  *
  */
 
-#ifndef SMARTCAR_EMUL_ENTRYPOINT_HXX
-#define SMARTCAR_EMUL_ENTRYPOINT_HXX
+#ifndef SMARTCAR_EMUL_ERROR_HXX
+#define SMARTCAR_EMUL_ERROR_HXX
 
-struct BoardData;
-struct BoardInfo;
+template <class StringType>
+void handle_error(StringType&& err_msg) {
+    if(!board_data->silence_errors)
+        throw std::runtime_error{std::forward<StringType>(err_msg)};
+}
 
-bool init(BoardData*, const BoardInfo*);
+template <class StringType, class T>
+T handle_error(StringType&& err_msg, T err_ret) {
+    handle_error(std::forward<StringType>(err_msg));
+    return err_ret;
+}
 
-#endif // SMARTCAR_EMUL_ENTRYPOINT_HXX
+
+
+#endif // SMARTCAR_EMUL_ERROR_HXX

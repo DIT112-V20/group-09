@@ -51,7 +51,7 @@ struct SketchRuntime {
     void pause_on_next_loop() noexcept;
 
 
-    bool set_sketch_and_car(SketchObject, BoardData&) noexcept; // Should we really pass the data instead of the config?
+    bool set_sketch_and_car(SketchObject, BoardData&, const BoardInfo&) noexcept; // Should we really pass the data instead of the config?
     bool clear();
 
     [[nodiscard]] constexpr bool is_running() noexcept { return running; }
