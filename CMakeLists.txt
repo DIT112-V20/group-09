@@ -25,6 +25,10 @@ set (CMAKE_CXX_STANDARD 20)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
 set (CMAKE_CXX_EXTENSIONS OFF)
 
+if (WIN32)
+    add_compile_definitions (VC_EXTRALEAN WIN32_LEAN_AND_MEAN)
+endif ()
+
 add_subdirectory (thirdparty/Boost.Assert)
 add_subdirectory (thirdparty/Boost.Config)
 add_subdirectory (thirdparty/Boost.Core)

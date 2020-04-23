@@ -25,7 +25,13 @@
 
 enum SignificantBit : bool { RIGHTMOSTBIT, LEFTMOSTBIT };
 
-enum PinMode : std::uint8_t { INPUT, OUTPUT, INPUT_PULLUP };
+#ifdef SMCE__COMPILING_ARDUINO_CXX
+#   define SMCE__PINMODE_ENUM_STRUCT struct
+#else
+#   define SMCE__PINMODE_ENUM_STRUCT
+#endif
+
+enum SMCE__PINMODE_ENUM_STRUCT PinMode : std::uint8_t { INPUT, OUTPUT, INPUT_PULLUP };
 
 enum DigitalValue : bool { LOW, HIGH };
 

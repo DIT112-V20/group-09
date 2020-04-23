@@ -16,6 +16,8 @@
  *
  */
 
+#define SMCE__COMPILING_ARDUINO_CXX 1
+
 #include <climits>
 #include <string>
 #include <thread>
@@ -28,13 +30,17 @@
 
 using namespace std::literals;
 
+[[nodiscard]] constexpr static auto operator+(PinMode mode) noexcept {
+    return static_cast<std::uint8_t>(mode);
+}
+
 void pinMode(uint8_t pin, uint8_t mode) {
     const auto debug_sig = [=](const char* msg) { return fmt::format("pinMode({}, {}): {}", pin, mode, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
-    if ((mode == INPUT || mode == INPUT_PULLUP) && !(board_info->pins_caps[pin].digital_in || board_info->pins_caps[pin].analog_in))
+    if ((mode == +PinMode::INPUT || mode == +PinMode::INPUT_PULLUP) && !(board_info->pins_caps[pin].digital_in || board_info->pins_caps[pin].analog_in))
         return handle_error(debug_sig("Pin cannot be used for digital input"));
-    if (mode == OUTPUT  && !(board_info->pins_caps[pin].digital_out || board_info->pins_caps[pin].analog_out))
+    if (mode == +PinMode::OUTPUT  && !(board_info->pins_caps[pin].digital_out || board_info->pins_caps[pin].analog_out))
         return handle_error(debug_sig("Pin cannot be used for digital output"));
     board_data->pin_modes[pin] = mode;
 }
