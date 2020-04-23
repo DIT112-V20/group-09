@@ -3,5 +3,5 @@
 #include "Entrypoint.hxx"
 
 TEST_CASE("Default-init", "[init]") {
-    REQUIRE(init(nullptr));
+    REQUIRE(init(nullptr, nullptr));
 }

@@ -25,6 +25,8 @@
 
 enum SignificantBit : bool { RIGHTMOSTBIT, LEFTMOSTBIT };
 
+enum PinMode : std::uint8_t { INPUT, OUTPUT, INPUT_PULLUP };
+
 enum DigitalValue : bool { LOW, HIGH };
 
 // Digital and analog i/o
@@ -40,7 +42,7 @@ void tone(uint8_t pin, unsigned int frequency, unsigned long duration);
 void noTone(uint8_t _pin);
 unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout);
 unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout);
-void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val);
+void shiftOut(uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order, uint8_t val);
 uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder);
 
 // time

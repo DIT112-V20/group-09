@@ -23,7 +23,7 @@ void loop() {})";
                            REQUIRE(ld.init);
                            REQUIRE(ld.loop);
                            REQUIRE(ld.setup);
-                           REQUIRE(ld.init(nullptr));
+                           REQUIRE(ld.init(nullptr, nullptr));
                        },
                        [](const std::runtime_error& err) { REQUIRE(false); }},
                ret);

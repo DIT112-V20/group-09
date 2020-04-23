@@ -17,11 +17,14 @@
  */
 
 #include "BoardData.hxx"
+#include "BoardInfo.hxx"
 #include "Entrypoint.hxx"
 
 BoardData* board_data;
+const BoardInfo* board_info;
 
-bool init(BoardData* ptr) {
-    board_data = ptr;
+bool init(BoardData* brd, const BoardInfo* info) {
+    board_data = brd;
+    board_info = info;
     return true;
 }

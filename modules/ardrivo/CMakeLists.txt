@@ -24,6 +24,7 @@ target_include_directories (Ardrivo INTERFACE
 target_sources (Ardrivo INTERFACE
         include/ardrivo/BoardDataDef.hxx
         include/ardrivo/Entrypoint.hxx
+        include/ardrivo/Error.hxx
         src/Arduino.cxx
         src/Entrypoint.cxx
         src/HardwareSerial.cxx
@@ -32,7 +33,8 @@ target_sources (Ardrivo INTERFACE
 target_compile_definitions (Ardrivo INTERFACE)
 target_link_libraries (Ardrivo INTERFACE
         stdpolyfills::stdpolyfills
-        range-v3::range-v3)
+        range-v3::range-v3
+        fmt::fmt-header-only)
 
 add_executable (TestsArdrivo test/Entrypoint.cxx)
 set_target_properties (TestsArdrivo PROPERTIES LINKER_LANGUAGE CXX)

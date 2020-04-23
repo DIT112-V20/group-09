@@ -29,11 +29,12 @@
 #endif
 
 struct BoardData;
+struct BoardInfo;
 
-extern bool init(BoardData*);
+extern bool init(BoardData*, const BoardInfo*);
 
 namespace {
-extern "C" SYM_EXPORT bool init(BoardData* p) { return ::init(p); }
+extern "C" SYM_EXPORT bool init(BoardData* pbd, const BoardInfo* pbi) { return ::init(pbd, pbi); }
 
 extern "C" SYM_EXPORT void setup() { ::setup(); }
 

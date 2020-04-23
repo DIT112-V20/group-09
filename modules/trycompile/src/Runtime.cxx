@@ -16,6 +16,8 @@
  *
  */
 
+#include "BoardData.hxx"
+#include "BoardInfo.hxx"
 #include "Runtime.hxx"
 #include "Object.hxx"
 #include <utility>
@@ -60,13 +62,13 @@ bool SketchRuntime::resume() noexcept {
 
 void SketchRuntime::pause_on_next_loop() noexcept { stop_tok = true; }
 
-bool SketchRuntime::set_sketch_and_car(SketchObject so, BoardData& bdata) noexcept {
+bool SketchRuntime::set_sketch_and_car(SketchObject so, BoardData& bdata, const BoardInfo& binfo) noexcept {
     if (running)
         return false;
     curr_sketch = load(std::move(so));
     if (!curr_sketch)
         return false;
-    curr_sketch.init(&bdata);
+    curr_sketch.init(&bdata, &binfo);
     vehicle_dat = &bdata;
     return true;
 }
