@@ -70,7 +70,8 @@ $(function() {
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Arduino.h File Reference</div>  </div>
 </div><!--header-->
@@ -86,6 +87,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a8570e501c1f29de0c9a91f4bab4d2c4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a8570e501c1f29de0c9a91f4bab4d2c4d">SMCE__PINMODE_ENUM_STRUCT</a></td></tr>
+<tr class="separator:a8570e501c1f29de0c9a91f4bab4d2c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af419eea95c24741f969fbe9eb534404e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#af419eea95c24741f969fbe9eb534404e">bit</a>(b)&#160;&#160;&#160;(1UL &lt;&lt; (b))</td></tr>
 <tr class="separator:af419eea95c24741f969fbe9eb534404e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbe843c0521806a4ab2e7cffe44769e2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#abbe843c0521806a4ab2e7cffe44769e2">bitClear</a>(value,  <a class="el" href="_arduino_8h.html#af419eea95c24741f969fbe9eb534404e">bit</a>)&#160;&#160;&#160;((value) &amp;= ~(1UL &lt;&lt; (<a class="el" href="_arduino_8h.html#af419eea95c24741f969fbe9eb534404e">bit</a>)))</td></tr>
@@ -139,8 +142,8 @@ Functions</h2></td></tr>
 <tr class="separator:a1ed2ad1a8590a020e15ba2b485428415"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c7c2a8ca6d056f09adb9adb1cd31516"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a> (uint8_t pin, uint8_t state, unsigned long timeout)</td></tr>
 <tr class="separator:a5c7c2a8ca6d056f09adb9adb1cd31516"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac44afc7b9d1ec5feb1179b2e3454690a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ac44afc7b9d1ec5feb1179b2e3454690a">shiftOut</a> (uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val)</td></tr>
-<tr class="separator:ac44afc7b9d1ec5feb1179b2e3454690a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bdbac5bf8702a438396867e88271d59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a7bdbac5bf8702a438396867e88271d59">shiftOut</a> (uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order, uint8_t val)</td></tr>
+<tr class="separator:a7bdbac5bf8702a438396867e88271d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1efecc975119046403adc60af645015d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a1efecc975119046403adc60af645015d">shiftIn</a> (uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder)</td></tr>
 <tr class="separator:a1efecc975119046403adc60af645015d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af152147ac460c58262157a9b2a440cf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#af152147ac460c58262157a9b2a440cf7">delay</a> (unsigned long duration)</td></tr>
@@ -198,6 +201,15 @@ Functions</h2></td></tr>
 <tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
 <tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ae3c580b485f982cea066ca05c0bbd1a8"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="_arduino_8h.html#a8570e501c1f29de0c9a91f4bab4d2c4d">SMCE__PINMODE_ENUM_STRUCT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ae3c580b485f982cea066ca05c0bbd1a8">PinMode</a></td></tr>
+<tr class="separator:ae3c580b485f982cea066ca05c0bbd1a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabbca7bb5426f87e93e49a5149d1d304"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="_arduino_8h.html#a8570e501c1f29de0c9a91f4bab4d2c4d">SMCE__PINMODE_ENUM_STRUCT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#aabbca7bb5426f87e93e49a5149d1d304">OUTPUT</a></td></tr>
+<tr class="separator:aabbca7bb5426f87e93e49a5149d1d304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae77102397ef2dfe4913179ef3ec8091d"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="_arduino_8h.html#a8570e501c1f29de0c9a91f4bab4d2c4d">SMCE__PINMODE_ENUM_STRUCT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ae77102397ef2dfe4913179ef3ec8091d">INPUT_PULLUP</a></td></tr>
+<tr class="separator:ae77102397ef2dfe4913179ef3ec8091d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="af419eea95c24741f969fbe9eb534404e"></a>
@@ -366,6 +378,20 @@ Functions</h2></td></tr>
           <td class="paramtype">&#160;</td>
           <td class="paramname">w</td><td>)</td>
           <td>&#160;&#160;&#160;((uint8_t)((w) &amp; 0xff))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8570e501c1f29de0c9a91f4bab4d2c4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8570e501c1f29de0c9a91f4bab4d2c4d">&#9670;&nbsp;</a></span>SMCE__PINMODE_ENUM_STRUCT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SMCE__PINMODE_ENUM_STRUCT</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1221,8 +1247,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac44afc7b9d1ec5feb1179b2e3454690a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac44afc7b9d1ec5feb1179b2e3454690a">&#9670;&nbsp;</a></span>shiftOut()</h2>
+<a id="a7bdbac5bf8702a438396867e88271d59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bdbac5bf8702a438396867e88271d59">&#9670;&nbsp;</a></span>shiftOut()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1231,19 +1257,19 @@ Functions</h2></td></tr>
           <td class="memname">void shiftOut </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>dataPin</em>, </td>
+          <td class="paramname"><em>data_pin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>clockPin</em>, </td>
+          <td class="paramname"><em>clock_pin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bitOrder</em>, </td>
+          <td class="paramname"><em>bit_order</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1309,6 +1335,49 @@ template&lt;class T &gt; </div>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ae77102397ef2dfe4913179ef3ec8091d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae77102397ef2dfe4913179ef3ec8091d">&#9670;&nbsp;</a></span>INPUT_PULLUP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_arduino_8h.html#a8570e501c1f29de0c9a91f4bab4d2c4d">SMCE__PINMODE_ENUM_STRUCT</a> INPUT_PULLUP</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aabbca7bb5426f87e93e49a5149d1d304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabbca7bb5426f87e93e49a5149d1d304">&#9670;&nbsp;</a></span>OUTPUT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_arduino_8h.html#a8570e501c1f29de0c9a91f4bab4d2c4d">SMCE__PINMODE_ENUM_STRUCT</a> OUTPUT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae3c580b485f982cea066ca05c0bbd1a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3c580b485f982cea066ca05c0bbd1a8">&#9670;&nbsp;</a></span>PinMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_arduino_8h.html#a8570e501c1f29de0c9a91f4bab4d2c4d">SMCE__PINMODE_ENUM_STRUCT</a> PinMode</td>
         </tr>
       </table>
 </div><div class="memdoc">

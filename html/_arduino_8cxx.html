@@ -68,20 +68,31 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Arduino.cxx File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;climits&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 <code>#include &lt;thread&gt;</code><br />
+<code>#include &lt;fmt/format.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="_arduino_8h_source.html">Arduino.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_board_data_8hxx_source.html">BoardData.hxx</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_board_data_def_8hxx_source.html">BoardDataDef.hxx</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_entrypoint_8hxx_source.html">Entrypoint.hxx</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_board_info_8hxx_source.html">BoardInfo.hxx</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_error_8hxx_source.html">Error.hxx</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a14e4987e04fdea4fa839d16a56e13a57"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#a14e4987e04fdea4fa839d16a56e13a57">SMCE__COMPILING_ARDUINO_CXX</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a14e4987e04fdea4fa839d16a56e13a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a13568e8c36cbe68d6a4ef45ee461027b"><td class="memItemLeft" align="right" valign="top">constexpr static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#a13568e8c36cbe68d6a4ef45ee461027b">operator+</a> (<a class="el" href="_arduino_8h.html#ae3c580b485f982cea066ca05c0bbd1a8">PinMode</a> mode) noexcept</td></tr>
+<tr class="separator:a13568e8c36cbe68d6a4ef45ee461027b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf453c1659ee9fafa5af689523ac71e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#abf453c1659ee9fafa5af689523ac71e7">pinMode</a> (uint8_t pin, uint8_t mode)</td></tr>
 <tr class="separator:abf453c1659ee9fafa5af689523ac71e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac49cfdc8df1e0b899f2c3d4077b11489"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#ac49cfdc8df1e0b899f2c3d4077b11489">digitalWrite</a> (uint8_t pin, bool val)</td></tr>
@@ -102,10 +113,10 @@ Functions</h2></td></tr>
 <tr class="separator:a1ed2ad1a8590a020e15ba2b485428415"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c7c2a8ca6d056f09adb9adb1cd31516"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#a5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a> (uint8_t pin, uint8_t state, unsigned long timeout)</td></tr>
 <tr class="separator:a5c7c2a8ca6d056f09adb9adb1cd31516"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac44afc7b9d1ec5feb1179b2e3454690a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#ac44afc7b9d1ec5feb1179b2e3454690a">shiftOut</a> (uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val)</td></tr>
-<tr class="separator:ac44afc7b9d1ec5feb1179b2e3454690a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1efecc975119046403adc60af645015d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#a1efecc975119046403adc60af645015d">shiftIn</a> (uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder)</td></tr>
-<tr class="separator:a1efecc975119046403adc60af645015d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bdbac5bf8702a438396867e88271d59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#a7bdbac5bf8702a438396867e88271d59">shiftOut</a> (uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order, uint8_t val)</td></tr>
+<tr class="separator:a7bdbac5bf8702a438396867e88271d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a710aacf0747d9018cce368f8401ed788"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#a710aacf0747d9018cce368f8401ed788">shiftIn</a> (uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order)</td></tr>
+<tr class="separator:a710aacf0747d9018cce368f8401ed788"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af152147ac460c58262157a9b2a440cf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#af152147ac460c58262157a9b2a440cf7">delay</a> (unsigned long duration)</td></tr>
 <tr class="separator:af152147ac460c58262157a9b2a440cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86d006647511ec52a60d99f678cd1811"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#a86d006647511ec52a60d99f678cd1811">delayMicroseconds</a> (unsigned int duration)</td></tr>
@@ -150,11 +161,26 @@ Functions</h2></td></tr>
 <tr class="separator:a2d69632859fb548f0e5a74f77d36b1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f20cd490a0ba7f2d37cbb8b04d92e3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#a0f20cd490a0ba7f2d37cbb8b04d92e3e">randomSeed</a> (unsigned long seed)</td></tr>
 <tr class="separator:a0f20cd490a0ba7f2d37cbb8b04d92e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0d73becebba7c663f8e9ed73efee544"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#ad0d73becebba7c663f8e9ed73efee544">attachInterrupt</a> (uint8_t interruptNum, void(*userFunc)(void), int mode)</td></tr>
-<tr class="separator:ad0d73becebba7c663f8e9ed73efee544"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa47ad728b5e830ac48f4085affea7d1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#aa47ad728b5e830ac48f4085affea7d1c">detachInterrupt</a> (uint8_t interruptNum)</td></tr>
-<tr class="separator:aa47ad728b5e830ac48f4085affea7d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af95acf9c160c14a5c1ea018c0494da19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#af95acf9c160c14a5c1ea018c0494da19">attachInterrupt</a> (uint8_t pin, void(*user_func)(), int mode)</td></tr>
+<tr class="separator:af95acf9c160c14a5c1ea018c0494da19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3aae191c1d7e483a2b7e925457650c2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8cxx.html#a3aae191c1d7e483a2b7e925457650c2e">detachInterrupt</a> (uint8_t pin)</td></tr>
+<tr class="separator:a3aae191c1d7e483a2b7e925457650c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a14e4987e04fdea4fa839d16a56e13a57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14e4987e04fdea4fa839d16a56e13a57">&#9670;&nbsp;</a></span>SMCE__COMPILING_ARDUINO_CXX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SMCE__COMPILING_ARDUINO_CXX&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a2eda513a6bb35bf13675a24711d4e864"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2eda513a6bb35bf13675a24711d4e864">&#9670;&nbsp;</a></span>analogRead()</h2>
@@ -220,8 +246,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad0d73becebba7c663f8e9ed73efee544"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0d73becebba7c663f8e9ed73efee544">&#9670;&nbsp;</a></span>attachInterrupt()</h2>
+<a id="af95acf9c160c14a5c1ea018c0494da19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af95acf9c160c14a5c1ea018c0494da19">&#9670;&nbsp;</a></span>attachInterrupt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -230,13 +256,13 @@ Functions</h2></td></tr>
           <td class="memname">void attachInterrupt </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>interruptNum</em>, </td>
+          <td class="paramname"><em>pin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void(*)(void)&#160;</td>
-          <td class="paramname"><em>userFunc</em>, </td>
+          <td class="paramtype">void(*)()&#160;</td>
+          <td class="paramname"><em>user_func</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -324,8 +350,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa47ad728b5e830ac48f4085affea7d1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa47ad728b5e830ac48f4085affea7d1c">&#9670;&nbsp;</a></span>detachInterrupt()</h2>
+<a id="a3aae191c1d7e483a2b7e925457650c2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3aae191c1d7e483a2b7e925457650c2e">&#9670;&nbsp;</a></span>detachInterrupt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -334,7 +360,7 @@ Functions</h2></td></tr>
           <td class="memname">void detachInterrupt </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>interruptNum</em></td><td>)</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -720,6 +746,32 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a13568e8c36cbe68d6a4ef45ee461027b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13568e8c36cbe68d6a4ef45ee461027b">&#9670;&nbsp;</a></span>operator+()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr static auto operator+ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="_arduino_8h.html#ae3c580b485f982cea066ca05c0bbd1a8">PinMode</a>&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abf453c1659ee9fafa5af689523ac71e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf453c1659ee9fafa5af689523ac71e7">&#9670;&nbsp;</a></span>pinMode()</h2>
 
@@ -880,8 +932,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1efecc975119046403adc60af645015d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1efecc975119046403adc60af645015d">&#9670;&nbsp;</a></span>shiftIn()</h2>
+<a id="a710aacf0747d9018cce368f8401ed788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a710aacf0747d9018cce368f8401ed788">&#9670;&nbsp;</a></span>shiftIn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -890,19 +942,19 @@ Functions</h2></td></tr>
           <td class="memname">uint8_t shiftIn </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>dataPin</em>, </td>
+          <td class="paramname"><em>data_pin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>clockPin</em>, </td>
+          <td class="paramname"><em>clock_pin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bitOrder</em>&#160;</td>
+          <td class="paramname"><em>bit_order</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -914,8 +966,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac44afc7b9d1ec5feb1179b2e3454690a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac44afc7b9d1ec5feb1179b2e3454690a">&#9670;&nbsp;</a></span>shiftOut()</h2>
+<a id="a7bdbac5bf8702a438396867e88271d59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bdbac5bf8702a438396867e88271d59">&#9670;&nbsp;</a></span>shiftOut()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -924,19 +976,19 @@ Functions</h2></td></tr>
           <td class="memname">void shiftOut </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>dataPin</em>, </td>
+          <td class="paramname"><em>data_pin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>clockPin</em>, </td>
+          <td class="paramname"><em>clock_pin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bitOrder</em>, </td>
+          <td class="paramname"><em>bit_order</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

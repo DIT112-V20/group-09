@@ -75,21 +75,24 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_board_data_8hxx_source.html">BoardData.hxx</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_board_info_8hxx_source.html">BoardInfo.hxx</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_entrypoint_8hxx_source.html">Entrypoint.hxx</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a80793e37dd35136c5236f90b3293fd18"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#a80793e37dd35136c5236f90b3293fd18">init</a> (<a class="el" href="struct_board_data.html">BoardData</a> *ptr)</td></tr>
-<tr class="separator:a80793e37dd35136c5236f90b3293fd18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7be599e76f97056cec2409742e5dd901"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#a7be599e76f97056cec2409742e5dd901">init</a> (<a class="el" href="struct_board_data.html">BoardData</a> *brd, const <a class="el" href="struct_board_info.html">BoardInfo</a> *info)</td></tr>
+<tr class="separator:a7be599e76f97056cec2409742e5dd901"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a517fad1b64cd89318df6d67425c792e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_board_data.html">BoardData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#a517fad1b64cd89318df6d67425c792e7">board_data</a></td></tr>
 <tr class="separator:a517fad1b64cd89318df6d67425c792e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7e3b5132c78a63867dc1343ff2a8589"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_board_info.html">BoardInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#ac7e3b5132c78a63867dc1343ff2a8589">board_info</a></td></tr>
+<tr class="separator:ac7e3b5132c78a63867dc1343ff2a8589"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a80793e37dd35136c5236f90b3293fd18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80793e37dd35136c5236f90b3293fd18">&#9670;&nbsp;</a></span>init()</h2>
+<a id="a7be599e76f97056cec2409742e5dd901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7be599e76f97056cec2409742e5dd901">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -98,8 +101,18 @@ Variables</h2></td></tr>
           <td class="memname">bool init </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_board_data.html">BoardData</a> *&#160;</td>
-          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td class="paramname"><em>brd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="struct_board_info.html">BoardInfo</a> *&#160;</td>
+          <td class="paramname"><em>info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -115,6 +128,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="struct_board_data.html">BoardData</a>* board_data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac7e3b5132c78a63867dc1343ff2a8589"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7e3b5132c78a63867dc1343ff2a8589">&#9670;&nbsp;</a></span>board_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="struct_board_info.html">BoardInfo</a>* board_info</td>
         </tr>
       </table>
 </div><div class="memdoc">

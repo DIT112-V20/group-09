@@ -73,8 +73,17 @@ $(function() {
 
 
 <h3><a id="index_a"></a>- a -</h3><ul>
-<li>analog_pin_count
-: <a class="el" href="structsmce_1_1_board_conf.html#acad5e5ae158d0f81984981d0f9fece34">smce::BoardConf</a>
+<li>analog_in
+: <a class="el" href="struct_pin_capability.html#a32725e0b159eedfd2470d4bb692a2334">PinCapability</a>
+</li>
+<li>analog_in_capable_pins
+: <a class="el" href="structsmce_1_1_board_conf.html#a67d0d2502537c8ff9415f9d76a712194">smce::BoardConf</a>
+</li>
+<li>analog_out
+: <a class="el" href="struct_pin_capability.html#af26c155016fe8cadf018e40e40fdadfd">PinCapability</a>
+</li>
+<li>analog_out_capable_pins
+: <a class="el" href="structsmce_1_1_board_conf.html#ad7150e50e3db67f33101c5806eb20d54">smce::BoardConf</a>
 </li>
 <li>analog_pin_values
 : <a class="el" href="struct_board_data.html#aae0f8cd78495dd49c03f6cbc43c4f5e5">BoardData</a>
@@ -83,8 +92,20 @@ $(function() {
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>clk_pin
+: <a class="el" href="structsmce_1_1_board_conf_1_1_spi.html#aaf30b0127434c81320b185577a2ba113">smce::BoardConf::Spi</a>
+, <a class="el" href="struct_spi_channel_info.html#ad35b6b79141b5c0f290db28c6e1d6121">SpiChannelInfo</a>
+</li>
 <li>cpp_std
 : <a class="el" href="structsmce_1_1_program_options.html#adcd68f2ce8a3ad24ef61ae2371e0a439">smce::ProgramOptions</a>
+</li>
+<li>cs_pin
+: <a class="el" href="structsmce_1_1_board_conf_1_1_spi.html#a5c5871e555df5c23d094e3edd0782ec9">smce::BoardConf::Spi</a>
+, <a class="el" href="struct_spi_channel_info.html#a3796d09896f6f3fee449d6f887cebd3b">SpiChannelInfo</a>
+</li>
+<li>cts_pin
+: <a class="el" href="structsmce_1_1_board_conf_1_1_uart.html#ada002402bfddf03083df4b6d32753b77">smce::BoardConf::Uart</a>
+, <a class="el" href="struct_uart_channel_info.html#ac4e5529d79b7ead911a80b838c28c71c">UartChannelInfo</a>
 </li>
 </ul>
 
@@ -102,8 +123,17 @@ $(function() {
 <li>DEFAULT_SMCE_HOME
 : <a class="el" href="structsmce_1_1_program_options.html#af78232d099f0d24f8c66a225f9d2e5d8">smce::ProgramOptions</a>
 </li>
-<li>digital_pin_count
-: <a class="el" href="structsmce_1_1_board_conf.html#a452a4c3d8d6293a6d1b1312d177a6d50">smce::BoardConf</a>
+<li>digital_in
+: <a class="el" href="struct_pin_capability.html#a8bb2cbaf7dc09754b3ab1db4ffb016e6">PinCapability</a>
+</li>
+<li>digital_in_unable_pins
+: <a class="el" href="structsmce_1_1_board_conf.html#a63683060b2238190b5ab5f1f863f590e">smce::BoardConf</a>
+</li>
+<li>digital_out
+: <a class="el" href="struct_pin_capability.html#a4162595dfb3f46b4560bd8690809d270">PinCapability</a>
+</li>
+<li>digital_out_unable_pins
+: <a class="el" href="structsmce_1_1_board_conf.html#a2ffa8994d77f769f432648ac7511e13b">smce::BoardConf</a>
 </li>
 <li>digital_pin_values
 : <a class="el" href="struct_board_data.html#a497aa17941051f85d2c024cde6d0df5c">BoardData</a>
@@ -118,15 +148,31 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_h"></a>- h -</h3><ul>
+<li>has_alias_name
+: <a class="el" href="struct_pin_capability.html#a7939296f810b57da442fbe67b4df735f">PinCapability</a>
+</li>
+</ul>
+
+
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>i2c_buses
 : <a class="el" href="struct_board_data.html#a332aab7c31450d6ed4613e6330c8aa8f">BoardData</a>
 </li>
+<li>i2c_chans
+: <a class="el" href="struct_board_info.html#af62cb874defd2ff016c1e21c260c8071">BoardInfo</a>
+</li>
+<li>i2c_pairs
+: <a class="el" href="structsmce_1_1_board_conf.html#a88d2aee40595cf500c9700a45f0cde36">smce::BoardConf</a>
+</li>
 <li>init
 : <a class="el" href="structsmce_1_1_sketch_loaded_object.html#ae53f2c6316be1417e207e1a1f75aa993">smce::SketchLoadedObject</a>
 </li>
-<li>interruptable_digital_pins
-: <a class="el" href="structsmce_1_1_board_conf.html#af0a62c13c4a660df07be689ceaca48cf">smce::BoardConf</a>
+<li>interrupt_able
+: <a class="el" href="struct_pin_capability.html#a751686fac59a480ba89be9b50d609382">PinCapability</a>
+</li>
+<li>interruptable_pins
+: <a class="el" href="structsmce_1_1_board_conf.html#acf8f7e43b1f2473fa023b2b5e1560196">smce::BoardConf</a>
 </li>
 <li>interrupts_handlers
 : <a class="el" href="struct_board_data.html#a0e115f7ad1e79d337fe93185b4a0245f">BoardData</a>
@@ -156,6 +202,14 @@ $(function() {
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
+<li>miso_pin
+: <a class="el" href="structsmce_1_1_board_conf_1_1_spi.html#a65639daa5fc75606e872b96b3cec23ba">smce::BoardConf::Spi</a>
+, <a class="el" href="struct_spi_channel_info.html#ad5d4c491b5eb323eca6736e1b7bf90d9">SpiChannelInfo</a>
+</li>
+<li>mosi_pin
+: <a class="el" href="structsmce_1_1_board_conf_1_1_spi.html#a0bf4cb81a5ceee4acc3605c8492844fc">smce::BoardConf::Spi</a>
+, <a class="el" href="struct_spi_channel_info.html#a1de199529d5ee3fdd7bd13303491f754">SpiChannelInfo</a>
+</li>
 <li>mptr
 : <a class="el" href="struct_mptr_key_pair.html#a524e4f09ebe7973a6d4de7a6f3758e5d">MptrKeyPair&lt; T, C &gt;</a>
 </li>
@@ -170,14 +224,23 @@ $(function() {
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
+<li>pin_count
+: <a class="el" href="structsmce_1_1_board_conf.html#adc7f472767fd173dc9f13b895f51d3ad">smce::BoardConf</a>
+</li>
 <li>pin_frequency
 : <a class="el" href="struct_board_data.html#a813ddcb257975dad74fef249e01d2025">BoardData</a>
 </li>
 <li>pin_modes
 : <a class="el" href="struct_board_data.html#a464d293afcea79a85cc2877f1b10f8c1">BoardData</a>
 </li>
+<li>pins_caps
+: <a class="el" href="struct_board_info.html#a64c11ba95a3ad14dcd10c6016033329e">BoardInfo</a>
+</li>
 <li>preprocessor_bin
 : <a class="el" href="structsmce_1_1_program_options.html#acc216bfd1a9e5e790fb62462ce205b3a">smce::ProgramOptions</a>
+</li>
+<li>pwm_able
+: <a class="el" href="struct_pin_capability.html#aabf4800626b9ac63b38da027040c4cf1">PinCapability</a>
 </li>
 <li>pwm_capable_pins
 : <a class="el" href="structsmce_1_1_board_conf.html#a35b4d38f75a22541f196c6146c1212df">smce::BoardConf</a>
@@ -186,6 +249,10 @@ $(function() {
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>rts_pin
+: <a class="el" href="structsmce_1_1_board_conf_1_1_uart.html#ac3860ec6bd244550277fd70ceca0d3c1">smce::BoardConf::Uart</a>
+, <a class="el" href="struct_uart_channel_info.html#a91ceab08fe999f97a0959d782a51da4f">UartChannelInfo</a>
+</li>
 <li>rx
 : <a class="el" href="struct_dyna_buffer_bus.html#a3e0e2ce65ea92f1e1bbac86bdcecd477">DynaBufferBus</a>
 , <a class="el" href="struct_fix_buffer_bus.html#a90c6415dd973e5136449b060a33ae7a8">FixBufferBus&lt; N &gt;</a>
@@ -195,6 +262,7 @@ $(function() {
 </li>
 <li>rx_pin
 : <a class="el" href="structsmce_1_1_board_conf_1_1_uart.html#a54495e0aff71beb7249c91271080de49">smce::BoardConf::Uart</a>
+, <a class="el" href="struct_uart_channel_info.html#adfc29d3a84314fee97a8a7c0a9a0e8f7">UartChannelInfo</a>
 </li>
 <li>rx_used_size
 : <a class="el" href="struct_fix_buffer_bus.html#ab25baa9ae9398e867a85718773b9412c">FixBufferBus&lt; N &gt;</a>
@@ -203,14 +271,31 @@ $(function() {
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>scl_pin
+: <a class="el" href="struct_i2c_channel_info.html#a2ceaa86102ae67831c1f0c9690c303ee">I2cChannelInfo</a>
+, <a class="el" href="structsmce_1_1_board_conf_1_1_i2c.html#a23d753d96caab00dbad37f9e16538588">smce::BoardConf::I2c</a>
+</li>
+<li>sda_pin
+: <a class="el" href="struct_i2c_channel_info.html#a52f3869cbaddc99ffc34037c8708e048">I2cChannelInfo</a>
+, <a class="el" href="structsmce_1_1_board_conf_1_1_i2c.html#a4745c7b623fa20f13383a6d70fbcc752">smce::BoardConf::I2c</a>
+</li>
 <li>servo_value
 : <a class="el" href="struct_board_data.html#ac49ce35e7f09160724adfdeec77c3ab9">BoardData</a>
 </li>
 <li>setup
 : <a class="el" href="structsmce_1_1_sketch_loaded_object.html#a2e8ca1939e7e3a4474cf528899b81fda">smce::SketchLoadedObject</a>
 </li>
+<li>silence_errors
+: <a class="el" href="struct_board_data.html#a26611e206109440447531eb0a799d7f5">BoardData</a>
+</li>
 <li>smce_home
 : <a class="el" href="structsmce_1_1_program_options.html#a5f391b585914ffd6fc2776ffb6fc894a">smce::ProgramOptions</a>
+</li>
+<li>spi_chans
+: <a class="el" href="struct_board_info.html#ac8648a6982f6d1915611b191c55989c8">BoardInfo</a>
+</li>
+<li>spi_quads
+: <a class="el" href="structsmce_1_1_board_conf.html#a06b57c8134d3aafc0da3e551d41eca6f">smce::BoardConf</a>
 </li>
 <li>start_time
 : <a class="el" href="struct_board_data.html#a936e1076cc09a74f46de80876a0e2a31">BoardData</a>
@@ -228,6 +313,7 @@ $(function() {
 </li>
 <li>tx_pin
 : <a class="el" href="structsmce_1_1_board_conf_1_1_uart.html#a20072209d42d447b0a73f72cb69b6a2b">smce::BoardConf::Uart</a>
+, <a class="el" href="struct_uart_channel_info.html#ab1a7a698152f4f9abd111374b9126d96">UartChannelInfo</a>
 </li>
 <li>tx_used_size
 : <a class="el" href="struct_fix_buffer_bus.html#a55c43c9a1c75f9e968b8fe57f43b2050">FixBufferBus&lt; N &gt;</a>
@@ -239,8 +325,11 @@ $(function() {
 <li>uart_buses
 : <a class="el" href="struct_board_data.html#a479fcd85a21c42641955b6fbae45a963">BoardData</a>
 </li>
-<li>uart_pairs
-: <a class="el" href="structsmce_1_1_board_conf.html#a44c8a352dd0c5a3543743867c5ca703f">smce::BoardConf</a>
+<li>uart_chans
+: <a class="el" href="struct_board_info.html#a883e470784d87356bf7ac6441fe596b9">BoardInfo</a>
+</li>
+<li>uart_quads
+: <a class="el" href="structsmce_1_1_board_conf.html#a7009dd29a125673da65c0757c1aa15f9">smce::BoardConf</a>
 </li>
 </ul>
 

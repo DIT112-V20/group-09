@@ -1,15 +1,14 @@
 var searchData=
 [
-  ['random_445',['random',['../_arduino_8cxx.html#a07da44cd136848332e2b70879a4385b4',1,'random(long max):&#160;Arduino.cxx'],['../_arduino_8cxx.html#a2d69632859fb548f0e5a74f77d36b1eb',1,'random(long min, long max):&#160;Arduino.cxx'],['../_arduino_8h.html#a07da44cd136848332e2b70879a4385b4',1,'random(long max):&#160;Arduino.cxx'],['../_arduino_8h.html#a2d69632859fb548f0e5a74f77d36b1eb',1,'random(long min, long max):&#160;Arduino.cxx']]],
-  ['randomseed_446',['randomSeed',['../_arduino_8cxx.html#a0f20cd490a0ba7f2d37cbb8b04d92e3e',1,'randomSeed(unsigned long seed):&#160;Arduino.cxx'],['../_arduino_8h.html#a0f20cd490a0ba7f2d37cbb8b04d92e3e',1,'randomSeed(unsigned long seed):&#160;Arduino.cxx']]],
-  ['read_447',['read',['../struct_hardware_serial.html#aaa09c85eb59e62bfda3c48fae7dcb14c',1,'HardwareSerial::read()'],['../struct_stream.html#aea5dee9fcb038148515b7c9212d38dc0',1,'Stream::read()']]],
-  ['readbytes_448',['readBytes',['../struct_stream.html#ab0c0e0248cf5d333d3d26d2b739a8c0e',1,'Stream']]],
-  ['readbytesuntil_449',['readBytesUntil',['../struct_stream.html#a956e697b356e923e911a61cd9c19139f',1,'Stream']]],
-  ['readstring_450',['readString',['../struct_stream.html#a1c60bdda2b65d78e5a1362d51b856c5a',1,'Stream']]],
-  ['readstringuntil_451',['readStringUntil',['../struct_stream.html#a6a409da87c552909260d8cc428c5ca70',1,'Stream']]],
-  ['registerobject_452',['RegisterObject',['../class_movable_camera.html#ad496f22151399b8ad4a5e968e3abb29f',1,'MovableCamera']]],
-  ['remove_453',['remove',['../class_string.html#a42ff252a45d4bda3afefe4eb8cbe8bbb',1,'String::remove(unsigned idx)'],['../class_string.html#a914189177870f1535d588d73778acea7',1,'String::remove(unsigned idx, unsigned count)']]],
-  ['replace_454',['replace',['../class_string.html#a32f05a70790179df0b56492f76a9ec66',1,'String']]],
-  ['reserve_455',['reserve',['../class_string.html#a2564b6ee7b02181de8c857e93bf1abc3',1,'String']]],
-  ['resume_456',['resume',['../structsmce_1_1_sketch_runtime.html#a41c9762b43003b58f3c73f39af91c3dc',1,'smce::SketchRuntime']]]
+  ['parsefloat_489',['parseFloat',['../struct_stream.html#a685133574afc1c35223e31703543a0a7',1,'Stream']]],
+  ['parseint_490',['parseInt',['../struct_stream.html#a8875d87ed4db36c36990b2fb22ca48da',1,'Stream']]],
+  ['pause_5fon_5fnext_5floop_491',['pause_on_next_loop',['../structsmce_1_1_sketch_runtime.html#a2a95cc142c3c0df3a7f434ca304afe6a',1,'smce::SketchRuntime']]],
+  ['peek_492',['peek',['../struct_hardware_serial.html#a0bf562734b738ed06de5fb34c357b230',1,'HardwareSerial::peek()'],['../struct_stream.html#a30c3c212ec6ea67277a708c5ea2501a5',1,'Stream::peek()']]],
+  ['peeknextdigit_493',['peekNextDigit',['../struct_stream.html#a3dbc4937689c81b76f4ab16e253e85e0',1,'Stream']]],
+  ['pinmode_494',['pinMode',['../_arduino_8cxx.html#abf453c1659ee9fafa5af689523ac71e7',1,'pinMode(uint8_t pin, uint8_t mode):&#160;Arduino.cxx'],['../_arduino_8h.html#abf453c1659ee9fafa5af689523ac71e7',1,'pinMode(uint8_t pin, uint8_t mode):&#160;Arduino.cxx']]],
+  ['print_495',['Print',['../class_print.html#ae835c86566fea29bd6cf8c132299b1b5',1,'Print::Print() noexcept=default'],['../class_print.html#af79c7d1a5156375f4fe409a4864de3bd',1,'Print::print(const String &amp;s)'],['../class_print.html#a4ad965dcec75f88d9e0fcf68c272f9ef',1,'Print::print(const char *czstr)'],['../class_print.html#ab1222c15005ff5be962dd073a737d5ad',1,'Print::print(char c)'],['../class_print.html#ae347f6b7b6b7c125a24df3e5a4b27247',1,'Print::print(Int val, StringBaseConv base=DEC)'],['../class_print.html#a3c7d936e912fcb6c7ffda383cc3445fa',1,'Print::print(const struct Printable &amp;)']]],
+  ['println_496',['println',['../class_print.html#aa738939e3e6f6829eca225ee5d6955e8',1,'Print::println(const char(&amp;lit)[N])'],['../class_print.html#acae579a82aa87506c5c40030c9f8cddf',1,'Print::println(const String &amp;s)'],['../class_print.html#a903aae8895af726d7a6ada7cecece116',1,'Print::println(const char *czstr)'],['../class_print.html#a3c0e2c9f44f6c7df3a8987d7bba67ff1',1,'Print::println(char c)'],['../class_print.html#ab80cce73c03762c21645143122fb7447',1,'Print::println(Int val, StringBaseConv base=DEC)'],['../class_print.html#ae8acc3820a5cbe1455d0125c41797cdb',1,'Print::println(const Printable &amp;p)'],['../class_print.html#a72862852c1185203cdfcca03a9656135',1,'Print::println()']]],
+  ['programoptions_497',['ProgramOptions',['../structsmce_1_1_program_options.html#ab96d15819c3381193607d5255e22c8ee',1,'smce::ProgramOptions::ProgramOptions(stdfs::path preprocessor_bin, stdfs::path smce_home, stdfs::path lib_path, int cpp_std)'],['../structsmce_1_1_program_options.html#ad9c5e53ab231f5f6a8c9ef9597557f29',1,'smce::ProgramOptions::ProgramOptions()=default']]],
+  ['pulsein_498',['pulseIn',['../_arduino_8cxx.html#a1ed2ad1a8590a020e15ba2b485428415',1,'pulseIn(uint8_t pin, uint8_t state, unsigned long timeout):&#160;Arduino.cxx'],['../_arduino_8h.html#a1ed2ad1a8590a020e15ba2b485428415',1,'pulseIn(uint8_t pin, uint8_t state, unsigned long timeout):&#160;Arduino.cxx']]],
+  ['pulseinlong_499',['pulseInLong',['../_arduino_8cxx.html#a5c7c2a8ca6d056f09adb9adb1cd31516',1,'pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout):&#160;Arduino.cxx'],['../_arduino_8h.html#a5c7c2a8ca6d056f09adb9adb1cd31516',1,'pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout):&#160;Arduino.cxx']]]
 ];

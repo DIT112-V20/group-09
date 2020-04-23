@@ -97,6 +97,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a936e1076cc09a74f46de80876a0e2a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e115f7ad1e79d337fe93185b4a0245f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; void(*)(), int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_board_data.html#a0e115f7ad1e79d337fe93185b4a0245f">interrupts_handlers</a></td></tr>
 <tr class="separator:a0e115f7ad1e79d337fe93185b4a0245f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26611e206109440447531eb0a799d7f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_board_data.html#a26611e206109440447531eb0a799d7f5">silence_errors</a> {}</td></tr>
+<tr class="separator:a26611e206109440447531eb0a799d7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="aae0f8cd78495dd49c03f6cbc43c4f5e5"></a>
@@ -197,6 +199,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a26611e206109440447531eb0a799d7f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26611e206109440447531eb0a799d7f5">&#9670;&nbsp;</a></span>silence_errors</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BoardData::silence_errors {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a936e1076cc09a74f46de80876a0e2a31"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a936e1076cc09a74f46de80876a0e2a31">&#9670;&nbsp;</a></span>start_time</h2>
 
@@ -230,11 +246,19 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">size_t(* BoardData::write_buf) (const unsigned char *, size_t)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -244,11 +268,19 @@ Public Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool(* BoardData::write_byte) (unsigned char)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

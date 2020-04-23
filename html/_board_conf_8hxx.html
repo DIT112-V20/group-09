@@ -81,6 +81,8 @@ $(function() {
 <code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;rapidjson/document.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="_board_data_8hxx_source.html">BoardData.hxx</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_board_info_8hxx_source.html">BoardInfo.hxx</a>&quot;</code><br />
 </div>
 <p><a href="_board_conf_8hxx_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -88,7 +90,11 @@ $(function() {
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html">smce::BoardConf</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf_1_1_i2c.html">smce::BoardConf::I2c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf_1_1_uart.html">smce::BoardConf::Uart</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf_1_1_spi.html">smce::BoardConf::Spi</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -102,6 +108,10 @@ Functions</h2></td></tr>
 <tr class="separator:a367efa7468f52b339a0112d64c39d3d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34be0c05177d40c25779f888faab29c7"><td class="memItemLeft" align="right" valign="top">std::optional&lt; BoardConf &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#a34be0c05177d40c25779f888faab29c7">smce::load</a> (const stdfs::path &amp;file_location) noexcept</td></tr>
 <tr class="separator:a34be0c05177d40c25779f888faab29c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f48423a5590a8a245176acddb4f1dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_board_data.html">BoardData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#ab9f48423a5590a8a245176acddb4f1dd">smce::as_data</a> (const BoardConf &amp;conf) noexcept</td></tr>
+<tr class="separator:ab9f48423a5590a8a245176acddb4f1dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec25854ae695701fcdbbf8f133c96f63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_board_info.html">BoardInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html#aec25854ae695701fcdbbf8f133c96f63">smce::as_info</a> (const BoardConf &amp;conf) noexcept</td></tr>
+<tr class="separator:aec25854ae695701fcdbbf8f133c96f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>

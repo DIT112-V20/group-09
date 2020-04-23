@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setuptype_544',['SetupType',['../structsmce_1_1_sketch_loaded_object.html#a11c8138dcb4b844b7b13265a4532e42a',1,'smce::SketchLoadedObject']]]
+  ['pinscapabilities_628',['PinsCapabilities',['../_board_info_8hxx.html#af90565f760e42e5e4403e7c30c884eea',1,'BoardInfo.hxx']]]
 ];

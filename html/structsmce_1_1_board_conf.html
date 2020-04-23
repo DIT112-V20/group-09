@@ -80,6 +80,10 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf_1_1_i2c.html">I2c</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf_1_1_spi.html">Spi</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf_1_1_uart.html">Uart</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -89,40 +93,78 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a94df66a8a383e5928ff45e047853fde1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada2ef3d2295b1040cabeafbefd4786ca"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#ada2ef3d2295b1040cabeafbefd4786ca">fqbn</a></td></tr>
 <tr class="separator:ada2ef3d2295b1040cabeafbefd4786ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a452a4c3d8d6293a6d1b1312d177a6d50"><td class="memItemLeft" align="right" valign="top">std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#a452a4c3d8d6293a6d1b1312d177a6d50">digital_pin_count</a></td></tr>
-<tr class="separator:a452a4c3d8d6293a6d1b1312d177a6d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acad5e5ae158d0f81984981d0f9fece34"><td class="memItemLeft" align="right" valign="top">std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#acad5e5ae158d0f81984981d0f9fece34">analog_pin_count</a></td></tr>
-<tr class="separator:acad5e5ae158d0f81984981d0f9fece34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0a62c13c4a660df07be689ceaca48cf"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::uint16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#af0a62c13c4a660df07be689ceaca48cf">interruptable_digital_pins</a></td></tr>
-<tr class="separator:af0a62c13c4a660df07be689ceaca48cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc7f472767fd173dc9f13b895f51d3ad"><td class="memItemLeft" align="right" valign="top">std::uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#adc7f472767fd173dc9f13b895f51d3ad">pin_count</a></td></tr>
+<tr class="separator:adc7f472767fd173dc9f13b895f51d3ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63683060b2238190b5ab5f1f863f590e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::uint16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#a63683060b2238190b5ab5f1f863f590e">digital_in_unable_pins</a></td></tr>
+<tr class="separator:a63683060b2238190b5ab5f1f863f590e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ffa8994d77f769f432648ac7511e13b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::uint16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#a2ffa8994d77f769f432648ac7511e13b">digital_out_unable_pins</a></td></tr>
+<tr class="separator:a2ffa8994d77f769f432648ac7511e13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67d0d2502537c8ff9415f9d76a712194"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::uint16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#a67d0d2502537c8ff9415f9d76a712194">analog_in_capable_pins</a></td></tr>
+<tr class="separator:a67d0d2502537c8ff9415f9d76a712194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7150e50e3db67f33101c5806eb20d54"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::uint16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#ad7150e50e3db67f33101c5806eb20d54">analog_out_capable_pins</a></td></tr>
+<tr class="separator:ad7150e50e3db67f33101c5806eb20d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35b4d38f75a22541f196c6146c1212df"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::uint16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#a35b4d38f75a22541f196c6146c1212df">pwm_capable_pins</a></td></tr>
 <tr class="separator:a35b4d38f75a22541f196c6146c1212df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44c8a352dd0c5a3543743867c5ca703f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsmce_1_1_board_conf_1_1_uart.html">Uart</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#a44c8a352dd0c5a3543743867c5ca703f">uart_pairs</a></td></tr>
-<tr class="separator:a44c8a352dd0c5a3543743867c5ca703f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf8f7e43b1f2473fa023b2b5e1560196"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::uint16_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#acf8f7e43b1f2473fa023b2b5e1560196">interruptable_pins</a></td></tr>
+<tr class="separator:acf8f7e43b1f2473fa023b2b5e1560196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7009dd29a125673da65c0757c1aa15f9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsmce_1_1_board_conf_1_1_uart.html">Uart</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#a7009dd29a125673da65c0757c1aa15f9">uart_quads</a></td></tr>
+<tr class="separator:a7009dd29a125673da65c0757c1aa15f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88d2aee40595cf500c9700a45f0cde36"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsmce_1_1_board_conf_1_1_i2c.html">I2c</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#a88d2aee40595cf500c9700a45f0cde36">i2c_pairs</a></td></tr>
+<tr class="separator:a88d2aee40595cf500c9700a45f0cde36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06b57c8134d3aafc0da3e551d41eca6f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structsmce_1_1_board_conf_1_1_spi.html">Spi</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_board_conf.html#a06b57c8134d3aafc0da3e551d41eca6f">spi_quads</a></td></tr>
+<tr class="separator:a06b57c8134d3aafc0da3e551d41eca6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="acad5e5ae158d0f81984981d0f9fece34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acad5e5ae158d0f81984981d0f9fece34">&#9670;&nbsp;</a></span>analog_pin_count</h2>
+<a id="a67d0d2502537c8ff9415f9d76a712194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67d0d2502537c8ff9415f9d76a712194">&#9670;&nbsp;</a></span>analog_in_capable_pins</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::uint16_t smce::BoardConf::analog_pin_count</td>
+          <td class="memname">std::vector&lt;std::uint16_t&gt; smce::BoardConf::analog_in_capable_pins</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a452a4c3d8d6293a6d1b1312d177a6d50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a452a4c3d8d6293a6d1b1312d177a6d50">&#9670;&nbsp;</a></span>digital_pin_count</h2>
+<a id="ad7150e50e3db67f33101c5806eb20d54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7150e50e3db67f33101c5806eb20d54">&#9670;&nbsp;</a></span>analog_out_capable_pins</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::uint16_t smce::BoardConf::digital_pin_count</td>
+          <td class="memname">std::vector&lt;std::uint16_t&gt; smce::BoardConf::analog_out_capable_pins</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63683060b2238190b5ab5f1f863f590e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63683060b2238190b5ab5f1f863f590e">&#9670;&nbsp;</a></span>digital_in_unable_pins</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::uint16_t&gt; smce::BoardConf::digital_in_unable_pins</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2ffa8994d77f769f432648ac7511e13b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ffa8994d77f769f432648ac7511e13b">&#9670;&nbsp;</a></span>digital_out_unable_pins</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::uint16_t&gt; smce::BoardConf::digital_out_unable_pins</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -143,14 +185,28 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af0a62c13c4a660df07be689ceaca48cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0a62c13c4a660df07be689ceaca48cf">&#9670;&nbsp;</a></span>interruptable_digital_pins</h2>
+<a id="a88d2aee40595cf500c9700a45f0cde36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88d2aee40595cf500c9700a45f0cde36">&#9670;&nbsp;</a></span>i2c_pairs</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::uint16_t&gt; smce::BoardConf::interruptable_digital_pins</td>
+          <td class="memname">std::vector&lt;<a class="el" href="structsmce_1_1_board_conf_1_1_i2c.html">I2c</a>&gt; smce::BoardConf::i2c_pairs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf8f7e43b1f2473fa023b2b5e1560196"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf8f7e43b1f2473fa023b2b5e1560196">&#9670;&nbsp;</a></span>interruptable_pins</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::uint16_t&gt; smce::BoardConf::interruptable_pins</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -171,6 +227,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="adc7f472767fd173dc9f13b895f51d3ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc7f472767fd173dc9f13b895f51d3ad">&#9670;&nbsp;</a></span>pin_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uint16_t smce::BoardConf::pin_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a35b4d38f75a22541f196c6146c1212df"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a35b4d38f75a22541f196c6146c1212df">&#9670;&nbsp;</a></span>pwm_capable_pins</h2>
 
@@ -185,14 +255,28 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a44c8a352dd0c5a3543743867c5ca703f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44c8a352dd0c5a3543743867c5ca703f">&#9670;&nbsp;</a></span>uart_pairs</h2>
+<a id="a06b57c8134d3aafc0da3e551d41eca6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06b57c8134d3aafc0da3e551d41eca6f">&#9670;&nbsp;</a></span>spi_quads</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="structsmce_1_1_board_conf_1_1_uart.html">Uart</a>&gt; smce::BoardConf::uart_pairs</td>
+          <td class="memname">std::vector&lt;<a class="el" href="structsmce_1_1_board_conf_1_1_spi.html">Spi</a>&gt; smce::BoardConf::spi_quads</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7009dd29a125673da65c0757c1aa15f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7009dd29a125673da65c0757c1aa15f9">&#9670;&nbsp;</a></span>uart_quads</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structsmce_1_1_board_conf_1_1_uart.html">Uart</a>&gt; smce::BoardConf::uart_quads</td>
         </tr>
       </table>
 </div><div class="memdoc">

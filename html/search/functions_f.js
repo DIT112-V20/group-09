@@ -1,21 +1,15 @@
 var searchData=
 [
-  ['set_5fsketch_5fand_5fcar_457',['set_sketch_and_car',['../structsmce_1_1_sketch_runtime.html#aace6b93461e03f8155b090a8ee9e3493',1,'smce::SketchRuntime']]],
-  ['setcharat_458',['setCharAt',['../class_string.html#a731ec0906bc99b0423297f0c71a2a96f',1,'String']]],
-  ['setkey_459',['setKey',['../class_movable_camera.html#afb702e38dacf5bdd750035c1df01766a',1,'MovableCamera']]],
-  ['settimeout_460',['setTimeout',['../struct_stream.html#a8b127a957e24ccbab3d37069fbad6fa3',1,'Stream']]],
-  ['setup_461',['Setup',['../class_urho_app.html#a40a5ea9d79d40f99e0e9ae11adde6638',1,'UrhoApp::Setup()'],['../_arduino_8h.html#a4fc01d736fe50cf5b977f755b675f11d',1,'setup():&#160;Arduino.h']]],
-  ['setwriteerror_462',['setWriteError',['../class_print.html#a0ab7960321a5f532e17ae3bb6e04111a',1,'Print']]],
-  ['shiftin_463',['shiftIn',['../_arduino_8cxx.html#a1efecc975119046403adc60af645015d',1,'shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder):&#160;Arduino.cxx'],['../_arduino_8h.html#a1efecc975119046403adc60af645015d',1,'shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder):&#160;Arduino.cxx']]],
-  ['shiftout_464',['shiftOut',['../_arduino_8cxx.html#ac44afc7b9d1ec5feb1179b2e3454690a',1,'shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val):&#160;Arduino.cxx'],['../_arduino_8h.html#ac44afc7b9d1ec5feb1179b2e3454690a',1,'shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val):&#160;Arduino.cxx']]],
-  ['sketchloadedobject_465',['SketchLoadedObject',['../structsmce_1_1_sketch_loaded_object.html#a8660e1e883953a4011fa8b605288f344',1,'smce::SketchLoadedObject::SketchLoadedObject() noexcept=default'],['../structsmce_1_1_sketch_loaded_object.html#a83fee8c92fa0d051da67bb76a7700130',1,'smce::SketchLoadedObject::SketchLoadedObject(const SketchLoadedObject &amp;)=delete'],['../structsmce_1_1_sketch_loaded_object.html#af046a8676853de6eb047c3c219f0d166',1,'smce::SketchLoadedObject::SketchLoadedObject(SketchLoadedObject &amp;&amp;) noexcept=default']]],
-  ['sketchruntime_466',['SketchRuntime',['../structsmce_1_1_sketch_runtime.html#a7f5877e053a148782d4c4c05365072b9',1,'smce::SketchRuntime::SketchRuntime()=default'],['../structsmce_1_1_sketch_runtime.html#aedadc3788831103bb6889323a6b476fa',1,'smce::SketchRuntime::SketchRuntime(const SketchRuntime &amp;)=delete'],['../structsmce_1_1_sketch_runtime.html#a41ef52434ee0e536bfded2d7bf18c59c',1,'smce::SketchRuntime::SketchRuntime(SketchRuntime &amp;&amp;)=delete']]],
-  ['slurp_5ffile_467',['slurp_file',['../utility_8hxx.html#abae29e0711fc72356eeba5f8a7d031f4',1,'utility.hxx']]],
-  ['sq_468',['sq',['../_arduino_8h.html#a2e50ca1131ca16a5964bff998f574962',1,'Arduino.h']]],
-  ['start_469',['start',['../structsmce_1_1_sketch_runtime.html#a04327f745b92f7b1c836754eab91260e',1,'smce::SketchRuntime::start()'],['../class_urho_app.html#a0a750b8d2d1c9449587dfca42d2fc45f',1,'UrhoApp::Start()']]],
-  ['startswith_470',['startsWith',['../class_string.html#a8eb8d0ae6b8661e682766ff383a29dc8',1,'String']]],
-  ['stop_471',['Stop',['../class_urho_app.html#a7ec3bdca0380865c5bbf22827f10a104',1,'UrhoApp']]],
-  ['stream_472',['Stream',['../struct_stream.html#a896ad753b3ff726ee3be1ba3153f3ee4',1,'Stream']]],
-  ['string_473',['String',['../class_string.html#a7bf336147e61bee901c69a286569446c',1,'String::String() noexcept=default'],['../class_string.html#ab636c1e6dc35b37157b9cf698657b259',1,'String::String(const String &amp;)=default'],['../class_string.html#a47934374f79df5ec5f4e46186a3ac939',1,'String::String(String &amp;&amp;) noexcept=default'],['../class_string.html#aa33f18f81ab472a3c0e053c46847dfa1',1,'String::String(const char(&amp;charr)[N])'],['../class_string.html#ab8e29badab15b29ba073e3c8fad38344',1,'String::String(const char *cstr)'],['../class_string.html#a1fdfe981d2c5e0075c1669dd94553082',1,'String::String(char c)'],['../class_string.html#ac78c8eb5310e4b3ce123e9356c655e29',1,'String::String(T val, StringBaseConv base)']]],
-  ['substring_474',['substring',['../class_string.html#a13931b6b63f4e55b9166d7507fb4f7b1',1,'String::substring(unsigned from) const'],['../class_string.html#a79e670f8496626163c765b443a177f4b',1,'String::substring(unsigned from, unsigned to) const']]]
+  ['random_500',['random',['../_arduino_8cxx.html#a07da44cd136848332e2b70879a4385b4',1,'random(long max):&#160;Arduino.cxx'],['../_arduino_8cxx.html#a2d69632859fb548f0e5a74f77d36b1eb',1,'random(long min, long max):&#160;Arduino.cxx'],['../_arduino_8h.html#a07da44cd136848332e2b70879a4385b4',1,'random(long max):&#160;Arduino.cxx'],['../_arduino_8h.html#a2d69632859fb548f0e5a74f77d36b1eb',1,'random(long min, long max):&#160;Arduino.cxx']]],
+  ['randomseed_501',['randomSeed',['../_arduino_8cxx.html#a0f20cd490a0ba7f2d37cbb8b04d92e3e',1,'randomSeed(unsigned long seed):&#160;Arduino.cxx'],['../_arduino_8h.html#a0f20cd490a0ba7f2d37cbb8b04d92e3e',1,'randomSeed(unsigned long seed):&#160;Arduino.cxx']]],
+  ['read_502',['read',['../struct_hardware_serial.html#aaa09c85eb59e62bfda3c48fae7dcb14c',1,'HardwareSerial::read()'],['../struct_stream.html#aea5dee9fcb038148515b7c9212d38dc0',1,'Stream::read()']]],
+  ['readbytes_503',['readBytes',['../struct_stream.html#ab0c0e0248cf5d333d3d26d2b739a8c0e',1,'Stream']]],
+  ['readbytesuntil_504',['readBytesUntil',['../struct_stream.html#a956e697b356e923e911a61cd9c19139f',1,'Stream']]],
+  ['readstring_505',['readString',['../struct_stream.html#a1c60bdda2b65d78e5a1362d51b856c5a',1,'Stream']]],
+  ['readstringuntil_506',['readStringUntil',['../struct_stream.html#a6a409da87c552909260d8cc428c5ca70',1,'Stream']]],
+  ['registerobject_507',['RegisterObject',['../class_movable_camera.html#ad496f22151399b8ad4a5e968e3abb29f',1,'MovableCamera']]],
+  ['remove_508',['remove',['../class_string.html#a42ff252a45d4bda3afefe4eb8cbe8bbb',1,'String::remove(unsigned idx)'],['../class_string.html#a914189177870f1535d588d73778acea7',1,'String::remove(unsigned idx, unsigned count)']]],
+  ['replace_509',['replace',['../class_string.html#a32f05a70790179df0b56492f76a9ec66',1,'String']]],
+  ['reserve_510',['reserve',['../class_string.html#a2564b6ee7b02181de8c857e93bf1abc3',1,'String']]],
+  ['resume_511',['resume',['../structsmce_1_1_sketch_runtime.html#a41c9762b43003b58f3c73f39af91c3dc',1,'smce::SketchRuntime']]]
 ];

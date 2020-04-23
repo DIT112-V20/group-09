@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['serial_523',['Serial',['../_hardware_serial_8h.html#a7b8c4a195c58f9eb8750e94955c5aa4b',1,'HardwareSerial.h']]],
-  ['servo_5fvalue_524',['servo_value',['../struct_board_data.html#ac49ce35e7f09160724adfdeec77c3ab9',1,'BoardData']]],
-  ['setup_525',['setup',['../structsmce_1_1_sketch_loaded_object.html#a2e8ca1939e7e3a4474cf528899b81fda',1,'smce::SketchLoadedObject']]],
-  ['smce_5fhome_526',['smce_home',['../structsmce_1_1_program_options.html#a5f391b585914ffd6fc2776ffb6fc894a',1,'smce::ProgramOptions']]],
-  ['start_5ftime_527',['start_time',['../struct_board_data.html#a936e1076cc09a74f46de80876a0e2a31',1,'BoardData']]]
+  ['pin_5fcount_588',['pin_count',['../structsmce_1_1_board_conf.html#adc7f472767fd173dc9f13b895f51d3ad',1,'smce::BoardConf']]],
+  ['pin_5ffrequency_589',['pin_frequency',['../struct_board_data.html#a813ddcb257975dad74fef249e01d2025',1,'BoardData']]],
+  ['pin_5fmodes_590',['pin_modes',['../struct_board_data.html#a464d293afcea79a85cc2877f1b10f8c1',1,'BoardData']]],
+  ['pinmode_591',['PinMode',['../_arduino_8h.html#ae3c580b485f982cea066ca05c0bbd1a8',1,'Arduino.h']]],
+  ['pins_5fcaps_592',['pins_caps',['../struct_board_info.html#a64c11ba95a3ad14dcd10c6016033329e',1,'BoardInfo']]],
+  ['preprocessor_5fbin_593',['preprocessor_bin',['../structsmce_1_1_program_options.html#acc216bfd1a9e5e790fb62462ce205b3a',1,'smce::ProgramOptions']]],
+  ['pwm_5fable_594',['pwm_able',['../struct_pin_capability.html#aabf4800626b9ac63b38da027040c4cf1',1,'PinCapability']]],
+  ['pwm_5fcapable_5fpins_595',['pwm_capable_pins',['../structsmce_1_1_board_conf.html#a35b4d38f75a22541f196c6146c1212df',1,'smce::BoardConf']]]
 ];
