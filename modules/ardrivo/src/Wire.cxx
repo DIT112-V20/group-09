@@ -182,3 +182,4 @@ void TwoWire::setClock(std::uint32_t) {}
 void TwoWire::onReceive(OnRecieve* cb) noexcept { user_onrecieve = cb; } // CAVEAT: [missing] TWI slave mode is no-op
 
 void TwoWire::onRequest(OnRequest* cb) noexcept { user_onrequest = cb; } // CAVEAT: [missing] TWI slave mode is no-op
+

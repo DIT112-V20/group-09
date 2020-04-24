@@ -14,7 +14,17 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+<<<<<<< HEAD
 #include <Urho3D/Engine/Application.h>
 #include "app/UrhoApp.hxx"
 
 URHO3D_DEFINE_APPLICATION_MAIN(UrhoApp)
+=======
+#include <iostream>
+#include "ardpolyfills/Wire.h"
+int main() 
+{
+    std::cout << "Heeelo";
+    
+}
+>>>>>>> 7f67c96... Current wire implementation
