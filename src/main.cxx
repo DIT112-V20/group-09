@@ -22,9 +22,13 @@ URHO3D_DEFINE_APPLICATION_MAIN(UrhoApp)
 =======
 #include <iostream>
 #include "ardpolyfills/Wire.h"
+<<<<<<< HEAD
 int main() 
 {
     std::cout << "Heeelo";
     
 }
 >>>>>>> 7f67c96... Current wire implementation
+=======
+int main() {}
+>>>>>>> 8e4e56f... More wire implemenmtion
