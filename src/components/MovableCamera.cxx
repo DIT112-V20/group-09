@@ -15,7 +15,6 @@
  *  limitations under the License.
  */
 
-#include <Urho3D/Input/Input.h>
 #include <Urho3D/UI/UI.h>
 #include "components/MovableCamera.hxx"
 

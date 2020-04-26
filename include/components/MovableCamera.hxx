@@ -23,6 +23,7 @@
 #include <Urho3D/Core/Context.h>
 #include <Urho3D/Graphics/Camera.h>
 #include <Urho3D/Graphics/Viewport.h>
+#include <Urho3D/Input/Input.h>
 #include <Urho3D/Scene/Component.h>
 #include <Urho3D/Scene/Scene.h>
 
