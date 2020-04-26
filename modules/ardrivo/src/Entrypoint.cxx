@@ -48,7 +48,7 @@ void maybe_init() noexcept {
     // over-allocate everything to handle possible IO at dynamic-init
     auto loc_board_data = std::make_unique<BoardData>();
     loc_board_data->silence_errors = true;
-    loc_board_data->start_time = std::chrono::steady_clock::now();
+    loc_board_data->start_time = {};
     loc_board_data->pin_modes = std::vector<std::atomic_uint8_t>(255);
     loc_board_data->digital_pin_values = std::vector<std::atomic_bool>(255);
     loc_board_data->analog_pin_values = std::vector<std::atomic_uint16_t>(255);
