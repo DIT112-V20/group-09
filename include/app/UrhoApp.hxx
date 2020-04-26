@@ -23,6 +23,9 @@
 #include <Urho3D/Scene/Node.h>
 #include <Urho3D/Scene/Scene.h>
 
+
+class Vehicle;
+
 class UrhoApp : public Urho3D::Application {
     URHO3D_OBJECT(UrhoApp, Urho3D::Application);
 
@@ -38,7 +41,7 @@ class UrhoApp : public Urho3D::Application {
         none,
         main,
     };
-
+    void create_vehicle();
     void create_scene();
     void create_viewport();
     void subscribe_to_events();
@@ -48,6 +51,7 @@ class UrhoApp : public Urho3D::Application {
 
     Urho3D::SharedPtr<Urho3D::Scene> m_scene;
     Urho3D::SharedPtr<Urho3D::Node> m_camera_node;
+    Urho3D::SharedPtr<Vehicle> m_vehicle;
 };
 
 #endif // SMARTCAR_EMUL_URHOAPP_HXX

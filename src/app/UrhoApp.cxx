@@ -31,6 +31,7 @@
 #include "UrhoUtility.hxx"
 #include "app/UrhoApp.hxx"
 #include "components/MovableCamera.hxx"
+#include "Vehicle.hxx"
 
 UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} { MovableCamera::RegisterObject(context); }
 
@@ -50,12 +51,13 @@ void UrhoApp::Start() {
     input.SetMouseVisible(true);
     input.SetMouseGrabbed(false);
 
+    create_vehicle();
     create_scene();
     create_viewport();
     subscribe_to_events();
 }
 
-void UrhoApp::Stop() {}
+void UrhoApp::Stop() { engine_->DumpResources(true); }
 
 void UrhoApp::create_scene() {
     auto* const cache = GetSubsystem<Urho3D::ResourceCache>();
@@ -108,4 +110,11 @@ void UrhoApp::HandleUpdate(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
 void UrhoApp::HandleMouseButtonDown(Urho3D::StringHash, Urho3D::VariantMap&) {
     auto* const input = GetSubsystem<Urho3D::Input>();
     input->SetMouseMode(input->GetMouseMode() == Urho3D::MM_ABSOLUTE ? Urho3D::MM_RELATIVE : Urho3D::MM_ABSOLUTE);
+}
+
+void UrhoApp::create_vehicle() {
+    Node* vehicleNode = m_scene->CreateChild("Vehicle");
+    vehicleNode->SetPosition(Vector3(0.0f, 25.0f, 0.0f));
+    m_vehicle = vehicleNode->CreateComponent<Vehicle>();
+    m_vehicle->Init();
 }
