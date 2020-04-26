@@ -94,7 +94,7 @@ target_link_libraries (smartcar_emul_deps INTERFACE
 
 add_executable (smartcar_emul src/main.cxx)
 target_include_directories (smartcar_emul PRIVATE include thirdparty/inih)
-target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps)
+target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps Urho3D-rapidjson)
 target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 add_dependencies (smartcar_emul ArduinoRuntime)
 
@@ -104,7 +104,10 @@ target_sources (smartcar_emul PRIVATE
         include/components/Registry.hxx
         include/components/MovableCamera.hxx
         src/components/MovableCamera.cxx
-        include/UrhoUtility.hxx)
+        include/UrhoUtility.hxx
+        src/components/LaserCaster.cxx include/components/LaserCaster.hxx
+        src/components/PerfectAnalogLaserSensor.cxx
+        include/components/PerfectAnalogLaserSensor.hxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 
