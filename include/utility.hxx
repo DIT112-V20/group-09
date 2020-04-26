@@ -66,4 +66,8 @@ struct Visitor : Base... {
 template <typename... T>
 Visitor(T...) -> Visitor<T...>;
 
+template <class T, class V> void visit(V&& v, T&& t) {
+    [v=std::forward<V>(v), t=std::forward<T>(t)]<size_t... I>(std::index_sequence<I...>) { (..., v(std::get<I>(t))); }(std::make_index_sequence<std::tuple_size_v<std::remove_cvref_t<T>>>());
+}
+
 #endif // SMARTCAR_EMUL_INCLUDE_UTILITY_HXX
