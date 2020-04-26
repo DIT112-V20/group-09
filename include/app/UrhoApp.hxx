@@ -45,7 +45,7 @@ class UrhoApp : public Urho3D::Application {
         none,
         main,
     };
-
+    void create_vehicle();
     void create_scene();
     void create_viewport();
     void setup_attachments(BoardData& board, const smce::VehicleConfig&);
@@ -58,6 +58,7 @@ class UrhoApp : public Urho3D::Application {
     Urho3D::SharedPtr<Urho3D::Node> m_camera_node;
     Urho3D::SharedPtr<Urho3D::Node> m_vehicle_node;
     std::vector<Urho3D::LogicComponent*> m_vehicle_attachments;
+    Urho3D::SharedPtr<Vehicle> m_vehicle;
 };
 
 #endif // SMARTCAR_EMUL_URHOAPP_HXX
