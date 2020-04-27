@@ -74,20 +74,29 @@ $(function() {
 <div class="title">Entrypoint.cxx File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="_board_data_8hxx_source.html">BoardData.hxx</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;range/v3/algorithm/for_each.hpp&gt;</code><br />
+<code>#include &lt;range/v3/view/zip.hpp&gt;</code><br />
+<code>#include &quot;<a class="el" href="_board_data_8hxx_source.html">BoardData.hxx</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_board_info_8hxx_source.html">BoardInfo.hxx</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_entrypoint_8hxx_source.html">Entrypoint.hxx</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utility_8hxx_source.html">utility.hxx</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a9677631eebe179682fc0de90b81caa61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#a9677631eebe179682fc0de90b81caa61">merge_boards</a> (<a class="el" href="struct_board_data.html">BoardData</a> old_board, <a class="el" href="struct_board_data.html">BoardData</a> &amp;new_board) noexcept</td></tr>
+<tr class="separator:a9677631eebe179682fc0de90b81caa61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7be599e76f97056cec2409742e5dd901"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#a7be599e76f97056cec2409742e5dd901">init</a> (<a class="el" href="struct_board_data.html">BoardData</a> *brd, const <a class="el" href="struct_board_info.html">BoardInfo</a> *info)</td></tr>
 <tr class="separator:a7be599e76f97056cec2409742e5dd901"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b928e7ef7e7ca3dce68fd2f51a1c197"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#a8b928e7ef7e7ca3dce68fd2f51a1c197">maybe_init</a> () noexcept</td></tr>
+<tr class="separator:a8b928e7ef7e7ca3dce68fd2f51a1c197"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a517fad1b64cd89318df6d67425c792e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_board_data.html">BoardData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#a517fad1b64cd89318df6d67425c792e7">board_data</a></td></tr>
+<tr class="memitem:a517fad1b64cd89318df6d67425c792e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_board_data.html">BoardData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#a517fad1b64cd89318df6d67425c792e7">board_data</a> = nullptr</td></tr>
 <tr class="separator:a517fad1b64cd89318df6d67425c792e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7e3b5132c78a63867dc1343ff2a8589"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_board_info.html">BoardInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#ac7e3b5132c78a63867dc1343ff2a8589">board_info</a></td></tr>
+<tr class="memitem:ac7e3b5132c78a63867dc1343ff2a8589"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_board_info.html">BoardInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_entrypoint_8cxx.html#ac7e3b5132c78a63867dc1343ff2a8589">board_info</a> = nullptr</td></tr>
 <tr class="separator:ac7e3b5132c78a63867dc1343ff2a8589"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -119,6 +128,67 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a8b928e7ef7e7ca3dce68fd2f51a1c197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b928e7ef7e7ca3dce68fd2f51a1c197">&#9670;&nbsp;</a></span>maybe_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void maybe_init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9677631eebe179682fc0de90b81caa61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9677631eebe179682fc0de90b81caa61">&#9670;&nbsp;</a></span>merge_boards()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void merge_boards </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_board_data.html">BoardData</a>&#160;</td>
+          <td class="paramname"><em>old_board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_board_data.html">BoardData</a> &amp;&#160;</td>
+          <td class="paramname"><em>new_board</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a517fad1b64cd89318df6d67425c792e7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a517fad1b64cd89318df6d67425c792e7">&#9670;&nbsp;</a></span>board_data</h2>
@@ -127,7 +197,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_board_data.html">BoardData</a>* board_data</td>
+          <td class="memname"><a class="el" href="struct_board_data.html">BoardData</a>* board_data = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -141,7 +211,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="struct_board_info.html">BoardInfo</a>* board_info</td>
+          <td class="memname">const <a class="el" href="struct_board_info.html">BoardInfo</a>* board_info = nullptr</td>
         </tr>
       </table>
 </div><div class="memdoc">
