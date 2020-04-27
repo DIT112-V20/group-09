@@ -27,13 +27,18 @@
 #include <Urho3D/Input/Input.h>
 #include <Urho3D/Input/InputEvents.h>
 #include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/Physics/CollisionShape.h>
+#include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/Scene/Scene.h>
 #include "UrhoUtility.hxx"
 #include "app/UrhoApp.hxx"
 #include "components/MovableCamera.hxx"
 #include "Vehicle.hxx"
 
-UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} { MovableCamera::RegisterObject(context); }
+UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} {
+    MovableCamera::RegisterObject(context);
+    Vehicle::RegisterObject(context);
+}
 
 void UrhoApp::Setup() {
     engineParameters_[Urho3D::EP_WINDOW_TITLE] = "Smart Car Emul";
@@ -51,8 +56,8 @@ void UrhoApp::Start() {
     input.SetMouseVisible(true);
     input.SetMouseGrabbed(false);
 
-    create_vehicle();
     create_scene();
+    create_vehicle();
     create_viewport();
     subscribe_to_events();
 }
@@ -68,6 +73,10 @@ void UrhoApp::create_scene() {
     plane_node->SetScale(Urho3D::Vector3(200, 0, 200));
     auto* const planeObject = plane_node->CreateComponent<Urho3D::StaticModel>();
     planeObject->SetModel(cache->GetResource<Urho3D::Model>("Models/Cone.mdl"));
+    auto* body = plane_node->CreateComponent<Urho3D::RigidBody>();
+    body->SetCollisionLayer(2); // Use layer bitmask 2 for static geometry
+    auto* shape = plane_node->CreateComponent<Urho3D::CollisionShape>();
+    shape->SetStaticPlane();
 
     Urho3D::Node* lightNode = m_scene->CreateChild("Sunlight");
     auto* const light = lightNode->CreateComponent<Urho3D::Light>();
