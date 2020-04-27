@@ -150,7 +150,7 @@ namespace smce {
     BoardData ret;
     ret.digital_pin_values = std::vector<std::atomic_bool>(conf.pin_count);
     ret.analog_pin_values = std::vector<std::atomic_uint16_t>(conf.pin_count);
-    ret.servo_value = std::vector<std::atomic_uint8_t>(conf.pin_count);
+    ret.pwm_values = std::vector<std::atomic_uint8_t>(conf.pin_count);
     ret.pin_frequency = std::vector<std::atomic_uint8_t>(conf.pin_count);
     ret.uart_buses = std::vector<UartBus>(conf.uart_quads.size());
     ret.i2c_buses = std::vector<I2cBus>(conf.i2c_pairs.size());

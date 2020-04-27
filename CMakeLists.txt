@@ -59,15 +59,15 @@ include (BoostDLL)
 
 add_subdirectory (modules)
 
-execute_process(
+execute_process (
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/share" "${CMAKE_BINARY_DIR}/share"
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/include/ardpolyfills" "${CMAKE_BINARY_DIR}/share/smce/toolchain/include/ardpolyfills"
         COMMAND ${CMAKE_COMMAND} -E touch "${CMAKE_SOURCE_DIR}/share/smce/toolchain/include/ardpolyfills/analogWrite.h" # Until we can fake a full Arduino core
         COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib")
 
-add_library(ArduinoRuntime STATIC)
+add_library (ArduinoRuntime STATIC)
 set_target_properties (ArduinoRuntime PROPERTIES POSITION_INDEPENDENT_CODE True)
-target_link_libraries(ArduinoRuntime PUBLIC Ardrivo)
+target_link_libraries (ArduinoRuntime PUBLIC Ardrivo)
 add_custom_command (TARGET ArduinoRuntime POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ArduinoRuntime>" "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib/"
         COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/share/smce/toolchain/libraries"
@@ -75,7 +75,7 @@ add_custom_command (TARGET ArduinoRuntime POST_BUILD
 file (GENERATE
         OUTPUT "${CMAKE_BINARY_DIR}/share/smce/toolchain/Modules/ArduinoRuntimeLocation.cmake"
         CONTENT "set (ARDUINO_RUNTIME_FILENAME $<TARGET_FILE_NAME:ArduinoRuntime>)")
-add_dependencies(TestTag ArduinoRuntime)
+add_dependencies (TestTag ArduinoRuntime)
 
 
 add_library (smartcar_emul_deps INTERFACE)
@@ -104,10 +104,13 @@ target_sources (smartcar_emul PRIVATE
         include/components/Registry.hxx
         include/components/MovableCamera.hxx
         src/components/MovableCamera.cxx
-        include/UrhoUtility.hxx
         src/components/LaserCaster.cxx include/components/LaserCaster.hxx
         src/components/PerfectAnalogLaserSensor.cxx
-        include/components/PerfectAnalogLaserSensor.hxx)
+        include/components/PerfectAnalogLaserSensor.hxx
+        src/components/Servo.cxx include/components/Servo.hxx
+        src/components/WheelServo.cxx
+        include/components/WheelServo.hxx
+        include/UrhoUtility.hxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 
@@ -126,11 +129,11 @@ execute_process (
         COMMAND "${CMAKE_COMMAND}" -E copy_directory "${URHO3D_RESOURCES}/Data" "${SMCE_SHARE}/Resources/Data")
 
 add_executable (smartcar_emul_tests test/sanity.cxx)
-add_dependencies(smartcar_emul_tests TestTag)
+add_dependencies (smartcar_emul_tests TestTag)
 target_link_libraries (smartcar_emul_tests PRIVATE
         smartcar_emul_deps
         Catch2)
 
 
 catch_discover_tests (smartcar_emul_tests)
-add_custom_command(TARGET smartcar_emul_tests POST_BUILD COMMAND ctest --output-on-failure)
+add_custom_command (TARGET smartcar_emul_tests POST_BUILD COMMAND ctest --output-on-failure)

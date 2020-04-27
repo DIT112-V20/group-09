@@ -11,7 +11,7 @@ static void init_fake() {
         (delete board_info), board_data = nullptr;
 
     auto loc_board_data = std::make_unique<BoardData>();
-    loc_board_data->servo_value = std::vector<std::atomic_uint8_t>(255);
+    loc_board_data->pwm_values = std::vector<std::atomic_uint8_t>(255);
 
     auto loc_board_info = std::make_unique<BoardInfo>();
     loc_board_info->pins_caps.resize(255);
@@ -22,7 +22,7 @@ static void init_fake() {
 }
 
 bool writtenSuccessful(Servo currentServo, int attchedPin, int expectWrittenValue) {
-    return currentServo.read() == expectWrittenValue && board_data->servo_value[attchedPin].load() == expectWrittenValue;
+    return currentServo.read() == expectWrittenValue && board_data->pwm_values[attchedPin].load() == expectWrittenValue;
 }
 
 TEST_CASE("Attach pin", "[Attach]") {
