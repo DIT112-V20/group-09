@@ -26,6 +26,7 @@
 #include "BoardData.hxx"
 #include "BoardDataDef.hxx"
 #include "BoardInfo.hxx"
+#include "Entrypoint.hxx"
 #include "Error.hxx"
 
 using namespace std::literals;
@@ -35,6 +36,7 @@ using namespace std::literals;
 }
 
 void pinMode(uint8_t pin, uint8_t mode) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("pinMode({}, {}): {}", pin, mode, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
@@ -46,6 +48,7 @@ void pinMode(uint8_t pin, uint8_t mode) {
 }
 
 void digitalWrite(uint8_t pin, bool val) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("digitalWrite({}, {}): {}", pin, val, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
@@ -55,6 +58,7 @@ void digitalWrite(uint8_t pin, bool val) {
 }
 
 int digitalRead(uint8_t pin) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("digitalRead({}): {}", pin, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"), LOW);
@@ -64,6 +68,7 @@ int digitalRead(uint8_t pin) {
 }
 
 void analogWrite(uint16_t pin, uint16_t val) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("analogWrite({}, {}): {}", pin, val, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
@@ -73,6 +78,7 @@ void analogWrite(uint16_t pin, uint16_t val) {
 }
 
 int analogRead(uint8_t pin) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("analogRead({}): {}", pin, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"), 0);
@@ -84,6 +90,7 @@ int analogRead(uint8_t pin) {
 void analogReference(uint8_t mode) {}
 
 void noTone(uint8_t pin) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("noTone({}): {}", pin, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
@@ -92,6 +99,7 @@ void noTone(uint8_t pin) {
 }
 
 void tone(uint8_t pin, unsigned int frequency, unsigned long duration) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("tone({}, {}, {}): {}", pin, frequency, duration, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
@@ -101,6 +109,7 @@ void tone(uint8_t pin, unsigned int frequency, unsigned long duration) {
 }
 
 unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("pulseIn({}, {}, {}): {}", pin, state, timeout, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"), 0);
@@ -130,6 +139,7 @@ unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout) {
 }
 
 unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("pulseInLong({}, {}, {}): {}", pin, state, timeout, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"), 0);
@@ -137,6 +147,7 @@ unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout) {
 }
 
 void shiftOut(uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order, uint8_t val) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("shiftOut({}, {}, {}, {}): {}", data_pin, clock_pin, bit_order, val, msg); };
     if (data_pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
@@ -155,6 +166,7 @@ void shiftOut(uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order, uint8_t va
     }
 }
 uint8_t shiftIn(uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("shiftIn({}, {}, {}): {}", data_pin, clock_pin, bit_order, msg); };
     if (data_pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"), '\x00');
@@ -173,12 +185,14 @@ void delay(unsigned long duration) { std::this_thread::sleep_for(std::chrono::mi
 void delayMicroseconds(unsigned int duration) { std::this_thread::sleep_for(std::chrono::microseconds(duration)); }
 
 unsigned long micros() {
+    maybe_init();
     const auto current_time = std::chrono::steady_clock::now();
     const unsigned long duration = std::chrono::duration_cast<std::chrono::microseconds>(current_time - board_data->start_time).count();
     return duration;
 }
 
 unsigned long millis() {
+    maybe_init();
     const auto current_time = std::chrono::steady_clock::now();
     const unsigned long duration = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - board_data->start_time).count();
     return duration;
@@ -211,6 +225,7 @@ void randomSeed(unsigned long seed) { return std::srand(seed); }
 
 // Arduino External Interrupts functions
 void attachInterrupt(uint8_t pin, void (*user_func)(), int mode) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("attachInterrupt({}, /* function pointer */, {}): {}", pin, mode, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
@@ -221,6 +236,7 @@ void attachInterrupt(uint8_t pin, void (*user_func)(), int mode) {
         board_data->interrupts_handlers[pin] = std::pair{user_func, mode};
 }
 void detachInterrupt(uint8_t pin) {
+    maybe_init();
     const auto debug_sig = [=](const char* msg) { return fmt::format("detachInterrupt({}): {}", pin, msg); };
     if (pin >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));

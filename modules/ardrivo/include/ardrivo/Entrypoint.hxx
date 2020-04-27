@@ -23,5 +23,6 @@ struct BoardData;
 struct BoardInfo;
 
 bool init(BoardData*, const BoardInfo*);
+void maybe_init() noexcept;
 
 #endif // SMARTCAR_EMUL_ENTRYPOINT_HXX

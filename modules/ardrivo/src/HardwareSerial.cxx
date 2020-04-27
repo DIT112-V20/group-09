@@ -19,9 +19,14 @@
 #include <iostream>
 #include <limits>
 #include "BoardDataDef.hxx"
+#include "Entrypoint.hxx"
 #include "HardwareSerial.h"
 
-void HardwareSerial::begin(unsigned long, uint8_t) { begun = true; }
+
+void HardwareSerial::begin(unsigned long, uint8_t) {
+    maybe_init();
+    begun = true;
+}
 
 void HardwareSerial::end() { begun = false; }
 
@@ -33,14 +38,14 @@ int HardwareSerial::available() {
 int HardwareSerial::availableForWrite() { return std::numeric_limits<int>::max(); }
 
 size_t HardwareSerial::write(uint8_t c) {
-    if (!begun)
+    if (!begun || !board_data->write_byte)
         return 0;
     board_data->write_byte(c);
     return 1;
 }
 
 size_t HardwareSerial::write(const uint8_t* buf, std::size_t n) {
-    if (!begun)
+    if (!begun || !board_data->write_buf)
         return 0;
     board_data->write_buf(buf, n);
     return n;

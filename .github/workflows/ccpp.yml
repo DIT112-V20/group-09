@@ -102,8 +102,10 @@ jobs:
           mkdir build && pushd build && URHO3D_HOME=$(realpath ../Urho3D) cmake -G Ninja .. && popd
       - name: build
         run: |
-          export CC=cc;
-          export CXX=c++;
+          if [ $(echo "$CC" | grep -Ei "^clang-") ]; then
+            export CC=/usr/local/opt/llvm/bin/clang;
+            export CXX=/usr/local/opt/llvm/bin/clang++;
+          fi
           cmake --build build
 #      - name: test
 #        run: pushd build && ctest && popd
