@@ -110,7 +110,12 @@ target_sources (smartcar_emul PRIVATE
         src/components/Servo.cxx include/components/Servo.hxx
         src/components/WheelServo.cxx
         include/components/WheelServo.hxx
-        include/UrhoUtility.hxx)
+        include/UrhoUtility.hxx
+        include/app/UrhoApp.hxx
+        src/components/MovableCamera.cxx
+        include/components/MovableCamera.hxx
+        include/UrhoUtility.hxx
+        src/Vehicle/Vehicle.cxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 

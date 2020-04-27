@@ -30,6 +30,8 @@
 #include <Urho3D/Physics/PhysicsWorld.h>
 #include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/Physics/CollisionShape.h>
+#include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/Scene/Scene.h>
 #include <Urho3D/IO/Log.h>
 #include <range/v3/algorithm/find_if.hpp>
@@ -40,7 +42,10 @@
 #include "VehicleConf.hxx"
 #include "Vehicle.hxx"
 
-UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} { MovableCamera::RegisterObject(context); }
+UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} {
+    MovableCamera::RegisterObject(context);
+    Vehicle::RegisterObject(context);
+}
 
 void UrhoApp::Setup() {
     engineParameters_[Urho3D::EP_WINDOW_TITLE] = "Smart Car Emul";
@@ -58,8 +63,8 @@ void UrhoApp::Start() {
     input.SetMouseVisible(true);
     input.SetMouseGrabbed(false);
 
-    create_vehicle();
     create_scene();
+    create_vehicle();
     create_viewport();
     subscribe_to_events();
 }
