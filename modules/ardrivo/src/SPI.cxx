@@ -34,7 +34,7 @@ void SPIClass::begin(){
     active = true;
     if(slave_sel < 0)
         slave_sel = board_info->spi_chans[bus_id].cs_pin;
-    pinMode(slave_sel, OUTPUT);
+    pinMode(slave_sel, static_cast<std::uint8_t>(PinMode::OUTPUT));
 }
 
 void SPIClass::begin(int slave_select) {
@@ -44,7 +44,7 @@ void SPIClass::begin(int slave_select) {
         return handle_error(debug_sig("Pin does not exist"));
     if (board_info->pins_caps[slave_select].digital_out)
         return handle_error(debug_sig("Pin cannot be used as SPI SS since it cannot handle digital output"));
-    pinMode(slave_select, OUTPUT);
+    pinMode(slave_select, static_cast<std::uint8_t>(PinMode::OUTPUT));
     active = true;
     slave_sel = slave_select;
 }
@@ -165,6 +165,6 @@ bool SPIClass::pins(std::int8_t sck, std::int8_t miso, std::int8_t mosi, std::in
     if (board_info->pins_caps[ss].digital_out)
         return handle_error(debug_sig("Pin cannot be used as SPI SS since it cannot handle digital output"), false);
     if (active)
-        pinMode(ss, OUTPUT);
+        pinMode(ss, static_cast<std::uint8_t>(PinMode::OUTPUT));
     return true;
 }
