@@ -48,11 +48,21 @@ struct DynaBufferBus : BidirMutexes {
     std::vector<std::byte> tx;
 };
 
-struct UartBus : DynaBufferBus {}; 
+template <class BufferBus>
+struct BlockingBus : BufferBus {
+    std::condition_variable sync; // C++20: squash into below atomic by means of `std::atomic::wait`
+    std::size_t request_bytes{}; // C++20: use `std::atomic_size_t` for thread-sync
+    std::mutex request_bytes_mutex; // C++20: remove
+};
+
+struct UartBus : DynaBufferBus {};
 struct I2cBus : FixBufferBus<32u> {
     using Device = std::variant<std::pair<std::condition_variable, std::size_t>, std::function<void(std::size_t)>>;
     std::unordered_map<std::uint8_t, Device> devices;
     std::mutex devices_mut;
+};
+struct SpiBus {
+    std::unordered_map<std::uint16_t, std::variant<BlockingBus<DynaBufferBus>, std::function<void(std::byte*, std::size_t)>>> slaves; // GCC10: use `std::span` in funcsig
 };
 
 struct BoardData {
@@ -62,6 +72,7 @@ struct BoardData {
     std::vector<std::atomic_uint8_t> pin_frequency;
     std::vector<UartBus> uart_buses;
     std::vector<I2cBus> i2c_buses;
+    std::vector<SpiBus> spi_buses;
     std::vector<std::atomic_uint8_t> pin_modes;
 
     bool (*write_byte)(unsigned char){};

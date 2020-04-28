@@ -28,6 +28,7 @@ target_sources (Ardrivo INTERFACE
         src/Arduino.cxx
         src/Entrypoint.cxx
         src/HardwareSerial.cxx
+        src/SPI.cxx
         src/Servo.cxx
         src/Stream.cxx
         src/String.cxx

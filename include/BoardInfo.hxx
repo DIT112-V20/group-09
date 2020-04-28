@@ -42,10 +42,10 @@ struct UartChannelInfo {
     std::uint16_t rts_pin; // Request to send (out)
 };
 struct SpiChannelInfo {
-    std::uint16_t mosi_pin;
-    std::uint16_t miso_pin;
-    std::uint16_t clk_pin;
-    std::uint16_t cs_pin;
+    std::uint16_t mosi_pin{};
+    std::uint16_t miso_pin{};
+    std::uint16_t clk_pin{};
+    std::uint16_t cs_pin{};
 };
 
 using PinsCapabilities = std::vector<PinCapability>;
