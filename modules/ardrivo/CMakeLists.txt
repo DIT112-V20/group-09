@@ -31,7 +31,7 @@ target_sources (Ardrivo INTERFACE
         src/Stream.cxx
         src/String.cxx
         src/Wire.cxx)
-target_compile_definitions (Ardrivo INTERFACE)
+target_compile_definitions (Ardrivo INTERFACE SMCE__COMPILING_ARDUINO_CXX=1)
 target_link_libraries (Ardrivo INTERFACE
         stdpolyfills::stdpolyfills
         range-v3::range-v3
