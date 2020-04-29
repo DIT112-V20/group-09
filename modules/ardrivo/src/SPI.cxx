@@ -124,9 +124,9 @@ void SPIClass::transfer(void* buf, std::uint16_t count) {
                            {
                                std::scoped_lock lock{bus_buffer.rx_mutex, bus_buffer.tx_mutex};
                                const auto swp_len = (std::min)(left, bus_buffer.rx.size());
-                               const auto new_beg = bus_buffer.tx.end();
+                               const auto old_size = bus_buffer.tx.size();
                                bus_buffer.tx.resize(bus_buffer.tx.size() + swp_len);
-                               std::copy(byte_buf + processed, byte_buf + swp_len, new_beg);
+                               std::copy(byte_buf + processed, byte_buf + swp_len, bus_buffer.tx.begin() + old_size);
                                std::copy(bus_buffer.rx.begin(), bus_buffer.rx.begin() + swp_len, byte_buf + processed);
                                bus_buffer.rx.erase(bus_buffer.rx.begin(), bus_buffer.rx.begin() + swp_len);
                                processed += swp_len;
