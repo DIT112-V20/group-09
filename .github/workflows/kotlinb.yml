@@ -1,0 +1,35 @@
+name: Kotlin CI
+on:
+  push:
+    paths:
+      - .github/**
+      - extras/mobile_remote_kit/**
+  pull_request:
+    paths:
+      - extras/mobile_remote_kit/**
+jobs:
+  apk:
+    name: Gradle build
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: DownloadDependencies
+        run: ./gradle androidDependencies
+      - name: Build
+        run: gradle -p extras/mobile_remote_kit build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: Outputs
+          path: extras/mobile_remote_kit/app/build/outputs

@@ -1,5 +1,12 @@
 name: Emul C++ CI
 on: [push, pull_request]
+on: 
+  push:
+    paths-ignore:
+      - extras/mobile_remote_kit/**
+  pull_request:
+    paths-ignore:
+      - extras/mobile_remote_kit/**
 jobs:
   build-ubuntu:
     runs-on: ubuntu-latest
