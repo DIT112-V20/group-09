@@ -25,6 +25,7 @@
 #include <mutex>
 #include <utility>
 #include <vector>
+#include <unordered_map>
 
 struct BidirMutexes {
     std::mutex rx_mutex;
@@ -44,8 +45,23 @@ struct DynaBufferBus : BidirMutexes {
     std::vector<std::byte> tx;
 };
 
-struct UartBus : DynaBufferBus {};
-struct I2cBus : FixBufferBus<32u> {};
+enum RequestType
+{
+    REQUEST_SEND = 1, // i want you to send me
+    REQUEST_RECEIVE // i want to send to you
+};
+
+struct ProtocolRequest
+{
+    RequestType type;
+    size_t bytes;
+};
+
+struct UartBus : DynaBufferBus {}; 
+struct I2cBus : FixBufferBus<32u> 
+{
+    std::unordered_map<uint8_t, std::vector<ProtocolRequest>> requests;
+};
 
 struct BoardData {
     std::vector<std::atomic_bool> digital_pin_values;

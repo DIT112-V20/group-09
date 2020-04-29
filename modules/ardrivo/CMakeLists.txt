@@ -36,7 +36,7 @@ target_link_libraries (Ardrivo INTERFACE
         range-v3::range-v3
         fmt::fmt-header-only)
 
-add_executable (TestsArdrivo test/Entrypoint.cxx)
+add_executable (TestsArdrivo test/Entrypoint.cxx "src/Wire.cxx")
 set_target_properties (TestsArdrivo PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries (TestsArdrivo Ardrivo Catch2)
 
