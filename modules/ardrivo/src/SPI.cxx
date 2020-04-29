@@ -42,7 +42,7 @@ void SPIClass::begin(int slave_select) {
     const auto debug_sig = [=](const char* msg) { return fmt::format("SPIClass::begin({}): {}", slave_select, msg); };
     if (slave_select >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
-    if (board_info->pins_caps[slave_select].digital_out)
+    if (!board_info->pins_caps[slave_select].digital_out)
         return handle_error(debug_sig("Pin cannot be used as SPI SS since it cannot handle digital output"));
     pinMode(slave_select, static_cast<std::uint8_t>(PinMode::OUTPUT));
     active = true;
@@ -78,7 +78,7 @@ void SPIClass::setDataMode(int slave_select, std::uint8_t spi_mode) {
     const auto debug_sig = [=](const char* msg) { return fmt::format("SPIClass::setDataMode({}, {}): {}", slave_select, spi_mode, msg); };
     if (slave_select >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
-    if (board_info->pins_caps[slave_select].digital_out)
+    if (!board_info->pins_caps[slave_select].digital_out)
         return handle_error(debug_sig("Pin cannot be used as SPI SS since it cannot handle digital output"));
     settings.data_mode = static_cast<SMCE__SpiMode>(spi_mode);
 }
@@ -92,7 +92,7 @@ void SPIClass::setClockDivider(int slave_select, std::uint8_t divider) {
     const auto debug_sig = [=](const char* msg) { return fmt::format("SPIClass::setClockDivider({}, {}): {}", slave_select, divider, msg); };
     if (slave_select >= board_info->pins_caps.size())
         return handle_error(debug_sig("Pin does not exist"));
-    if (board_info->pins_caps[slave_select].digital_out)
+    if (!board_info->pins_caps[slave_select].digital_out)
         return handle_error(debug_sig("Pin cannot be used as SPI SS since it cannot handle digital output"));
     settings.clock_div = static_cast<SMCE__SpiClockDivider>(divider);
 }
@@ -162,7 +162,7 @@ bool SPIClass::pins(std::int8_t sck, std::int8_t miso, std::int8_t mosi, std::in
 
     bus_id = std::distance(board_info->spi_chans.begin(), it);
 
-    if (board_info->pins_caps[ss].digital_out)
+    if (!board_info->pins_caps[ss].digital_out)
         return handle_error(debug_sig("Pin cannot be used as SPI SS since it cannot handle digital output"), false);
     if (active)
         pinMode(ss, static_cast<std::uint8_t>(PinMode::OUTPUT));
