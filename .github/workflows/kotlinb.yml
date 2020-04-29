@@ -24,8 +24,6 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - name: DownloadDependencies
-        run: ./gradle androidDependencies
       - name: Build
         run: gradle -p extras/mobile_remote_kit build
       - name: Upload artifact
