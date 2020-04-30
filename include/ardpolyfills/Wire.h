@@ -2,45 +2,48 @@
 #ifndef Wire_h
 #define Wire_h
 
+#include <array>
 #include <cstdint>
 #include <optional>
 #include "BoardData.hxx"
 #include "Stream.h"
 
-class TwoWire : public Stream
-{
-  
-public:
-    void begin();
-    void begin(uint8_t a);
-    void begin(int a);
-    size_t requestFrom(uint8_t address, size_t size, bool stop);
-    uint8_t requestFrom(uint8_t, uint8_t);
-    uint8_t requestFrom(uint8_t, uint8_t, uint8_t);
-    uint8_t requestFrom(int, int);
-    uint8_t requestFrom(int, int, int);
-    void beginTransmission(uint8_t);
-    void beginTransmission(int);
-    uint8_t endTransmission(void);
-    uint8_t endTransmission(uint8_t);
-    virtual size_t write(uint8_t);
-    virtual size_t write(const uint8_t*, size_t);
-    virtual int available(void);
-    virtual int read(void);
-    void setClock(uint32_t);
-    void onReceive(void (*)(int));
-    void onRequest(void (*)());
+class TwoWire : public Stream {
+    using OnRecieve = void(int);
+    using OnRequest = void();
+    constexpr static std::uint8_t no_address = 128;
 
-private:
-    bool begun;
-    uint8_t slaveAddress;
-    uint8_t transmitted;
-    uint8_t rxBufferIndex;
-    uint8_t txBufferIndex;
-    std::uint16_t bus_id;
-    std::optional<uint8_t>transmissionAddress;
-    void (*user_onRequest)(void);
-    void (*user_onReceive)(int);
+    std::uint16_t bus_id = 0;
+    bool begun{};
+    std::uint8_t own_address = no_address;
+    std::uint8_t slave_address = no_address;
+    OnRecieve* user_onrecieve{};
+    OnRequest* user_onrequest{};
+    std::array<std::byte, 32> write_buf{};
+    std::size_t write_buf_used{};
+    bool truncated_buf{};
+
+  public:
+    void begin();
+    void begin(std::uint8_t with_address);
+    void begin(int sda, int scl);
+    void begin(int sda, int scl, std::uint8_t with_address);
+    std::size_t requestFrom(std::uint8_t slave_address, std::size_t quantity, bool stop = true);
+    std::uint8_t requestFrom(std::uint8_t slave_address, std::uint8_t quantity, std::uint8_t);
+    std::uint8_t requestFrom(int slave_address, int quantity, int stop = 0);
+    void beginTransmission(std::uint8_t slave_address);
+    inline void beginTransmission(int slave_address) { beginTransmission(static_cast<std::uint8_t>(slave_address)); }
+    std::uint8_t endTransmission(std::uint8_t = 0);
+    std::size_t write(std::uint8_t value) override;
+    std::size_t write(const std::uint8_t* buf, std::size_t buf_len) override;
+    int available() override;
+    int peek() override;
+    int read() override;
+    void setClock(std::uint32_t frequency);
+    void onReceive(OnRecieve* hdl) noexcept;
+    void onRequest(OnRequest* hdl) noexcept;
 };
 
-#endif // wire_h
+extern TwoWire Wire;
+
+#endif // Wire_h

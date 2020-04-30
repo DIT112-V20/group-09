@@ -22,10 +22,13 @@
 #include <array>
 #include <atomic>
 #include <chrono>
+#include <condition_variable>
+#include <functional>
 #include <mutex>
-#include <utility>
-#include <vector>
 #include <unordered_map>
+#include <utility>
+#include <variant>
+#include <vector>
 
 struct BidirMutexes {
     std::mutex rx_mutex;
@@ -45,22 +48,11 @@ struct DynaBufferBus : BidirMutexes {
     std::vector<std::byte> tx;
 };
 
-enum RequestType
-{
-    REQUEST_SEND = 1, // i want you to send me
-    REQUEST_RECEIVE // i want to send to you
-};
-
-struct ProtocolRequest
-{
-    RequestType type;
-    size_t bytes;
-};
-
 struct UartBus : DynaBufferBus {}; 
-struct I2cBus : FixBufferBus<32u> 
-{
-    std::unordered_map<uint8_t, std::vector<ProtocolRequest>> requests;
+struct I2cBus : FixBufferBus<32u> {
+    using Device = std::variant<std::pair<std::condition_variable, std::size_t>, std::function<void(std::size_t)>>;
+    std::unordered_map<std::uint8_t, Device> devices;
+    std::mutex devices_mut;
 };
 
 struct BoardData {
