@@ -52,7 +52,6 @@ const unsigned CTRL_FORWARD = (1u << 0u);
 const unsigned CTRL_BACK = (1u << 1u);
 const unsigned CTRL_LEFT = (1u << 2u);
 const unsigned CTRL_RIGHT = (1u << 3u);
-const unsigned CTRL_BRAKE = (1u << 4u);
 const float YAW_SENSITIVITY = 0.1f;
 const float ENGINE_POWER = 10.0f;
 const float MAX_WHEEL_ANGLE = 22.5f;
@@ -81,8 +80,6 @@ class Vehicle : public LogicComponent {
   private:
     /// Linear momentum supplied by engine to RigidBody
     float engineForce_;
-    /// Rotational momentum preventing (dampening) wheels rotation
-    float brakingForce_;
     /// Maximum linear momentum supplied by engine to RigidBody
     float maxEngineForce_;
     /// Stored wheel radius

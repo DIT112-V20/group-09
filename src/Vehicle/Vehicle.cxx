@@ -68,7 +68,6 @@ void Vehicle::RegisterObject(Context* context) {
 Vehicle::Vehicle(Urho3D::Context* context) : LogicComponent(context) {
     SetUpdateEventMask(USE_FIXEDUPDATE | USE_POSTUPDATE);
     engineForce_ = 0.0f; // NOT CORRECT VALUES
-    brakingForce_ = 50.0f;
     maxEngineForce_ = 2500.0f;
     wheelRadius_ = 0.5f;
     suspensionRestLength_ = 0.6f;
@@ -163,7 +162,6 @@ void Vehicle::setDifferential(float engineForce, const unsigned int control) {
 }
 void Vehicle::FixedUpdate(float timeStep) {
     float accelerator = 0.0f;
-    bool brake = false;
     auto* vehicle = node_->GetComponent<RaycastVehicle>();
     // Read controls
 
@@ -181,9 +179,6 @@ void Vehicle::FixedUpdate(float timeStep) {
         resetDifferential();
         accelerator = -0.5f;
     }
-    if (controls_.buttons_ & CTRL_BRAKE) {
-        brake = true;
-    }
 
     // apply forces
     engineForce_ = maxEngineForce_ * accelerator;
@@ -191,15 +186,8 @@ void Vehicle::FixedUpdate(float timeStep) {
     vehicle->SetEngineForce(1, engineForce_);
     vehicle->SetEngineForce(3, engineForce_);
     vehicle->SetEngineForce(2, engineForce_);
-
-    for (int i = 0; i < vehicle->GetNumWheels(); i++) {
-        if (brake) {
-            vehicle->SetBrake(i, brakingForce_ * 4);
-        } else {
-            vehicle->SetBrake(i, 0.0f);
-        }
-    }
 }
+
 void Vehicle::PostUpdate(float timeStep) {
     auto* vehicle = node_->GetComponent<RaycastVehicle>();
     auto* vehicleBody = node_->GetComponent<RigidBody>();
