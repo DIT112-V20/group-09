@@ -64,6 +64,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="struct_i2c_bus-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">I2cBus Struct Reference</div>  </div>
@@ -82,8 +84,17 @@ Inheritance diagram for I2cBus:</div>
   </map>
 </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a6147e61962c6c4ad198db5bbf30f84b7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i2c_bus.html#a6147e61962c6c4ad198db5bbf30f84b7">Device</a> = std::variant&lt; std::pair&lt; std::condition_variable, std::size_t &gt;, std::function&lt; void(std::size_t)&gt; &gt;</td></tr>
+<tr class="separator:a6147e61962c6c4ad198db5bbf30f84b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a887031a31af2a970d0eae4eb28241519"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::uint8_t, <a class="el" href="struct_i2c_bus.html#a6147e61962c6c4ad198db5bbf30f84b7">Device</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i2c_bus.html#a887031a31af2a970d0eae4eb28241519">devices</a></td></tr>
+<tr class="separator:a887031a31af2a970d0eae4eb28241519"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3585d60d9e2c99113d786837ae59b782"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i2c_bus.html#a3585d60d9e2c99113d786837ae59b782">devices_mut</a></td></tr>
+<tr class="separator:a3585d60d9e2c99113d786837ae59b782"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_struct_fix_buffer_bus"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_struct_fix_buffer_bus')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="struct_fix_buffer_bus.html">FixBufferBus&lt; 32u &gt;</a></td></tr>
 <tr class="memitem:a90c6415dd973e5136449b060a33ae7a8 inherit pub_attribs_struct_fix_buffer_bus"><td class="memItemLeft" align="right" valign="top">std::array&lt; <a class="el" href="_w_string_8h.html#a82e74662490118ea208071ba793de76b">std::byte</a>, N &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_fix_buffer_bus.html#a90c6415dd973e5136449b060a33ae7a8">rx</a></td></tr>
 <tr class="separator:a90c6415dd973e5136449b060a33ae7a8 inherit pub_attribs_struct_fix_buffer_bus"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -99,6 +110,50 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:ab582ab7fd77b2fb7c5cc6e3bb0930b33 inherit pub_attribs_struct_bidir_mutexes"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_bidir_mutexes.html#ab582ab7fd77b2fb7c5cc6e3bb0930b33">tx_mutex</a></td></tr>
 <tr class="separator:ab582ab7fd77b2fb7c5cc6e3bb0930b33 inherit pub_attribs_struct_bidir_mutexes"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a6147e61962c6c4ad198db5bbf30f84b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6147e61962c6c4ad198db5bbf30f84b7">&#9670;&nbsp;</a></span>Device</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="struct_i2c_bus.html#a6147e61962c6c4ad198db5bbf30f84b7">I2cBus::Device</a> =  std::variant&lt;std::pair&lt;std::condition_variable, std::size_t&gt;, std::function&lt;void(std::size_t)&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a887031a31af2a970d0eae4eb28241519"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a887031a31af2a970d0eae4eb28241519">&#9670;&nbsp;</a></span>devices</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;std::uint8_t, <a class="el" href="struct_i2c_bus.html#a6147e61962c6c4ad198db5bbf30f84b7">Device</a>&gt; I2cBus::devices</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3585d60d9e2c99113d786837ae59b782"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3585d60d9e2c99113d786837ae59b782">&#9670;&nbsp;</a></span>devices_mut</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex I2cBus::devices_mut</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/<a class="el" href="_board_data_8hxx_source.html">BoardData.hxx</a></li>
 </ul>

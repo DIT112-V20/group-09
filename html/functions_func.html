@@ -69,6 +69,7 @@ $(function() {
 <li>available()
 : <a class="el" href="struct_hardware_serial.html#a3ba8028d63deb239fc732ff4dcaa5596">HardwareSerial</a>
 , <a class="el" href="struct_stream.html#a9c98a763395005c08ce95afb2f06c7b1">Stream</a>
+, <a class="el" href="class_two_wire.html#a8930ea2b8ca5a402f864d6a0e2bf9b07">TwoWire</a>
 </li>
 <li>availableForWrite()
 : <a class="el" href="struct_hardware_serial.html#a6f2fe7a97168416a977d1b4190193c20">HardwareSerial</a>
@@ -80,6 +81,10 @@ $(function() {
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>begin()
 : <a class="el" href="struct_hardware_serial.html#a288e8a54617bc6c3ebbcaa4ef8dc9efa">HardwareSerial</a>
+, <a class="el" href="class_two_wire.html#a736937dcb7e6ff0020a9b04528889fcd">TwoWire</a>
+</li>
+<li>beginTransmission()
+: <a class="el" href="class_two_wire.html#aa9e682b4e75979051833849a085a27ee">TwoWire</a>
 </li>
 </ul>
 
@@ -112,6 +117,9 @@ $(function() {
 </li>
 <li>endsWith()
 : <a class="el" href="class_string.html#a2860609cf1bac40efb0929ec6042304a">String</a>
+</li>
+<li>endTransmission()
+: <a class="el" href="class_two_wire.html#aae2be6eacfa27f99d38f26db3bb5e11b">TwoWire</a>
 </li>
 <li>equals()
 : <a class="el" href="class_string.html#a356e3322054a9184714ae75031d14cc8">String</a>
@@ -176,6 +184,12 @@ $(function() {
 
 
 <h3><a id="index_o"></a>- o -</h3><ul>
+<li>onReceive()
+: <a class="el" href="class_two_wire.html#a63f43a0066fc53caa342ea9d85515634">TwoWire</a>
+</li>
+<li>onRequest()
+: <a class="el" href="class_two_wire.html#af5b96eee9e3c838d333a359bd509b050">TwoWire</a>
+</li>
 <li>operator bool()
 : <a class="el" href="struct_hardware_serial.html#ab71db7f5ef79e277e930d1e76a3a673f">HardwareSerial</a>
 , <a class="el" href="structsmce_1_1_sketch_loaded_object.html#abb331ff8ae35d759344118412a857b9a">smce::SketchLoadedObject</a>
@@ -191,8 +205,8 @@ $(function() {
 </li>
 <li>operator=()
 : <a class="el" href="structsmce_1_1_sketch_loaded_object.html#a516336b1d2896d7385e3181f810dc189">smce::SketchLoadedObject</a>
-, <a class="el" href="structsmce_1_1_sketch_runtime.html#a7cf6e9090da3e45f0de3c08beadcf58c">smce::SketchRuntime</a>
-, <a class="el" href="class_string.html#ac427623b1410b37e8235bbca60281f76">String</a>
+, <a class="el" href="structsmce_1_1_sketch_runtime.html#a25a706e9e4c1be379a6baeb63ae32027">smce::SketchRuntime</a>
+, <a class="el" href="class_string.html#ad0e174d00f8c9289510391c9f82856ad">String</a>
 </li>
 <li>operator==()
 : <a class="el" href="class_string.html#a90096f779ca1b0d7b1dde07389ae465c">String</a>
@@ -204,7 +218,7 @@ $(function() {
 : <a class="el" href="class_string.html#aac09228385f76866073c4bd95b604901">String</a>
 </li>
 <li>operator[]()
-: <a class="el" href="class_string.html#a57bf017f6f049f37a65efe9d0166e9d1">String</a>
+: <a class="el" href="class_string.html#a918e383d9115792aae409d7bb4dd899c">String</a>
 </li>
 </ul>
 
@@ -222,12 +236,10 @@ $(function() {
 <li>peek()
 : <a class="el" href="struct_hardware_serial.html#a0bf562734b738ed06de5fb34c357b230">HardwareSerial</a>
 , <a class="el" href="struct_stream.html#a30c3c212ec6ea67277a708c5ea2501a5">Stream</a>
+, <a class="el" href="class_two_wire.html#a312a74fa838fe3f61f3d863fd1111f99">TwoWire</a>
 </li>
 <li>peekNextDigit()
 : <a class="el" href="struct_stream.html#a3dbc4937689c81b76f4ab16e253e85e0">Stream</a>
-</li>
-<li>print()
-: <a class="el" href="class_print.html#a3c7d936e912fcb6c7ffda383cc3445fa">Print</a>
 </li>
 <li>Print()
 : <a class="el" href="class_print.html#ae835c86566fea29bd6cf8c132299b1b5">Print</a>
@@ -236,7 +248,7 @@ $(function() {
 : <a class="el" href="class_print.html#af79c7d1a5156375f4fe409a4864de3bd">Print</a>
 </li>
 <li>println()
-: <a class="el" href="class_print.html#a903aae8895af726d7a6ada7cecece116">Print</a>
+: <a class="el" href="class_print.html#a72862852c1185203cdfcca03a9656135">Print</a>
 </li>
 <li>ProgramOptions()
 : <a class="el" href="structsmce_1_1_program_options.html#ad9c5e53ab231f5f6a8c9ef9597557f29">smce::ProgramOptions</a>
@@ -248,6 +260,7 @@ $(function() {
 <li>read()
 : <a class="el" href="struct_hardware_serial.html#aaa09c85eb59e62bfda3c48fae7dcb14c">HardwareSerial</a>
 , <a class="el" href="struct_stream.html#aea5dee9fcb038148515b7c9212d38dc0">Stream</a>
+, <a class="el" href="class_two_wire.html#a894c1158df75031c97f675497cf9d878">TwoWire</a>
 </li>
 <li>readBytes()
 : <a class="el" href="struct_stream.html#ab0c0e0248cf5d333d3d26d2b739a8c0e">Stream</a>
@@ -265,10 +278,13 @@ $(function() {
 : <a class="el" href="class_movable_camera.html#ad496f22151399b8ad4a5e968e3abb29f">MovableCamera</a>
 </li>
 <li>remove()
-: <a class="el" href="class_string.html#a914189177870f1535d588d73778acea7">String</a>
+: <a class="el" href="class_string.html#a42ff252a45d4bda3afefe4eb8cbe8bbb">String</a>
 </li>
 <li>replace()
 : <a class="el" href="class_string.html#a32f05a70790179df0b56492f76a9ec66">String</a>
+</li>
+<li>requestFrom()
+: <a class="el" href="class_two_wire.html#ad67c52841b631baf89a10095753b60f6">TwoWire</a>
 </li>
 <li>reserve()
 : <a class="el" href="class_string.html#a2564b6ee7b02181de8c857e93bf1abc3">String</a>
@@ -286,6 +302,9 @@ $(function() {
 <li>setCharAt()
 : <a class="el" href="class_string.html#a731ec0906bc99b0423297f0c71a2a96f">String</a>
 </li>
+<li>setClock()
+: <a class="el" href="class_two_wire.html#a1d645ff3d8726ca9466fd3fbd26817bd">TwoWire</a>
+</li>
 <li>setKey()
 : <a class="el" href="class_movable_camera.html#afb702e38dacf5bdd750035c1df01766a">MovableCamera</a>
 </li>
@@ -299,7 +318,7 @@ $(function() {
 : <a class="el" href="class_print.html#a0ab7960321a5f532e17ae3bb6e04111a">Print</a>
 </li>
 <li>SketchLoadedObject()
-: <a class="el" href="structsmce_1_1_sketch_loaded_object.html#af046a8676853de6eb047c3c219f0d166">smce::SketchLoadedObject</a>
+: <a class="el" href="structsmce_1_1_sketch_loaded_object.html#a8660e1e883953a4011fa8b605288f344">smce::SketchLoadedObject</a>
 </li>
 <li>SketchRuntime()
 : <a class="el" href="structsmce_1_1_sketch_runtime.html#a7f5877e053a148782d4c4c05365072b9">smce::SketchRuntime</a>
@@ -323,7 +342,7 @@ $(function() {
 : <a class="el" href="class_string.html#a1fdfe981d2c5e0075c1669dd94553082">String</a>
 </li>
 <li>substring()
-: <a class="el" href="class_string.html#a13931b6b63f4e55b9166d7507fb4f7b1">String</a>
+: <a class="el" href="class_string.html#a79e670f8496626163c765b443a177f4b">String</a>
 </li>
 </ul>
 
@@ -366,7 +385,8 @@ $(function() {
 <h3><a id="index_w"></a>- w -</h3><ul>
 <li>write()
 : <a class="el" href="struct_hardware_serial.html#a9c646e70b8ce72a8a671c8457e291037">HardwareSerial</a>
-, <a class="el" href="class_print.html#a3df65d05dbbd0b5240b36069d8f3595f">Print</a>
+, <a class="el" href="class_print.html#abdb6faeec5db653fd548e98f02f758e9">Print</a>
+, <a class="el" href="class_two_wire.html#a6342fb458ce1d91a4e9c4458b11d8ddd">TwoWire</a>
 </li>
 </ul>
 
