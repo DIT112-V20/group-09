@@ -22,8 +22,12 @@
 #include <array>
 #include <atomic>
 #include <chrono>
+#include <condition_variable>
+#include <functional>
 #include <mutex>
+#include <unordered_map>
 #include <utility>
+#include <variant>
 #include <vector>
 
 struct BidirMutexes {
@@ -44,8 +48,12 @@ struct DynaBufferBus : BidirMutexes {
     std::vector<std::byte> tx;
 };
 
-struct UartBus : DynaBufferBus {};
-struct I2cBus : FixBufferBus<32u> {};
+struct UartBus : DynaBufferBus {}; 
+struct I2cBus : FixBufferBus<32u> {
+    using Device = std::variant<std::pair<std::condition_variable, std::size_t>, std::function<void(std::size_t)>>;
+    std::unordered_map<std::uint8_t, Device> devices;
+    std::mutex devices_mut;
+};
 
 struct BoardData {
     std::vector<std::atomic_bool> digital_pin_values;

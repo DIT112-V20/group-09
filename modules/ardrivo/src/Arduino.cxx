@@ -16,8 +16,6 @@
  *
  */
 
-#define SMCE__COMPILING_ARDUINO_CXX 1
-
 #include <climits>
 #include <string>
 #include <thread>
