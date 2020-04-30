@@ -40,29 +40,19 @@
 #include <Urho3D/Physics/PhysicsUtils.h>
 #include <Urho3D/Scene/LogicComponent.h>
 
-namespace Urho3D {
-class Constraint;
-class Node;
-class RigidBody;
-}
-
-using namespace Urho3D;
-
 const unsigned CTRL_FORWARD = (1u << 0u);
 const unsigned CTRL_BACK = (1u << 1u);
 const unsigned CTRL_LEFT = (1u << 2u);
 const unsigned CTRL_RIGHT = (1u << 3u);
 const float YAW_SENSITIVITY = 0.1f;
-const float ENGINE_POWER = 10.0f;
-const float MAX_WHEEL_ANGLE = 22.5f;
 
-class Vehicle : public LogicComponent {
+class Vehicle : public Urho3D::LogicComponent {
     URHO3D_OBJECT(Vehicle, LogicComponent)
 
   public:
-    explicit Vehicle(Context* context);
+    explicit Vehicle(Urho3D::Context* context);
     ~Vehicle() override;
-    static void RegisterObject(Context* context);
+    static void RegisterObject(Urho3D::Context* context);
     void Init();
     void FixedUpdate(float timeStep) override;
     void PostUpdate(float timeStep) override;
@@ -71,12 +61,13 @@ class Vehicle : public LogicComponent {
     void resetDifferential();
     void setDifferential(float engineForce, const unsigned int control);
 
-    Controls controls_;
+    Urho3D::Controls controls_;
 
     /// Get wheel radius.
     float GetWheelRadius() { return wheelRadius_; }
     /// Get wheel width.
     float GetWheelWidth() { return wheelWidth_; }
+
   private:
     /// Linear momentum supplied by engine to RigidBody
     float engineForce_;
@@ -99,7 +90,7 @@ class Vehicle : public LogicComponent {
     /// Wheel roll influence (how much car will turn sidewise)
     float rollInfluence_;
     /// Value to calculate acceleration.
-    Vector3 prevVelocity_;
+    Urho3D::Vector3 prevVelocity_;
     /// Storing points for emitters
-    Vector3 connectionPoints_[4];
+    Urho3D::Vector3 connectionPoints_[4];
 };

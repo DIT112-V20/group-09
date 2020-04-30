@@ -14,7 +14,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-//======================================================================================
+
 //
 // Copyright (c) 2008-2020 the Urho3D project.
 //
@@ -55,18 +55,16 @@
 #include <Urho3D/Scene/Scene.h>
 #include "Vehicle.hxx"
 
-using namespace Urho3D;
-
 const float CHASSIS_WIDTH = 2.6f;
 
-void Vehicle::RegisterObject(Context* context) {
+void Vehicle::RegisterObject(Urho3D::Context* context) {
     context->RegisterFactory<Vehicle>();
-    URHO3D_ATTRIBUTE("Controls Yaw", float, controls_.yaw_, 0.0f, AM_DEFAULT);
-    URHO3D_ATTRIBUTE("Controls Pitch", float, controls_.pitch_, 0.0f, AM_DEFAULT);
+    URHO3D_ATTRIBUTE("Controls Yaw", float, controls_.yaw_, 0.0f, Urho3D::AM_DEFAULT);
+    URHO3D_ATTRIBUTE("Controls Pitch", float, controls_.pitch_, 0.0f, Urho3D::AM_DEFAULT);
 }
 
 Vehicle::Vehicle(Urho3D::Context* context) : LogicComponent(context) {
-    SetUpdateEventMask(USE_FIXEDUPDATE | USE_POSTUPDATE);
+    SetUpdateEventMask(Urho3D::USE_FIXEDUPDATE | Urho3D::USE_POSTUPDATE);
     engineForce_ = 0.0f; // NOT CORRECT VALUES
     maxEngineForce_ = 2500.0f;
     wheelRadius_ = 0.5f;
@@ -82,49 +80,49 @@ Vehicle::Vehicle(Urho3D::Context* context) : LogicComponent(context) {
 Vehicle::~Vehicle() = default;
 
 void Vehicle::Init() {
-    auto* vehicle = node_->CreateComponent<RaycastVehicle>();
+    auto* vehicle = node_->CreateComponent<Urho3D::RaycastVehicle>();
     vehicle->Init();
-    auto* hullBody = node_->GetComponent<RigidBody>();
+    auto* hullBody = node_->GetComponent<Urho3D::RigidBody>();
     hullBody->SetMass(800.0f);
     hullBody->SetLinearDamping(0.2f); // Some air resistance
     hullBody->SetAngularDamping(0.5f);
     hullBody->SetCollisionLayer(1);
     // This function is called only from the main program when initially creating the vehicle, not on scene load
-    auto* cache = GetSubsystem<ResourceCache>();
-    auto* hullObject = node_->CreateComponent<StaticModel>();
+    auto* cache = GetSubsystem<Urho3D::ResourceCache>();
+    auto* hullObject = node_->CreateComponent<Urho3D::StaticModel>();
     // Setting-up collision shape
-    auto* hullColShape = node_->CreateComponent<CollisionShape>();
-    Vector3 v3BoxExtents = Vector3::ONE;
+    auto* hullColShape = node_->CreateComponent<Urho3D::CollisionShape>();
+    Urho3D::Vector3 v3BoxExtents = Urho3D::Vector3::ONE;
     hullColShape->SetBox(v3BoxExtents);
-    node_->SetScale(Vector3(2.3f, 1.0f, 4.0f));
-    hullObject->SetModel(cache->GetResource<Model>("Models/Box.mdl"));
-    hullObject->SetMaterial(cache->GetResource<Material>("Materials/Stone.xml"));
+    node_->SetScale(Urho3D::Vector3(2.3f, 1.0f, 4.0f));
+    hullObject->SetModel(cache->GetResource<Urho3D::Model>("Models/Box.mdl"));
+    hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
     hullObject->SetCastShadows(true);
     float connectionHeight = -0.4f;
     bool isFrontWheel = true;
-    Vector3 wheelDirection(0, -1, 0);
-    Vector3 wheelAxle(-1, 0, 0);
+    Urho3D::Vector3 wheelDirection(0, -1, 0);
+    Urho3D::Vector3 wheelAxle(-1, 0, 0);
     // We use not scaled coordinates here as everything will be scaled.
     // Wheels are on bottom at edges of the chassis
     // Note we don't set wheel nodes as children of hull (while we could) to avoid scaling to affect them.
     float wheelX = CHASSIS_WIDTH / 2.0f - wheelWidth_;
     // Front left
-    connectionPoints_[0] = Vector3(-wheelX, connectionHeight, 2.5f - GetWheelRadius() * 2.0f);
+    connectionPoints_[0] = Urho3D::Vector3(-wheelX, connectionHeight, 2.5f - GetWheelRadius() * 2.0f);
     // Front right
-    connectionPoints_[1] = Vector3(wheelX, connectionHeight, 2.5f - GetWheelRadius() * 2.0f);
+    connectionPoints_[1] = Urho3D::Vector3(wheelX, connectionHeight, 2.5f - GetWheelRadius() * 2.0f);
     // Back left
-    connectionPoints_[2] = Vector3(-wheelX, connectionHeight, -2.5f + GetWheelRadius() * 2.0f);
+    connectionPoints_[2] = Urho3D::Vector3(-wheelX, connectionHeight, -2.5f + GetWheelRadius() * 2.0f);
     // Back right
-    connectionPoints_[3] = Vector3(wheelX, connectionHeight, -2.5f + GetWheelRadius() * 2.0f);
-    const Color LtBrown(0.972f, 0.780f, 0.412f);
+    connectionPoints_[3] = Urho3D::Vector3(wheelX, connectionHeight, -2.5f + GetWheelRadius() * 2.0f);
+    const Urho3D::Color LtBrown(0.972f, 0.780f, 0.412f);
     for (int id = 0; id < sizeof(connectionPoints_) / sizeof(connectionPoints_[0]); id++) {
-        Node* wheelNode = GetScene()->CreateChild();
-        Vector3 connectionPoint = connectionPoints_[id];
+        Urho3D::Node* wheelNode = GetScene()->CreateChild();
+        Urho3D::Vector3 connectionPoint = connectionPoints_[id];
         // Front wheels are at front (z > 0)
         // back wheels are at z < 0
         // Setting rotation according to wheel position
         bool isFrontWheel = connectionPoints_[id].z_ > 0.0f;
-        wheelNode->SetRotation(connectionPoint.x_ >= 0.0 ? Quaternion(0.0f, 0.0f, -90.0f) : Quaternion(0.0f, 0.0f, 90.0f));
+        wheelNode->SetRotation(connectionPoint.x_ >= 0.0 ? Urho3D::Quaternion(0.0f, 0.0f, -90.0f) : Urho3D::Quaternion(0.0f, 0.0f, 90.0f));
         wheelNode->SetWorldPosition(node_->GetWorldPosition() + node_->GetWorldRotation() * connectionPoints_[id]);
         vehicle->AddWheel(wheelNode, wheelDirection, wheelAxle, suspensionRestLength_, wheelRadius_, isFrontWheel);
         vehicle->SetWheelSuspensionStiffness(id, suspensionStiffness_);
@@ -132,16 +130,16 @@ void Vehicle::Init() {
         vehicle->SetWheelDampingCompression(id, suspensionCompression_);
         vehicle->SetWheelFrictionSlip(id, wheelFriction_);
         vehicle->SetWheelRollInfluence(id, rollInfluence_);
-        wheelNode->SetScale(Vector3(1.0f, 0.65f, 1.0f));
-        auto* pWheel = wheelNode->CreateComponent<StaticModel>();
-        pWheel->SetModel(cache->GetResource<Model>("Models/Cylinder.mdl"));
-        pWheel->SetMaterial(cache->GetResource<Material>("Materials/Stone.xml"));
+        wheelNode->SetScale(Urho3D::Vector3(1.0f, 0.65f, 1.0f));
+        auto* pWheel = wheelNode->CreateComponent<Urho3D::StaticModel>();
+        pWheel->SetModel(cache->GetResource<Urho3D::Model>("Models/Cylinder.mdl"));
+        pWheel->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
         pWheel->SetCastShadows(true);
     }
     vehicle->ResetWheels();
 }
 void Vehicle::resetDifferential() {
-    auto* vehicle = node_->GetComponent<RaycastVehicle>();
+    auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
     engineForce_ = 0;
     vehicle->SetEngineForce(0, 0);
     vehicle->SetEngineForce(2, 0);
@@ -149,7 +147,7 @@ void Vehicle::resetDifferential() {
     vehicle->SetEngineForce(3, 0);
 }
 void Vehicle::setDifferential(float engineForce, const unsigned int control) {
-    auto* vehicle = node_->GetComponent<RaycastVehicle>();
+    auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
     if (control == 8) {
         engineForce = engineForce * -10;
     } else {
@@ -162,7 +160,7 @@ void Vehicle::setDifferential(float engineForce, const unsigned int control) {
 }
 void Vehicle::FixedUpdate(float timeStep) {
     float accelerator = 0.0f;
-    auto* vehicle = node_->GetComponent<RaycastVehicle>();
+    auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
     // Read controls
 
     if (controls_.buttons_ & CTRL_LEFT) {
@@ -189,10 +187,10 @@ void Vehicle::FixedUpdate(float timeStep) {
 }
 
 void Vehicle::PostUpdate(float timeStep) {
-    auto* vehicle = node_->GetComponent<RaycastVehicle>();
-    auto* vehicleBody = node_->GetComponent<RigidBody>();
-    Vector3 velocity = vehicleBody->GetLinearVelocity();
-    Vector3 accel = (velocity - prevVelocity_) / timeStep;
-    float planeAccel = Vector3(accel.x_, 0.0f, accel.z_).Length();
+    auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
+    auto* vehicleBody = node_->GetComponent<Urho3D::RigidBody>();
+    Urho3D::Vector3 velocity = vehicleBody->GetLinearVelocity();
+    Urho3D::Vector3 accel = (velocity - prevVelocity_) / timeStep;
+    float planeAccel = Urho3D::Vector3(accel.x_, 0.0f, accel.z_).Length();
     prevVelocity_ = velocity;
 }
