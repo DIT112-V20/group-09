@@ -28,6 +28,7 @@ target_sources (Ardrivo INTERFACE
         src/Arduino.cxx
         src/Entrypoint.cxx
         src/HardwareSerial.cxx
+        src/Servo.cxx
         src/Stream.cxx
         src/String.cxx
         src/Wire.cxx)
@@ -37,7 +38,7 @@ target_link_libraries (Ardrivo INTERFACE
         range-v3::range-v3
         fmt::fmt-header-only)
 
-add_executable (TestsArdrivo test/Entrypoint.cxx)
+add_executable (TestsArdrivo test/Entrypoint.cxx test/Servo.cxx)
 set_target_properties (TestsArdrivo PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries (TestsArdrivo Ardrivo Catch2)
 
