@@ -24,7 +24,9 @@ target_sources(ConfigLoader INTERFACE
         src/BoardConf.cxx
         src/BoardConfSchema.cxx
         include/configloader/ProgramOptions.hxx
-        src/ProgramOptions.cxx)
+        src/ProgramOptions.cxx
+        include/configloader/VehicleConf.hxx
+        src/VehicleConf.cxx)
 
 target_link_libraries(ConfigLoader INTERFACE
         stdpolyfills::stdpolyfills
