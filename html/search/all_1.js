@@ -15,7 +15,9 @@ var searchData=
   ['arduino_2eh_13',['Arduino.h',['../_arduino_8h.html',1,'']]],
   ['as_5fdata_14',['as_data',['../namespacesmce.html#ab9f48423a5590a8a245176acddb4f1dd',1,'smce']]],
   ['as_5finfo_15',['as_info',['../namespacesmce.html#aec25854ae695701fcdbbf8f133c96f63',1,'smce']]],
-  ['attachinterrupt_16',['attachInterrupt',['../_arduino_8cxx.html#af95acf9c160c14a5c1ea018c0494da19',1,'attachInterrupt(uint8_t pin, void(*user_func)(), int mode):&#160;Arduino.cxx'],['../_arduino_8h.html#a3d0c1f37b8b457ad4ab7aa6cddcca1e7',1,'attachInterrupt(uint8_t interruptNum, void(*userFunc)(), int mode):&#160;Arduino.cxx']]],
-  ['available_17',['available',['../struct_hardware_serial.html#a3ba8028d63deb239fc732ff4dcaa5596',1,'HardwareSerial::available()'],['../struct_stream.html#a9c98a763395005c08ce95afb2f06c7b1',1,'Stream::available()'],['../class_two_wire.html#a8930ea2b8ca5a402f864d6a0e2bf9b07',1,'TwoWire::available()']]],
-  ['availableforwrite_18',['availableForWrite',['../struct_hardware_serial.html#a6f2fe7a97168416a977d1b4190193c20',1,'HardwareSerial::availableForWrite()'],['../class_print.html#ae278602698f895c25820f18da4e765be',1,'Print::availableForWrite()']]]
+  ['attach_16',['attach',['../class_servo.html#aea34a630b13ec42e2700eec53ae0a382',1,'Servo::attach(int pin)'],['../class_servo.html#ae8d8a8e190a6144364e21678d2137a79',1,'Servo::attach(int pin, int min, int max)']]],
+  ['attached_17',['attached',['../class_servo.html#adeef1244505aa67e509528bdc825c824',1,'Servo']]],
+  ['attachinterrupt_18',['attachInterrupt',['../_arduino_8cxx.html#af95acf9c160c14a5c1ea018c0494da19',1,'attachInterrupt(uint8_t pin, void(*user_func)(), int mode):&#160;Arduino.cxx'],['../_arduino_8h.html#a3d0c1f37b8b457ad4ab7aa6cddcca1e7',1,'attachInterrupt(uint8_t interruptNum, void(*userFunc)(), int mode):&#160;Arduino.cxx']]],
+  ['available_19',['available',['../struct_hardware_serial.html#a3ba8028d63deb239fc732ff4dcaa5596',1,'HardwareSerial::available()'],['../struct_stream.html#a9c98a763395005c08ce95afb2f06c7b1',1,'Stream::available()'],['../class_two_wire.html#a8930ea2b8ca5a402f864d6a0e2bf9b07',1,'TwoWire::available()']]],
+  ['availableforwrite_20',['availableForWrite',['../struct_hardware_serial.html#a6f2fe7a97168416a977d1b4190193c20',1,'HardwareSerial::availableForWrite()'],['../class_print.html#ae278602698f895c25820f18da4e765be',1,'Print::availableForWrite()']]]
 ];

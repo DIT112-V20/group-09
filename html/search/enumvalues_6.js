@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['right_679',['RIGHT',['../class_movable_camera.html#a1dbb64095f09bbe91231cecc7e04d907a21507b40c80068eda19865706fdc2403',1,'MovableCamera']]],
-  ['rightmostbit_680',['RIGHTMOSTBIT',['../_arduino_8h.html#a988fca5c11584635222eb51fe06901bdafa1355ee600408182d1479a511b46ee3',1,'Arduino.h']]],
-  ['rising_681',['RISING',['../_arduino_8h.html#aa004d28b3cc128fb30f577f93d370794ad93abe7aced82e9a4fcac4127a36ece3',1,'Arduino.h']]]
+  ['max_5fpulse_5fwidth_706',['MAX_PULSE_WIDTH',['../_servo_8h.html#a767794c475c726a0575712d22ea706f8ac24cc99600f060096985db493f6f4936',1,'Servo.h']]],
+  ['min_5fpulse_5fwidth_707',['MIN_PULSE_WIDTH',['../_servo_8h.html#a767794c475c726a0575712d22ea706f8a378a5dcf2ce088ccd1e21f766cf4ed44',1,'Servo.h']]]
 ];

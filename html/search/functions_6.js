@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['getbytes_463',['getBytes',['../class_string.html#ac211ad17bacab9b62391db0343ae140b',1,'String']]],
-  ['getwriteerror_464',['getWriteError',['../class_print.html#aba22ee2eaa0a406cc8a5e994f3dfab5b',1,'Print']]]
+  ['getbytes_483',['getBytes',['../class_string.html#ac211ad17bacab9b62391db0343ae140b',1,'String']]],
+  ['getwriteerror_484',['getWriteError',['../class_print.html#aba22ee2eaa0a406cc8a5e994f3dfab5b',1,'Print']]]
 ];
