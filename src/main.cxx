@@ -17,4 +17,6 @@
 #include <Urho3D/Engine/Application.h>
 #include "app/UrhoApp.hxx"
 
+#include "DeviceMap.hxx"
+
 URHO3D_DEFINE_APPLICATION_MAIN(UrhoApp)
