@@ -28,6 +28,7 @@ target_sources (Ardrivo INTERFACE
         src/Arduino.cxx
         src/Entrypoint.cxx
         src/HardwareSerial.cxx
+        src/SPI.cxx
         src/Servo.cxx
         src/Stream.cxx
         src/String.cxx
@@ -38,9 +39,12 @@ target_link_libraries (Ardrivo INTERFACE
         range-v3::range-v3
         fmt::fmt-header-only)
 
-add_executable (TestsArdrivo test/Entrypoint.cxx test/Servo.cxx)
+add_executable (TestsArdrivo test/CatchMain.cxx test/Servo.cxx test/SPI.cxx)
 set_target_properties (TestsArdrivo PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries (TestsArdrivo Ardrivo Catch2)
+target_compile_definitions (Ardrivo INTERFACE
+        SMCE__COMPILING_ARDUINO_CXX=1 # Avoid Windows header leak
+        ${FLAG_ENABLE_DEBUG})
 
 catch_discover_tests (TestsArdrivo)
 add_dependencies(TestTag TestsArdrivo)

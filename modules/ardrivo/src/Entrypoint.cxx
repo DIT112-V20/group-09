@@ -59,6 +59,7 @@ void maybe_init() noexcept {
 
     auto loc_board_info = std::make_unique<BoardInfo>();
     loc_board_info->pins_caps.resize(255);
+    loc_board_info->spi_chans.emplace_back();
     ranges::for_each(loc_board_info->pins_caps, [](PinCapability& pin){ pin.digital_in = pin.digital_out = true; }); // default to all digital-able
     // Protocol-pins need not be set as we cannot do pin-locking detection during dynamic-init anyway
 
