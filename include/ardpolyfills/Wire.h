@@ -5,7 +5,6 @@
 #include <array>
 #include <cstdint>
 #include <optional>
-#include "BoardData.hxx"
 #include "Stream.h"
 
 class TwoWire : public Stream {
@@ -28,8 +27,8 @@ class TwoWire : public Stream {
     void begin(std::uint8_t with_address);
     void begin(int sda, int scl);
     void begin(int sda, int scl, std::uint8_t with_address);
-    std::size_t requestFrom(std::uint8_t slave_address, std::size_t quantity, bool stop = true);
-    std::uint8_t requestFrom(std::uint8_t slave_address, std::uint8_t quantity, std::uint8_t);
+    std::size_t requestFrom(std::uint8_t slave_address, std::size_t quantity, bool stop = false);
+    std::uint8_t requestFrom(std::uint8_t slave_address, std::uint8_t quantity, std::uint8_t = 0);
     std::uint8_t requestFrom(int slave_address, int quantity, int stop = 0);
     void beginTransmission(std::uint8_t slave_address);
     inline void beginTransmission(int slave_address) { beginTransmission(static_cast<std::uint8_t>(slave_address)); }

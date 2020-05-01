@@ -62,13 +62,16 @@ add_subdirectory (modules)
 execute_process(
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/share" "${CMAKE_BINARY_DIR}/share"
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/include/ardpolyfills" "${CMAKE_BINARY_DIR}/share/smce/toolchain/include/ardpolyfills"
+        COMMAND ${CMAKE_COMMAND} -E touch "${CMAKE_SOURCE_DIR}/share/smce/toolchain/include/ardpolyfills/analogWrite.h" # Until we can fake a full Arduino core
         COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib")
 
 add_library(ArduinoRuntime STATIC)
 set_target_properties (ArduinoRuntime PROPERTIES POSITION_INDEPENDENT_CODE True)
 target_link_libraries(ArduinoRuntime PUBLIC Ardrivo)
 add_custom_command (TARGET ArduinoRuntime POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ArduinoRuntime>" "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib/")
+        COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ArduinoRuntime>" "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib/"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/share/smce/toolchain/libraries"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/thirdparty/smartcar_shield" "${CMAKE_BINARY_DIR}/share/smce/toolchain/libraries/smartcar_shield")
 file (GENERATE
         OUTPUT "${CMAKE_BINARY_DIR}/share/smce/toolchain/Modules/ArduinoRuntimeLocation.cmake"
         CONTENT "set (ARDUINO_RUNTIME_FILENAME $<TARGET_FILE_NAME:ArduinoRuntime>)")

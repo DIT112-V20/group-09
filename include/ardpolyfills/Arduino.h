@@ -23,6 +23,8 @@
 #include <cstdlib>
 #include <algorithm>
 
+#define digitalPinToInterrupt(x) (x)
+
 enum SignificantBit : bool { RIGHTMOSTBIT, LEFTMOSTBIT };
 
 #ifdef SMCE__COMPILING_ARDUINO_CXX

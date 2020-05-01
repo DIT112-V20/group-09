@@ -70,5 +70,13 @@ set_target_properties (ArdRuntime PROPERTIES
 target_include_directories (ArdRuntime SYSTEM INTERFACE ${CMAKE_SOURCE_DIR}/include/ardpolyfills)
 
 set (CMAKE_POSITION_INDEPENDENT_CODE ON)
-
 target_link_libraries (${BUILD_DIRNAME} PRIVATE ArdRuntime)
+
+set (SMARTCAR_SOURCE_PATH "${CMAKE_SOURCE_DIR}/libraries/smartcar_shield/src")
+file (GLOB_RECURSE SMARTCAR_SOURCES ${SMARTCAR_SOURCE_PATH}/*)
+message ("SMARTCAR_SOURCE_PATH: ${SMARTCAR_SOURCE_PATH}")
+add_library (SmartcarShield STATIC ${SMARTCAR_SOURCES})
+target_include_directories (SmartcarShield INTERFACE ${SMARTCAR_SOURCE_PATH})
+target_link_libraries (SmartcarShield PUBLIC ArdRuntime)
+
+target_link_libraries (${BUILD_DIRNAME} PUBLIC ArdRuntime SmartcarShield)
