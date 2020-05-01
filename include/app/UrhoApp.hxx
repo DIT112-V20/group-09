@@ -21,7 +21,14 @@
 #include <vector>
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Scene/Node.h>
+#include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Scene.h>
+
+struct BoardData;
+
+namespace smce {
+struct VehicleConfig;
+}
 
 class UrhoApp : public Urho3D::Application {
     URHO3D_OBJECT(UrhoApp, Urho3D::Application);
@@ -41,6 +48,7 @@ class UrhoApp : public Urho3D::Application {
 
     void create_scene();
     void create_viewport();
+    void setup_attachments(BoardData& board, const smce::VehicleConfig&);
     void subscribe_to_events();
     void HandleUpdate(Urho3D::StringHash event_type, Urho3D::VariantMap& event_data);
     void HandleKeyUp(Urho3D::StringHash event_type, Urho3D::VariantMap& event_data);
@@ -48,6 +56,8 @@ class UrhoApp : public Urho3D::Application {
 
     Urho3D::SharedPtr<Urho3D::Scene> m_scene;
     Urho3D::SharedPtr<Urho3D::Node> m_camera_node;
+    Urho3D::SharedPtr<Urho3D::Node> m_vehicle_node;
+    std::vector<Urho3D::LogicComponent*> m_vehicle_attachments;
 };
 
 #endif // SMARTCAR_EMUL_URHOAPP_HXX

@@ -28,9 +28,13 @@
 #include <Urho3D/Input/InputEvents.h>
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Scene/Scene.h>
-#include "UrhoUtility.hxx"
+#include <Urho3D/IO/Log.h>
+#include <range/v3/algorithm/find_if.hpp>
 #include "app/UrhoApp.hxx"
 #include "components/MovableCamera.hxx"
+#include "components/Registry.hxx"
+#include "UrhoUtility.hxx"
+#include "VehicleConf.hxx"
 
 UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} { MovableCamera::RegisterObject(context); }
 
@@ -74,12 +78,30 @@ void UrhoApp::create_scene() {
     m_camera_node = m_scene->CreateChild("Camera");
     m_camera_node->CreateComponent<MovableCamera>();
     m_camera_node->SetPosition(Urho3D::Vector3(0.0f, 100.0f, 0.0f));
+
+    m_vehicle_node = m_scene->CreateChild("Vehicle");
+    m_vehicle_node->SetPosition(Urho3D::Vector3(0.0f, 1.0f, 0.0f));
 }
 
 void UrhoApp::create_viewport() {
     auto* renderer = GetSubsystem<Urho3D::Renderer>();
     auto viewport = Urho3D::MakeShared<Urho3D::Viewport>(context_, m_scene, m_camera_node->GetComponent<MovableCamera>());
     renderer->SetViewport(0, viewport);
+}
+
+void UrhoApp::setup_attachments(BoardData& board, const smce::VehicleConfig& vconf) {
+    for (const auto& [type_str, jconf] : vconf.attachments) {
+        const auto& type = type_str;
+        const auto it = ranges::find_if(attachments_registry, [&](const auto& pair) { return pair.first == type; });
+        if(it == attachments_registry.end()){
+            Urho3D::Log::Write(Urho3D::LOG_WARNING, Urho3D::String("Unkown component type ") + type_str.c_str());
+            continue;
+        }
+
+        auto* const att = it->second(board, m_vehicle_node.Get(), *jconf);
+        m_vehicle_attachments.push_back(att);
+        m_vehicle_node->AddComponent(att, 0, Urho3D::REPLICATED);
+    }
 }
 
 void UrhoApp::subscribe_to_events() {

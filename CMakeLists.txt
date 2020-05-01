@@ -95,7 +95,13 @@ target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps)
 target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 add_dependencies (smartcar_emul ArduinoRuntime)
 
-target_sources (smartcar_emul PRIVATE src/app/UrhoApp.cxx include/app/UrhoApp.hxx src/components/MovableCamera.cxx include/components/MovableCamera.hxx include/UrhoUtility.hxx)
+target_sources (smartcar_emul PRIVATE
+        include/app/UrhoApp.hxx
+        src/app/UrhoApp.cxx
+        include/components/Registry.hxx
+        include/components/MovableCamera.hxx
+        src/components/MovableCamera.cxx
+        include/UrhoUtility.hxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 
