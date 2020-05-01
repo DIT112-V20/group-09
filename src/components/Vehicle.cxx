@@ -53,7 +53,7 @@
 #include <Urho3D/Physics/RaycastVehicle.h>
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Scene/Scene.h>
-#include "Vehicle.hxx"
+#include "components/Vehicle.hxx"
 
 
 void Vehicle::RegisterObject(Urho3D::Context* context) {
@@ -67,7 +67,7 @@ Vehicle::Vehicle(Urho3D::Context* context) : LogicComponent(context) {
     engineForce_ = 0.0f;
     maxEngineForce_ = 2.4f;
     wheelRadius_ = 0.0335f;
-    // we don't really have Susoension
+    // we don't really have Suspension
     suspensionRestLength_ = 0.0345f;
     suspensionStiffness_ = 100.61f;
     suspensionDamping_ = 10.0f;
@@ -119,9 +119,7 @@ void Vehicle::Init() {
     for (int id = 0; id < sizeof(connectionPoints_) / sizeof(connectionPoints_[0]); id++) {
         Urho3D::Node* wheelNode = GetScene()->CreateChild();
         Urho3D::Vector3 connectionPoint = connectionPoints_[id];
-        // Front wheels are at front (z > 0)
-        // back wheels are at z < 0
-        // Setting rotation according to wheel position
+        
         bool isFrontWheel = connectionPoints_[id].z_ > 0.0f;
         wheelNode->SetRotation(connectionPoint.x_ >= 0.0 ? Urho3D::Quaternion(0.0f, 0.0f, -90.0f) : Urho3D::Quaternion(0.0f, 0.0f, 90.0f));
         wheelNode->SetWorldPosition(node_->GetWorldPosition() + node_->GetWorldRotation() * connectionPoints_[id]);
@@ -148,6 +146,8 @@ void Vehicle::resetDifferential() {
     vehicle->SetEngineForce(3, 0);
 }
 void Vehicle::setDifferential(float engineForce, const unsigned int control) {
+    // the Control checks whether you want to turn left or right.
+    // will remove this once i got the Differential.cxx to work
     auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
     if (control == 8) {
         engineForce = engineForce * -2;

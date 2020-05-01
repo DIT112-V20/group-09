@@ -89,19 +89,13 @@ target_link_libraries (smartcar_emul_deps INTERFACE
         ConfigLoader
         )
 
-add_executable (smartcar_emul src/main.cxx)
+add_executable (smartcar_emul src/main.cxx )
 target_include_directories (smartcar_emul PRIVATE include thirdparty/inih)
 target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps)
 target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 add_dependencies (smartcar_emul ArduinoRuntime)
 
-target_sources (smartcar_emul PRIVATE
-        include/app/UrhoApp.hxx
-        src/app/UrhoApp.cxx
-        include/components/Registry.hxx
-        include/components/MovableCamera.hxx
-        src/components/MovableCamera.cxx
-        include/UrhoUtility.hxx)
+target_sources (smartcar_emul PRIVATE src/app/UrhoApp.cxx include/app/UrhoApp.hxx src/components/MovableCamera.cxx include/components/MovableCamera.hxx include/UrhoUtility.hxx src/components/Differential.cxx src/components/Vehicle.cxx include/components/Differential.hxx include/components/Vehicle.hxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 

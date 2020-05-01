@@ -23,6 +23,7 @@
 #include <Urho3D/Scene/Node.h>
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Scene.h>
+#include "components/Vehicle.hxx"
 
 struct BoardData;
 
