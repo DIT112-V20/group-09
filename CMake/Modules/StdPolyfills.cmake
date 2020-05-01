@@ -39,3 +39,11 @@ find_package (Threads REQUIRED) # For std::thread
 target_link_libraries (stdpolyfills INTERFACE Threads::Threads)
 
 add_library (stdpolyfills::stdpolyfills ALIAS stdpolyfills)
+
+check_cxx_source_compiles ("#include <ciso646>\nint a = defined(__GLIBCXX__); int main(){}" HAS_LIBSTDCXX)
+check_cxx_source_compiles ("#include <ciso646>\nint a = defined(_LIBCPP_VERSION); int main(){}" HAS_LIBCXX)
+if (HAS_LIBCXX)
+    set (FLAG_ENABLE_DEBUG _LIBCPP_DEBUG=1)
+elseif (HAS_LIBSTDCXX)
+    set (FLAG_ENABLE_DEBUG _GLIBCXX_DEBUG=1)
+endif ()

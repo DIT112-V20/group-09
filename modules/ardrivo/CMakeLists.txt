@@ -42,6 +42,9 @@ target_link_libraries (Ardrivo INTERFACE
 add_executable (TestsArdrivo test/Entrypoint.cxx test/Servo.cxx test/SPI.cxx)
 set_target_properties (TestsArdrivo PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries (TestsArdrivo Ardrivo Catch2)
+target_compile_definitions (Ardrivo INTERFACE
+        SMCE__COMPILING_ARDUINO_CXX=1 # Avoid Windows header leak
+        ${FLAG_ENABLE_DEBUG})
 
 catch_discover_tests (TestsArdrivo)
 add_dependencies(TestTag TestsArdrivo)
