@@ -94,42 +94,55 @@ $(function() {
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;Urho3D/Engine/Application.h&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;Urho3D/Scene/Node.h&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;Urho3D/Scene/Scene.h&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_urho_app.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_urho_app.html">UrhoApp</a> : <span class="keyword">public</span> Urho3D::Application {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    URHO3D_OBJECT(<a class="code" href="class_urho_app.html">UrhoApp</a>, Urho3D::Application);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;Urho3D/Scene/LogicComponent.h&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;Urho3D/Scene/Scene.h&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">struct </span><a class="code" href="struct_board_data.html">BoardData</a>;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_urho_app.html#a96cea5e482de88219675fc4140cc8c47">UrhoApp</a>(Urho3D::Context* context);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_urho_app.html#a40a5ea9d79d40f99e0e9ae11adde6638">Setup</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_urho_app.html#a0a750b8d2d1c9449587dfca42d2fc45f">Start</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_urho_app.html#a7ec3bdca0380865c5bbf22827f10a104">Stop</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacesmce.html">smce</a> {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">struct </span>VehicleConfig;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_urho_app.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_urho_app.html">UrhoApp</a> : <span class="keyword">public</span> Urho3D::Application {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    URHO3D_OBJECT(<a class="code" href="class_urho_app.html">UrhoApp</a>, Urho3D::Application);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">enum class</span> Menu {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        none,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        main,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    };</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> create_scene();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> create_viewport();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> subscribe_to_events();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> HandleUpdate(Urho3D::StringHash event_type, Urho3D::VariantMap&amp; event_data);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> HandleKeyUp(Urho3D::StringHash event_type, Urho3D::VariantMap&amp; event_data);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> HandleMouseButtonDown(Urho3D::StringHash, Urho3D::VariantMap&amp;);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_urho_app.html#a96cea5e482de88219675fc4140cc8c47">UrhoApp</a>(Urho3D::Context* context);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_urho_app.html#a40a5ea9d79d40f99e0e9ae11adde6638">Setup</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_urho_app.html#a0a750b8d2d1c9449587dfca42d2fc45f">Start</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_urho_app.html#a7ec3bdca0380865c5bbf22827f10a104">Stop</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">enum class</span> Menu {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        none,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        main,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    };</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    Urho3D::SharedPtr&lt;Urho3D::Scene&gt; m_scene;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    Urho3D::SharedPtr&lt;Urho3D::Node&gt; m_camera_node;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif // SMARTCAR_EMUL_URHOAPP_HXX</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> create_scene();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> create_viewport();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> setup_attachments(<a class="code" href="struct_board_data.html">BoardData</a>&amp; board, <span class="keyword">const</span> <a class="code" href="classsmce_1_1_vehicle_config.html">smce::VehicleConfig</a>&amp;);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> subscribe_to_events();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> HandleUpdate(Urho3D::StringHash event_type, Urho3D::VariantMap&amp; event_data);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> HandleKeyUp(Urho3D::StringHash event_type, Urho3D::VariantMap&amp; event_data);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> HandleMouseButtonDown(Urho3D::StringHash, Urho3D::VariantMap&amp;);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    Urho3D::SharedPtr&lt;Urho3D::Scene&gt; m_scene;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    Urho3D::SharedPtr&lt;Urho3D::Node&gt; m_camera_node;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    Urho3D::SharedPtr&lt;Urho3D::Node&gt; m_vehicle_node;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::vector&lt;Urho3D::LogicComponent*&gt; m_vehicle_attachments;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif // SMARTCAR_EMUL_URHOAPP_HXX</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_urho_app_html_a40a5ea9d79d40f99e0e9ae11adde6638"><div class="ttname"><a href="class_urho_app.html#a40a5ea9d79d40f99e0e9ae11adde6638">UrhoApp::Setup</a></div><div class="ttdeci">void Setup() override</div><div class="ttdef"><b>Definition:</b> UrhoApp.cxx:37</div></div>
-<div class="ttc" id="aclass_urho_app_html"><div class="ttname"><a href="class_urho_app.html">UrhoApp</a></div><div class="ttdef"><b>Definition:</b> UrhoApp.hxx:26</div></div>
-<div class="ttc" id="aclass_urho_app_html_a96cea5e482de88219675fc4140cc8c47"><div class="ttname"><a href="class_urho_app.html#a96cea5e482de88219675fc4140cc8c47">UrhoApp::UrhoApp</a></div><div class="ttdeci">UrhoApp(Urho3D::Context *context)</div><div class="ttdef"><b>Definition:</b> UrhoApp.cxx:35</div></div>
-<div class="ttc" id="aclass_urho_app_html_a0a750b8d2d1c9449587dfca42d2fc45f"><div class="ttname"><a href="class_urho_app.html#a0a750b8d2d1c9449587dfca42d2fc45f">UrhoApp::Start</a></div><div class="ttdeci">void Start() override</div><div class="ttdef"><b>Definition:</b> UrhoApp.cxx:48</div></div>
-<div class="ttc" id="aclass_urho_app_html_a7ec3bdca0380865c5bbf22827f10a104"><div class="ttname"><a href="class_urho_app.html#a7ec3bdca0380865c5bbf22827f10a104">UrhoApp::Stop</a></div><div class="ttdeci">void Stop() override</div><div class="ttdef"><b>Definition:</b> UrhoApp.cxx:58</div></div>
+<div class="ttc" id="aclasssmce_1_1_vehicle_config_html"><div class="ttname"><a href="classsmce_1_1_vehicle_config.html">smce::VehicleConfig</a></div><div class="ttdef"><b>Definition:</b> VehicleConf.hxx:43</div></div>
+<div class="ttc" id="aclass_urho_app_html_a40a5ea9d79d40f99e0e9ae11adde6638"><div class="ttname"><a href="class_urho_app.html#a40a5ea9d79d40f99e0e9ae11adde6638">UrhoApp::Setup</a></div><div class="ttdeci">void Setup() override</div><div class="ttdef"><b>Definition:</b> UrhoApp.cxx:41</div></div>
+<div class="ttc" id="anamespacesmce_html"><div class="ttname"><a href="namespacesmce.html">smce</a></div><div class="ttdef"><b>Definition:</b> BoardConf.hxx:30</div></div>
+<div class="ttc" id="aclass_urho_app_html"><div class="ttname"><a href="class_urho_app.html">UrhoApp</a></div><div class="ttdef"><b>Definition:</b> UrhoApp.hxx:33</div></div>
+<div class="ttc" id="aclass_urho_app_html_a96cea5e482de88219675fc4140cc8c47"><div class="ttname"><a href="class_urho_app.html#a96cea5e482de88219675fc4140cc8c47">UrhoApp::UrhoApp</a></div><div class="ttdeci">UrhoApp(Urho3D::Context *context)</div><div class="ttdef"><b>Definition:</b> UrhoApp.cxx:39</div></div>
+<div class="ttc" id="astruct_board_data_html"><div class="ttname"><a href="struct_board_data.html">BoardData</a></div><div class="ttdef"><b>Definition:</b> BoardData.hxx:58</div></div>
+<div class="ttc" id="aclass_urho_app_html_a0a750b8d2d1c9449587dfca42d2fc45f"><div class="ttname"><a href="class_urho_app.html#a0a750b8d2d1c9449587dfca42d2fc45f">UrhoApp::Start</a></div><div class="ttdeci">void Start() override</div><div class="ttdef"><b>Definition:</b> UrhoApp.cxx:52</div></div>
+<div class="ttc" id="aclass_urho_app_html_a7ec3bdca0380865c5bbf22827f10a104"><div class="ttname"><a href="class_urho_app.html#a7ec3bdca0380865c5bbf22827f10a104">UrhoApp::Stop</a></div><div class="ttdeci">void Stop() override</div><div class="ttdef"><b>Definition:</b> UrhoApp.cxx:62</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
