@@ -112,15 +112,16 @@ void SPIClass::transfer(void* buf, std::uint16_t count) {
     if(!active || count == 0)
         return;
     // Assume that `this->active` can only be truthy if `maybe_init` has been called
+    std::unique_lock lock{::board_data->spi_buses[bus_id].slaves_mut};
     auto& slave = ::board_data->spi_buses[bus_id].slaves[slave_sel];
     if(slave.valueless_by_exception()) // Device not initialized -- dynamic-init
         return; // CAVEAT: [dynamic-init] SPI.transfer(/*...*/) is a no-op
 
     auto* byte_buf = static_cast<std::byte*>(buf);
     std::visit(Visitor{
-                   [=, processed = 0ull, left = static_cast<std::size_t>(count)](BlockingBus<DynaBufferBus>& bus_buffer) mutable {
+                   [=, processed = 0ull, left = static_cast<std::size_t>(count), &lock](BlockingBus<DynaBufferBus>& bus_buffer) mutable {
                        do {
-                           std::unique_lock<std::mutex> req_lock{bus_buffer.request_bytes_mutex};
+
                            {
                                std::scoped_lock lock{bus_buffer.rx_mutex, bus_buffer.tx_mutex};
                                const auto swp_len = (std::min)(left, bus_buffer.rx.size());
@@ -136,7 +137,7 @@ void SPIClass::transfer(void* buf, std::uint16_t count) {
                                break;
 
                            bus_buffer.request_bytes = left;
-                           bus_buffer.sync.wait(req_lock);
+                           bus_buffer.sync.wait(lock);
                        } while(true);
 
                    },

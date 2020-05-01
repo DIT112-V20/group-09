@@ -52,7 +52,6 @@ template <class BufferBus>
 struct BlockingBus : BufferBus {
     std::condition_variable sync; // C++20: squash into below atomic by means of `std::atomic::wait`
     std::size_t request_bytes{}; // C++20: use `std::atomic_size_t` for thread-sync
-    std::mutex request_bytes_mutex; // C++20: remove
 };
 
 struct UartBus : DynaBufferBus {};
@@ -63,6 +62,7 @@ struct I2cBus : FixBufferBus<32u> {
 };
 struct SpiBus {
     std::unordered_map<std::uint16_t, std::variant<BlockingBus<DynaBufferBus>, std::function<void(std::byte*, std::size_t)>>> slaves; // GCC10: use `std::span` in funcsig
+    std::mutex slaves_mut;
 };
 
 struct BoardData {

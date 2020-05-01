@@ -5,6 +5,11 @@
 #include "Servo.h"
 
 static void init_fake() {
+    if(board_data)
+        (delete board_data), board_data = nullptr;
+    if(board_info)
+        (delete board_info), board_data = nullptr;
+
     auto loc_board_data = std::make_unique<BoardData>();
     loc_board_data->servo_value = std::vector<std::atomic_uint8_t>(255);
 
