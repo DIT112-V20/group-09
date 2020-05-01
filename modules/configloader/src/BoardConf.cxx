@@ -31,23 +31,7 @@
 #pragma clang diagnostic pop
 
 #include "BoardConf.hxx"
-
-template <class T, class C>
-struct MptrKeyPair {
-    using FieldType = T;
-    using ClassType = C;
-
-    T C::* mptr;
-    const char* key;
-
-    constexpr MptrKeyPair(T C::* mptr, const char* key) noexcept : mptr{mptr}, key{key} {}
-};
-
-template <class T>
-concept MpKPair = std::is_same_v<T, MptrKeyPair<typename T::FieldType, typename  T::ClassType>>;
-
-#define ADDR_AND_NAME(var) MptrKeyPair{&var, NAMEOF(var).c_str()}
-
+#include "ConfHelper.hxx"
 
 template <std::integral T>
 T json_deserialize_integral_unchecked(const rapidjson::Value& jval){
