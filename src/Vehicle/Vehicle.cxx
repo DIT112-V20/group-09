@@ -55,7 +55,6 @@
 #include <Urho3D/Scene/Scene.h>
 #include "Vehicle.hxx"
 
-const float CHASSIS_WIDTH = 2.6f;
 
 void Vehicle::RegisterObject(Urho3D::Context* context) {
     context->RegisterFactory<Vehicle>();
@@ -65,16 +64,17 @@ void Vehicle::RegisterObject(Urho3D::Context* context) {
 
 Vehicle::Vehicle(Urho3D::Context* context) : LogicComponent(context) {
     SetUpdateEventMask(Urho3D::USE_FIXEDUPDATE | Urho3D::USE_POSTUPDATE);
-    engineForce_ = 0.0f; // NOT CORRECT VALUES
-    maxEngineForce_ = 2500.0f;
-    wheelRadius_ = 0.5f;
-    suspensionRestLength_ = 0.6f;
-    wheelWidth_ = 0.4f;
-    suspensionStiffness_ = 14.0f;
-    suspensionDamping_ = 2.0f;
-    suspensionCompression_ = 4.0f;
-    wheelFriction_ = 1000.0f;
-    rollInfluence_ = 0.12f;
+    engineForce_ = 0.0f;
+    maxEngineForce_ = 2.4f;
+    wheelRadius_ = 0.0335f;
+    // we don't really have Susoension
+    suspensionRestLength_ = 0.0345f;
+    suspensionStiffness_ = 100.61f;
+    suspensionDamping_ = 10.0f;
+    suspensionCompression_ = 15.1f;
+    // the total Friction of wheels equals 10.4272N assuming Friction coefficent is 0.8
+    wheelFriction_ = 2.7f;
+    rollInfluence_ = 0.01f;
 }
 
 Vehicle::~Vehicle() = default;
@@ -83,9 +83,11 @@ void Vehicle::Init() {
     auto* vehicle = node_->CreateComponent<Urho3D::RaycastVehicle>();
     vehicle->Init();
     auto* hullBody = node_->GetComponent<Urho3D::RigidBody>();
-    hullBody->SetMass(800.0f);
-    hullBody->SetLinearDamping(0.2f); // Some air resistance
-    hullBody->SetAngularDamping(0.5f);
+    // the car weigth is 1.33kg
+    hullBody->SetMass(1.33f);
+    // LinearDamping & AngularDamping depend on Velocity, which i dont have at the moment
+    hullBody->SetLinearDamping(0.1f);
+    hullBody->SetAngularDamping(0.4f);
     hullBody->SetCollisionLayer(1);
     // This function is called only from the main program when initially creating the vehicle, not on scene load
     auto* cache = GetSubsystem<Urho3D::ResourceCache>();
@@ -94,26 +96,25 @@ void Vehicle::Init() {
     auto* hullColShape = node_->CreateComponent<Urho3D::CollisionShape>();
     Urho3D::Vector3 v3BoxExtents = Urho3D::Vector3::ONE;
     hullColShape->SetBox(v3BoxExtents);
-    node_->SetScale(Urho3D::Vector3(2.3f, 1.0f, 4.0f));
+    node_->SetScale(Urho3D::Vector3(0.195f, 0.15f, 0.236f)); /// Chassi 195mm*15mm*236mm
     hullObject->SetModel(cache->GetResource<Urho3D::Model>("Models/Box.mdl"));
     hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
     hullObject->SetCastShadows(true);
-    float connectionHeight = -0.4f;
+    float connectionHeight = -0.06f;
     bool isFrontWheel = true;
     Urho3D::Vector3 wheelDirection(0, -1, 0);
     Urho3D::Vector3 wheelAxle(-1, 0, 0);
-    // We use not scaled coordinates here as everything will be scaled.
-    // Wheels are on bottom at edges of the chassis
-    // Note we don't set wheel nodes as children of hull (while we could) to avoid scaling to affect them.
-    float wheelX = CHASSIS_WIDTH / 2.0f - wheelWidth_;
+   
+    float wheelX = 0.09f;
+    float wheelZ = 0.08f;
     // Front left
-    connectionPoints_[0] = Urho3D::Vector3(-wheelX, connectionHeight, 2.5f - GetWheelRadius() * 2.0f);
+    connectionPoints_[0] = Urho3D::Vector3(-wheelX, connectionHeight, wheelZ);
     // Front right
-    connectionPoints_[1] = Urho3D::Vector3(wheelX, connectionHeight, 2.5f - GetWheelRadius() * 2.0f);
+    connectionPoints_[1] = Urho3D::Vector3(wheelX, connectionHeight, wheelZ);
     // Back left
-    connectionPoints_[2] = Urho3D::Vector3(-wheelX, connectionHeight, -2.5f + GetWheelRadius() * 2.0f);
+    connectionPoints_[2] = Urho3D::Vector3(-wheelX, connectionHeight, -wheelZ);
     // Back right
-    connectionPoints_[3] = Urho3D::Vector3(wheelX, connectionHeight, -2.5f + GetWheelRadius() * 2.0f);
+    connectionPoints_[3] = Urho3D::Vector3(wheelX, connectionHeight, -wheelZ);
     const Urho3D::Color LtBrown(0.972f, 0.780f, 0.412f);
     for (int id = 0; id < sizeof(connectionPoints_) / sizeof(connectionPoints_[0]); id++) {
         Urho3D::Node* wheelNode = GetScene()->CreateChild();
@@ -130,7 +131,7 @@ void Vehicle::Init() {
         vehicle->SetWheelDampingCompression(id, suspensionCompression_);
         vehicle->SetWheelFrictionSlip(id, wheelFriction_);
         vehicle->SetWheelRollInfluence(id, rollInfluence_);
-        wheelNode->SetScale(Urho3D::Vector3(1.0f, 0.65f, 1.0f));
+        wheelNode->SetScale(Urho3D::Vector3(0.067f, 0.023f, 0.067f));// tire Diameter: 67mm
         auto* pWheel = wheelNode->CreateComponent<Urho3D::StaticModel>();
         pWheel->SetModel(cache->GetResource<Urho3D::Model>("Models/Cylinder.mdl"));
         pWheel->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
@@ -149,9 +150,9 @@ void Vehicle::resetDifferential() {
 void Vehicle::setDifferential(float engineForce, const unsigned int control) {
     auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
     if (control == 8) {
-        engineForce = engineForce * -10;
+        engineForce = engineForce * -2;
     } else {
-        engineForce = engineForce * 10;
+        engineForce = engineForce * 2;
     }
     vehicle->SetEngineForce(1, engineForce);
     vehicle->SetEngineForce(3, engineForce);
@@ -171,17 +172,17 @@ void Vehicle::FixedUpdate(float timeStep) {
     }
     if (controls_.buttons_ & CTRL_FORWARD) {
         resetDifferential();
-        accelerator = 1.0f;
+        accelerator = 0.3f;     // not accurate
     }
     if (controls_.buttons_ & CTRL_BACK) {
         resetDifferential();
-        accelerator = -0.5f;
+        accelerator = -0.3f;    // not accurate
     }
 
     // apply forces
     engineForce_ = maxEngineForce_ * accelerator;
-    vehicle->SetEngineForce(0, engineForce_);
-    vehicle->SetEngineForce(1, engineForce_);
+   /* vehicle->SetEngineForce(0, engineForce_);
+    vehicle->SetEngineForce(1, engineForce_);*/
     vehicle->SetEngineForce(3, engineForce_);
     vehicle->SetEngineForce(2, engineForce_);
 }

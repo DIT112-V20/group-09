@@ -27,16 +27,23 @@
 #include <Urho3D/Input/Input.h>
 #include <Urho3D/Input/InputEvents.h>
 #include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/Physics/RigidBody.h>
+#include <Urho3D/Physics/CollisionShape.h>
 #include <Urho3D/Scene/Scene.h>
 #include <Urho3D/IO/Log.h>
 #include <range/v3/algorithm/find_if.hpp>
+#include <Urho3D/UI/UI.h>
+#include "UrhoUtility.hxx"
 #include "app/UrhoApp.hxx"
 #include "components/MovableCamera.hxx"
 #include "components/Registry.hxx"
 #include "UrhoUtility.hxx"
 #include "VehicleConf.hxx"
 
-UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} { MovableCamera::RegisterObject(context); }
+UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} {
+    MovableCamera::RegisterObject(context);
+    Vehicle::RegisterObject(context);
+}
 
 void UrhoApp::Setup() {
     engineParameters_[Urho3D::EP_WINDOW_TITLE] = "Smart Car Emul";
@@ -54,9 +61,9 @@ void UrhoApp::Start() {
     input.SetMouseVisible(true);
     input.SetMouseGrabbed(false);
 
-    create_vehicle();
     create_scene();
     create_viewport();
+    create_vehicle();
     subscribe_to_events();
 }
 
@@ -71,6 +78,10 @@ void UrhoApp::create_scene() {
     plane_node->SetScale(Urho3D::Vector3(200, 0, 200));
     auto* const planeObject = plane_node->CreateComponent<Urho3D::StaticModel>();
     planeObject->SetModel(cache->GetResource<Urho3D::Model>("Models/Cone.mdl"));
+    auto* body = plane_node->CreateComponent<Urho3D::RigidBody>();
+    body->SetCollisionLayer(2); // Use layer bitmask 2 for static geometry
+    auto* shape = plane_node->CreateComponent<Urho3D::CollisionShape>();
+    shape->SetStaticPlane();
 
     Urho3D::Node* lightNode = m_scene->CreateChild("Sunlight");
     auto* const light = lightNode->CreateComponent<Urho3D::Light>();
@@ -134,8 +145,8 @@ void UrhoApp::HandleMouseButtonDown(Urho3D::StringHash, Urho3D::VariantMap&) {
 }
 
 void UrhoApp::create_vehicle() {
-    Node* vehicleNode = m_scene->CreateChild("Vehicle");
-    vehicleNode->SetPosition(Vector3(0.0f, 25.0f, 0.0f));
+    Urho3D::Node* vehicleNode = m_scene->CreateChild("Vehicle");
+    vehicleNode->SetPosition(Urho3D::Vector3(0.0f, 25.0f, 0.0f));
     m_vehicle = vehicleNode->CreateComponent<Vehicle>();
     m_vehicle->Init();
 }

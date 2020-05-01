@@ -40,11 +40,10 @@
 #include <Urho3D/Physics/PhysicsUtils.h>
 #include <Urho3D/Scene/LogicComponent.h>
 
-const unsigned CTRL_FORWARD = (1u << 0u);
-const unsigned CTRL_BACK = (1u << 1u);
-const unsigned CTRL_LEFT = (1u << 2u);
-const unsigned CTRL_RIGHT = (1u << 3u);
-const float YAW_SENSITIVITY = 0.1f;
+constexpr unsigned CTRL_FORWARD = (1u << 0u);
+constexpr unsigned CTRL_BACK = (1u << 1u);
+constexpr unsigned CTRL_LEFT = (1u << 2u);
+constexpr unsigned CTRL_RIGHT = (1u << 3u);
 
 class Vehicle : public Urho3D::LogicComponent {
     URHO3D_OBJECT(Vehicle, LogicComponent)
@@ -65,8 +64,6 @@ class Vehicle : public Urho3D::LogicComponent {
 
     /// Get wheel radius.
     float GetWheelRadius() { return wheelRadius_; }
-    /// Get wheel width.
-    float GetWheelWidth() { return wheelWidth_; }
 
   private:
     /// Linear momentum supplied by engine to RigidBody
@@ -77,8 +74,6 @@ class Vehicle : public Urho3D::LogicComponent {
     float wheelRadius_;
     /// Suspension rest length (in meters)
     float suspensionRestLength_;
-    /// Width of wheel (used only in calculation of wheel placement)
-    float wheelWidth_;
     /// Suspension stiffness
     float suspensionStiffness_;
     /// Suspension damping
