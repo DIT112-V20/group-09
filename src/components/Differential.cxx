@@ -1,5 +1,5 @@
 /*
- *  MovableCamera.cxx
+ *  Differential.cxx
  *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,6 +25,7 @@ void Differential::setDifferential(float engineForce, const unsigned int control
     // failed attempts
     // auto* vehicle = node_->GetComponent<RaycastVehicle>();
     // RaycastVehicle* vehicle = node_->GetComponent<RaycastVehicle>();
+    // i also wanted to use a for loop, but i wanted to keep things simple
     if (control == 8) {
         engineForce = engineForce * -2;
     } else {

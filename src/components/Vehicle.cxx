@@ -64,17 +64,6 @@ void Vehicle::RegisterObject(Urho3D::Context* context) {
 
 Vehicle::Vehicle(Urho3D::Context* context) : LogicComponent(context) {
     SetUpdateEventMask(Urho3D::USE_FIXEDUPDATE | Urho3D::USE_POSTUPDATE);
-    engineForce_ = 0.0f;
-    maxEngineForce_ = 2.4f;
-    wheelRadius_ = 0.0335f;
-    // we don't really have Suspension
-    suspensionRestLength_ = 0.0345f;
-    suspensionStiffness_ = 100.61f;
-    suspensionDamping_ = 10.0f;
-    suspensionCompression_ = 15.1f;
-    // the total Friction of wheels equals 10.4272N assuming Friction coefficent is 0.8
-    wheelFriction_ = 2.7f;
-    rollInfluence_ = 0.01f;
 }
 
 Vehicle::~Vehicle() = default;
@@ -116,7 +105,7 @@ void Vehicle::Init() {
     // Back right
     connectionPoints_[3] = Urho3D::Vector3(wheelX, connectionHeight, -wheelZ);
     const Urho3D::Color LtBrown(0.972f, 0.780f, 0.412f);
-    for (int id = 0; id < sizeof(connectionPoints_) / sizeof(connectionPoints_[0]); id++) {
+    for (int id = 0; id < connectionPoints_.size(); id++) {
         Urho3D::Node* wheelNode = GetScene()->CreateChild();
         Urho3D::Vector3 connectionPoint = connectionPoints_[id];
         

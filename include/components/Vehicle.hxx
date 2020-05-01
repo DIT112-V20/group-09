@@ -39,6 +39,7 @@
 #include <Urho3D/Input/Controls.h>
 #include <Urho3D/Physics/PhysicsUtils.h>
 #include <Urho3D/Scene/LogicComponent.h>
+#include <array>
 
 constexpr unsigned CTRL_FORWARD = (1u << 0u);
 constexpr unsigned CTRL_BACK = (1u << 1u);
@@ -63,29 +64,34 @@ class Vehicle : public Urho3D::LogicComponent {
     Urho3D::Controls controls_;
 
     /// Get wheel radius.
-    float GetWheelRadius() { return wheelRadius_; }
+    float GetWheelRadius() const { return wheelRadius_; }
 
   private:
     /// Linear momentum supplied by engine to RigidBody
-    float engineForce_;
+    float engineForce_ = 0.0f;
     /// Maximum linear momentum supplied by engine to RigidBody
-    float maxEngineForce_;
+    float maxEngineForce_ = 2.4f;
     /// Stored wheel radius
-    float wheelRadius_;
+    float wheelRadius_ = 0.0335f;
     /// Suspension rest length (in meters)
-    float suspensionRestLength_;
+
+    // we don't really have Suspension
+    float suspensionRestLength_ = 0.0345f;
     /// Suspension stiffness
-    float suspensionStiffness_;
+    float suspensionStiffness_ = 100.61f;
     /// Suspension damping
-    float suspensionDamping_;
+
+    /// removes bouncyness
+    float suspensionDamping_ = 10.0f;
     /// Suspension compression
-    float suspensionCompression_;
+    float suspensionCompression_ = 15.1f;
     /// Wheel friction
-    float wheelFriction_;
+
+    // the total Friction of wheels equals 10.4272N assuming Friction coefficent is 0.8
+    float wheelFriction_ = 2.7f;
     /// Wheel roll influence (how much car will turn sidewise)
-    float rollInfluence_;
+    float rollInfluence_ = 0.01f;
     /// Value to calculate acceleration.
     Urho3D::Vector3 prevVelocity_;
-    /// Storing points for emitters
-    Urho3D::Vector3 connectionPoints_[4];
+    std::array<Urho3D::Vector3, 4> connectionPoints_;
 };
