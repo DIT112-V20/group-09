@@ -11,7 +11,7 @@
 #include "Entrypoint.hxx"
 #include "SPI.h"
 
-void init_fake() {
+static void init_fake() {
     if (board_data)
         return;
     auto loc_board_data = std::make_unique<BoardData>();

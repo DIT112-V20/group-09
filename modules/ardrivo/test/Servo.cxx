@@ -4,7 +4,7 @@
 #include "Entrypoint.hxx"
 #include "Servo.h"
 
-void init_fake() {
+static void init_fake() {
     auto loc_board_data = std::make_unique<BoardData>();
     loc_board_data->servo_value = std::vector<std::atomic_uint8_t>(255);
 
