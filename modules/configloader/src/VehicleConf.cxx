@@ -24,7 +24,19 @@
 #include <rapidjson/istreamwrapper.h>
 #pragma clang diagnostic pop
 #include <range/v3/algorithm/transform.hpp>
+#include "ConfHelper.hxx"
 #include "VehicleConf.hxx"
+
+auto jval_to_vec3(const rapidjson::Value& jval) -> std::optional<Urho3D::Vector3> {
+    if(!jval.HasMember("x") || !jval["x"].IsNumber())
+        return std::nullopt;
+    if(!jval.HasMember("y") || !jval["y"].IsNumber())
+        return std::nullopt;
+    if(!jval.HasMember("z") || !jval["z"].IsNumber())
+        return std::nullopt;
+
+    return Urho3D::Vector3{jval["x"].GetFloat(), jval["y"].GetFloat(), jval["z"].GetFloat()};
+}
 
 auto smce::VehicleConfig::load(rapidjson::Document doc) -> std::optional<VehicleConfig> {
     std::optional<VehicleConfig> ret;
@@ -36,19 +48,46 @@ auto smce::VehicleConfig::load(rapidjson::Document doc) -> std::optional<Vehicle
         return std::nullopt;
     if(!conf.m_doc["hull_model_file"].IsString())
         return std::nullopt;
-    conf.hull_model_file = doc["hull_model_file"].GetString();
+    conf.hull_model_file = conf.m_doc["hull_model_file"].GetString();
 
-    if(!conf.m_doc.HasMember("wheel_model_file"))
+    if(!conf.m_doc.HasMember("parts"))
         return std::nullopt;
-    if(!conf.m_doc["wheel_model_file"].IsString())
+    if(!conf.m_doc["parts"].IsObject())
         return std::nullopt;
-    conf.wheel_model_file = doc["wheel_model_file"].GetString();
+    bool valid = true;
+    const auto& jparts = conf.m_doc["parts"];
+    std::for_each(jparts.MemberBegin(), jparts.MemberEnd(), [&](const auto& jval){
+        if(!valid)
+            return;
+
+        auto& el = conf.parts[jval.name.GetString()];
+        auto pass_vec3 = [&](MptrKeyPair<Urho3D::Vector3, VehiclePart> mkp){
+            if(!jval.value.HasMember(mkp.key))
+                return;
+            if(auto vec_opt = jval_to_vec3(jval.value[mkp.key]); vec_opt)
+                (el.*(mkp.mptr)) = *vec_opt;
+        };
+
+        if(!jval.value.IsObject())
+            return (void)(valid = false);
+
+        if(!jval.value.HasMember("model_file") || !jval.value["model_file"].IsString())
+              return (void)(valid = false);
+        el.model_file = jval.value["model_file"].GetString();
+
+        pass_vec3(ADDR_AND_NAME(VehiclePart::position));
+        pass_vec3(ADDR_AND_NAME(VehiclePart::rotation));
+        pass_vec3(ADDR_AND_NAME(VehiclePart::model_position_offset));
+        pass_vec3(ADDR_AND_NAME(VehiclePart::model_rotation_offset));
+    });
+    if(!valid)
+        return std::nullopt;
 
     if(!conf.m_doc.HasMember("attachments"))
         return std::nullopt;
-    if(!conf.m_doc["attachments"].IsArray())
+    if(!conf.m_doc["attachments"].IsObject())
         return std::nullopt;
-    auto j_attach = conf.m_doc["attachements"].GetObject();
+    auto j_attach = conf.m_doc["attachments"].GetObject();
     for(const auto& el : j_attach){
         auto& em = conf.attachments.emplace_back();
         em.first = el.name.GetString();

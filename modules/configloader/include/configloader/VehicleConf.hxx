@@ -26,16 +26,25 @@
 #include <utility>
 #include <vector>
 #include <rapidjson/document.h>
+#include <Urho3D/Math/Vector3.h>
 
 namespace smce {
 
 namespace stdfs = std::filesystem;
 
+struct VehiclePart {
+    Urho3D::Vector3 position;
+    Urho3D::Vector3 rotation;
+    stdfs::path model_file;
+    Urho3D::Vector3 model_position_offset;
+    Urho3D::Vector3 model_rotation_offset;
+};
+
 class VehicleConfig {
     rapidjson::Document m_doc;
   public:
-    std::filesystem::path hull_model_file;
-    std::filesystem::path wheel_model_file;
+    stdfs::path hull_model_file;
+    std::unordered_map<std::string, VehiclePart> parts;
     std::vector<std::pair<std::string, const rapidjson::Value*>> attachments;
 
     /**
