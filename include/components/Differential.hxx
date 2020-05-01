@@ -22,5 +22,5 @@ class Differential : public Urho3D::RaycastVehicle {
   public:
     Differential(Urho3D::Context* context);
     ~Differential();
-    void Differential::setDifferential(float engineForce, const unsigned int control);
+    void setDifferential(float engineForce, const unsigned int control);
 };

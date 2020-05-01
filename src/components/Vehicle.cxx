@@ -97,8 +97,8 @@ void Vehicle::Init() {
     Urho3D::Vector3 v3BoxExtents = Urho3D::Vector3::ONE;
     hullColShape->SetBox(v3BoxExtents);
     node_->SetScale(Urho3D::Vector3(0.195f, 0.15f, 0.236f)); /// Chassi 195mm*15mm*236mm
-    hullObject->SetModel(cache->GetResource<Urho3D::Model>("Models/Box.mdl"));
-    hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
+    hullObject->SetModel(cache->GetResource<Urho3D::Model>("Models/SmartCar.mdl"));
+    hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/offroadVehicle.xml"));
     hullObject->SetCastShadows(true);
     float connectionHeight = -0.06f;
     bool isFrontWheel = true;
@@ -131,7 +131,7 @@ void Vehicle::Init() {
         vehicle->SetWheelRollInfluence(id, rollInfluence_);
         wheelNode->SetScale(Urho3D::Vector3(0.067f, 0.023f, 0.067f));// tire Diameter: 67mm
         auto* pWheel = wheelNode->CreateComponent<Urho3D::StaticModel>();
-        pWheel->SetModel(cache->GetResource<Urho3D::Model>("Models/Cylinder.mdl"));
+        pWheel->SetModel(cache->GetResource<Urho3D::Model>("Models/SmartTire.mdl"));
         pWheel->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
         pWheel->SetCastShadows(true);
     }
