@@ -87,7 +87,11 @@ $(function() {
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>begin()
 : <a class="el" href="struct_hardware_serial.html#a288e8a54617bc6c3ebbcaa4ef8dc9efa">HardwareSerial</a>
-, <a class="el" href="class_two_wire.html#ada85a7a8663ec8af0a1248b659be2f18">TwoWire</a>
+, <a class="el" href="class_s_p_i_class.html#a4a2646959a242f6af423b04734c003f0">SPIClass</a>
+, <a class="el" href="class_two_wire.html#a8cc81d6937b126575fbba9b0d2500a59">TwoWire</a>
+</li>
+<li>beginTransaction()
+: <a class="el" href="class_s_p_i_class.html#a81e8590b5ec0a8225f898e9207cabeee">SPIClass</a>
 </li>
 <li>beginTransmission()
 : <a class="el" href="class_two_wire.html#a5429ddf7d8d1ba49457ee118c59fea71">TwoWire</a>
@@ -127,9 +131,13 @@ $(function() {
 <h3><a id="index_e"></a>- e -</h3><ul>
 <li>end()
 : <a class="el" href="struct_hardware_serial.html#a0f86c41f580e04bdf30ea00e9014eacd">HardwareSerial</a>
+, <a class="el" href="class_s_p_i_class.html#a79d89d8e3f5f1b003cb7b0aed2d77eab">SPIClass</a>
 </li>
 <li>endsWith()
 : <a class="el" href="class_string.html#a2860609cf1bac40efb0929ec6042304a">String</a>
+</li>
+<li>endTransaction()
+: <a class="el" href="class_s_p_i_class.html#ae313567555b51eda9d8ff86defd8ee0f">SPIClass</a>
 </li>
 <li>endTransmission()
 : <a class="el" href="class_two_wire.html#aae2be6eacfa27f99d38f26db3bb5e11b">TwoWire</a>
@@ -257,14 +265,17 @@ $(function() {
 <li>peekNextDigit()
 : <a class="el" href="struct_stream.html#a3dbc4937689c81b76f4ab16e253e85e0">Stream</a>
 </li>
-<li>Print()
-: <a class="el" href="class_print.html#ae835c86566fea29bd6cf8c132299b1b5">Print</a>
+<li>pins()
+: <a class="el" href="class_s_p_i_class.html#a1aabc03f973f69250c6f4da21af7dd2b">SPIClass</a>
 </li>
 <li>print()
 : <a class="el" href="class_print.html#af79c7d1a5156375f4fe409a4864de3bd">Print</a>
 </li>
+<li>Print()
+: <a class="el" href="class_print.html#ae835c86566fea29bd6cf8c132299b1b5">Print</a>
+</li>
 <li>println()
-: <a class="el" href="class_print.html#acae579a82aa87506c5c40030c9f8cddf">Print</a>
+: <a class="el" href="class_print.html#a903aae8895af726d7a6ada7cecece116">Print</a>
 </li>
 <li>ProgramOptions()
 : <a class="el" href="structsmce_1_1_program_options.html#ab96d15819c3381193607d5255e22c8ee">smce::ProgramOptions</a>
@@ -319,11 +330,20 @@ $(function() {
 <li>set_sketch_and_car()
 : <a class="el" href="structsmce_1_1_sketch_runtime.html#a9c4885276474d06fcccce1d82198749b">smce::SketchRuntime</a>
 </li>
+<li>setBitOrder()
+: <a class="el" href="class_s_p_i_class.html#a4fdc7dd9c3c2bd665ae775810495b0cd">SPIClass</a>
+</li>
 <li>setCharAt()
 : <a class="el" href="class_string.html#a731ec0906bc99b0423297f0c71a2a96f">String</a>
 </li>
 <li>setClock()
 : <a class="el" href="class_two_wire.html#a1d645ff3d8726ca9466fd3fbd26817bd">TwoWire</a>
+</li>
+<li>setClockDivider()
+: <a class="el" href="class_s_p_i_class.html#ae4852a8e39df7a5487f28d54691d8f41">SPIClass</a>
+</li>
+<li>setDataMode()
+: <a class="el" href="class_s_p_i_class.html#a15fd6a199ae53856792d2f3cedf1403e">SPIClass</a>
 </li>
 <li>setKey()
 : <a class="el" href="class_movable_camera.html#afb702e38dacf5bdd750035c1df01766a">MovableCamera</a>
@@ -342,6 +362,9 @@ $(function() {
 </li>
 <li>SketchRuntime()
 : <a class="el" href="structsmce_1_1_sketch_runtime.html#a7f5877e053a148782d4c4c05365072b9">smce::SketchRuntime</a>
+</li>
+<li>SPISettings()
+: <a class="el" href="struct_s_p_i_settings.html#acb5e9745ceec687e60fc5e99fdf97689">SPISettings</a>
 </li>
 <li>start()
 : <a class="el" href="structsmce_1_1_sketch_runtime.html#a04327f745b92f7b1c836754eab91260e">smce::SketchRuntime</a>
@@ -362,7 +385,7 @@ $(function() {
 : <a class="el" href="class_string.html#a7bf336147e61bee901c69a286569446c">String</a>
 </li>
 <li>substring()
-: <a class="el" href="class_string.html#a79e670f8496626163c765b443a177f4b">String</a>
+: <a class="el" href="class_string.html#a13931b6b63f4e55b9166d7507fb4f7b1">String</a>
 </li>
 </ul>
 
@@ -385,6 +408,12 @@ $(function() {
 </li>
 <li>toUpperCase()
 : <a class="el" href="class_string.html#ac922af3914e07ebc82e3b1e15891ae43">String</a>
+</li>
+<li>transfer()
+: <a class="el" href="class_s_p_i_class.html#a4e3dd6a39402b2b68840fc72c2072db0">SPIClass</a>
+</li>
+<li>transfer16()
+: <a class="el" href="class_s_p_i_class.html#a6f690c47bbceb6741915d4ff0a5413de">SPIClass</a>
 </li>
 <li>trim()
 : <a class="el" href="class_string.html#a1ac20730bd874180653b94a1394c5eeb">String</a>
