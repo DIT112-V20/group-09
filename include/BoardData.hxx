@@ -55,9 +55,9 @@ struct BlockingBus : BufferBus {
 };
 
 struct UartBus : DynaBufferBus {};
-struct I2cBus : FixBufferBus<32u> {
-    using Device = std::variant<std::pair<std::condition_variable, std::size_t>, std::function<void(std::size_t)>>;
-    std::unordered_map<std::uint8_t, Device> devices;
+struct I2cBus {
+    using Device = std::pair<FixBufferBus<32u>, std::variant<BlockingBus<std::tuple<>>, std::function<void(std::size_t)>>>;
+    std::unordered_map<std::uint8_t, Device> slaves;
     std::mutex devices_mut;
 };
 struct SpiBus {

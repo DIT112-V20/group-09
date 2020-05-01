@@ -80,7 +80,12 @@ void merge_boards(BoardData old_board, BoardData& new_board) noexcept {
         for(auto [from, to] : ranges::views::zip(old_board.*mvec, new_board.*mvec))
             std::tie(to.rx, to.tx) = std::forward_as_tuple(from.rx, from.tx);
     };
-
-    copy_proto_bufs(&BoardData::i2c_buses);
     copy_proto_bufs(&BoardData::uart_buses);
+
+    auto copy_proto_slaves = [&]<class T>(std::vector<T>(BoardData::* mvec)) {
+        for(auto [from, to] : ranges::views::zip(old_board.*mvec, new_board.*mvec))
+            to.slaves = std::move(from.slaves);
+    };
+    copy_proto_slaves(&BoardData::i2c_buses);
+    copy_proto_slaves(&BoardData::spi_buses);
 }
