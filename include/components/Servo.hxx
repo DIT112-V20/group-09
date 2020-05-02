@@ -34,6 +34,7 @@ class Servo : public Urho3D::LogicComponent {
         float angle_max;
     };
 
+    std::atomic_bool* dir_pin;
     std::atomic_uint8_t* pwm_pin;
     Urho3D::Node* node;
 
