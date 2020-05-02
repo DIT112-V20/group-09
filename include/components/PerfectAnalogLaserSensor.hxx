@@ -20,17 +20,34 @@
 
 #include <cstdint>
 #include <rapidjson/include/rapidjson/document.h>
+#include "reg_moniker/DeviceMap.hxx"
 #include "BoardData.hxx"
 #include "LaserCaster.hxx"
 
 class PerfectAnalogLaserSensor : public LaserCaster {
     URHO3D_OBJECT(PerfectAnalogLaserSensor, LaserCaster);
 
-    std::atomic_uint8_t value;
+    static constexpr auto ADDRESS_DEFAULT = 0x29;
 
     std::uint8_t bus_id{};
-    std::uint8_t address{};
     I2cBus* bus;
+
+    enum readRegs {
+        MEASUREMENT_RESULT = 0x14,
+    };
+
+    enum writeRegs { SPAD_INFO = 0x83, DEVICE_ID = 0xC0, CHANGE_ADDRESS = 0x8A };
+
+    using p_laser_map = regmon::Device<PerfectAnalogLaserSensor>;
+    p_laser_map::DeviceMap vlx =
+        p_laser_map::make_device(p_laser_map::DefaultsTo<DEVICE_ID>{0xEE}, p_laser_map::DefaultsTo<SPAD_INFO>{0x01},
+                                 p_laser_map::InvokesFunction<CHANGE_ADDRESS>{
+                                     +[](PerfectAnalogLaserSensor& drv, p_laser_map::DeviceStorage& store, gsl::span<const std::byte> incoming) {
+                                         auto ex = drv.bus->slaves.extract(store.address);
+                                         store.data[CHANGE_ADDRESS] = store.address = ex.key() = static_cast<uint8_t>(incoming.front());
+                                         drv.bus->slaves.insert(std::move(ex));
+                                     }});
+    p_laser_map::DeviceStorage store = p_laser_map::DeviceStorage{};
 
   public:
     PerfectAnalogLaserSensor(Urho3D::Context* context, BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
