@@ -20,7 +20,7 @@
 
 #include <cstdint>
 #include <rapidjson/include/rapidjson/document.h>
-#include "reg_moniker/DeviceMap.hxx"
+#include "DeviceMap.hxx"
 #include "BoardData.hxx"
 #include "LaserCaster.hxx"
 
