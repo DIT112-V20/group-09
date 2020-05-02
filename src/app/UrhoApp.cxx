@@ -35,7 +35,6 @@
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Scene/Scene.h>
 #include <range/v3/algorithm/find_if.hpp>
-#include "app/BootCompile.hxx"
 #include "app/UrhoApp.hxx"
 #include "components/MovableCamera.hxx"
 #include "components/Registry.hxx"
