@@ -36,7 +36,7 @@ struct Device {
     using Storage = std::array<std::uint8_t, 255>;
 
     struct DeviceMap {
-        Storage map{};
+        std::array<MapVals, 255> map{};
         Storage rom{};
         std::array<RegAttachedFunctionPtr, 255> func = {};
     };
@@ -50,7 +50,7 @@ struct Device {
     struct DefaultsTo {
         constexpr static auto register_ = Reg;
         std::uint8_t val;
-        void operator()(DeviceMap& dm) { dm.rom[Reg] = std::byte{val}; }
+        void operator()(DeviceMap& dm) { dm.rom[Reg] = val; }
     };
     template <std::size_t Reg>
     struct InvokesFunction {
@@ -73,13 +73,13 @@ struct Device {
           std::scoped_lock tx_lock{buf.tx_mutex};
           if (buf.tx_used_size > 0) {
               auto tx_off = 1;
-              const auto reg = buf.tx.front();
+              const auto reg = static_cast<uint8_t>(buf.tx.front());
               switch (devmap.map[reg]){
                 case MapVals::store:
-                  std::memcpy(&storage.data[reg], buf.tx.data() + 1, buf.tx_used_size() -1);
+                  std::memcpy(&storage.data[reg], buf.tx.data() + 1, buf.tx_used_size -1);
                   break;
                 case MapVals::invoke:
-                  devmap.func[reg](driver, storage, gsl::make_span(buf.tx.data() + 1, buf.tx_used_size() - 1));
+                  devmap.func[reg](driver, storage, gsl::make_span(buf.tx.data() + 1, buf.tx_used_size - 1));
               }
               buf.tx_used_size = 0;
           }
