@@ -19,13 +19,13 @@
 
 constexpr auto err_msg = "Attempted to create component Servo with an invalid configuration";
 
-Servo::Servo(Urho3D::Context* context, Urho3D::Node* node, BoardData& bd, const rapidjson::Value& pin) : Urho3D::LogicComponent{context}, node{node} {
+Servo::Servo(Urho3D::Context* context, BoardData& bd,Urho3D::Node* node, const rapidjson::Value& pin) : Urho3D::LogicComponent{context}, node{node} {
     if (!pin.HasMember("pin"))
         throw std::runtime_error{err_msg};
 
     auto pin_no = pin["pin"].GetArray();
 
-    for (auto& x : pin_no) {
+    for (const auto& x : pin_no) {
         if (x.GetUint() > bd.analog_pin_values.size())
             throw std::runtime_error{err_msg};
     }
