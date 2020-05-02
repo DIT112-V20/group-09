@@ -18,14 +18,15 @@
 #ifndef SMARTCAR_EMUL_LASERCASTER_HXX
 #define SMARTCAR_EMUL_LASERCASTER_HXX
 
-#include <Urho3D/Scene/LogicComponent.h>
 #include <cstdint>
+#include <Urho3D/Scene/LogicComponent.h>
 
 class LaserCaster : public Urho3D::LogicComponent {
     URHO3D_OBJECT(LaserCaster, Urho3D::LogicComponent);
+    Urho3D::Node* node;
 
   public:
-    explicit LaserCaster(Urho3D::Context* context);
+    explicit LaserCaster(Urho3D::Context* context, Urho3D::Node* node);
     [[nodiscard]] std::uint32_t measure(float max_dist = std::numeric_limits<float>::max()) const noexcept;
 };
 

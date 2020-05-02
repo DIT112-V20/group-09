@@ -19,7 +19,7 @@
 #include "components/LaserCaster.hxx"
 #include "components/MovableCamera.hxx"
 
-LaserCaster::LaserCaster(Urho3D::Context* context) : Urho3D::LogicComponent{context} {}
+LaserCaster::LaserCaster(Urho3D::Context* context, Urho3D::Node* node) : Urho3D::LogicComponent{context}, node{node} {}
 
 [[nodiscard]] std::uint32_t LaserCaster::measure(float max_dist) const noexcept {
     Urho3D::PhysicsRaycastResult ret;

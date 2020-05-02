@@ -15,20 +15,25 @@
  *  limitations under the License.
  */
 
+#include <range/v3/algorithm/find.hpp>
 #include "components/PerfectAnalogLaserSensor.hxx"
 
 constexpr auto err_msg = "Attempted to create component PerfectAnalogLaserSensor with an invalid configuration";
 
-PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(Urho3D::Context* context, BoardData& bd, const rapidjson::Value& pin) : LaserCaster{context} {
-    if (!pin.HasMember("pin"))
+PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(Urho3D::Context* context, BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin)
+    : LaserCaster{context, node} {
+    if (!pin.HasMember("bus_id") || pin.HasMember("address"))
         throw std::runtime_error{err_msg};
 
-    auto pin_no = pin["pin"].GetUint();
+    bus_id = pin["bus_id"].GetUint();
+    address = pin["address"].GetUint();
 
-    if (pin_no > bd.analog_pin_values.size())
-        throw std::runtime_error{err_msg};
+    bus = &bd.i2c_buses[bus_id];
+    std::scoped_lock lock{bus->devices_mut};
+    auto& [device_buf, device] = bus->slaves[address];
+    device = [](size_t t) {
 
-    analog_pin = &bd.analog_pin_values[pin_no];
+    };
 }
 
-void PerfectAnalogLaserSensor::Update(float timeStep) { analog_pin->store(measure()); }
+void PerfectAnalogLaserSensor::Update(float timeStep) {}

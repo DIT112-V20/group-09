@@ -18,6 +18,7 @@
 #ifndef SMARTCAR_EMUL_PERFECTANALOGLASERSENSOR_HXX
 #define SMARTCAR_EMUL_PERFECTANALOGLASERSENSOR_HXX
 
+#include <cstdint>
 #include <rapidjson/include/rapidjson/document.h>
 #include "BoardData.hxx"
 #include "LaserCaster.hxx"
@@ -25,10 +26,14 @@
 class PerfectAnalogLaserSensor : public LaserCaster {
     URHO3D_OBJECT(PerfectAnalogLaserSensor, LaserCaster);
 
-    std::atomic_uint16_t* analog_pin;
+    std::atomic_uint8_t value;
+
+    std::uint8_t bus_id{};
+    std::uint8_t address{};
+    I2cBus* bus;
 
   public:
-    PerfectAnalogLaserSensor(Urho3D::Context* context, BoardData& bd, const rapidjson::Value& pin);
+    PerfectAnalogLaserSensor(Urho3D::Context* context, BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
 
     void Update(float timeStep) override;
 };
