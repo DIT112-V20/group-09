@@ -68,21 +68,28 @@ struct Device {
 
     constexpr static auto make_ticker(const DeviceMap& devmap, DeviceStorage& storage, I2cBus& bus, Driver& driver) {
         return [&]() {
-          std::scoped_lock lock{bus.devices_mut};
-          auto& buf = bus.slaves[storage.address].first;
-          std::scoped_lock tx_lock{buf.tx_mutex};
-          if (buf.tx_used_size > 0) {
-              auto tx_off = 1;
-              const auto reg = static_cast<uint8_t>(buf.tx.front());
-              switch (devmap.map[reg]){
-                case MapVals::store:
-                  std::memcpy(&storage.data[reg], buf.tx.data() + 1, buf.tx_used_size -1);
-                  break;
-                case MapVals::invoke:
-                  devmap.func[reg](driver, storage, gsl::make_span(buf.tx.data() + 1, buf.tx_used_size - 1));
-              }
-              buf.tx_used_size = 0;
-          }
+            std::scoped_lock lock{bus.devices_mut};
+            auto& buf = bus.slaves[storage.address].first;
+            std::scoped_lock tx_lock{buf.tx_mutex};
+            std::size_t index = 0;
+            for (const auto& packet : buf) {
+                if(packet.size() == 1 && index == buf.size() - 1) // Read byte written but handle operation did not lock yet
+                    break; // Let handle operation lock
+                const auto reg = static_cast<uint8_t>(packet.front());
+                switch (devmap.map[reg]) {
+                  case MapVals::store:
+                    std::memcpy(&storage.data[reg], packet.data() + 1, packet.size() - 1);
+                    break;
+                  case MapVals::invoke:
+                    devmap.func[reg](driver, storage, gsl::make_span(packet.data() + 1, packet.size() - 1));
+                }
+                ++index;
+            }
+
+            if(index == buf.size())
+                buf.tx = {};
+            else
+                buf.tx.erase(buf.tx.begin(), buf.tx.begin() + index);
         };
     }
 };
