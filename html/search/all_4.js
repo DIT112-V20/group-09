@@ -19,7 +19,7 @@ var searchData=
   ['delaymicroseconds_83',['delayMicroseconds',['../_arduino_8cxx.html#a86d006647511ec52a60d99f678cd1811',1,'delayMicroseconds(unsigned int duration):&#160;Arduino.cxx'],['../_arduino_8h.html#a86d006647511ec52a60d99f678cd1811',1,'delayMicroseconds(unsigned int duration):&#160;Arduino.cxx']]],
   ['detach_84',['detach',['../class_servo.html#a0b69ccc5c8b348ebaa84be91d973a362',1,'Servo']]],
   ['detachinterrupt_85',['detachInterrupt',['../_arduino_8cxx.html#a3aae191c1d7e483a2b7e925457650c2e',1,'detachInterrupt(uint8_t pin):&#160;Arduino.cxx'],['../_arduino_8h.html#aa47ad728b5e830ac48f4085affea7d1c',1,'detachInterrupt(uint8_t interruptNum):&#160;Arduino.cxx']]],
-  ['device_86',['Device',['../struct_i2c_bus.html#a42621dca46a6c73abd6e8de5fdbba04e',1,'I2cBus']]],
+  ['device_86',['Device',['../struct_i2c_bus.html#a46c7cfbd3efc800bd3327b6c0bde95b8',1,'I2cBus']]],
   ['devices_5fmut_87',['devices_mut',['../struct_i2c_bus.html#a3585d60d9e2c99113d786837ae59b782',1,'I2cBus']]],
   ['digital_5fin_88',['digital_in',['../struct_pin_capability.html#a8bb2cbaf7dc09754b3ab1db4ffb016e6',1,'PinCapability']]],
   ['digital_5fin_5funable_5fpins_89',['digital_in_unable_pins',['../structsmce_1_1_board_conf.html#a63683060b2238190b5ab5f1f863f590e',1,'smce::BoardConf']]],

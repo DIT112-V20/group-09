@@ -76,25 +76,25 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a42621dca46a6c73abd6e8de5fdbba04e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i2c_bus.html#a42621dca46a6c73abd6e8de5fdbba04e">Device</a> = std::pair&lt; <a class="el" href="struct_fix_buffer_bus.html">FixBufferBus</a>&lt; 32u &gt;, std::variant&lt; <a class="el" href="struct_blocking_bus.html">BlockingBus</a>&lt; std::tuple&lt;&gt; &gt;, std::function&lt; void(std::size_t)&gt; &gt;&gt;</td></tr>
-<tr class="separator:a42621dca46a6c73abd6e8de5fdbba04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46c7cfbd3efc800bd3327b6c0bde95b8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i2c_bus.html#a46c7cfbd3efc800bd3327b6c0bde95b8">Device</a> = std::pair&lt; <a class="el" href="struct_packet_buffers.html">PacketBuffers</a>, std::variant&lt; <a class="el" href="struct_blocking_bus.html">BlockingBus</a>&lt; std::tuple&lt;&gt; &gt;, std::function&lt; void(std::size_t)&gt; &gt;&gt;</td></tr>
+<tr class="separator:a46c7cfbd3efc800bd3327b6c0bde95b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a1faa08ab07f3a97134586352d17d348e"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::uint8_t, <a class="el" href="struct_i2c_bus.html#a42621dca46a6c73abd6e8de5fdbba04e">Device</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i2c_bus.html#a1faa08ab07f3a97134586352d17d348e">slaves</a></td></tr>
+<tr class="memitem:a1faa08ab07f3a97134586352d17d348e"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::uint8_t, <a class="el" href="struct_i2c_bus.html#a46c7cfbd3efc800bd3327b6c0bde95b8">Device</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i2c_bus.html#a1faa08ab07f3a97134586352d17d348e">slaves</a></td></tr>
 <tr class="separator:a1faa08ab07f3a97134586352d17d348e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3585d60d9e2c99113d786837ae59b782"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_i2c_bus.html#a3585d60d9e2c99113d786837ae59b782">devices_mut</a></td></tr>
 <tr class="separator:a3585d60d9e2c99113d786837ae59b782"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a42621dca46a6c73abd6e8de5fdbba04e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42621dca46a6c73abd6e8de5fdbba04e">&#9670;&nbsp;</a></span>Device</h2>
+<a id="a46c7cfbd3efc800bd3327b6c0bde95b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46c7cfbd3efc800bd3327b6c0bde95b8">&#9670;&nbsp;</a></span>Device</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="struct_i2c_bus.html#a42621dca46a6c73abd6e8de5fdbba04e">I2cBus::Device</a> =  std::pair&lt;<a class="el" href="struct_fix_buffer_bus.html">FixBufferBus</a>&lt;32u&gt;, std::variant&lt;<a class="el" href="struct_blocking_bus.html">BlockingBus</a>&lt;std::tuple&lt;&gt; &gt;, std::function&lt;void(std::size_t)&gt; &gt;&gt;</td>
+          <td class="memname">using <a class="el" href="struct_i2c_bus.html#a46c7cfbd3efc800bd3327b6c0bde95b8">I2cBus::Device</a> =  std::pair&lt;<a class="el" href="struct_packet_buffers.html">PacketBuffers</a>, std::variant&lt;<a class="el" href="struct_blocking_bus.html">BlockingBus</a>&lt;std::tuple&lt;&gt; &gt;, std::function&lt;void(std::size_t)&gt; &gt;&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -123,7 +123,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;std::uint8_t, <a class="el" href="struct_i2c_bus.html#a42621dca46a6c73abd6e8de5fdbba04e">Device</a>&gt; I2cBus::slaves</td>
+          <td class="memname">std::unordered_map&lt;std::uint8_t, <a class="el" href="struct_i2c_bus.html#a46c7cfbd3efc800bd3327b6c0bde95b8">Device</a>&gt; I2cBus::slaves</td>
         </tr>
       </table>
 </div><div class="memdoc">
