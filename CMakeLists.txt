@@ -90,7 +90,7 @@ target_link_libraries (smartcar_emul_deps INTERFACE
         RegMoniker)
 
 add_executable (smartcar_emul src/main.cxx)
-target_include_directories (smartcar_emul PRIVATE include thirdparty/inih modules/reg_moniker/include)
+target_include_directories (smartcar_emul PRIVATE include thirdparty/inih)
 target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps Urho3D-rapidjson)
 target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 add_dependencies (smartcar_emul ArduinoRuntime)

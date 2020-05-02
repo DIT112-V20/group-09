@@ -51,7 +51,7 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
                 (vehicle->*mptr)(no, deg2rad(math_map(+pwm_pin->load(), 0, 180, movement_mode->angle_min, movement_mode->angle_max)));
         } else if constexpr (mptr == &Urho3D::RaycastVehicle::SetEngineForce) {
             for (const auto& no : wheels)
-                (vehicle->*mptr)(no, math_map(static_cast<float>(+pwm_pin->load()), 0.0f, 180.0f, 0.0f, 1.0f) * max_speed * (dir_pin ? 1 : -1));
+                (vehicle->*mptr)(no, math_map(static_cast<float>(+pwm_pin->load()), 0.0f, 180.0f, 0.0f, 1.0f) * max_speed * (dir_pin->load() ? 1 : -1));
         }
     }
 };
