@@ -15,6 +15,7 @@
  *  limitations under the License.
  */
 
+#include <iostream>
 #include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Console.h>
 #include <Urho3D/Engine/EngineDefs.h>
@@ -24,23 +25,24 @@
 #include <Urho3D/Graphics/StaticModel.h>
 #include <Urho3D/Graphics/Viewport.h>
 #include <Urho3D/IO/FileSystem.h>
+#include <Urho3D/IO/Log.h>
 #include <Urho3D/Input/Input.h>
 #include <Urho3D/Input/InputEvents.h>
 #include <Urho3D/Physics/CollisionShape.h>
 #include <Urho3D/Physics/PhysicsWorld.h>
+#include <Urho3D/Physics/RaycastVehicle.h>
 #include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/Resource/ResourceCache.h>
-#include <Urho3D/Physics/CollisionShape.h>
-#include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/Scene/Scene.h>
-#include <Urho3D/IO/Log.h>
 #include <range/v3/algorithm/find_if.hpp>
+#include "app/BootCompile.hxx"
 #include "app/UrhoApp.hxx"
 #include "components/MovableCamera.hxx"
 #include "components/Registry.hxx"
+#include "components/WheelServo.hxx"
 #include "UrhoUtility.hxx"
-#include "VehicleConf.hxx"
 #include "Vehicle.hxx"
+#include "VehicleConf.hxx"
 
 UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} {
     MovableCamera::RegisterObject(context);
@@ -59,17 +61,54 @@ void UrhoApp::Setup() {
 }
 
 void UrhoApp::Start() {
+
     auto& input = *GetSubsystem<Urho3D::Input>();
     input.SetMouseVisible(true);
     input.SetMouseGrabbed(false);
 
+    cp = std::async([&]() { return loadIno({"/home/ruthgerd/demoo/test.ino"}, "/home/ruthgerd/demoo/board_config.json"); });
     create_scene();
     create_vehicle();
     create_viewport();
     subscribe_to_events();
+    if(cp.get()) {
+        auto vconf = smce::VehicleConfig::load("/home/ruthgerd/demoo/vehicle_config.json");
+        if (vconf) {
+            setup_attachments(b_data, *vconf);
+            ino_runtime.start();
+        } else {
+            std::cout << "vconf bad" << std::endl;
+        }
+    }
 }
 
-void UrhoApp::Stop() { engine_->DumpResources(true); }
+void UrhoApp::Stop() { }
+
+bool UrhoApp::loadIno(smce::SketchSource ino_path, std::filesystem::path config_path) {
+    auto vehicle_conf = smce::load(config_path);
+    if (!vehicle_conf)
+        return false;
+    b_data = smce::as_data(*vehicle_conf);
+
+    b_data.write_byte = +[](unsigned char c) { return static_cast<bool>(std::cout.put(c)); };
+    b_data.write_buf = +[](const unsigned char* buf, std::size_t len) { return std::cout.write(reinterpret_cast<const char*>(buf), len) ? len : 0; };
+
+    b_info = smce::as_info(*vehicle_conf);
+
+    auto compile_result = smce::compile_sketch(ino_path, ".");
+    if (std::holds_alternative<std::runtime_error>(compile_result)) {
+        std::cout << std::get<std::runtime_error>(compile_result).what() << std::endl;
+        return false;
+    }
+
+    auto sketch = std::get<smce::SketchObject>(compile_result);
+
+    ino_runtime.set_sketch_and_car(std::move(sketch), b_data, b_info);
+
+    return true;
+}
+
+
 
 void UrhoApp::create_scene() {
     auto* const cache = GetSubsystem<Urho3D::ResourceCache>();
@@ -107,9 +146,11 @@ void UrhoApp::create_viewport() {
 
 void UrhoApp::setup_attachments(BoardData& board, const smce::VehicleConfig& vconf) {
     for (const auto& [type_str, jconf] : vconf.attachments) {
+        auto* t = m_vehicle_node->GetComponent<Urho3D::RaycastVehicle>();
+        auto count = t->GetNumWheels();
         const auto& type = type_str;
         const auto it = ranges::find_if(attachments_registry, [&](const auto& pair) { return pair.first == type; });
-        if(it == attachments_registry.end()){
+        if (it == attachments_registry.end()) {
             Urho3D::Log::Write(Urho3D::LOG_WARNING, Urho3D::String("Unkown component type ") + type_str.c_str());
             continue;
         }
@@ -130,6 +171,9 @@ void UrhoApp::HandleKeyUp(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
     const auto key = event_data[Urho3D::KeyUp::P_KEY].GetInt();
 
     switch (key) {
+    case Urho3D::KEY_F12:
+        m_console->SetVisible(!m_console->IsVisible());
+        break;
     case Urho3D::KEY_ESCAPE:
         engine_->Exit();
         break;
@@ -149,7 +193,7 @@ void UrhoApp::HandleMouseButtonDown(Urho3D::StringHash, Urho3D::VariantMap&) {
 }
 
 void UrhoApp::create_vehicle() {
-    Node* vehicleNode = m_scene->CreateChild("Vehicle");
+    Node* vehicleNode = m_vehicle_node;
     vehicleNode->SetPosition(Vector3(0.0f, 25.0f, 0.0f));
     m_vehicle = vehicleNode->CreateComponent<Vehicle>();
     m_vehicle->Init();

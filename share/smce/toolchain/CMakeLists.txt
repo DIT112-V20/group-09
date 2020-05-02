@@ -79,4 +79,11 @@ add_library (SmartcarShield STATIC ${SMARTCAR_SOURCES})
 target_include_directories (SmartcarShield INTERFACE ${SMARTCAR_SOURCE_PATH})
 target_link_libraries (SmartcarShield PUBLIC ArdRuntime)
 
-target_link_libraries (${BUILD_DIRNAME} PUBLIC ArdRuntime SmartcarShield)
+set (VL53L0X_SOURCE_PATH "${CMAKE_SOURCE_DIR}/libraries/vl53l0x")
+file (GLOB_RECURSE VL53L0X_SOURCES ${VL53L0X_SOURCE_PATH}/*)
+message ("VL53L0X_SOURCE_PATH: ${VL53L0X_SOURCE_PATH}")
+add_library (vl53l0x STATIC ${VL53L0X_SOURCES})
+target_include_directories (vl53l0x INTERFACE ${VL53L0X_SOURCE_PATH})
+target_link_libraries (vl53l0x PUBLIC ArdRuntime)
+
+target_link_libraries (${BUILD_DIRNAME} PUBLIC ArdRuntime SmartcarShield vl53l0x)

@@ -45,6 +45,9 @@ int analogRead(uint8_t pin);
 void analogReference(uint8_t mode);
 void analogWrite(uint16_t pin, uint16_t val);
 
+// retardation
+using boolean = bool;
+
 // advanced i/o
 void tone(uint8_t pin, unsigned int frequency, unsigned long duration);
 void noTone(uint8_t _pin);

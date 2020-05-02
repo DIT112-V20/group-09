@@ -61,3 +61,6 @@
 [submodule "thirdparty/inih"]
 	path = thirdparty/inih
 	url = https://github.com/jtilly/inih
+[submodule "thirdparty/vl53l0x"]
+	path = thirdparty/vl53l0x
+	url = https://github.com/pololu/vl53l0x-arduino.git

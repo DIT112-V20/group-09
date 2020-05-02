@@ -55,7 +55,7 @@ CompilationResults compile_sketch(SketchSource src, stdfs::path prefix, SourceTy
 #endif
 
 
-    const auto configure_cmd = fmt::format(R"(cmake -DSOURCE_FILE="{0}" -DSOURCE_TYPE="{5}" -DARDUINOCLI_PATH="{6}" -S "{1}" -B "{2}" > {3} 2<&1 && cmake --build "{4}" > {3} 2<&1)",
+    const auto configure_cmd = fmt::format(R"(cmake -DSOURCE_FILE="{0}" -DSOURCE_TYPE="{5}" -DARDUINOCLI_PATH="{6}" -S "{1}" -B "{2}" && cmake --build "{4}")",
                                            src.location.string(), share_dir.string(), build_dir.string(), silent_output, build_dir.string(),
                                            type2str[static_cast<std::size_t>(type)], "");
     std::system(configure_cmd.c_str());

@@ -35,7 +35,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-
+#pragma once
 #include <Urho3D/Input/Controls.h>
 #include <Urho3D/Physics/PhysicsUtils.h>
 #include <Urho3D/Scene/LogicComponent.h>

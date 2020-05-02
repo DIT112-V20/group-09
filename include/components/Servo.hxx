@@ -41,7 +41,7 @@ class Servo : public Urho3D::LogicComponent {
     std::optional<Bounds> movement_mode{};
 
   public:
-    explicit Servo(Urho3D::Context* context, BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
+    explicit Servo(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
     virtual void Update(float timeStep) override;
 };
 

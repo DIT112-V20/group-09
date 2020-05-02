@@ -18,11 +18,17 @@
 #ifndef SMARTCAR_EMUL_URHOAPP_HXX
 #define SMARTCAR_EMUL_URHOAPP_HXX
 
+#include <thread>
 #include <vector>
 #include <Urho3D/Engine/Application.h>
-#include <Urho3D/Scene/Node.h>
 #include <Urho3D/Scene/LogicComponent.h>
+#include <Urho3D/Scene/Node.h>
 #include <Urho3D/Scene/Scene.h>
+#include <VehicleConf.hxx>
+#include "BoardConf.hxx"
+#include "Runtime.hxx"
+#include "Toolchain.hxx"
+#include "Vehicle.hxx"
 
 struct BoardData;
 
@@ -57,8 +63,17 @@ class UrhoApp : public Urho3D::Application {
     Urho3D::SharedPtr<Urho3D::Scene> m_scene;
     Urho3D::SharedPtr<Urho3D::Node> m_camera_node;
     Urho3D::SharedPtr<Urho3D::Node> m_vehicle_node;
+    Urho3D::SharedPtr<Urho3D::Console> m_console;
     std::vector<Urho3D::LogicComponent*> m_vehicle_attachments;
+
     Urho3D::SharedPtr<Vehicle> m_vehicle;
+    bool loadIno(smce::SketchSource ino_path, std::filesystem::path config_path);
+    BoardData b_data;
+    BoardInfo b_info;
+    smce::VehicleConfig vehicle_conf;
+    smce::SketchRuntime ino_runtime{};
+
+    std::future<bool> cp;
 };
 
 #endif // SMARTCAR_EMUL_URHOAPP_HXX

@@ -30,8 +30,8 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
     float max_speed;
 
   public:
-    explicit WheelServo(Urho3D::Context* context, BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin)
-        : Servo{context, bd, node, pin}, vehicle{node->GetComponent<Urho3D::RaycastVehicle>()}, wheels{} {
+    explicit WheelServo(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin)
+        : Servo{bd, node, pin}, vehicle{node->GetComponent<Urho3D::RaycastVehicle>()}, wheels{} {
         if (!pin.HasMember("wheels"))
             throw std::runtime_error{err_msg};
         if (!pin.HasMember("max_speed"))
@@ -39,7 +39,7 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
         max_speed = pin["max_speed"].GetFloat();
         for (const auto& x : pin["wheels"].GetArray()) {
             auto val = x.GetUint();
-            if (val < vehicle->GetNumWheels())
+            if (val > vehicle->GetNumWheels())
                 throw std::runtime_error{err_msg};
             wheels.push_back(val);
         }
@@ -50,8 +50,9 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
             for (const auto& no : wheels)
                 (vehicle->*mptr)(no, deg2rad(math_map(+pwm_pin->load(), 0, 180, movement_mode->angle_min, movement_mode->angle_max)));
         } else if constexpr (mptr == &Urho3D::RaycastVehicle::SetEngineForce) {
-            for (const auto& no : wheels)
-                (vehicle->*mptr)(no, math_map(static_cast<float>(+pwm_pin->load()), 0.0f, 180.0f, 0.0f, 1.0f) * max_speed * (dir_pin->load() ? 1 : -1));
+            for (const auto& no : wheels) {
+                node->GetComponent<Urho3D::RaycastVehicle>()->SetEngineForce(no, 1); // for testing but car not moving :(
+            }
         }
     }
 };
