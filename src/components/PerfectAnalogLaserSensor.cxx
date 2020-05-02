@@ -26,14 +26,38 @@ PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(Urho3D::Context* context, Boa
         throw std::runtime_error{err_msg};
 
     bus_id = pin["bus_id"].GetUint();
-    address = pin["address"].GetUint();
+    store.address = pin["address"].GetUint();
 
     bus = &bd.i2c_buses[bus_id];
     std::scoped_lock lock{bus->devices_mut};
-    auto& [device_buf, device] = bus->slaves[address];
-    device = [](size_t t) {
+    bus->slaves[store.address].second.emplace<1>([&](std::size_t size) mutable {
+        std::scoped_lock lock{bus->devices_mut};
+        auto& buf = bus->slaves[store.address].first;
+        std::scoped_lock tx_lock{buf.rx_mutex, buf.tx_mutex};
 
-    };
+        auto reg = static_cast<uint8_t>(buf.tx.back().front());
+        buf.tx.erase(buf.tx.end() - 1);
+
+        std::basic_string<std::byte> ret{};
+        ret.resize(size);
+        // Prevent reading beyond the rom
+        if (reg + size > store.data.size()) {
+            buf.rx.emplace_back(ret);
+            return;
+        }
+        // Deal with read requests which need active intervention by the sensor.
+        switch (reg) {
+        case (MEASUREMENT_RESULT + 10): {
+            uint16_t dist = measure();
+            std::memcpy(&store.data[reg], &dist, sizeof(dist));
+        } break;
+        default:
+            break;
+        }
+        // Place requested bytes into rx buffer
+        std::memcpy(ret.data(), &store.data[reg], size);
+        buf.rx.emplace_back(ret);
+    });
 }
 
-void PerfectAnalogLaserSensor::Update(float timeStep) {}
+void PerfectAnalogLaserSensor::Update(float timeStep) { p_laser_map::make_ticker(vlx, store, *bus, *this)(); }
