@@ -30,7 +30,7 @@ template <class Driver>
 struct Device {
     struct DeviceStorage;
 
-    using RegAttachedFunction = void(Driver&, DeviceStorage&, gsl::span<std::byte>);
+    using RegAttachedFunction = void(Driver&, DeviceStorage&, gsl::span<const std::byte>);
     using RegAttachedFunctionPtr = RegAttachedFunction*;
 
     using Storage = std::array<std::uint8_t, 255>;
@@ -72,8 +72,8 @@ struct Device {
             auto& buf = bus.slaves[storage.address].first;
             std::scoped_lock tx_lock{buf.tx_mutex};
             std::size_t index = 0;
-            for (const auto& packet : buf) {
-                if(packet.size() == 1 && index == buf.size() - 1) // Read byte written but handle operation did not lock yet
+            for (const auto& packet : buf.tx) {
+                if(packet.size() == 1 && index == buf.tx.size() - 1) // Read byte written but handle operation did not lock yet
                     break; // Let handle operation lock
                 const auto reg = static_cast<uint8_t>(packet.front());
                 switch (devmap.map[reg]) {
@@ -86,7 +86,7 @@ struct Device {
                 ++index;
             }
 
-            if(index == buf.size())
+            if(index == buf.tx.size())
                 buf.tx = {};
             else
                 buf.tx.erase(buf.tx.begin(), buf.tx.begin() + index);
