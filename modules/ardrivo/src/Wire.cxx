@@ -1,6 +1,7 @@
 #include <cstring>
 #include <fmt/format.h>
 #include <range/v3/algorithm/find_if.hpp>
+#include <range/v3/numeric/accumulate.hpp>
 #include "BoardDataDef.hxx"
 #include "Entrypoint.hxx"
 #include "Error.hxx"
@@ -63,7 +64,7 @@ std::size_t TwoWire::requestFrom(std::uint8_t address, std::size_t quantity, [[m
                    [=](const std::function<void(std::size_t)>& generator) { generator(quantity); },
                },
                device);
-    return device_buf.rx_used_size;
+    return device_buf.rx.empty() ? 0 : device_buf.rx.front().size();
 }
 
 std::uint8_t TwoWire::requestFrom(std::uint8_t address, std::uint8_t size, std::uint8_t stop) {
@@ -94,10 +95,12 @@ std::uint8_t TwoWire::endTransmission(std::uint8_t) {
         auto& [device_buf, device] = board_data->i2c_buses[bus_id].slaves[slave_address];
         std::lock_guard tx_lock{device_buf.tx_mutex};
         auto& bus = board_data->i2c_buses[bus_id];
-        device_buf.tx_used_size = write_buf_used;
-        std::memcpy(device_buf.tx.data(), write_buf.data(), write_buf.size());
+        auto& packet = device_buf.tx.emplace_back();
+        packet.resize(write_buf_used);
+        std::memcpy(packet.data(), write_buf.data(), write_buf_used);
     }
 
+    write_buf_used = 0;
     slave_address = no_address;
     if (truncated_buf) {
         truncated_buf = false;
@@ -145,7 +148,7 @@ int TwoWire::available() {
     std::lock_guard lock{board_data->i2c_buses[bus_id].devices_mut};
     auto& [device_buf, device] = board_data->i2c_buses[bus_id].slaves[slave_address];
     std::lock_guard rx_lock{device_buf.rx_mutex};
-    return device_buf.rx_used_size;
+    return ranges::accumulate(device_buf.rx, 0, [](std::size_t acc, const auto& el) { return acc + el.size(); });
 }
 
 int TwoWire::peek() {
@@ -154,9 +157,9 @@ int TwoWire::peek() {
     std::lock_guard lock{board_data->i2c_buses[bus_id].devices_mut};
     auto& [device_buf, device] = board_data->i2c_buses[bus_id].slaves[slave_address];
     std::lock_guard rx_lock{device_buf.rx_mutex};
-    if (device_buf.rx_used_size == 0)
+    if (device_buf.rx.empty())
         return -1;
-    return static_cast<std::uint8_t>(device_buf.rx.front());
+    return static_cast<std::uint8_t>(device_buf.rx.front().front());
 }
 
 int TwoWire::read() {
@@ -165,10 +168,13 @@ int TwoWire::read() {
     std::lock_guard lock{board_data->i2c_buses[bus_id].devices_mut};
     auto& [device_buf, device] = board_data->i2c_buses[bus_id].slaves[slave_address];
     std::lock_guard rx_lock{device_buf.rx_mutex};
-    if (device_buf.rx_used_size == 0)
+    if (device_buf.rx.empty())
         return -1;
-    const auto first = static_cast<std::uint8_t>(device_buf.rx.front());
-    std::memmove(device_buf.rx.data(), device_buf.rx.data() + 1, --device_buf.rx_used_size);
+    const auto first = static_cast<std::uint8_t>(device_buf.rx.front().front());
+    if(device_buf.rx.front().size() == 1)
+        device_buf.rx.erase(device_buf.rx.begin());
+    else
+        device_buf.rx.front().erase(device_buf.rx.front().begin());
     return first;
 }
 

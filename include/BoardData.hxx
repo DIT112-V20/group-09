@@ -25,6 +25,7 @@
 #include <condition_variable>
 #include <functional>
 #include <mutex>
+#include <string>
 #include <unordered_map>
 #include <utility>
 #include <variant>
@@ -48,6 +49,11 @@ struct DynaBufferBus : BidirMutexes {
     std::vector<std::byte> tx;
 };
 
+struct PacketBuffers : BidirMutexes {
+    std::vector<std::basic_string<std::byte>> rx;
+    std::vector<std::basic_string<std::byte>> tx;
+};
+
 template <class BufferBus>
 struct BlockingBus : BufferBus {
     std::condition_variable sync; // C++20: squash into below atomic by means of `std::atomic::wait`
@@ -56,7 +62,7 @@ struct BlockingBus : BufferBus {
 
 struct UartBus : DynaBufferBus {};
 struct I2cBus {
-    using Device = std::pair<FixBufferBus<32u>, std::variant<BlockingBus<std::tuple<>>, std::function<void(std::size_t)>>>;
+    using Device = std::pair<PacketBuffers, std::variant<BlockingBus<std::tuple<>>, std::function<void(std::size_t)>>>;
     std::unordered_map<std::uint8_t, Device> slaves;
     std::mutex devices_mut;
 };
