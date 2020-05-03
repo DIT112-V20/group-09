@@ -24,7 +24,7 @@
 struct PinCapability {
     bool digital_in : 1;
     bool digital_out : 1;
-    bool analog_in : 1;
+    bool analog_in : 1  ;
     bool analog_out : 1;
     bool pwm_able : 1;
     bool interrupt_able : 1;
