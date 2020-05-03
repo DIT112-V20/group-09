@@ -59,8 +59,8 @@ class Vehicle : public Urho3D::LogicComponent {
     float wheelRadius_ = 0.0335f;
     float suspensionRestLength_ = 0.0345f;
     float suspensionStiffness_ = 100.61f;
-    float suspensionDamping_ = 10.0f;
-    float suspensionCompression_ = 15.1f;
+    float suspensionDamping_ = 8.0f;
+    float suspensionCompression_ = 13.1f;
     // the total Friction of wheels equals 10.4272N assuming Friction coefficent is 0.8
     float wheelFriction_ = 2.7f;
     float rollInfluence_ = 0.01f;

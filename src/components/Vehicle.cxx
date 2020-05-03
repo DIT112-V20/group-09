@@ -71,30 +71,29 @@ void Vehicle::Init() {
     auto* hullBody = node_->GetComponent<Urho3D::RigidBody>();
     // the car weigth is 1.33kg
     hullBody->SetMass(1.33f);
-    // LinearDamping AKA air resistance assuming that Drag coefficient is 0.42
-    hullBody->SetLinearDamping(0.03f);
-    hullBody->SetAngularDamping(0.07f);
+    hullBody->SetLinearDamping(0.2f);
+    hullBody->SetAngularDamping(0.5f);
     hullBody->SetCollisionLayer(1);
     auto* cache = GetSubsystem<Urho3D::ResourceCache>();
     auto* hullObject = node_->CreateComponent<Urho3D::StaticModel>();
     auto* hullColShape = node_->CreateComponent<Urho3D::CollisionShape>();
     Urho3D::Vector3 v3BoxExtents = Urho3D::Vector3::ONE;
     hullColShape->SetBox(v3BoxExtents);
-    node_->SetScale(Urho3D::Vector3(0.195f, 0.15f, 0.236f)); /// Chassi 195mm*15mm*236mm
+    node_->SetScale(Urho3D::Vector3(0.195f, 0.0666f, 0.236f)); /// Chassi 195mm*66.6mm*236mm
     hullObject->SetModel(cache->GetResource<Urho3D::Model>("Models/SmartCar.mdl"));
     hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/offroadVehicle.xml"));
     hullObject->SetCastShadows(true);
-    float connectionHeight = -0.06f;
     bool isFrontWheel = true;
     Urho3D::Vector3 wheelDirection(0, -1, 0);
     Urho3D::Vector3 wheelAxle(-1, 0, 0);
    
     float wheelX = 0.09f;
+    float wheelY = -0.02f;
     float wheelZ = 0.08f;
-    connectionPoints_[0] = Urho3D::Vector3(-wheelX, connectionHeight, wheelZ);
-    connectionPoints_[1] = Urho3D::Vector3(wheelX, connectionHeight, wheelZ);
-    connectionPoints_[2] = Urho3D::Vector3(-wheelX, connectionHeight, -wheelZ);
-    connectionPoints_[3] = Urho3D::Vector3(wheelX, connectionHeight, -wheelZ);
+    connectionPoints_[0] = Urho3D::Vector3(-wheelX, wheelY, wheelZ);
+    connectionPoints_[1] = Urho3D::Vector3(wheelX, wheelY, wheelZ);
+    connectionPoints_[2] = Urho3D::Vector3(-wheelX, wheelY, -wheelZ);
+    connectionPoints_[3] = Urho3D::Vector3(wheelX, wheelY, -wheelZ);
     const Urho3D::Color LtBrown(0.972f, 0.780f, 0.412f);
     for (int id = 0; id < connectionPoints_.size(); id++) {
         Urho3D::Node* wheelNode = GetScene()->CreateChild();
