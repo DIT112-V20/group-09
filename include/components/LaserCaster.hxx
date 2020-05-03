@@ -26,7 +26,7 @@ class LaserCaster : public Urho3D::LogicComponent {
     Urho3D::Node* node;
 
   public:
-    explicit LaserCaster(Urho3D::Context* context, Urho3D::Node* node);
+    explicit LaserCaster(Urho3D::Node* node);
     [[nodiscard]] std::uint32_t measure(float max_dist = std::numeric_limits<float>::max()) const noexcept;
 };
 

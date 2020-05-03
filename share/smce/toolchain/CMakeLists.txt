@@ -54,10 +54,10 @@ endif ()
 add_library (${BUILD_DIRNAME} MODULE)
 target_sources (${BUILD_DIRNAME} PRIVATE "${SOURCE_FILE}")
 add_custom_command (
-		TARGET ${BUILD_DIRNAME}
-		POST_BUILD
-		COMMAND ${CMAKE_COMMAND}
- 		ARGS -E rename $<TARGET_FILE:${BUILD_DIRNAME}> ${CMAKE_CURRENT_BINARY_DIR}/${BUILD_DIRNAME})
+        TARGET ${BUILD_DIRNAME}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND}
+        ARGS -E rename $<TARGET_FILE:${BUILD_DIRNAME}> ${CMAKE_CURRENT_BINARY_DIR}/${BUILD_DIRNAME})
 
 if (SOURCE_IS_INO)
     target_sources (${BUILD_DIRNAME} PRIVATE "${CMAKE_SOURCE_DIR}/Fragments/symbols.cxx")
@@ -85,5 +85,13 @@ message ("VL53L0X_SOURCE_PATH: ${VL53L0X_SOURCE_PATH}")
 add_library (vl53l0x STATIC ${VL53L0X_SOURCES})
 target_include_directories (vl53l0x INTERFACE ${VL53L0X_SOURCE_PATH})
 target_link_libraries (vl53l0x PUBLIC ArdRuntime)
+
+set (SERVO_SOURCE_PATH "${CMAKE_SOURCE_DIR}/libraries/servo/src")
+file (GLOB_RECURSE SERVO_SOURCES ${SERVO_SOURCE_PATH}/*)
+message ("SERVO_SOURCE_PATH: ${SERVO_SOURCE_PATH}")
+add_library (servo STATIC ${SERVO_SOURCES})
+target_include_directories (servo INTERFACE ${SERVO_SOURCE_PATH})
+target_link_libraries (servo PUBLIC ArdRuntime)
+
 
 target_link_libraries (${BUILD_DIRNAME} PUBLIC ArdRuntime SmartcarShield vl53l0x)

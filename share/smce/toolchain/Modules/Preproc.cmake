@@ -18,7 +18,7 @@
 function (identify_source SOURCE_FILE SOURCE_TYPE)
     set (SOURCE_FILE_ORIGINAL "${SOURCE_FILE}" PARENT_SCOPE)
     if (SOURCE_TYPE STREQUAL "sketch")
-        if (SOURCE_FILE MATCHES "\\.ino$" OR SOURCE_FILE MATCHES "\\.pde$" )
+        if (SOURCE_FILE MATCHES "\\.ino$" OR SOURCE_FILE MATCHES "\\.pde$")
             set (SOURCE_IS_CPP OFF PARENT_SCOPE)
             set (SOURCE_IS_CPP OFF)
             set (SOURCE_IS_INO ON PARENT_SCOPE)
@@ -40,38 +40,38 @@ function (identify_source SOURCE_FILE SOURCE_TYPE)
         set (SOURCE_IS_CPP OFF)
         set (SOURCE_IS_INO ON PARENT_SCOPE)
         set (SOURCE_IS_INO ON)
-    #[[ Not an Arduino feature; to be continued
-    elseif (SOURCE_TYPE STREQUAL "sketch_dir_recurse")
-        set (SOURCE_IS_CPP OFF PARENT_SCOPE)
-        set (SOURCE_IS_CPP OFF)
-        set (SOURCE_IS_INO ON PARENT_SCOPE)
-        set (SOURCE_IS_INO ON)
-        file (GLOB SKETCHES
-                FOLLOW_SYMLINKS
-                LIST_DIRECTORIES false
-                "${SOURCE_FILE}/*.ino" "${SOURCE_FILE}/*.pde")
-    ]]
+        #[[ Not an Arduino feature; to be continued
+        elseif (SOURCE_TYPE STREQUAL "sketch_dir_recurse")
+            set (SOURCE_IS_CPP OFF PARENT_SCOPE)
+            set (SOURCE_IS_CPP OFF)
+            set (SOURCE_IS_INO ON PARENT_SCOPE)
+            set (SOURCE_IS_INO ON)
+            file (GLOB SKETCHES
+                    FOLLOW_SYMLINKS
+                    LIST_DIRECTORIES false
+                    "${SOURCE_FILE}/*.ino" "${SOURCE_FILE}/*.pde")
+        ]]
     endif ()
 
     if (NOT SOURCE_IS_INO)
         message (FATAL_ERROR "Could not determine source file type")
-    endif()
-endfunction()
+    endif ()
+endfunction ()
 
-function(ino_preprocess SOURCE_FILE ARDUINOCLI_PATH)
+function (ino_preprocess SOURCE_FILE ARDUINOCLI_PATH)
     set (WORK_FILE "${CMAKE_BINARY_DIR}/source.cpp")
-    set (FQBN "esp32:esp32:esp32")
+    set (FQBN "arduino:avr:uno")
     execute_process (COMMAND ${ARDUINOCLI_PATH} core update-index --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml")
-    execute_process (COMMAND "${ARDUINOCLI_PATH}" core install esp32:esp32 --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml")
+    execute_process (COMMAND "${ARDUINOCLI_PATH}" core install arduino:avr --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml")
     execute_process (
-            COMMAND "${ARDUINOCLI_PATH}" compile --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml" --libraries "smartcar_shield,vl53l0x" -b "${FQBN}" --preprocess "${SOURCE_FILE}"
+            COMMAND "${ARDUINOCLI_PATH}" compile --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml" --libraries "smartcar_shield,vl53l0x,servo" -b "${FQBN}" --preprocess "${SOURCE_FILE}"
             WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
             OUTPUT_FILE "${WORK_FILE}")
 
     set (SOURCE_FILE "${WORK_FILE}" PARENT_SCOPE)
-endfunction()
+endfunction ()
 
-function(fetch_ardcli ARDUINOCLI_PATH)
+function (fetch_ardcli ARDUINOCLI_PATH)
     if (NOT "${ARDUINOCLI_PATH}" STREQUAL "")
         if (NOT EXISTS "${ARDUINOCLI_PATH}")
             message (FATAL_ERROR "Could not find ArduinoCLI at configured location")
@@ -99,7 +99,7 @@ function(fetch_ardcli ARDUINOCLI_PATH)
         message (FATAL_ERROR "Downloading ArduinoCLI failed (${DL_RESULT}): ${DL_ERRMSG}")
     endif ()
     execute_process (COMMAND "${CMAKE_COMMAND}" -E tar x "${CMAKE_SOURCE_DIR}/${DL_FILE}"
-                     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
     set (ARDUINOCLI_PATH "${CMAKE_SOURCE_DIR}/arduino-cli${CMAKE_EXECUTABLE_SUFFIX}" PARENT_SCOPE)
     set (ARDUINOCLI_PATH "${CMAKE_SOURCE_DIR}/arduino-cli${CMAKE_EXECUTABLE_SUFFIX}")
     if (EXISTS "${ARDUINOCLI_PATH}")
@@ -111,4 +111,4 @@ function(fetch_ardcli ARDUINOCLI_PATH)
     file (WRITE "${CMAKE_SOURCE_DIR}/arduino-cli.yaml" "board_manager:\n  additional_urls:\n    - https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json\n")
     file (APPEND "${CMAKE_SOURCE_DIR}/arduino-cli.yaml" "directories:\n  user: \"${CMAKE_SOURCE_DIR}\"\n")
     execute_process (COMMAND ${ARDUINOCLI_PATH} core update-index)
-endfunction()
+endfunction ()

@@ -103,7 +103,6 @@ std::uint8_t TwoWire::endTransmission(std::uint8_t) {
     }
 
     write_buf_used = 0;
-    slave_address = no_address;
     if (truncated_buf) {
         truncated_buf = false;
         return RetCode::truncated_data;
@@ -173,7 +172,7 @@ int TwoWire::read() {
     if (device_buf.rx.empty())
         return -1;
     const auto first = static_cast<std::uint8_t>(device_buf.rx.front().front());
-    if(device_buf.rx.front().size() == 1)
+    if (device_buf.rx.front().size() == 1)
         device_buf.rx.erase(device_buf.rx.begin());
     else
         device_buf.rx.front().erase(device_buf.rx.front().begin());

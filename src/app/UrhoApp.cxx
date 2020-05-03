@@ -34,6 +34,7 @@
 #include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Scene/Scene.h>
+#include <Urho3D/UI/UI.h>
 #include <range/v3/algorithm/find_if.hpp>
 #include "app/UrhoApp.hxx"
 #include "components/MovableCamera.hxx"
@@ -67,28 +68,18 @@ void UrhoApp::Start() {
 
     cp = std::async([&]() { return loadIno({"/home/ruthgerd/demoo/test.ino"}, "/home/ruthgerd/demoo/board_config.json"); });
     create_scene();
-    create_vehicle();
     create_viewport();
     subscribe_to_events();
-    if(cp.get()) {
-        auto vconf = smce::VehicleConfig::load("/home/ruthgerd/demoo/vehicle_config.json");
-        if (vconf) {
-            setup_attachments(b_data, *vconf);
-            ino_runtime.start();
-        } else {
-            std::cout << "vconf bad" << std::endl;
-        }
-    }
 }
 
-void UrhoApp::Stop() { }
+void UrhoApp::Stop() {}
 
 bool UrhoApp::loadIno(smce::SketchSource ino_path, std::filesystem::path config_path) {
     auto vehicle_conf = smce::load(config_path);
     if (!vehicle_conf)
         return false;
     b_data = smce::as_data(*vehicle_conf);
-
+    b_data.silence_errors = false;
     b_data.write_byte = +[](unsigned char c) { return static_cast<bool>(std::cout.put(c)); };
     b_data.write_buf = +[](const unsigned char* buf, std::size_t len) { return std::cout.write(reinterpret_cast<const char*>(buf), len) ? len : 0; };
 
@@ -107,8 +98,6 @@ bool UrhoApp::loadIno(smce::SketchSource ino_path, std::filesystem::path config_
     return true;
 }
 
-
-
 void UrhoApp::create_scene() {
     auto* const cache = GetSubsystem<Urho3D::ResourceCache>();
     m_scene = Urho3D::MakeShared<Urho3D::Scene>(context_);
@@ -120,18 +109,30 @@ void UrhoApp::create_scene() {
     plane_node->SetScale(Urho3D::Vector3(200, 0, 200));
     auto* const planeObject = plane_node->CreateComponent<Urho3D::StaticModel>();
     planeObject->SetModel(cache->GetResource<Urho3D::Model>("Models/Cone.mdl"));
+    planeObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/StoneTiled.xml"));
     auto* body = plane_node->CreateComponent<Urho3D::RigidBody>();
     body->SetCollisionLayer(2);
     auto* shape = plane_node->CreateComponent<Urho3D::CollisionShape>();
     shape->SetStaticPlane();
 
-    Urho3D::Node* lightNode = m_scene->CreateChild("Sunlight");
-    auto* const light = lightNode->CreateComponent<Urho3D::Light>();
-    light->SetLightType(Urho3D::LIGHT_DIRECTIONAL);
+    top_light = m_scene->CreateChild("Light2");
+    top_light->Pitch(90);
+    auto* light = top_light->CreateComponent<Urho3D::Light>();
+    light->SetLightType(LIGHT_DIRECTIONAL);
+    light->SetCastShadows(true);
+
+    text_ = new Urho3D::Text(context_);
+    text_->SetText("Experimental - SimpleCar + AckermanControl");
+    text_->SetFont(cache->GetResource<Font>("Fonts/Anonymous Pro.ttf"), 20);
+    text_->SetColor(Color(1, 0, 0.1));
+    text_->SetHorizontalAlignment(HA_CENTER);
+    text_->SetVerticalAlignment(VA_TOP);
+    text_->SetFontSize(25);
+    GetSubsystem<UI>()->GetRoot()->AddChild(text_);
 
     m_camera_node = m_scene->CreateChild("Camera");
     m_camera_node->CreateComponent<MovableCamera>();
-    m_camera_node->SetPosition(Urho3D::Vector3(0.0f, 100.0f, 0.0f));
+    m_camera_node->SetPosition(Urho3D::Vector3(0.0f, 30.0f, 0.0f));
 
     m_vehicle_node = m_scene->CreateChild("Vehicle");
     m_vehicle_node->SetPosition(Urho3D::Vector3(0.0f, 1.0f, 0.0f));
@@ -184,6 +185,16 @@ void UrhoApp::HandleKeyUp(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
 void UrhoApp::HandleUpdate(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
     const float delta_time = event_data[Urho3D::Update::P_TIMESTEP].GetFloat();
     m_camera_node->GetComponent<MovableCamera>()->move(delta_time);
+    if (cp.wait_for(std::chrono::seconds(0)) == std::future_status::ready && m_vehicle.Null()) {
+        auto vconf = smce::VehicleConfig::load("/home/ruthgerd/demoo/vehicle_config.json");
+        if (vconf) {
+            create_vehicle();
+            setup_attachments(b_data, *vconf);
+            runtime = std::async([&]() { return ino_runtime.start(); });
+        } else {
+            std::cout << "vconf bad" << std::endl;
+        }
+    }
 }
 
 void UrhoApp::HandleMouseButtonDown(Urho3D::StringHash, Urho3D::VariantMap&) {
@@ -193,7 +204,7 @@ void UrhoApp::HandleMouseButtonDown(Urho3D::StringHash, Urho3D::VariantMap&) {
 
 void UrhoApp::create_vehicle() {
     Node* vehicleNode = m_vehicle_node;
-    vehicleNode->SetPosition(Vector3(0.0f, 25.0f, 0.0f));
+    vehicleNode->SetPosition(Vector3(0.0f, 2.0f, 0.0f));
     m_vehicle = vehicleNode->CreateComponent<Vehicle>();
     m_vehicle->Init();
 }

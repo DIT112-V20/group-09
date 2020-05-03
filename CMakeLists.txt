@@ -72,7 +72,8 @@ add_custom_command (TARGET ArduinoRuntime POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ArduinoRuntime>" "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib/"
         COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/share/smce/toolchain/libraries"
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/thirdparty/smartcar_shield" "${CMAKE_BINARY_DIR}/share/smce/toolchain/libraries/smartcar_shield"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/thirdparty/vl53l0x" "${CMAKE_BINARY_DIR}/share/smce/toolchain/libraries/vl53l0x")
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/thirdparty/vl53l0x" "${CMAKE_BINARY_DIR}/share/smce/toolchain/libraries/vl53l0x"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/thirdparty/servo" "${CMAKE_BINARY_DIR}/share/smce/toolchain/libraries/servo")
 file (GENERATE
         OUTPUT "${CMAKE_BINARY_DIR}/share/smce/toolchain/Modules/ArduinoRuntimeLocation.cmake"
         CONTENT "set (ARDUINO_RUNTIME_FILENAME $<TARGET_FILE_NAME:ArduinoRuntime>)")

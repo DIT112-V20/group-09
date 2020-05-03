@@ -18,7 +18,9 @@
 #ifndef SMARTCAR_EMUL_WHEELSERVO_HXX
 #define SMARTCAR_EMUL_WHEELSERVO_HXX
 
+#include <Urho3D/Physics/PhysicsEvents.h>
 #include <Urho3D/Physics/RaycastVehicle.h>
+#include <fmt/printf.h>
 #include "Servo.hxx"
 
 template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : public Servo {
@@ -45,14 +47,13 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
         }
     }
 
-    void Update(float timeStep) override {
+    void Update(float timeStep) {
         if constexpr (mptr == &Urho3D::RaycastVehicle::SetSteeringValue) {
             for (const auto& no : wheels)
                 (vehicle->*mptr)(no, deg2rad(math_map(+pwm_pin->load(), 0, 180, movement_mode->angle_min, movement_mode->angle_max)));
         } else if constexpr (mptr == &Urho3D::RaycastVehicle::SetEngineForce) {
-            for (const auto& no : wheels) {
-                node->GetComponent<Urho3D::RaycastVehicle>()->SetEngineForce(no, 1); // for testing but car not moving :(
-            }
+            for (const auto& no : wheels)
+                (vehicle->*mptr)(no, math_map(static_cast<float>(+pwm_pin->load()), 0.0f, 180.0f, -1.0f, 1.0f) * max_speed);
         }
     }
 };

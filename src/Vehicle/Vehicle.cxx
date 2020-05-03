@@ -37,6 +37,7 @@
 // THE SOFTWARE.
 //
 
+#include <iostream>
 #include <Urho3D/Core/Context.h>
 #include <Urho3D/Graphics/DebugRenderer.h>
 #include <Urho3D/Graphics/DecalSet.h>
@@ -53,6 +54,7 @@
 #include <Urho3D/Physics/RaycastVehicle.h>
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Scene/Scene.h>
+#include "fmt/printf.h"
 #include "Vehicle.hxx"
 
 using namespace Urho3D;
@@ -187,10 +189,7 @@ void Vehicle::FixedUpdate(float timeStep) {
 
     // apply forces
     engineForce_ = maxEngineForce_ * accelerator;
-    vehicle->SetEngineForce(0, engineForce_);
-    vehicle->SetEngineForce(1, engineForce_);
-    vehicle->SetEngineForce(3, engineForce_);
-    vehicle->SetEngineForce(2, engineForce_);
+    // fmt::print("{} {} {} {}", vehicle->GetEngineForce(0), vehicle->GetEngineForce(1), vehicle->GetEngineForce(2), vehicle->GetEngineForce(3));
 
     for (int i = 0; i < vehicle->GetNumWheels(); i++) {
         if (brake) {

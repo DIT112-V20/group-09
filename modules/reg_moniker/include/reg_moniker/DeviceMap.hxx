@@ -19,6 +19,7 @@
 #define SMARTCAR_EMUL_DEVICEMAP_HXX
 
 #include <array>
+#include <fmt/printf.h>
 #include <gsl/gsl>
 #include "BoardData.hxx"
 
@@ -26,8 +27,7 @@ namespace regmon {
 
 enum class MapVals { store = 0, invoke = 1 };
 
-template <class Driver>
-struct Device {
+template <class Driver> struct Device {
     struct DeviceStorage;
 
     using RegAttachedFunction = void(Driver&, DeviceStorage&, gsl::span<const std::byte>);
@@ -46,19 +46,19 @@ struct Device {
         std::uint8_t address;
     };
 
-    template <std::size_t Reg>
-    struct DefaultsTo {
+    template <std::size_t Reg> struct DefaultsTo {
         constexpr static auto register_ = Reg;
         std::uint8_t val;
         void operator()(DeviceMap& dm) { dm.rom[Reg] = val; }
     };
-    template <std::size_t Reg>
-    struct InvokesFunction {
+    template <std::size_t Reg> struct InvokesFunction {
         constexpr static auto register_ = Reg;
         RegAttachedFunctionPtr func;
-        void operator()(DeviceMap& dm) { dm.map[Reg] = MapVals::invoke; dm.func[Reg] = func; }
+        void operator()(DeviceMap& dm) {
+            dm.map[Reg] = MapVals::invoke;
+            dm.func[Reg] = func;
+        }
     };
-
 
     template <class... Args> constexpr static auto make_device(Args&&... args) {
         DeviceMap devmap;
@@ -72,27 +72,30 @@ struct Device {
             auto& buf = bus.slaves[storage.address].first;
             std::scoped_lock tx_lock{buf.tx_mutex};
             std::size_t index = 0;
+            std::size_t size = buf.tx.size();
             for (const auto& packet : buf.tx) {
-                if(packet.size() == 1 && index == buf.tx.size() - 1) // Read byte written but handle operation did not lock yet
-                    break; // Let handle operation lock
+                fmt::print("{}", packet.size());
+                if (packet.size() == 1) // Read byte written but handle operation did not lock yet
+                    break;              // Let handle operation lock
                 const auto reg = static_cast<uint8_t>(packet.front());
                 switch (devmap.map[reg]) {
-                  case MapVals::store:
+                case MapVals::store:
                     std::memcpy(&storage.data[reg], packet.data() + 1, packet.size() - 1);
                     break;
-                  case MapVals::invoke:
+                case MapVals::invoke:
                     devmap.func[reg](driver, storage, gsl::make_span(packet.data() + 1, packet.size() - 1));
                 }
                 ++index;
             }
 
-            if(index == buf.tx.size())
+            if (index == buf.tx.size() + 1)
                 buf.tx = {};
             else
-                buf.tx.erase(buf.tx.begin(), buf.tx.begin() + index);
+                buf.tx.erase(buf.tx.begin(), buf.tx.begin() + index - 1);
+            int i = 0;
         };
     }
 };
-}
+} // namespace regmon
 
 #endif // SMARTCAR_EMUL_DEVICEMAP_HXX

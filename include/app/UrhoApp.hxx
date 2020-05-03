@@ -20,10 +20,35 @@
 
 #include <thread>
 #include <vector>
+#include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Engine/Application.h>
+#include <Urho3D/Engine/Engine.h>
+#include <Urho3D/Engine/EngineDefs.h>
+#include <Urho3D/Graphics/Camera.h>
+#include <Urho3D/Graphics/DebugRenderer.h>
+#include <Urho3D/Graphics/Geometry.h>
+#include <Urho3D/Graphics/Graphics.h>
+#include <Urho3D/Graphics/Light.h>
+#include <Urho3D/Graphics/Material.h>
+#include <Urho3D/Graphics/Model.h>
+#include <Urho3D/Graphics/Octree.h>
+#include <Urho3D/Graphics/Renderer.h>
+#include <Urho3D/Graphics/Skybox.h>
+#include <Urho3D/Graphics/StaticModel.h>
+#include <Urho3D/IO/Log.h>
+#include <Urho3D/Input/Input.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/Resource/ResourceCache.h>
+#include <Urho3D/Resource/XMLFile.h>
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Node.h>
 #include <Urho3D/Scene/Scene.h>
+#include <Urho3D/Scene/SceneEvents.h>
+#include <Urho3D/UI/Button.h>
+#include <Urho3D/UI/Font.h>
+#include <Urho3D/UI/Text.h>
+#include <Urho3D/UI/UI.h>
+#include <Urho3D/UI/UIEvents.h>
 #include <VehicleConf.hxx>
 #include "BoardConf.hxx"
 #include "Runtime.hxx"
@@ -74,6 +99,10 @@ class UrhoApp : public Urho3D::Application {
     smce::SketchRuntime ino_runtime{};
 
     std::future<bool> cp;
+    std::future<bool> runtime;
+    SharedPtr<Urho3D::Text> text_;
+    SharedPtr<Node> boxNode_;
+    SharedPtr<Node> top_light;
 };
 
 #endif // SMARTCAR_EMUL_URHOAPP_HXX

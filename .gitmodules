@@ -64,3 +64,6 @@
 [submodule "thirdparty/vl53l0x"]
 	path = thirdparty/vl53l0x
 	url = https://github.com/pololu/vl53l0x-arduino.git
+[submodule "thirdparty/servo"]
+	path = thirdparty/servo
+	url = https://github.com/arduino-libraries/Servo.git

@@ -24,13 +24,23 @@
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Node.h>
 #include <rapidjson/document.h>
+#include "components/PerfectAnalogLaserSensor.hxx"
 #include "components/WheelServo.hxx"
 #include "BoardData.hxx"
 
 using namespace std::literals;
-std::array<std::pair<std::string_view, Urho3D::LogicComponent* (*)(BoardData&, Urho3D::Node*, const rapidjson::Value&)>, 1> attachments_registry{
-    std::pair{"ServoMotor"sv, +[](BoardData& bd, Urho3D::Node* node, const rapidjson::Value& conf) -> Urho3D::LogicComponent* {
-                  return new ServoMotor{bd, node, conf};
-              }}};
+constexpr std::array<std::pair<std::string_view, Urho3D::LogicComponent* (*)(BoardData&, Urho3D::Node*, const rapidjson::Value&)>, 3>
+    attachments_registry{
+        std::pair{"ServoMotor"sv,
+                  +[](BoardData& bd, Urho3D::Node* node, const rapidjson::Value& conf) -> Urho3D::LogicComponent* {
+                      return new ServoMotor{bd, node, conf};
+                  }},
+        std::pair{"SteeringServo"sv,
+                  +[](BoardData& bd, Urho3D::Node* node, const rapidjson::Value& conf) -> Urho3D::LogicComponent* {
+                      return new SteeringServo{bd, node, conf};
+                  }},
+        std::pair{"PerfectAnalogLaserSensor"sv, +[](BoardData& bd, Urho3D::Node* node, const rapidjson::Value& conf) -> Urho3D::LogicComponent* {
+                      return new PerfectAnalogLaserSensor{bd, node, conf};
+                  }}};
 
 #endif // SMARTCAR_EMUL_REGISTRY_HXX
