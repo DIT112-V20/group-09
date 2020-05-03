@@ -100,6 +100,7 @@ class UrhoApp : public Urho3D::Application {
 
     std::future<bool> cp;
     std::future<bool> runtime;
+    std::thread input_tr;
     SharedPtr<Urho3D::Text> text_;
     SharedPtr<Node> boxNode_;
     SharedPtr<Node> top_light;

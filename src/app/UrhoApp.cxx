@@ -194,7 +194,23 @@ void UrhoApp::HandleUpdate(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
         } else {
             std::cout << "vconf bad" << std::endl;
         }
+        input_tr = std::thread([&]() {
+            while(true) {
+                std::string str;
+                std::cout.flush();
+                std::getline(std::cin, str);
+                if (str == "q")
+                    break;
+                std::scoped_lock l{b_data.uart_buses[0].rx_mutex};
+                const auto original_buf_len = b_data.uart_buses[0].rx.size();
+                b_data.uart_buses[0].rx.resize(b_data.uart_buses[0].rx.size() + str.size());
+                std::transform(str.begin(), str.end(), b_data.uart_buses[0].rx.begin() + original_buf_len, [](char c){ return static_cast<std::byte>(c); });
+            }
+        });
     }
+
+
+
 }
 
 void UrhoApp::HandleMouseButtonDown(Urho3D::StringHash, Urho3D::VariantMap&) {
