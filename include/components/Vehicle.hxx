@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-//======================================================================================
 // Copyright (c) 2008-2020 the Urho3D project.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,16 +34,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
+#ifndef SMARTCAR_EMUL_VEHICLE_HXX
+#define SMARTCAR_EMUL_VEHICLE_HXX
 
 #include <Urho3D/Input/Controls.h>
 #include <Urho3D/Physics/PhysicsUtils.h>
 #include <Urho3D/Scene/LogicComponent.h>
 #include <array>
-
-constexpr unsigned CTRL_FORWARD = (1u << 0u);
-constexpr unsigned CTRL_BACK = (1u << 1u);
-constexpr unsigned CTRL_LEFT = (1u << 2u);
-constexpr unsigned CTRL_RIGHT = (1u << 3u);
 
 class Vehicle : public Urho3D::LogicComponent {
     URHO3D_OBJECT(Vehicle, LogicComponent)
@@ -54,44 +50,21 @@ class Vehicle : public Urho3D::LogicComponent {
     ~Vehicle() override;
     static void RegisterObject(Urho3D::Context* context);
     void Init();
-    void FixedUpdate(float timeStep) override;
-    void PostUpdate(float timeStep) override;
-
-    /// Setting Differancial. NOT FINAL VERSION. IT WILL BE IN ITS OWN CLASS
-    void resetDifferential();
-    void setDifferential(float engineForce, const unsigned int control);
-
-    Urho3D::Controls controls_;
-
-    /// Get wheel radius.
+    void PostUpdate(float timeStep);
     float GetWheelRadius() const { return wheelRadius_; }
 
   private:
-    /// Linear momentum supplied by engine to RigidBody
     float engineForce_ = 0.0f;
-    /// Maximum linear momentum supplied by engine to RigidBody
-    float maxEngineForce_ = 2.4f;
-    /// Stored wheel radius
+    float maxEngineForce_ = 1.097f;
     float wheelRadius_ = 0.0335f;
-    /// Suspension rest length (in meters)
-
-    // we don't really have Suspension
     float suspensionRestLength_ = 0.0345f;
-    /// Suspension stiffness
     float suspensionStiffness_ = 100.61f;
-    /// Suspension damping
-
-    /// removes bouncyness
     float suspensionDamping_ = 10.0f;
-    /// Suspension compression
     float suspensionCompression_ = 15.1f;
-    /// Wheel friction
-
     // the total Friction of wheels equals 10.4272N assuming Friction coefficent is 0.8
     float wheelFriction_ = 2.7f;
-    /// Wheel roll influence (how much car will turn sidewise)
     float rollInfluence_ = 0.01f;
-    /// Value to calculate acceleration.
     Urho3D::Vector3 prevVelocity_;
     std::array<Urho3D::Vector3, 4> connectionPoints_;
 };
+#endif // SMARTCAR_EMUL_VEHICLE_HXX

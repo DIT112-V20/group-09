@@ -58,14 +58,11 @@
 
 void Vehicle::RegisterObject(Urho3D::Context* context) {
     context->RegisterFactory<Vehicle>();
-    URHO3D_ATTRIBUTE("Controls Yaw", float, controls_.yaw_, 0.0f, Urho3D::AM_DEFAULT);
-    URHO3D_ATTRIBUTE("Controls Pitch", float, controls_.pitch_, 0.0f, Urho3D::AM_DEFAULT);
 }
 
 Vehicle::Vehicle(Urho3D::Context* context) : LogicComponent(context) {
     SetUpdateEventMask(Urho3D::USE_FIXEDUPDATE | Urho3D::USE_POSTUPDATE);
 }
-
 Vehicle::~Vehicle() = default;
 
 void Vehicle::Init() {
@@ -74,14 +71,12 @@ void Vehicle::Init() {
     auto* hullBody = node_->GetComponent<Urho3D::RigidBody>();
     // the car weigth is 1.33kg
     hullBody->SetMass(1.33f);
-    // LinearDamping & AngularDamping depend on Velocity, which i dont have at the moment
-    hullBody->SetLinearDamping(0.1f);
-    hullBody->SetAngularDamping(0.4f);
+    // LinearDamping AKA air resistance assuming that Drag coefficient is 0.42
+    hullBody->SetLinearDamping(0.03f);
+    hullBody->SetAngularDamping(0.07f);
     hullBody->SetCollisionLayer(1);
-    // This function is called only from the main program when initially creating the vehicle, not on scene load
     auto* cache = GetSubsystem<Urho3D::ResourceCache>();
     auto* hullObject = node_->CreateComponent<Urho3D::StaticModel>();
-    // Setting-up collision shape
     auto* hullColShape = node_->CreateComponent<Urho3D::CollisionShape>();
     Urho3D::Vector3 v3BoxExtents = Urho3D::Vector3::ONE;
     hullColShape->SetBox(v3BoxExtents);
@@ -96,13 +91,9 @@ void Vehicle::Init() {
    
     float wheelX = 0.09f;
     float wheelZ = 0.08f;
-    // Front left
     connectionPoints_[0] = Urho3D::Vector3(-wheelX, connectionHeight, wheelZ);
-    // Front right
     connectionPoints_[1] = Urho3D::Vector3(wheelX, connectionHeight, wheelZ);
-    // Back left
     connectionPoints_[2] = Urho3D::Vector3(-wheelX, connectionHeight, -wheelZ);
-    // Back right
     connectionPoints_[3] = Urho3D::Vector3(wheelX, connectionHeight, -wheelZ);
     const Urho3D::Color LtBrown(0.972f, 0.780f, 0.412f);
     for (int id = 0; id < connectionPoints_.size(); id++) {
@@ -126,56 +117,6 @@ void Vehicle::Init() {
     }
     vehicle->ResetWheels();
 }
-void Vehicle::resetDifferential() {
-    auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
-    engineForce_ = 0;
-    vehicle->SetEngineForce(0, 0);
-    vehicle->SetEngineForce(2, 0);
-    vehicle->SetEngineForce(1, 0);
-    vehicle->SetEngineForce(3, 0);
-}
-void Vehicle::setDifferential(float engineForce, const unsigned int control) {
-    // the Control checks whether you want to turn left or right.
-    // will remove this once i got the Differential.cxx to work
-    auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
-    if (control == 8) {
-        engineForce = engineForce * -2;
-    } else {
-        engineForce = engineForce * 2;
-    }
-    vehicle->SetEngineForce(1, engineForce);
-    vehicle->SetEngineForce(3, engineForce);
-    vehicle->SetEngineForce(0, -engineForce);
-    vehicle->SetEngineForce(2, -engineForce);
-}
-void Vehicle::FixedUpdate(float timeStep) {
-    float accelerator = 0.0f;
-    auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
-    // Read controls
-
-    if (controls_.buttons_ & CTRL_LEFT) {
-        setDifferential(maxEngineForce_, CTRL_LEFT);
-    }
-    if (controls_.buttons_ & CTRL_RIGHT) {
-        setDifferential(maxEngineForce_, CTRL_RIGHT);
-    }
-    if (controls_.buttons_ & CTRL_FORWARD) {
-        resetDifferential();
-        accelerator = 0.3f;     // not accurate
-    }
-    if (controls_.buttons_ & CTRL_BACK) {
-        resetDifferential();
-        accelerator = -0.3f;    // not accurate
-    }
-
-    // apply forces
-    engineForce_ = maxEngineForce_ * accelerator;
-   /* vehicle->SetEngineForce(0, engineForce_);
-    vehicle->SetEngineForce(1, engineForce_);*/
-    vehicle->SetEngineForce(3, engineForce_);
-    vehicle->SetEngineForce(2, engineForce_);
-}
-
 void Vehicle::PostUpdate(float timeStep) {
     auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
     auto* vehicleBody = node_->GetComponent<Urho3D::RigidBody>();

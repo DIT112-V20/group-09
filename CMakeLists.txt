@@ -9,6 +9,7 @@
 #      http://www.apache.org/licenses/LICENSE-2.0
 #
 #  Unless required by applicable law or agreed to in writing, software
+#  Unless required by applicable law or agreed to in writing, software
 #  distributed under the License is distributed on an "AS IS" BASIS,
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
@@ -95,7 +96,7 @@ target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps)
 target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 add_dependencies (smartcar_emul ArduinoRuntime)
 
-target_sources (smartcar_emul PRIVATE src/app/UrhoApp.cxx include/app/UrhoApp.hxx src/components/MovableCamera.cxx include/components/MovableCamera.hxx include/UrhoUtility.hxx src/components/Differential.cxx src/components/Vehicle.cxx include/components/Differential.hxx include/components/Vehicle.hxx)
+target_sources (smartcar_emul PRIVATE src/app/UrhoApp.cxx include/app/UrhoApp.hxx src/components/MovableCamera.cxx include/components/MovableCamera.hxx include/UrhoUtility.hxx src/components/Vehicle.cxx include/components/Vehicle.hxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 
