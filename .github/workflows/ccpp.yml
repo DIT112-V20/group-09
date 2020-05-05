@@ -29,11 +29,24 @@ jobs:
         run: |
           mkdir -p deps/Urho3D
           wget -nv --timeout=5 --waitretry=0 --tries=20 --retry-connrefused -O deps/Urho3D/1.7.1.deb "https://sourceforge.net/projects/urho3d/files/Urho3D/1.7.1/Urho3D-1.7.1-Linux-64bit-SHARED.deb/download"
+      - uses: actions/cache@v1
+        name: Cache-check Urho3D
+        id: cache-urho
+        with:
+          path: deps/Boost
+          key: ${{ runner.os }}-deps-Boost-1.73.0
+      - name: Pull Boost in cache
+        if: steps.cache-boost.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p deps/Boost && pushd
+          wget -nv --timeout=5 --waitretry=0 --tries=20 --retry-connrefused -O deps/Boost/1.73.0.tar.bz2 "https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.bz2"
       - name: Install deps
         run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-          eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-          /home/linuxbrew/.linuxbrew/bin/brew install boost
+          tar --bzip2 -xf deps/Boost/1.73.0.tar.bz2
+          pushd boost_1_73_0 > /dev/null
+          ./boostrap.sh --with-libraries="system,thread"
+          sudo ./b2 install
+          popd > /dev/null
           sudo apt install libgl1-mesa-dev libglu1-mesa-dev ninja-build
           sudo apt install ./deps/Urho3D/1.7.1.deb
       - name: configure
