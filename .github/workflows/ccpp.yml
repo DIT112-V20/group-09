@@ -32,7 +32,7 @@ jobs:
       - name: Install deps
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-          sudo /home/linuxbrew/.linuxbrew/bin/brew install boost
+          /home/linuxbrew/.linuxbrew/bin/brew install boost
           sudo apt install libgl1-mesa-dev libglu1-mesa-dev ninja-build
           sudo apt install ./deps/Urho3D/1.7.1.deb
       - name: configure
