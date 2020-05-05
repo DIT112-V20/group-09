@@ -52,6 +52,7 @@ of concept on the Smartcar platform without the need for access to the hardware.
 - A C++2a capable toolchain
 - Prebuilt Urho3D (1.7.1)
 - This git repository's submodules in `thirdparty/`
+- (Optional) latest version of Boost installed system-wide
 
 ### Supported compilers
 

@@ -1,5 +1,5 @@
 #
-#  BoostDLL.cmake
+#  SetupBoost.cmake
 #  Copyright 2020 ItJustWorksTM
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,20 +15,11 @@
 #  limitations under the License.
 #
 
-add_library (Boost_dll INTERFACE)
+include (GetBoost)
 
+add_library (Boost_dll INTERFACE)
 target_compile_definitions (Boost_dll INTERFACE BOOST_DLL_USE_STD_FS=1)
-target_include_directories (Boost_dll INTERFACE
-        thirdparty/Boost.DLL/include
-        thirdparty/Boost.Core/include)
-target_link_libraries (Boost_dll INTERFACE
-        Boost::config
-        Boost::core
-        Boost::move
-        Boost::throw_exception
-        Boost::type_traits
-        Boost::smart_ptr
-        Boost::winapi)
+target_link_libraries (Boost_dll INTERFACE Boost::headers)
 
 if (WIN32)
     target_link_libraries (Boost_dll INTERFACE Kernel32)
@@ -36,4 +27,17 @@ else ()
     target_link_libraries (Boost_dll INTERFACE dl)
 endif ()
 
-add_library(Boost::dll ALIAS Boost_dll)
+add_library (Boost::dll ALIAS Boost_dll)
+
+
+
+add_library (Boost_asio INTERFACE)
+target_compile_definitions (Boost_asio INTERFACE BOOST_DLL_USE_STD_FS=1)
+target_link_libraries (Boost_asio INTERFACE Boost::headers Boost::system)
+add_library (Boost::asio ALIAS Boost_asio)
+
+
+
+add_library (Boost_staticstring INTERFACE)
+target_compile_definitions (Boost_staticstring INTERFACE BOOST_STATIC_STRING_STANDALONE=1)
+add_library (Boost::static_string ALIAS Boost_staticstring)
