@@ -44,7 +44,7 @@ jobs:
         run: |
           tar --bzip2 -xf deps/Boost/1.73.0.tar.bz2
           pushd boost_1_73_0
-          ./boostrap.sh --with-libraries="system,thread"
+          ./bootstrap.sh --with-libraries="system,thread"
           sudo ./b2 install
           cd ..
           sudo apt install libgl1-mesa-dev libglu1-mesa-dev ninja-build
