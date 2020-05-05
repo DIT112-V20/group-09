@@ -23,6 +23,12 @@
 #include <fmt/printf.h>
 #include "Servo.hxx"
 
+// GCC 9 workaround
+enum class RayMembers { SetSteeringValue, SetEngineForce };
+template <void (Urho3D::RaycastVehicle::*mem_fn)(int, float)> auto to_enum();
+template <> constexpr auto to_enum<&Urho3D::RaycastVehicle::SetSteeringValue>() { return RayMembers::SetSteeringValue; }
+template <> constexpr auto to_enum<&Urho3D::RaycastVehicle::SetEngineForce>() { return RayMembers::SetEngineForce; }
+
 template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : public Servo {
     URHO3D_OBJECT(WheelServo, Servo);
     static constexpr auto err_msg = "Attempted to create component ServoMotor with an invalid configuration";
@@ -48,10 +54,10 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
     }
 
     void Update(float timeStep) {
-        if constexpr (mptr == &Urho3D::RaycastVehicle::SetSteeringValue) {
+        if constexpr (to_enum<mptr>() == RayMembers::SetSteeringValue) {
             for (const auto& no : wheels)
                 (vehicle->*mptr)(no, deg2rad(math_map(+pwm_pin->load(), 0, 180, movement_mode->angle_min, movement_mode->angle_max)));
-        } else if constexpr (mptr == &Urho3D::RaycastVehicle::SetEngineForce) {
+        } else if constexpr (to_enum<mptr>() == RayMembers::SetEngineForce) {
             for (const auto& no : wheels)
                 (vehicle->*mptr)(no, math_map(static_cast<float>(+pwm_pin->load()), 0.0f, 180.0f, -1.0f, 1.0f) * max_speed);
         }

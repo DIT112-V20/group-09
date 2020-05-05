@@ -19,12 +19,12 @@
 #include <algorithm>
 #include <fmt/format.h>
 #include <range/v3/algorithm/find_if.hpp>
+#include "utility.hxx"
 #include "Arduino.h"
 #include "BoardDataDef.hxx"
 #include "Entrypoint.hxx"
 #include "Error.hxx"
 #include "SPI.h"
-#include "utility.hxx"
 
 SPIClass SPI;
 
