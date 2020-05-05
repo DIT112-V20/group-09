@@ -31,7 +31,7 @@ jobs:
           wget -nv --timeout=5 --waitretry=0 --tries=20 --retry-connrefused -O deps/Urho3D/1.7.1.deb "https://sourceforge.net/projects/urho3d/files/Urho3D/1.7.1/Urho3D-1.7.1-Linux-64bit-SHARED.deb/download"
       - uses: actions/cache@v1
         name: Cache-check Urho3D
-        id: cache-urho
+        id: cache-boost
         with:
           path: deps/Boost
           key: ${{ runner.os }}-deps-Boost-1.73.0
