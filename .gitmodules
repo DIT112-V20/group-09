@@ -22,42 +22,6 @@
 [submodule "thirdparty/Catch2"]
 	path = thirdparty/Catch2
 	url = https://github.com/catchorg/Catch2
-[submodule "thirdparty/Boost.DLL"]
-	path = thirdparty/Boost.DLL
-	url = https://github.com/apolukhin/Boost.DLL
-[submodule "thirdparty/Boost.Config"]
-	path = thirdparty/Boost.Config
-	url = https://github.com/boostorg/config
-[submodule "thirdparty/Boost.WinAPI"]
-	path = thirdparty/Boost.WinAPI
-	url = https://github.com/boostorg/winapi.git
-[submodule "thirdparty/Boost.Predef"]
-	path = thirdparty/Boost.Predef
-	url = https://github.com/boostorg/predef.git
-[submodule "thirdparty/Boost.Core"]
-	path = thirdparty/Boost.Core
-	url = https://github.com/boostorg/core.git
-[submodule "thirdparty/Boost.StaticAssert"]
-	path = thirdparty/Boost.StaticAssert
-	url = https://github.com/boostorg/static_assert.git
-[submodule "thirdparty/Boost.TypeTraits"]
-	path = thirdparty/Boost.TypeTraits
-	url = https://github.com/boostorg/type_traits.git
-[submodule "thirdparty/Boost.Assert"]
-	path = thirdparty/Boost.Assert
-	url = https://github.com/boostorg/assert.git
-[submodule "Boost.ThrowException"]
-	path = Boost.ThrowException
-	url = https://github.com/boostorg/throw_exception.git
-[submodule "thirdparty/Boost.ThrowException"]
-	path = thirdparty/Boost.ThrowException
-	url = https://github.com/boostorg/throw_exception.git
-[submodule "thirdparty/Boost.Move"]
-	path = thirdparty/Boost.Move
-	url = https://github.com/boostorg/move.git
-[submodule "thirdparty/Boost.SmartPtr"]
-	path = thirdparty/Boost.SmartPtr
-	url = https://github.com/boostorg/smart_ptr.git
 [submodule "thirdparty/inih"]
 	path = thirdparty/inih
 	url = https://github.com/jtilly/inih
