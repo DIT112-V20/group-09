@@ -38,15 +38,15 @@ jobs:
       - name: Pull Boost in cache
         if: steps.cache-boost.outputs.cache-hit != 'true'
         run: |
-          mkdir -p deps/Boost &&
+          mkdir -p deps/Boost
           wget -nv --timeout=5 --waitretry=0 --tries=20 --retry-connrefused -O deps/Boost/1.73.0.tar.bz2 "https://dl.bintray.com/boostorg/release/1.73.0/source/boost_1_73_0.tar.bz2"
       - name: Install deps
         run: |
           tar --bzip2 -xf deps/Boost/1.73.0.tar.bz2
-          pushd boost_1_73_0 > /dev/null
+          pushd boost_1_73_0
           ./boostrap.sh --with-libraries="system,thread"
           sudo ./b2 install
-          popd > /dev/null
+          cd ..
           sudo apt install libgl1-mesa-dev libglu1-mesa-dev ninja-build
           sudo apt install ./deps/Urho3D/1.7.1.deb
       - name: configure
