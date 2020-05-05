@@ -31,7 +31,9 @@ jobs:
           wget -nv --timeout=5 --waitretry=0 --tries=20 --retry-connrefused -O deps/Urho3D/1.7.1.deb "https://sourceforge.net/projects/urho3d/files/Urho3D/1.7.1/Urho3D-1.7.1-Linux-64bit-SHARED.deb/download"
       - name: Install deps
         run: |
-          sudo apt install libgl1-mesa-dev libglu1-mesa-dev libboost-all-dev ninja-build
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+          sudo brew install boost
+          sudo apt install libgl1-mesa-dev libglu1-mesa-dev ninja-build
           sudo apt install ./deps/Urho3D/1.7.1.deb
       - name: configure
         run: mkdir build && pushd build && cmake -G Ninja .. && popd

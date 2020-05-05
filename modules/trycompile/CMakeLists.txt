@@ -31,7 +31,6 @@ target_sources (TryCompile INTERFACE
         src/Runtime.cxx
         src/Object.cxx
         src/Toolchain.cxx)
-target_compile_definitions (TryCompile INTERFACE BOOST_DLL_USE_STD_FS=1)
 target_link_libraries (TryCompile INTERFACE stdpolyfills::stdpolyfills fmt::fmt Boost::dll)
 
 add_executable (TestsTryCompile test/compile.cxx test/load.cxx)
