@@ -54,7 +54,7 @@ jobs:
           submodules: recursive
       - name: Install deps
         run: |
-          vcpkg install boost-system:x64-windows
+          vcpkg install boost:x64-windows
           cmd /C "md Urho3D-build && pushd Urho3D-build && cmake -DURHO3D_SAMPLES=0 -DURHO3D_C++11=1 ../thirdparty/Urho3D && cmake --build . && popd"
           dir Urho3D-build
       - name: configure
