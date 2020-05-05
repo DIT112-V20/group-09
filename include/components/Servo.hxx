@@ -26,7 +26,7 @@
 #include "utility.hxx"
 
 class Servo : public Urho3D::LogicComponent {
-    URHO3D_OBJECT(Servo, Urho3D::LogicComponent);
+  URHO3D_OBJECT(Servo, Urho3D::LogicComponent);
 
     struct Bounds {
         // Degrees
@@ -34,14 +34,13 @@ class Servo : public Urho3D::LogicComponent {
         float angle_max;
     };
 
-    std::atomic_bool* dir_pin;
     std::atomic_uint8_t* pwm_pin;
     Urho3D::Node* node;
 
     std::optional<Bounds> movement_mode{};
 
   public:
-    explicit Servo(Urho3D::Context* context, BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
+    explicit Servo(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
     virtual void Update(float timeStep) override;
 };
 

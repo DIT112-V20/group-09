@@ -1,3 +1,4 @@
+
 /*
  *  PerfectAnalogLaserSensor.cxx
  *  Copyright 2020 ItJustWorksTM
@@ -20,43 +21,45 @@
 
 constexpr auto err_msg = "Attempted to create component PerfectAnalogLaserSensor with an invalid configuration";
 
-PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(Urho3D::Context* context, BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin)
-    : LaserCaster{context, node} {
-    if (!pin.HasMember("bus_id") || pin.HasMember("address"))
+PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin) : LaserCaster{node} {
+    if (!pin.HasMember("bus_id") || !pin.HasMember("address"))
         throw std::runtime_error{err_msg};
 
     bus_id = pin["bus_id"].GetUint();
     store.address = pin["address"].GetUint();
-
+    store.data[0xC0] = 0xEE;
     bus = &bd.i2c_buses[bus_id];
     std::scoped_lock lock{bus->devices_mut};
     bus->slaves[store.address].second.emplace<1>([&](std::size_t size) mutable {
-        std::scoped_lock lock{bus->devices_mut};
-        auto& buf = bus->slaves[store.address].first;
-        std::scoped_lock tx_lock{buf.rx_mutex, buf.tx_mutex};
+      auto& buf = bus->slaves[store.address].first;
 
-        auto reg = static_cast<uint8_t>(buf.tx.back().front());
-        buf.tx.erase(buf.tx.end() - 1);
+      auto reg = static_cast<uint8_t>(buf.tx.back().front());
+      buf.tx.erase(buf.tx.end() - 1);
 
-        std::basic_string<std::byte> ret{};
-        ret.resize(size);
-        // Prevent reading beyond the rom
-        if (reg + size > store.data.size()) {
-            buf.rx.emplace_back(ret);
-            return;
-        }
-        // Deal with read requests which need active intervention by the sensor.
-        switch (reg) {
-        case (MEASUREMENT_RESULT + 10): {
-            uint16_t dist = measure();
-            std::memcpy(&store.data[reg], &dist, sizeof(dist));
-        } break;
-        default:
-            break;
-        }
-        // Place requested bytes into rx buffer
-        std::memcpy(ret.data(), &store.data[reg], size);
-        buf.rx.emplace_back(ret);
+      std::basic_string<std::byte> ret{};
+      ret.resize(size);
+      // Prevent reading beyond the rom
+      if (reg + size > store.data.size()) {
+          buf.rx.emplace_back(ret);
+          return;
+      }
+      // Deal with read requests which need active intervention by the sensor.
+      switch (reg) {
+      case (MEASUREMENT_RESULT + 10): {
+          uint16_t dist = measure();
+          std::memcpy(&store.data[reg], &dist, sizeof(dist));
+      } break;
+      case (DEVICE_ID):
+          store.data[reg] = 0xEE;
+      default:
+          break;
+      }
+      // Place requested bytes into rx buffer
+      auto& s = store.data;
+      std::memcpy(ret.data(), &store.data[reg], size);
+      buf.rx.emplace_back(ret);
+      auto realret = static_cast<uint8_t>(ret.front());
+      int i = 0;
     });
 }
 

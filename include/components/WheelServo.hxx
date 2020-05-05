@@ -18,11 +18,19 @@
 #ifndef SMARTCAR_EMUL_WHEELSERVO_HXX
 #define SMARTCAR_EMUL_WHEELSERVO_HXX
 
+#include <Urho3D/Physics/PhysicsEvents.h>
 #include <Urho3D/Physics/RaycastVehicle.h>
+#include <fmt/printf.h>
 #include "Servo.hxx"
 
+// GCC 9 workaround
+enum class RayMembers { SetSteeringValue, SetEngineForce };
+template <void (Urho3D::RaycastVehicle::*mem_fn)(int, float)> auto to_enum();
+template <> constexpr auto to_enum<&Urho3D::RaycastVehicle::SetSteeringValue>() { return RayMembers::SetSteeringValue; }
+template <> constexpr auto to_enum<&Urho3D::RaycastVehicle::SetEngineForce>() { return RayMembers::SetEngineForce; }
+
 template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : public Servo {
-    URHO3D_OBJECT(WheelServo, Servo);
+  URHO3D_OBJECT(WheelServo, Servo);
     static constexpr auto err_msg = "Attempted to create component ServoMotor with an invalid configuration";
 
     Urho3D::RaycastVehicle* vehicle;
@@ -30,8 +38,8 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
     float max_speed;
 
   public:
-    explicit WheelServo(Urho3D::Context* context, BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin)
-        : Servo{context, bd, node, pin}, vehicle{node->GetComponent<Urho3D::RaycastVehicle>()}, wheels{} {
+    explicit WheelServo(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin)
+        : Servo{bd, node, pin}, vehicle{node->GetComponent<Urho3D::RaycastVehicle>()}, wheels{} {
         if (!pin.HasMember("wheels"))
             throw std::runtime_error{err_msg};
         if (!pin.HasMember("max_speed"))
@@ -39,19 +47,19 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
         max_speed = pin["max_speed"].GetFloat();
         for (const auto& x : pin["wheels"].GetArray()) {
             auto val = x.GetUint();
-            if (val < vehicle->GetNumWheels())
+            if (val > vehicle->GetNumWheels())
                 throw std::runtime_error{err_msg};
             wheels.push_back(val);
         }
     }
 
-    void Update(float timeStep) override {
-        if constexpr (mptr == &Urho3D::RaycastVehicle::SetSteeringValue) {
+    void Update(float timeStep) {
+        if constexpr (to_enum<mptr>() == RayMembers::SetSteeringValue) {
             for (const auto& no : wheels)
                 (vehicle->*mptr)(no, deg2rad(math_map(+pwm_pin->load(), 0, 180, movement_mode->angle_min, movement_mode->angle_max)));
-        } else if constexpr (mptr == &Urho3D::RaycastVehicle::SetEngineForce) {
+        } else if constexpr (to_enum<mptr>() == RayMembers::SetEngineForce) {
             for (const auto& no : wheels)
-                (vehicle->*mptr)(no, math_map(static_cast<float>(+pwm_pin->load()), 0.0f, 180.0f, 0.0f, 1.0f) * max_speed * (dir_pin->load() ? 1 : -1));
+                (vehicle->*mptr)(no, math_map(static_cast<float>(+pwm_pin->load()), 0.0f, 180.0f, -1.0f, 1.0f) * max_speed);
         }
     }
 };
