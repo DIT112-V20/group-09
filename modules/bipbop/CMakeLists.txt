@@ -35,11 +35,11 @@ target_link_libraries (BipBop INTERFACE
         fmt::fmt-header-only
         Boost::asio)
 
-add_executable (TestsBipBop )
-set_target_properties (TestsBipBop PROPERTIES LINKER_LANGUAGE CXX)
-target_link_libraries (TestsBipBop BipBop Catch2)
-target_compile_definitions (TestsBipBop PUBLIC ${FLAG_ENABLE_DEBUG})
+#add_executable (TestsBipBop )
+#set_target_properties (TestsBipBop PROPERTIES LINKER_LANGUAGE CXX)
+#target_link_libraries (TestsBipBop BipBop Catch2)
+#target_compile_definitions (TestsBipBop PUBLIC ${FLAG_ENABLE_DEBUG})
 
-catch_discover_tests (TestsBipBop)
-add_dependencies(TestTag TestsBipBop)
+#catch_discover_tests (TestsBipBop)
+#add_dependencies(TestTag TestsBipBop)
 
