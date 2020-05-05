@@ -43,7 +43,8 @@ if (NOT Boost_FOUND)
         if (ENABLE_BOOST_BUILD)
             # This file comes from the following location:
             #   https://github.com/pfultz2/cget/blob/master/cget/cmake/boost.cmake
-            configure_file (boost.cmake
+            file (DOWNLOAD "https://raw.githubusercontent.com/pfultz2/cget/master/cget/cmake/boost.cmake" ${CMAKE_BINARY_DIR}/boost.cmake)
+            configure_file (${CMAKE_BINARY_DIR}/boost.cmake
                     ${boost_SOURCE_DIR}/CMakeLists.txt
                     COPYONLY
                     )
