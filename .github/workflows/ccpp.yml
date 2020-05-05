@@ -31,7 +31,7 @@ jobs:
           wget -nv --timeout=5 --waitretry=0 --tries=20 --retry-connrefused -O deps/Urho3D/1.7.1.deb "https://sourceforge.net/projects/urho3d/files/Urho3D/1.7.1/Urho3D-1.7.1-Linux-64bit-SHARED.deb/download"
       - name: Install deps
         run: |
-          sudo apt install libgl1-mesa-dev libglu1-mesa-dev ninja-build
+          sudo apt install libgl1-mesa-dev libglu1-mesa-dev libboost-all-dev ninja-build
           sudo apt install ./deps/Urho3D/1.7.1.deb
       - name: configure
         run: mkdir build && pushd build && cmake -G Ninja .. && popd
@@ -52,6 +52,7 @@ jobs:
           submodules: recursive
       - name: Install deps
         run: |
+          vcpkg install boost-system:x64-windows
           cmd /C "md Urho3D-build && pushd Urho3D-build && cmake -DURHO3D_SAMPLES=0 -DURHO3D_C++11=1 ../thirdparty/Urho3D && cmake --build . && popd"
           dir Urho3D-build
       - name: configure
@@ -89,7 +90,7 @@ jobs:
       - name: Install dependencies
         run: |
           brew update
-          brew install --force-bottle coreutils ninja
+          brew install --force-bottle coreutils boost ninja
           if [ $(echo "$CC" | grep -Ei "^clang-") ]; then brew install z3 --force-bottle; brew upgrade --force-bottle llvm; fi
           tar xf deps/Urho3D/1.7.1.tgz
           find . -maxdepth 1 -name "Urho3D-*" -exec mv '{}' Urho3D \;
