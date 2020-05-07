@@ -31,9 +31,18 @@ namespace smce::boip {
 namespace details {
 
 enum HeaderByte : unsigned char {
-    secure = 0x80,
+    secure    = 0x80,
     bluetooth = 0x40,
-    bluectl = 0x20,
+    bluectl   = 0x20,
+};
+
+enum BluectlHeaderFields : unsigned char {
+    auth  = 0x10,
+    flags = 0x08,
+};
+
+enum BlueFlagsHeaderFields : unsigned char {
+    master = 0x40
 };
 
 constexpr static bool is_secure(std::byte b) { return static_cast<unsigned char>(b) & secure; }
@@ -43,12 +52,24 @@ constexpr static bool is_hostctl(std::byte b) { return !is_bluetooth(b); }
 constexpr static bool is_bluectl(std::byte b) { return static_cast<unsigned char>(b) & bluectl; }
 constexpr static bool is_dataframe(std::byte b) { return !is_bluectl(b); }
 
+constexpr static bool is_auth(std::byte b) { return static_cast<unsigned char>(b) & auth; }
+constexpr static bool is_ctl(std::byte b) { return !is_auth(b); }
+constexpr static bool is_masterrequest(std::byte b) { return static_cast<unsigned char>(b) & master; }
+constexpr static bool is_slaverequest(std::byte b) { return !is_masterrequest(b); }
+
+constexpr static bool is_pairing_request(std::byte b) { return (static_cast<unsigned char>(b) & 6) == 0; }
+constexpr static bool is_pin_request(std::byte b) { return (static_cast<unsigned char>(b) & 2) == 2 && !is_pairing_request(b); }
+constexpr static bool is_pin_providal(std::byte b) { return (static_cast<unsigned char>(b) & 4) == 4 && !is_pairing_request(b); }
+constexpr static bool is_pairing_reply(std::byte b) { return (static_cast<unsigned char>(b) & 6) == 6; }
+
+
 template <class F>
-auto decrypt_and_call(F&& f, gsl::span<const std::byte> buffer, std::byte header) {
+auto decrypt_and_call(F&& f, gsl::span<const std::byte> buffer, std::byte header)
+    requires std::invoke<decltype(f), decltype(buffer)> {
     if(!is_secure(header))
         return std::forward<F>(f)(buffer);
     std::vector<std::byte> decrypted_buffer; // = decrypt_buffer(buffer);
-    return std::forward<F>(f)(gsl::span<std::byte>{decrypted_buffer});
+    return std::forward<F>(f)(gsl::span<const std::byte>{decrypted_buffer});
 }
 
 template <class T>
@@ -64,10 +85,15 @@ T read_scalar(const std::byte* data_ptr) noexcept { // C++2a: make constexpr wit
 
 }
 
-
-template <class DataHandler>
-std::streamsize parse_message(gsl::span<const std::byte> buffer, DataHandler&& data_handler,
-                          Endpoint& endpoint) requires std::invocable<DataHandler, DataFrame> {
+template <class DataHandler, class PairingHandler, class RelationshipHandler>
+std::streamsize parse_message(gsl::span<std::byte> buffer,
+                              DataHandler&& data_handler,
+                              PairingHandler&& pairing_handler,
+                              RelationshipHandler&& rel_handler,
+                              Endpoint& endpoint)
+requires std::invocable<DataHandler, DataFrame>
+         && std::invocable<PairingHandler, PairingFrame>
+         && std::invocable<RelationshipHandler, bool> {
     if (buffer.empty())
         return 0;
 
@@ -105,7 +131,42 @@ std::streamsize parse_message(gsl::span<const std::byte> buffer, DataHandler&& d
             return (total_buffer_index + (details::is_secure(header) ? payload_length : std::abs(plain_read))) * (plain_read >= 0 ? 1 : -1);
         }
         // bluectl
+        if(details::is_auth(header)){
+            /// TODO: Handle auth
+            return total_buffer_index;
+        }
+        if(details::is_ctl(header)) {
+            std::forward<RelationshipHandler>(rel_handler)(details::is_masterrequest(header));
+            return total_buffer_index;
+        }
+        // Pairing
+        if(buffer.size() < (total_buffer_index + sizeof(Address) * 2))
+            return -total_buffer_index;
+        PairingFrame pframe;
+        pframe.status = PairingFrame::Status(static_cast<std::uint8_t>(header >> 1) & 3u);
+        pframe.receiver = details::read_scalar<Address>(&buffer[total_buffer_index]);
+        total_buffer_index += sizeof(Address);
+        pframe.receiver = details::read_scalar<Address>(&buffer[total_buffer_index]);
+        total_buffer_index += sizeof(Address);
+
+        if(details::is_pairing_request(header)){
+            if(buffer.size() < (total_buffer_index + sizeof(std::uint8_t)))
+                return -total_buffer_index;
+            const auto name_len = details::read_scalar<std::uint8_t>(&buffer[total_buffer_index++]);
+            if(buffer.size() < (total_buffer_index + name_len))
+                return -total_buffer_index;
+            pframe.sender_name = gsl::span<const char>{reinterpret_cast<const char*>(&buffer[total_buffer_index]), name_len};
+            total_buffer_index += name_len;
+        } else if(details::is_pin_providal(header)){
+            if(buffer.size() < (total_buffer_index + sizeof(std::uint64_t)))
+                return -total_buffer_index;
+            pframe.pin = details::read_scalar<std::uint64_t>(&buffer[total_buffer_index]);
+            total_buffer_index += sizeof(std::uint64_t);
+        }
+        std::forward<PairingHandler>(pairing_handler)(pframe);
+        return total_buffer_index;
     }
+    return -total_buffer_index; // Fail so long RCSMCE is not implemented
 }
 
 }

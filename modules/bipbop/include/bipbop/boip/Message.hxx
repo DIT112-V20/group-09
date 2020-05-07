@@ -31,6 +31,19 @@ struct DataFrame {
     gsl::span<const std::byte> payload;
 };
 
+struct PairingFrame {
+    enum class Status : unsigned char {
+        pairing_request,
+        pin_request,
+        pin_providal,
+        pairing_reply,
+    } status;
+    Address sender;
+    Address receiver;
+    gsl::span<const char> sender_name; // only meaningful on pairing_request
+    std::uint64_t pin; // only meaningful on pin_providal
+};
+
 }
 
 #endif // SMARTCAR_EMUL_BOIP_MESSAGE_HXX

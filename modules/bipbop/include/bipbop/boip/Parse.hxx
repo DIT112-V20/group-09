@@ -27,6 +27,7 @@ namespace smce::boip {
 
 struct Endpoint;
 struct DataFrame;
+struct PairingFrame;
 
 /**
  * Parses a message from the buffer
@@ -34,10 +35,16 @@ struct DataFrame;
  * \param message which will be populated
  * \param endpoint to use as context
  * \return the number of bytes which have been read from the buffer; negative on error, including zero
- * */
-template <class DataHandler>
-std::streamsize parse_message(gsl::span<std::byte> buffer, DataHandler&& data_handler, Endpoint& endpoint)
-    requires std::invocable<DataHandler, DataFrame>;
+ **/
+template <class DataHandler, class PairingHandler, class RelationshipHandler>
+std::streamsize parse_message(gsl::span<std::byte> buffer,
+                              DataHandler&& data_handler,
+                              PairingHandler&& pairing_handler,
+                              RelationshipHandler&& rel_handler,
+                              Endpoint& endpoint)
+    requires std::invocable<DataHandler, DataFrame>
+        && std::invocable<PairingHandler, PairingFrame>
+        && std::invocable<RelationshipHandler, bool>;
 
 
 }
