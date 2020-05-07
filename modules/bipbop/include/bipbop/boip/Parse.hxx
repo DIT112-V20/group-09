@@ -32,12 +32,11 @@ struct PairingFrame;
 /**
  * Parses a message from the buffer
  * \param buffer from which the message will be read
- * \param message which will be populated
  * \param endpoint to use as context
  * \return the number of bytes which have been read from the buffer; negative on error, including zero
  **/
 template <class DataHandler, class PairingHandler, class RelationshipHandler>
-std::streamsize parse_message(gsl::span<std::byte> buffer,
+std::streamsize parse_message(gsl::span<const std::byte> buffer,
                               DataHandler&& data_handler,
                               PairingHandler&& pairing_handler,
                               RelationshipHandler&& rel_handler,

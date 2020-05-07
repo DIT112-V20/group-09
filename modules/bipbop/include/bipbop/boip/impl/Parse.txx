@@ -86,7 +86,7 @@ T read_scalar(const std::byte* data_ptr) noexcept { // C++2a: make constexpr wit
 }
 
 template <class DataHandler, class PairingHandler, class RelationshipHandler>
-std::streamsize parse_message(gsl::span<std::byte> buffer,
+std::streamsize parse_message(gsl::span<const std::byte> buffer,
                               DataHandler&& data_handler,
                               PairingHandler&& pairing_handler,
                               RelationshipHandler&& rel_handler,

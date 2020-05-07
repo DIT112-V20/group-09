@@ -15,7 +15,7 @@
 #  limitations under the License.
 #
 
+add_subdirectory (bipbop)
 add_subdirectory (ardrivo)
 add_subdirectory (trycompile)
 add_subdirectory (configloader)
-add_subdirectory (bipbop)

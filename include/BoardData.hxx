@@ -30,6 +30,8 @@
 #include <utility>
 #include <variant>
 #include <vector>
+#include <gsl/span>
+#include "BluetoothDevice.hxx"
 
 struct BidirMutexes {
     std::mutex rx_mutex;
@@ -79,6 +81,9 @@ struct BoardData {
     std::vector<UartBus> uart_buses;
     std::vector<I2cBus> i2c_buses;
     std::vector<SpiBus> spi_buses;
+    std::vector<BluetoothDev> bluedevs;
+    BluetoothSendData* bluetooth_send_data;
+    BluetoothSendPairing* bluetooth_send_pairing;
     std::vector<std::atomic_uint8_t> pin_modes;
 
     bool (*write_byte)(unsigned char){};

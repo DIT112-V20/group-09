@@ -21,11 +21,14 @@ target_include_directories (BipBop INTERFACE
         ${CMAKE_CURRENT_SOURCE_DIR}/include/bipbop
         ${CMAKE_SOURCE_DIR}/include)
 target_sources (BipBop INTERFACE
+        include/bipbop/BluetoothDevice.hxx
         include/bipbop/boip/Address.hxx
         include/bipbop/boip/Endpoint.hxx
         include/bipbop/boip/Parse.hxx
         include/bipbop/boip/impl/Parse.txx
         include/bipbop/boip/Message.hxx
+        include/bipbop/botcp/Server.hxx
+        include/bipbop/botcp/Session.hxx
         )
 target_compile_definitions (BipBop INTERFACE )
 target_link_libraries (BipBop INTERFACE

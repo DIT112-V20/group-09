@@ -77,6 +77,7 @@ target_link_libraries (smartcar_emul_deps INTERFACE
         stdpolyfills::stdpolyfills
         TryCompile
         ConfigLoader
+        BipBop
         )
 
 add_executable (smartcar_emul src/main.cxx)
