@@ -41,7 +41,7 @@ target_link_libraries (Ardrivo INTERFACE
         fmt::fmt-header-only
         Microsoft.GSL::GSL)
 
-add_executable (TestsArdrivo test/CatchMain.cxx test/Servo.cxx test/SPI.cxx)
+add_executable (TestsArdrivo test/CatchMain.cxx test/Servo.cxx test/SPI.cxx test/Wire.cxx)
 set_target_properties (TestsArdrivo PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries (TestsArdrivo Ardrivo Catch2)
 target_compile_definitions (Ardrivo INTERFACE
