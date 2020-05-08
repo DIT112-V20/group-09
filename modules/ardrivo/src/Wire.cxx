@@ -101,7 +101,6 @@ std::uint8_t TwoWire::endTransmission(std::uint8_t) {
     }
 
     write_buf_used = 0;
-    slave_address = no_address;
     if (truncated_buf) {
         truncated_buf = false;
         return RetCode::truncated_data;
