@@ -1,0 +1,37 @@
+<element>
+    <attribute name="Horiz Alignment" value="Center"/>
+    <attribute name="Vert Alignment" value="Center"/>
+    <attribute name="Color" value="0.1 0.1 0.1 1" />
+
+    <element>
+
+        <attribute name="Layout Mode" value="Vertical"/>
+        <attribute name="Horiz Alignment" value="Center"/>
+        <attribute name="Vert Alignment" value="Center"/>
+        <attribute name="Layout Spacing" value="4"/>
+        <attribute name="Color" value="1 1 0 1"/>
+
+        <element type="Button" style="TorchButton">
+            <attribute name="Name" value="start_button"/>
+            <attribute name="Color" value="0.3 1 0.3 1"/>
+            <element type="Text" style="TorchButtonText">
+                <attribute name="Text" value="Find Sketch"/>
+            </element>
+        </element>
+        <element type="Button" style="TorchButton">
+            <attribute name="Name" value="settings_button"/>
+            <attribute name="Color" value="0.3 1 0.3 1"/>
+            <element type="Text" style="TorchButtonText">
+                <attribute name="Text" value="Settings"/>
+            </element>
+        </element>
+        <element type="Button" style="TorchButton">
+            <attribute name="Name" value="exit_button"/>
+            <attribute name="Color" value="1 0.3 0.3 1"/>
+            <element type="Text" style="TorchButtonText">
+                <attribute name="Text" value="Exit"/>
+            </element>
+        </element>
+
+    </element>
+</element>

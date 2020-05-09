@@ -20,9 +20,10 @@
 
 #include <vector>
 #include <Urho3D/Engine/Application.h>
-#include <Urho3D/Scene/Node.h>
 #include <Urho3D/Scene/LogicComponent.h>
+#include <Urho3D/Scene/Node.h>
 #include <Urho3D/Scene/Scene.h>
+#include <gui/TorchMenu.hxx>
 
 struct BoardData;
 
@@ -51,12 +52,12 @@ class UrhoApp : public Urho3D::Application {
     void setup_attachments(BoardData& board, const smce::VehicleConfig&);
     void subscribe_to_events();
     void HandleUpdate(Urho3D::StringHash event_type, Urho3D::VariantMap& event_data);
-    void HandleKeyUp(Urho3D::StringHash event_type, Urho3D::VariantMap& event_data);
-    void HandleMouseButtonDown(Urho3D::StringHash, Urho3D::VariantMap&);
 
     Urho3D::SharedPtr<Urho3D::Scene> m_scene;
     Urho3D::SharedPtr<Urho3D::Node> m_camera_node;
     Urho3D::SharedPtr<Urho3D::Node> m_vehicle_node;
+    Urho3D::SharedPtr<TorchMenu> m_gui;
+
     std::vector<Urho3D::LogicComponent*> m_vehicle_attachments;
 };
 

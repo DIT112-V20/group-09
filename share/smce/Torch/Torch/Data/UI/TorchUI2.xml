@@ -1,0 +1,19 @@
+<element>
+    <attribute name="Horiz Alignment" value="Center"/>
+
+    <element>
+        <attribute name="Layout Mode" value="Vertical"/>
+        <attribute name="Horiz Alignment" value="Center"/>
+        <attribute name="Layout Spacing" value="4"/>
+
+        <attribute name="Color" value="1 1 0 1"/>
+
+        <element type="Text">
+            <attribute name="Text Alignment" value="Center"/>
+            <attribute name="Text" value="Smartcar Emulator"/>
+            <attribute name="Font Size" value="30"/>
+        </element>
+
+
+    </element>
+</element>
