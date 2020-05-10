@@ -13,7 +13,11 @@
             <attribute name="Text" value="Smartcar Emulator"/>
             <attribute name="Font Size" value="30"/>
         </element>
-
+        <element type="Text">
+            <attribute name="Text Alignment" value="Right"/>
+            <attribute name="Text" value="Experimental!"/>
+            <attribute name="Font Size" value="10"/>
+        </element>
 
     </element>
 </element>

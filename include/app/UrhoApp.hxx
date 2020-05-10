@@ -23,7 +23,8 @@
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Node.h>
 #include <Urho3D/Scene/Scene.h>
-#include <gui/TorchMenu.hxx>
+class TorchMenu;
+#include "gui/TorchMenu.hxx"
 
 struct BoardData;
 
