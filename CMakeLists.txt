@@ -101,6 +101,8 @@ target_sources (smartcar_emul PRIVATE
         include/components/Registry.hxx
         include/components/MovableCamera.hxx
         src/components/MovableCamera.cxx
+        include/components/Vehicle.hxx
+        src/components/Vehicle.cxx
         include/UrhoUtility.hxx
         src/gui/TorchMenu.cxx
         include/gui/TorchMenu.hxx)
