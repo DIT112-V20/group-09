@@ -18,11 +18,18 @@
 #ifndef SMARTCAR_EMUL_URHOAPP_HXX
 #define SMARTCAR_EMUL_URHOAPP_HXX
 
+#include <future>
 #include <vector>
+#include <BoardData.hxx>
+#include <BoardInfo.hxx>
+#include <Runtime.hxx>
 #include <Urho3D/Engine/Application.h>
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Node.h>
 #include <Urho3D/Scene/Scene.h>
+#include <VehicleConf.hxx>
+#include "components/Vehicle.hxx"
+#include "Source.hxx"
 class TorchMenu;
 #include "gui/TorchMenu.hxx"
 
@@ -42,6 +49,8 @@ class UrhoApp : public Urho3D::Application {
     void Start() override;
     void Stop() override;
 
+    bool loadIno(smce::SketchSource ino_path, std::filesystem::path config_path);
+
   private:
     enum class Menu {
         none,
@@ -53,13 +62,26 @@ class UrhoApp : public Urho3D::Application {
     void setup_attachments(BoardData& board, const smce::VehicleConfig&);
     void subscribe_to_events();
     void HandleUpdate(Urho3D::StringHash event_type, Urho3D::VariantMap& event_data);
+    void HandleIno(Urho3D::StringHash event_type, Urho3D::VariantMap& event_data);
 
     Urho3D::SharedPtr<Urho3D::Scene> m_scene;
     Urho3D::SharedPtr<Urho3D::Node> m_camera_node;
     Urho3D::SharedPtr<Urho3D::Node> m_vehicle_node;
     Urho3D::SharedPtr<TorchMenu> m_gui;
-
+    Urho3D::SharedPtr<Vehicle> m_vehicle;
+    BoardData b_data;
+    BoardInfo b_info;
+    smce::VehicleConfig vehicle_conf;
+    smce::SketchRuntime ino_runtime{};
+    bool compile_check;
+    std::future<bool> cp;
+    std::future<bool> runtime;
+    std::thread input_tr;
+    Urho3D::SharedPtr<Urho3D::Node> boxNode_;
+    Urho3D::SharedPtr<Urho3D::Node> top_light;
     std::vector<Urho3D::LogicComponent*> m_vehicle_attachments;
+    void create_vehicle();
+    void spawnSmartCar();
 };
 
 #endif // SMARTCAR_EMUL_URHOAPP_HXX
