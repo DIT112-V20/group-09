@@ -3,10 +3,10 @@ on: [push, pull_request]
 on: 
   push:
     paths-ignore:
-      - extras/mobile_remote_kit/**
+      - extras/mobile_app/**
   pull_request:
     paths-ignore:
-      - extras/mobile_remote_kit/**
+      - extras/mobile_app/**
 jobs:
   build-ubuntu:
     runs-on: ubuntu-latest

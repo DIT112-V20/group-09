@@ -3,10 +3,10 @@ on:
   push:
     paths:
       - .github/**
-      - extras/mobile_remote_kit/**
+      - extras/mobile_app/**
   pull_request:
     paths:
-      - extras/mobile_remote_kit/**
+      - extras/mobile_app/**
 jobs:
   apk:
     name: Gradle build
@@ -29,9 +29,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       - name: Build
-        run: gradle -p extras/mobile_remote_kit build
+        run: gradle -p extras/mobile_app build
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
           name: Outputs
-          path: extras/mobile_remote_kit/app/build/outputs
+          path: extras/mobile_app/app/build/outputs
