@@ -39,7 +39,7 @@ target_link_libraries (Ardrivo INTERFACE
         range-v3::range-v3
         fmt::fmt-header-only)
 
-add_executable (TestsArdrivo test/CatchMain.cxx test/Servo.cxx test/SPI.cxx)
+add_executable (TestsArdrivo test/CatchMain.cxx test/Servo.cxx test/SPI.cxx test/HardwareSerial.cxx)
 
 set_target_properties (TestsArdrivo PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries (TestsArdrivo Ardrivo Catch2)

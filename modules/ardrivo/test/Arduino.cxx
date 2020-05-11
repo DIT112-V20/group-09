@@ -7,7 +7,7 @@
 #include "BoardDataDef.hxx"
 #include "Arduino.h"
 
-void init_fake() {
+static void init_fake() {
     if (board_data)
         return;
 
@@ -38,37 +38,36 @@ TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite
     init_fake();
 
     SECTION("Set pinModes", "[pinMode]")
-    {     
-        for (int i = 0; i < board_data->pin_modes.size(); i++)
-        {
-            pinMode(i, OUTPUT);
-            REQUIRE(board_data->pin_modes[i] == OUTPUT);
-        }            
+    {           
+        auto i = GENERATE(1, 2, 3, 4);
+        board_data->pin_modes[i] = static_cast<uint8_t> (PinMode::OUTPUT);
+        REQUIRE(board_data->pin_modes[i] == 1U);               
     }
-   
+
     SECTION("Set digital pins ")
     {
-        digitalWrite(1, LOW);
-        REQUIRE(digitalRead(1) == LOW);
-        digitalWrite(1, HIGH);
-        REQUIRE(digitalRead(1) == HIGH);
-        digitalWrite(14, LOW);
-        REQUIRE(!digitalRead(14) == HIGH);
-       
-        for (int i = 0; i < board_data->digital_pin_values.size() -1; i++)
-        {
-            digitalWrite(i, HIGH);
-            REQUIRE(digitalRead(i) == HIGH);
-        }
+        auto i = GENERATE(1, 2, 3, 4);
+
+        board_data->digital_pin_values[i] = LOW;
+        REQUIRE(board_data->digital_pin_values[i] == LOW);
+
+        i = GENERATE(1, 2, 3, 4);
+        board_data->digital_pin_values[i] = HIGH;
+        REQUIRE(board_data->digital_pin_values[i] == HIGH);
     }
     SECTION("Set analog pins")
     {
-        analogWrite(1, 0);
-        REQUIRE(analogRead(1) == 0);
-        analogWrite(14, 1000);
-        REQUIRE(analogRead(14) == 1000);
-        analogWrite(1, 500);
-        REQUIRE(analogRead(1) == 500);
+        auto i = GENERATE(1, 2, 3, 4);
+        auto j = GENERATE(100, 300, 200, 150);
+
+        board_data->analog_pin_values[i] = LOW;
+        REQUIRE(board_data->analog_pin_values[i] == j);
+
+        i = GENERATE(1, 2, 3, 4);
+        j = GENERATE(100, 300, 200, 150);
+
+        board_data->analog_pin_values[i] = j;
+        REQUIRE(board_data->analog_pin_values[i] == j);
     }
 
     SECTION("Set value of pins over vector size. digitalWrite and analogWrite")
@@ -78,45 +77,23 @@ TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite
     }
 }   
 
-TEST_CASE("Give new size to vector", "[digital_pin_values] & [analog_pin_values]")
-{
-    SECTION("Giving vector a new size")
-    {
-        board_data->digital_pin_values = std::vector<std::atomic_bool>(13);
-        REQUIRE(board_data->digital_pin_values.size() == 13);
-        board_data->analog_pin_values = std::vector<std::atomic_uint16_t>(13);
-        REQUIRE(board_data->analog_pin_values.size() == 13);
-        
-        SECTION("Checking values in vector")
-        {
-            for (int i = 0; i < board_data->digital_pin_values.size(); i++)
-            {
-                REQUIRE(digitalRead(i) == LOW);
-            }          
-        }
-    }       
-}
 
-/*
 TEST_CASE("Set tone frequency on pin", "[tone], [noTone]")
 {  
-    uint8_t asd = 87;
-    std::cout << "Before: "<< (int)asd << std::endl;
+    uint8_t freq = 87;
+    auto i = GENERATE(1, 2, 4, 5);
 
-    for (int i = 0;  i < board_data->pin_frequency.size(); i++)
-    {
-        tone(i, 30, 0);
-        //REQUIRE(board_data->pin_modes[i] == 100);
-    }
-
-    for (const auto& mode : board_data->pin_frequency) 
-        std::cout << "{"<<+static_cast<std::uint8_t>(mode) << '} ';
-     
+    tone(i, 30, 0);
+    REQUIRE(board_data->pin_modes[i] == 30);
 }
-*/
 
 
-//TEST_CASE("Pulse in");
+//How do you even check if it changes state, dont this needs to be run in parallel?
+TEST_CASE("Pulse in")
+{
+    auto pulseLength = pulseIn(1, HIGH, 1);
+    REQUIRE(pulseLength == 0);
+}
 
 //TEST_CASE("Pulse long in ");
 
@@ -126,25 +103,25 @@ TEST_CASE("Set tone frequency on pin", "[tone], [noTone]")
 
 TEST_CASE("Delay the program", "[delay]")
 {
-    const auto start = std::chrono::steady_clock::now();
+    clock_t start = clock();
     delay(1000);
-    const auto end = std::chrono::steady_clock::now();
-    const unsigned long duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-    
+    clock_t stop = clock();
+    double elapsed = (double)(stop - start) / CLOCKS_PER_SEC;
+
     //Added some margin
-    REQUIRE(duration >= 1000);
-    REQUIRE(duration < 1004);
+    REQUIRE(elapsed >= 1000);
+    REQUIRE(elapsed < 1004);
 }
 TEST_CASE("delay the thread in microseconds", "[delayMicroseconds]")
 {
-    const auto start = std::chrono::steady_clock::now();
+    clock_t start = clock();
     delay(1000);
-    const auto end = std::chrono::steady_clock::now();
-    const unsigned long duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
-   
+    clock_t stop = clock();
+    double elapsed = (double)(stop - start) * 1000000.0 / CLOCKS_PER_SEC;
+
     //Added some margin
-    REQUIRE(duration >= 1000000 );
-    REQUIRE(duration < 1001600);
+    REQUIRE(elapsed >= 1000000 );
+    REQUIRE(elapsed < 1001600);
 }
 
 TEST_CASE("Return number of microseconds since arduino board began", "[micros]")
@@ -165,8 +142,8 @@ TEST_CASE("Return number of milliseconds since arduino board began", "[millis]")
     //Added some margin  
     REQUIRE(duration >= 2000);
     REQUIRE(duration < 2230);
-    
- }
+
+}
 
 TEST_CASE("Constrain number within a given range", "[constrain]")
 {
@@ -201,7 +178,7 @@ TEST_CASE("Check if a char is alphanumeric", "[isAlphaNumeric]")
 TEST_CASE("Is the character a ascii", "[isAscii]")
 {
     //REQUIRE(isAscii('a') == 97); //Eeehhh??????????????
-    
+
     int var = 97;
     std::cout<< (char)var;
 }
@@ -273,43 +250,46 @@ TEST_CASE("Checks if a character is a blank character" "[isWhiteSpace]")
     REQUIRE(isWhitespace('a') == false);
 }
 
-TEST_CASE("Checks if it returns a random number" "[isRandon]")
+TEST_CASE("Checks if it returns a random number" "[random]")
 {
-    long num = random(100);
-    long num2 = random(100);
-    REQUIRE(num != num2);
-
-    long min = 0;
-    long min2 = 0;
-    long max = 100;
-    long max2 = 100;
-    num = random(min, max);
-    num2 = random(min2, max2);
-    REQUIRE(num != num2);
+    auto i = GENERATE(take(100, filter([](int i) { return i;}, random(-100, 100))));
+    REQUIRE(i < 100);
+    REQUIRE(i > -100);
 }
-/*
-TEST_CASE("ASDASD")
+
+TEST_CASE("Test randomSeed" "[randomSeed]")
 {
-     randomSeed(100);
+    std::srand(2);
+    int num  = std::rand();
+    int num2 = std::rand();
 
+    std::srand(2);
+    int num3 = std::rand();
+
+    REQUIRE(num != num2);
+    REQUIRE(num == num3);
 }
-*/
 
 void fun()
 {
-   
+
 }
 
 TEST_CASE("Check if vector contains interupt" "[attachInterrupt]")
 {
+    //auto user_func = +[]{}; Error crap
+
     //First test
     void (*user_func)() =  &fun;
-    attachInterrupt(0, (*user_func), 1);
+    attachInterrupt(0, (user_func), 1);
     auto test = board_data->interrupts_handlers[0];
+    REQUIRE(test.first != NULL);
     REQUIRE(test.second == 1);
+
     //Second test
-    attachInterrupt(3, (*user_func), 2);
+    attachInterrupt(3, (user_func), 2);
     auto test2 = board_data->interrupts_handlers[3];
+    REQUIRE(test.first != NULL);
     REQUIRE(test2.second == 2);
 }
 
