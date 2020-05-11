@@ -1,2 +1,3 @@
 rootProject.name='smartcar_emul_app'
 include ':app'
+include ':mobile_remote_kit'

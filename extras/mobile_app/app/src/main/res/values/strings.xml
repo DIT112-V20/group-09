@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">smartcar_emul_app</string>
+    <string name="bluetooth_connection_not_found">Bluetooth Connection Not Found</string>
+
+</resources>
