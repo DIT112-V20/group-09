@@ -36,7 +36,7 @@ target_sources (TryCompile INTERFACE
 target_compile_definitions (TryCompile INTERFACE BOOST_DLL_USE_STD_FS=1)
 target_link_libraries (TryCompile INTERFACE stdpolyfills::stdpolyfills fmt::fmt Boost::dll)
 
-add_executable (TestsTryCompile test/compile.cxx test/load.cxx)
+add_executable (TestsTryCompile test/compile.cxx test/load.cxx test/interrupt.cxx)
 set_target_properties (TestsTryCompile PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries (TestsTryCompile TryCompile Catch2)
 
