@@ -243,3 +243,12 @@ void detachInterrupt(uint8_t pin) {
     if (pin < board_data->interrupts_handlers.size())
         board_data->interrupts_handlers.erase(board_data->interrupts_handlers.begin() + pin);
 }
+
+void interrupts() {
+    maybe_init();
+    board_data->interrupts = true;
+}
+void noInterrupts() {
+    maybe_init();
+    board_data->interrupts = false;
+}

@@ -106,6 +106,9 @@ enum InterruptMode { CHANGE = 1, FALLING, RISING  };
 void attachInterrupt(uint8_t interruptNum, void (*userFunc)(), int mode);
 void detachInterrupt(uint8_t interruptNum);
 
+void interrupts();
+void noInterrupts();
+
 // User defined functions
 extern void setup();
 extern void loop();
