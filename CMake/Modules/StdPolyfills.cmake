@@ -47,3 +47,7 @@ if (HAS_LIBCXX)
 elseif (HAS_LIBSTDCXX)
     set (FLAG_ENABLE_DEBUG _GLIBCXX_DEBUG=1)
 endif ()
+
+if (MINGW AND MINGW_THREADS_WIN32)
+    target_compile_definitions (stdpolyfills INTERFACE -DSMCE_THREADS_MINGW_WIN32=1)
+endif ()

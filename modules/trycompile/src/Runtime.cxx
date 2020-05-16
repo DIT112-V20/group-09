@@ -16,54 +16,94 @@
  *
  */
 
+#include <thread>
+#include <utility>
+#include "detail/Interrupt.hxx"
 #include "BoardData.hxx"
 #include "BoardInfo.hxx"
-#include "Runtime.hxx"
 #include "Object.hxx"
-#include <utility>
-
-namespace {
-
-void looper(const smce::SketchLoadedObject& slo, std::atomic_bool& stop_tok, bool& running) noexcept {
-    running = true;
-    while (!stop_tok)
-        slo.loop();
-    stop_tok = running = false;
-}
-
-}
+#include "Runtime.hxx"
 
 namespace smce {
 
 SketchRuntime::~SketchRuntime() noexcept {
-    pause_on_next_loop();
+    switch (status) {
+    case Status::uninitialized:
+    case Status::ready:
+        break;
+    case Status::running:
+    case Status::suspended:
+        murder();
+        clear();
+        break;
+    case Status::loop_paused:
+        exit_tok = true;
+        break;
+    }
     if (thr.joinable())
         thr.join();
 }
 
 bool SketchRuntime::start() noexcept {
-    if (running)
+    if (status != Status::ready)
         return false;
-    curr_sketch.setup();
-    if (thr.joinable())
-        thr.join();
-    launch_thread_unchecked();
+    status = Status::running;
+    thr = std::thread{[&]() {
+        vehicle_dat->board_thread_id = std::this_thread::get_id();
+        detail::make_self_suspendable(*(vehicle_dat->interrupt_mut = std::make_unique<std::recursive_mutex>()));
+        curr_sketch.setup();
+        while (true) {
+            std::unique_lock lk{stop_mut};
+            if (exit_tok)
+                break;
+            if (stop_tok) {
+                stop_tok = false;
+                stop_cv.wait(lk);
+            }
+            if (exit_tok)
+                break;
+            lk.unlock();
+            curr_sketch.loop();
+        }
+    }};
     return true;
 }
 
 bool SketchRuntime::resume() noexcept {
-    if (running)
+    switch (status) {
+    case Status::loop_paused:
+        stop_tok = false;
+        stop_cv.notify_all();
+        break;
+    case Status::suspended:
+        detail::resume_thread(thr);
+        break;
+    default:
         return false;
-    if (thr.joinable())
-        thr.join();
-    launch_thread_unchecked();
+    }
     return true;
 }
 
-void SketchRuntime::pause_on_next_loop() noexcept { stop_tok = true; }
+void SketchRuntime::pause_on_next_loop() noexcept {
+    std::lock_guard lk{stop_mut};
+    stop_tok = true;
+    status = Status::loop_paused;
+}
+
+void SketchRuntime::pause_now() noexcept {
+    if (status != Status::running)
+        return;
+    detail::suspend_thread(thr);
+}
+void SketchRuntime::murder() noexcept {
+    if (status != Status::running && status != Status::loop_paused && status != Status::suspended)
+        return;
+    detail::murder_thread(thr);
+    clear();
+}
 
 bool SketchRuntime::set_sketch_and_car(SketchObject so, BoardData& bdata, const BoardInfo& binfo) noexcept {
-    if (running)
+    if (status != Status::uninitialized && status != Status::ready)
         return false;
     curr_sketch = load(std::move(so));
     if (!curr_sketch)
@@ -74,17 +114,16 @@ bool SketchRuntime::set_sketch_and_car(SketchObject so, BoardData& bdata, const 
 }
 
 bool SketchRuntime::clear() {
-    if (running) {
+    if (status != Status::uninitialized && status != Status::ready) {
         vehicle_dat = nullptr;
         curr_sketch = {};
+        if (thr.joinable())
+            thr.join();
         thr = {};
-        running = false;
+        status = Status::uninitialized;
+        return true;
     }
-    return !running;
+    return false;
 }
 
-void SketchRuntime::launch_thread_unchecked() {
-    thr = std::thread{looper, std::cref(curr_sketch), std::ref(stop_tok), std::ref(running)};
-}
-
-}
+} // namespace smce

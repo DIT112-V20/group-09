@@ -156,7 +156,7 @@ namespace smce {
     ret.i2c_buses = std::vector<I2cBus>(conf.i2c_pairs.size());
     ret.pin_modes = std::vector<std::atomic_uint8_t>(conf.pin_count);
 
-    return ret;
+    return std::move(ret);
 }
 
 [[nodiscard]] BoardInfo as_info(const BoardConf& conf) noexcept {

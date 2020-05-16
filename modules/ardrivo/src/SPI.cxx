@@ -111,6 +111,7 @@ uint16_t SPIClass::transfer16(std::uint16_t data) {
 void SPIClass::transfer(void* buf, std::uint16_t count) {
     if(!active || count == 0)
         return;
+    std::lock_guard lk{*board_data->interrupt_mut}; // CAVEAT: [all] SPI transfers temporarily inhibit interrupts
     // Assume that `this->active` can only be truthy if `maybe_init` has been called
     std::unique_lock lock{::board_data->spi_buses[bus_id].slaves_mut};
     auto& slave = ::board_data->spi_buses[bus_id].slaves[slave_sel];
@@ -141,7 +142,10 @@ void SPIClass::transfer(void* buf, std::uint16_t count) {
                        } while(true);
 
                    },
-                   [=](const std::function<void(std::byte*, std::size_t)>& generator){ generator(static_cast<std::byte*>(buf), count); }
+                   [=](const std::function<void(std::byte*, std::size_t)>& generator){
+                       std::lock_guard lk{*board_data->interrupt_mut};
+                       generator(static_cast<std::byte*>(buf), count);
+                   }
                }, slave);
 }
 

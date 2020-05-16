@@ -11,6 +11,7 @@ static void init_fake() {
         (delete board_info), board_data = nullptr;
 
     auto loc_board_data = std::make_unique<BoardData>();
+    loc_board_data->interrupt_mut = std::make_unique<std::recursive_mutex>();
     loc_board_data->servo_value = std::vector<std::atomic_uint8_t>(255);
 
     auto loc_board_info = std::make_unique<BoardInfo>();

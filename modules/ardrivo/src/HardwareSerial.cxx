@@ -40,6 +40,7 @@ int HardwareSerial::availableForWrite() { return std::numeric_limits<int>::max()
 size_t HardwareSerial::write(uint8_t c) {
     if (!begun || !board_data->write_byte)
         return 0;
+    std::lock_guard lk{*board_data->interrupt_mut};
     board_data->write_byte(c);
     return 1;
 }
@@ -47,6 +48,7 @@ size_t HardwareSerial::write(uint8_t c) {
 size_t HardwareSerial::write(const uint8_t* buf, std::size_t n) {
     if (!begun || !board_data->write_buf)
         return 0;
+    std::lock_guard lk{*board_data->interrupt_mut};
     board_data->write_buf(buf, n);
     return n;
 }

@@ -28,6 +28,8 @@ target_sources (TryCompile INTERFACE
         include/trycompile/impl/Object.txx
         include/trycompile/Runtime.hxx
         include/trycompile/Toolchain.hxx
+        include/trycompile/detail/Interrupt.hxx
+        src/Interrupt.cxx
         src/Runtime.cxx
         src/Object.cxx
         src/Toolchain.cxx)
