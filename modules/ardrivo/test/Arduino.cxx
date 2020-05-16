@@ -8,6 +8,8 @@
 #include "BoardDataDef.hxx"
 #include "Arduino.h"
 
+using namespace std::literals;
+
 void static init_fake() 
 {
     if (board_data)
@@ -69,7 +71,6 @@ TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite
     }
 }
 
-
 TEST_CASE("Set tone frequency on pin", "[tone], [noTone]")
 {
     init_fake();
@@ -87,25 +88,29 @@ TEST_CASE("Set tone frequency on pin", "[tone], [noTone]")
 
 // TEST_CASE("shift out");
 
-TEST_CASE("Delay the program", "[delay]") {
-    clock_t start = clock();
+TEST_CASE("Delay the program", "[delay]") 
+{
+    const auto start = std::chrono::steady_clock::now();
     delay(1000);
-    clock_t stop = clock();
-    double elapsed = (double)(stop - start) / CLOCKS_PER_SEC;
-
+    const auto end = std::chrono::steady_clock::now();
+    const auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
     //Added some margin
-    REQUIRE(elapsed >= 0);
-    REQUIRE(elapsed < 1.1);
+
+    REQUIRE(duration > 0s);
+    REQUIRE(duration < 1.5s);
 }
-TEST_CASE("delay the thread in microseconds", "[delayMicroseconds]") {
-    clock_t start = clock();
-    delay(1000);
-    clock_t stop = clock();
-    double elapsed = (double)(stop - start) * 1000000.0 / CLOCKS_PER_SEC;
 
+
+TEST_CASE("delay the thread in microseconds", "[delayMicroseconds]") 
+{
+    const auto start = std::chrono::steady_clock::now();
+    delay(1000);
+    const auto end = std::chrono::steady_clock::now();
+    const auto duration = std::chrono::duration_cast< std::chrono::microseconds >(end - start);
     //Added some margin
-    REQUIRE(elapsed >= 0 );
-    REQUIRE(elapsed < 1002000.0);
+
+    REQUIRE(duration > 0us);
+    REQUIRE(duration < 1001000us);
 }
 
 TEST_CASE("Return number of microseconds since arduino board began", "[micros]") {
@@ -135,8 +140,7 @@ TEST_CASE("Constrain number within a given range", "[constrain]") {
     REQUIRE(num == 10);
 }
 
-TEST_CASE("Re-maps number from one range to another"
-    "[map]") {
+TEST_CASE("Re-maps number from one range to another" "[map]") {
     long num = 1023;
     long num2 = map(num, 0, 1023, 0, 255);
     REQUIRE(num2 == 255);
@@ -166,15 +170,13 @@ TEST_CASE("Check if the character a control character", "[isControl") {
     REQUIRE(isControl('\n') == true);
     REQUIRE(isControl('\v') == true);
 }
-TEST_CASE("Checks if the charahcter a digit"
-    "[isDigit]") {
+TEST_CASE("Checks if the charahcter a digit" "[isDigit]") {
     REQUIRE(isDigit('1') == true);
     REQUIRE(isDigit('a') == false);
     REQUIRE(isDigit('#') == false);
 }
 
-TEST_CASE("Checks if a character is a graphical represention"
-    "[isGraph]") {
+TEST_CASE("Checks if a character is a graphical represention" "[isGraph]") {
     REQUIRE(isGraph('a') == true);
     REQUIRE(isGraph('1') == true);
     REQUIRE(isGraph(' ') == false);
@@ -196,8 +198,7 @@ TEST_CASE("Checks if a character is printable", "[isPrintable]") {
     REQUIRE(isPrintable(' ') == true);
 }
 
-TEST_CASE("Checks if a character is a punctuation"
-    "[isPunct") {
+TEST_CASE("Checks if a character is a punctuation" "[isPunct") {
     REQUIRE(isPunct('a') == false);
     REQUIRE(isPunct(',') == true);
     REQUIRE(isPunct('?') == true);
@@ -209,15 +210,13 @@ TEST_CASE("Checks if a character contains white-space", "[isSpace]") {
     REQUIRE(isSpace(' ') == true);
 }
 
-TEST_CASE("Checks if a character is uppercase"
-    "[isUpperCase") 
+TEST_CASE("Checks if a character is uppercase" "[isUpperCase") 
 {
     REQUIRE(isUpperCase('A') == true);
     REQUIRE(isUpperCase('a') == false);
 }
 
-TEST_CASE("Checks if a character is a blank character"
-    "[isWhiteSpace]") 
+TEST_CASE("Checks if a character is a blank character" "[isWhiteSpace]") 
 {
     REQUIRE(isWhitespace(' ') == true);
     REQUIRE(isWhitespace('\t') == true);
@@ -232,7 +231,6 @@ TEST_CASE("Checks if it returns a random number" "[isRandom]")
 }
 TEST_CASE("Test randomSeed", "[randomSeed]") 
 {
-
     std::srand(2);
     int num = std::rand();
     int num2 = std::rand();

@@ -35,12 +35,11 @@ using byte = std::uint8_t;
 
 class String {
     std::string m_u;
-
     String(std::string u) : m_u{std::move(u)} {}
     String(const String&) = default;
+
   public:
     String() noexcept = default;
-
     String(String&&) noexcept = default;
     String& operator=(const String&) = default;
     String& operator=(String&&) = default;
@@ -53,7 +52,7 @@ class String {
             switch (base) {
             case BIN:
                 return 65;
-            case DEC:   
+            case DEC:
                 return 11;
             case HEX:
                 return 17;

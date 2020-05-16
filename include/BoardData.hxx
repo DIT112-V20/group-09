@@ -30,7 +30,6 @@
 #include <utility>
 #include <variant>
 #include <vector>
-#include <unordered_map>
 
 struct BidirMutexes {
     std::mutex rx_mutex;
