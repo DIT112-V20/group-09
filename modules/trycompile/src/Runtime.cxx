@@ -81,6 +81,7 @@ bool SketchRuntime::resume() noexcept {
     default:
         return false;
     }
+    status = Status::running;
     return true;
 }
 
@@ -94,6 +95,7 @@ void SketchRuntime::pause_now() noexcept {
     if (status != Status::running)
         return;
     detail::suspend_thread(thr);
+    status = Status::suspended;
 }
 void SketchRuntime::murder() noexcept {
     if (status != Status::running && status != Status::loop_paused && status != Status::suspended)
@@ -110,11 +112,12 @@ bool SketchRuntime::set_sketch_and_car(SketchObject so, BoardData& bdata, const 
         return false;
     curr_sketch.init(&bdata, &binfo);
     vehicle_dat = &bdata;
+    status = Status::ready;
     return true;
 }
 
 bool SketchRuntime::clear() {
-    if (status != Status::uninitialized && status != Status::ready) {
+    if (status != Status::uninitialized) {
         vehicle_dat = nullptr;
         curr_sketch = {};
         if (thr.joinable())
