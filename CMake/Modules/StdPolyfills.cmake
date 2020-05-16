@@ -40,12 +40,16 @@ target_link_libraries (stdpolyfills INTERFACE Threads::Threads)
 
 add_library (stdpolyfills::stdpolyfills ALIAS stdpolyfills)
 
-check_cxx_source_compiles ("#include <ciso646>\nint a = defined(__GLIBCXX__); int main(){}" HAS_LIBSTDCXX)
-check_cxx_source_compiles ("#include <ciso646>\nint a = defined(_LIBCPP_VERSION); int main(){}" HAS_LIBCXX)
-if (HAS_LIBCXX)
-    set (FLAG_ENABLE_DEBUG _LIBCPP_DEBUG=1)
+file (READ "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Check/has_libstdcxx.cpp" CHECK_SRC)
+check_cxx_source_compiles ("${CHECK_SRC}" HAS_LIBSTDCXX)
+file (READ "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Check/has_libcxx.cpp" CHECK_SRC)
+check_cxx_source_compiles ("${CHECK_SRC}" HAS_LIBCXX)
+
+add_library(StdlibDebug INTERFACE)
+if (HAS_LIBCXX AND NOT APPLE)
+    target_compile_definitions (StdlibDebug INTERFACE _LIBCPP_DEBUG=1)
 elseif (HAS_LIBSTDCXX)
-    set (FLAG_ENABLE_DEBUG _GLIBCXX_DEBUG=1)
+    target_compile_definitions (StdlibDebug INTERFACE _GLIBCXX_DEBUG=1)
 endif ()
 
 if (MINGW AND MINGW_THREADS_WIN32)
