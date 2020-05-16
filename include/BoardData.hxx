@@ -26,10 +26,12 @@
 #include <functional>
 #include <mutex>
 #include <string>
+#include <thread>
 #include <unordered_map>
 #include <utility>
 #include <variant>
 #include <vector>
+#include "utility.hxx"
 
 struct BidirMutexes {
     std::mutex rx_mutex;
@@ -85,6 +87,9 @@ struct BoardData {
     size_t (*write_buf)(const unsigned char*, size_t){};
     std::chrono::steady_clock::time_point start_time;
 
+    std::thread::id board_thread_id;
+    std::unique_ptr<std::recursive_mutex> interrupt_mut;
+    CopyOnMoveAtomic<bool> interrupts = true; /// Whether the board wants interrupts to be fired; devices should check it before firing
     std::vector<std::pair<void (*)(), int>> interrupts_handlers;
 
     bool silence_errors{};

@@ -19,9 +19,11 @@
 #ifndef SMARTCAR_EMUL_TRYCOMPILE_SKETCH_RUNTIME_HPP
 #define SMARTCAR_EMUL_TRYCOMPILE_SKETCH_RUNTIME_HPP
 
+#include <condition_variable>
+#include <mutex>
+#include <thread>
 #include "BoardData.hxx"
 #include "Object.hxx"
-#include <thread>
 
 namespace smce {
 
@@ -36,36 +38,63 @@ struct SketchRuntime {
     SketchRuntime& operator=(const SketchRuntime&) = delete;
     SketchRuntime& operator=(SketchRuntime&&) = delete;
 
-
     /**
      * Runs the sketch's `setup()` function if sketch is loaded
      **/
     bool start() noexcept;
     /**
-     * Resumes calling `loop()` if it was stalled; no-op otherwise
+     * Resumes calling `loop()` if it was paused
+     * Resumes board thread if interrupted
+     * no-op otherwise
      **/
     bool resume() noexcept;
     /**
      * Do not execute `loop()` anymore if it running; no-op otherwise
      **/
     void pause_on_next_loop() noexcept;
-
+    /**
+     * Immediately suspends the board thread if running; no-op otherwise
+     **/
+    void pause_now() noexcept;
+    /**
+     * Tell the OS to terminate the thread followed by a call to clear(), if running or paused
+     * no-op otherwise
+     **/
+    void murder() noexcept;
 
     bool set_sketch_and_car(SketchObject, BoardData&, const BoardInfo&) noexcept; // Should we really pass the data instead of the config?
     bool clear();
 
-    [[nodiscard]] constexpr bool is_running() noexcept { return running; }
+    [[nodiscard]] constexpr bool is_running() noexcept { return status == Status::running; }
+
+    template <class Invocable, class... Args>
+    void interrupt(Invocable&& invocable, Args&&... args) requires std::invocable<Invocable, decltype(args)...> {
+        if (!is_running())
+            return;
+        pause_now();
+        std::invoke(std::forward<Invocable>(invocable), std::forward<Args>(args)...);
+        resume();
+    }
 
   private:
-    void launch_thread_unchecked();
+    enum class Status : unsigned char {
+        uninitialized,
+        ready,
+        running,
+        suspended,
+        loop_paused,
+    };
 
     BoardData* vehicle_dat{};
     SketchLoadedObject curr_sketch;
-    std::thread thr; // warn: RAII
-    std::atomic_bool stop_tok{};
-    bool running = false;
+    std::thread thr;       // warn: RAII
+    bool stop_tok = false; // C++2a: make atomic
+    bool exit_tok = false;
+    std::condition_variable stop_cv{}; // C++2a: squash with above
+    std::mutex stop_mut{};             // C++2a: squash with above
+    Status status = Status::uninitialized;
 };
 
-}
+} // namespace smce
 
 #endif // SMARTCAR_EMUL_TRYCOMPILE_SKETCH_RUNTIME_HPP

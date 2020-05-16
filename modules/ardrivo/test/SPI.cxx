@@ -19,6 +19,7 @@ static void init_fake() {
 
     auto loc_board_data = std::make_unique<BoardData>();
     loc_board_data->silence_errors = false;
+    loc_board_data->interrupt_mut = std::make_unique<std::recursive_mutex>();
     loc_board_data->start_time = std::chrono::steady_clock::now();
     loc_board_data->pin_modes = std::vector<std::atomic_uint8_t>(3);
     loc_board_data->digital_pin_values = std::vector<std::atomic_bool>(3);

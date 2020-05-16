@@ -24,6 +24,7 @@
 #endif
 
 #include <algorithm>
+#include <atomic>
 #include <cmath>
 #include <concepts>
 #include <filesystem>
@@ -69,5 +70,14 @@ Visitor(T...) -> Visitor<T...>;
 template <class T, class V> void visit(V&& v, T&& t) {
     [v=std::forward<V>(v), t=std::forward<T>(t)]<size_t... I>(std::index_sequence<I...>) { (..., v(std::get<I>(t))); }(std::make_index_sequence<std::tuple_size_v<std::remove_cvref_t<T>>>());
 }
+
+template <class T>
+struct CopyOnMoveAtomic : std::atomic<T> {
+    using std::atomic<T>::atomic;
+    using std::atomic<T>::operator=;
+    CopyOnMoveAtomic(CopyOnMoveAtomic&& from) : std::atomic<T>(from.load()) {}
+    CopyOnMoveAtomic& operator=(CopyOnMoveAtomic&& from) { this->store(from.load()); return *this; }
+    ~CopyOnMoveAtomic() noexcept = default;
+};
 
 #endif // SMARTCAR_EMUL_INCLUDE_UTILITY_HXX

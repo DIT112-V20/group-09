@@ -28,13 +28,15 @@ target_sources (TryCompile INTERFACE
         include/trycompile/impl/Object.txx
         include/trycompile/Runtime.hxx
         include/trycompile/Toolchain.hxx
+        include/trycompile/detail/Interrupt.hxx
+        src/Interrupt.cxx
         src/Runtime.cxx
         src/Object.cxx
         src/Toolchain.cxx)
 target_compile_definitions (TryCompile INTERFACE BOOST_DLL_USE_STD_FS=1)
 target_link_libraries (TryCompile INTERFACE stdpolyfills::stdpolyfills fmt::fmt Boost::dll)
 
-add_executable (TestsTryCompile test/compile.cxx test/load.cxx)
+add_executable (TestsTryCompile test/compile.cxx test/load.cxx test/interrupt.cxx)
 set_target_properties (TestsTryCompile PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries (TestsTryCompile TryCompile Catch2)
 
