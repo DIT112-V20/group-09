@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SmartCar Emul: anonymous_namespace{Runtime.cxx} Namespace Reference</title>
+<title>SmartCar Emul: modules/trycompile/src/Interrupt.cxx File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,63 +61,38 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e05d7e2b1ecd646af5bb94391405f3b5.html">modules</a></li><li class="navelem"><a class="el" href="dir_69cc7748b0e4341d79bfe4bffb596b1a.html">trycompile</a></li><li class="navelem"><a class="el" href="dir_0983d73c21cb953e4253af57742c5abf.html">src</a></li>  </ul>
+</div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">anonymous_namespace{Runtime.cxx} Namespace Reference</div>  </div>
+<div class="title">Interrupt.cxx File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a6debc84715411ff6d5fba93c89cd91ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02_runtime_8cxx_03.html#a6debc84715411ff6d5fba93c89cd91ff">looper</a> (const <a class="el" href="structsmce_1_1_sketch_loaded_object.html">smce::SketchLoadedObject</a> &amp;slo, std::atomic_bool &amp;stop_tok, bool &amp;running) noexcept</td></tr>
-<tr class="separator:a6debc84715411ff6d5fba93c89cd91ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<div class="textblock"><code>#include &lt;ciso646&gt;</code><br />
+<code>#include &lt;csignal&gt;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
+<code>#include &lt;<a class="el" href="_interrupt_8hxx_source.html">detail/Interrupt.hxx</a>&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacesmce"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce.html">smce</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespacesmce_1_1detail"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce_1_1detail.html">smce::detail</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aead668e2ab6f94f75a920de58baa0460"><td class="memItemLeft" align="right" valign="top">thread_local std::recursive_mutex *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesmce_1_1detail.html#aead668e2ab6f94f75a920de58baa0460">smce::detail::gtl_interrupt_mutex</a> {}</td></tr>
+<tr class="separator:aead668e2ab6f94f75a920de58baa0460"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a6debc84715411ff6d5fba93c89cd91ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6debc84715411ff6d5fba93c89cd91ff">&#9670;&nbsp;</a></span>looper()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void anonymous_namespace{Runtime.cxx}::looper </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structsmce_1_1_sketch_loaded_object.html">smce::SketchLoadedObject</a> &amp;&#160;</td>
-          <td class="paramname"><em>slo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::atomic_bool &amp;&#160;</td>
-          <td class="paramname"><em>stop_tok</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>running</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

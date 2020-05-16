@@ -69,6 +69,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structsmce_1_1_sketch_runtime-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">smce::SketchRuntime Struct Reference</div>  </div>
@@ -97,12 +98,36 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a41c9762b43003b58f3c73f39af91c3dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a95cc142c3c0df3a7f434ca304afe6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a2a95cc142c3c0df3a7f434ca304afe6a">pause_on_next_loop</a> () noexcept</td></tr>
 <tr class="separator:a2a95cc142c3c0df3a7f434ca304afe6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eebf5eabe5a7130d41d17e2dde75f8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a6eebf5eabe5a7130d41d17e2dde75f8b">pause_now</a> () noexcept</td></tr>
+<tr class="separator:a6eebf5eabe5a7130d41d17e2dde75f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f4c709e259352617ac6ab8929a76157"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a6f4c709e259352617ac6ab8929a76157">murder</a> () noexcept</td></tr>
+<tr class="separator:a6f4c709e259352617ac6ab8929a76157"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c4885276474d06fcccce1d82198749b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a9c4885276474d06fcccce1d82198749b">set_sketch_and_car</a> (<a class="el" href="structsmce_1_1_sketch_object.html">SketchObject</a>, <a class="el" href="struct_board_data.html">BoardData</a> &amp;, const <a class="el" href="struct_board_info.html">BoardInfo</a> &amp;) noexcept</td></tr>
 <tr class="separator:a9c4885276474d06fcccce1d82198749b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a42240689ab25b70bb4ea25b8d62472"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a3a42240689ab25b70bb4ea25b8d62472">clear</a> ()</td></tr>
 <tr class="separator:a3a42240689ab25b70bb4ea25b8d62472"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dd57a183ff59486d269c518b7279e53"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a4dd57a183ff59486d269c518b7279e53">is_running</a> () noexcept</td></tr>
 <tr class="separator:a4dd57a183ff59486d269c518b7279e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ad0a0adf7c75a17389a6a373cc54d84eb"><td class="memTemplParams" colspan="2">template&lt;class Invocable , class... Args&gt; </td></tr>
+<tr class="memitem:ad0a0adf7c75a17389a6a373cc54d84eb"><td class="memTemplItemLeft" align="right" valign="top">void interrupt(Invocable &amp;&amp;invocable, Args &amp;&amp;... args) requires std <a class="el" href="struct_board_data.html">BoardData</a> *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#ad0a0adf7c75a17389a6a373cc54d84eb">vehicle_dat</a> {}</td></tr>
+<tr class="separator:ad0a0adf7c75a17389a6a373cc54d84eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e206024d5630e40350800cef48bf1e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structsmce_1_1_sketch_loaded_object.html">SketchLoadedObject</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a4e206024d5630e40350800cef48bf1e4">curr_sketch</a></td></tr>
+<tr class="separator:a4e206024d5630e40350800cef48bf1e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b87320a422f36e66df111580a895957"><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a2b87320a422f36e66df111580a895957">thr</a></td></tr>
+<tr class="separator:a2b87320a422f36e66df111580a895957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad059042e43a9966dc070b5d184c3b96c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#ad059042e43a9966dc070b5d184c3b96c">stop_tok</a> = false</td></tr>
+<tr class="separator:ad059042e43a9966dc070b5d184c3b96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cf1ff211fa8b594af6b42c215637c08"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a7cf1ff211fa8b594af6b42c215637c08">exit_tok</a> = false</td></tr>
+<tr class="separator:a7cf1ff211fa8b594af6b42c215637c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a185c215434c1b00b752829b056ed6810"><td class="memItemLeft" align="right" valign="top">std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a185c215434c1b00b752829b056ed6810">stop_cv</a> {}</td></tr>
+<tr class="separator:a185c215434c1b00b752829b056ed6810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c53e8a304ea78cc18790390a0a478c"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#a81c53e8a304ea78cc18790390a0a478c">stop_mut</a> {}</td></tr>
+<tr class="separator:a81c53e8a304ea78cc18790390a0a478c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2c0fd90dc6b698ebbaa4690768844de"><td class="memItemLeft" align="right" valign="top">Status&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsmce_1_1_sketch_runtime.html#ab2c0fd90dc6b698ebbaa4690768844de">status</a> = Status::uninitialized</td></tr>
+<tr class="separator:ab2c0fd90dc6b698ebbaa4690768844de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Runtime in which a sktech is to be executed </p>
@@ -252,6 +277,32 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a6f4c709e259352617ac6ab8929a76157"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f4c709e259352617ac6ab8929a76157">&#9670;&nbsp;</a></span>murder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void smce::SketchRuntime::murder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Tell the OS to terminate the thread followed by a call to <a class="el" href="structsmce_1_1_sketch_runtime.html#a3a42240689ab25b70bb4ea25b8d62472">clear()</a>, if running or paused no-op otherwise </p>
+
+</div>
+</div>
 <a id="a7cf6e9090da3e45f0de3c08beadcf58c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7cf6e9090da3e45f0de3c08beadcf58c">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
 
@@ -304,6 +355,32 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a6eebf5eabe5a7130d41d17e2dde75f8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eebf5eabe5a7130d41d17e2dde75f8b">&#9670;&nbsp;</a></span>pause_now()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void smce::SketchRuntime::pause_now </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Immediately suspends the board thread if running; no-op otherwise </p>
+
+</div>
+</div>
 <a id="a2a95cc142c3c0df3a7f434ca304afe6a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a95cc142c3c0df3a7f434ca304afe6a">&#9670;&nbsp;</a></span>pause_on_next_loop()</h2>
 
@@ -352,7 +429,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Resumes calling <code><a class="el" href="_arduino_8h.html#afe461d27b9c48d5921c00d521181f12f">loop()</a></code> if it was stalled; no-op otherwise </p>
+<p>Resumes calling <code><a class="el" href="_arduino_8h.html#afe461d27b9c48d5921c00d521181f12f">loop()</a></code> if it was paused Resumes board thread if interrupted no-op otherwise </p>
 
 </div>
 </div>
@@ -421,6 +498,121 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Runs the sketch's <code><a class="el" href="_arduino_8h.html#a4fc01d736fe50cf5b977f755b675f11d">setup()</a></code> function if sketch is loaded </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4e206024d5630e40350800cef48bf1e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e206024d5630e40350800cef48bf1e4">&#9670;&nbsp;</a></span>curr_sketch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structsmce_1_1_sketch_loaded_object.html">SketchLoadedObject</a> smce::SketchRuntime::curr_sketch</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7cf1ff211fa8b594af6b42c215637c08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cf1ff211fa8b594af6b42c215637c08">&#9670;&nbsp;</a></span>exit_tok</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool smce::SketchRuntime::exit_tok = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab2c0fd90dc6b698ebbaa4690768844de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2c0fd90dc6b698ebbaa4690768844de">&#9670;&nbsp;</a></span>status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Status smce::SketchRuntime::status = Status::uninitialized</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a185c215434c1b00b752829b056ed6810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a185c215434c1b00b752829b056ed6810">&#9670;&nbsp;</a></span>stop_cv</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::condition_variable smce::SketchRuntime::stop_cv {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81c53e8a304ea78cc18790390a0a478c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c53e8a304ea78cc18790390a0a478c">&#9670;&nbsp;</a></span>stop_mut</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex smce::SketchRuntime::stop_mut {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad059042e43a9966dc070b5d184c3b96c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad059042e43a9966dc070b5d184c3b96c">&#9670;&nbsp;</a></span>stop_tok</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool smce::SketchRuntime::stop_tok = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2b87320a422f36e66df111580a895957"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b87320a422f36e66df111580a895957">&#9670;&nbsp;</a></span>thr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::thread smce::SketchRuntime::thr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0a0adf7c75a17389a6a373cc54d84eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0a0adf7c75a17389a6a373cc54d84eb">&#9670;&nbsp;</a></span>vehicle_dat</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Invocable , class... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void interrupt (Invocable&amp;&amp; invocable, Args&amp;&amp;... args) requires std <a class="el" href="struct_board_data.html">BoardData</a>* smce::SketchRuntime::vehicle_dat {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

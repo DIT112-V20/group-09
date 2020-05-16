@@ -15,7 +15,10 @@ var searchData=
   ['concat_61',['concat',['../class_string.html#abe5b828b2042e8fe3c6cb379a6e23099',1,'String']]],
   ['confhelper_2ehxx_62',['ConfHelper.hxx',['../_conf_helper_8hxx.html',1,'']]],
   ['constrain_63',['constrain',['../_arduino_8cxx.html#a02a7ecbf5eb47f9daaca0bbf6b94f3a0',1,'constrain(long amt, long low, long high):&#160;Arduino.cxx'],['../_arduino_8h.html#a02a7ecbf5eb47f9daaca0bbf6b94f3a0',1,'constrain(long amt, long low, long high):&#160;Arduino.cxx']]],
-  ['cpp_5fstd_64',['cpp_std',['../structsmce_1_1_program_options.html#adcd68f2ce8a3ad24ef61ae2371e0a439',1,'smce::ProgramOptions']]],
-  ['cs_5fpin_65',['cs_pin',['../structsmce_1_1_board_conf_1_1_spi.html#a5c5871e555df5c23d094e3edd0782ec9',1,'smce::BoardConf::Spi::cs_pin()'],['../struct_spi_channel_info.html#a3796d09896f6f3fee449d6f887cebd3b',1,'SpiChannelInfo::cs_pin()']]],
-  ['cts_5fpin_66',['cts_pin',['../structsmce_1_1_board_conf_1_1_uart.html#ada002402bfddf03083df4b6d32753b77',1,'smce::BoardConf::Uart::cts_pin()'],['../struct_uart_channel_info.html#ac4e5529d79b7ead911a80b838c28c71c',1,'UartChannelInfo::cts_pin()']]]
+  ['copyonmoveatomic_64',['CopyOnMoveAtomic',['../struct_copy_on_move_atomic.html',1,'CopyOnMoveAtomic&lt; T &gt;'],['../struct_copy_on_move_atomic.html#a47bead0d12b8886188aba094be898e34',1,'CopyOnMoveAtomic::CopyOnMoveAtomic()']]],
+  ['copyonmoveatomic_3c_20bool_20_3e_65',['CopyOnMoveAtomic&lt; bool &gt;',['../struct_copy_on_move_atomic.html',1,'']]],
+  ['cpp_5fstd_66',['cpp_std',['../structsmce_1_1_program_options.html#adcd68f2ce8a3ad24ef61ae2371e0a439',1,'smce::ProgramOptions']]],
+  ['cs_5fpin_67',['cs_pin',['../structsmce_1_1_board_conf_1_1_spi.html#a5c5871e555df5c23d094e3edd0782ec9',1,'smce::BoardConf::Spi::cs_pin()'],['../struct_spi_channel_info.html#a3796d09896f6f3fee449d6f887cebd3b',1,'SpiChannelInfo::cs_pin()']]],
+  ['cts_5fpin_68',['cts_pin',['../structsmce_1_1_board_conf_1_1_uart.html#ada002402bfddf03083df4b6d32753b77',1,'smce::BoardConf::Uart::cts_pin()'],['../struct_uart_channel_info.html#ac4e5529d79b7ead911a80b838c28c71c',1,'UartChannelInfo::cts_pin()']]],
+  ['curr_5fsketch_69',['curr_sketch',['../structsmce_1_1_sketch_runtime.html#a4e206024d5630e40350800cef48bf1e4',1,'smce::SketchRuntime']]]
 ];

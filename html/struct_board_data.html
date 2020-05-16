@@ -97,7 +97,14 @@ Public Attributes</h2></td></tr>
 <tr class="separator:aea01f422379cc2e8674f5ef58f464a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a936e1076cc09a74f46de80876a0e2a31"><td class="memItemLeft" align="right" valign="top">std::chrono::steady_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_board_data.html#a936e1076cc09a74f46de80876a0e2a31">start_time</a></td></tr>
 <tr class="separator:a936e1076cc09a74f46de80876a0e2a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6275193f06fdd00f7ee46c79eaa401d"><td class="memItemLeft" align="right" valign="top">std::thread::id&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_board_data.html#ae6275193f06fdd00f7ee46c79eaa401d">board_thread_id</a></td></tr>
+<tr class="separator:ae6275193f06fdd00f7ee46c79eaa401d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4b686f7c8a28607b3e3ef14f1246e2"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; std::recursive_mutex &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_board_data.html#a2c4b686f7c8a28607b3e3ef14f1246e2">interrupt_mut</a></td></tr>
+<tr class="separator:a2c4b686f7c8a28607b3e3ef14f1246e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3db199f981d88f68d0ff22fb05adf0ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_copy_on_move_atomic.html">CopyOnMoveAtomic</a>&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_board_data.html#a3db199f981d88f68d0ff22fb05adf0ed">interrupts</a> = true</td></tr>
+<tr class="separator:a3db199f981d88f68d0ff22fb05adf0ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e115f7ad1e79d337fe93185b4a0245f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; void(*)(), int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_board_data.html#a0e115f7ad1e79d337fe93185b4a0245f">interrupts_handlers</a></td></tr>
+<tr class="memdesc:a0e115f7ad1e79d337fe93185b4a0245f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the board wants interrupts to be fired; devices should check it before firing.  <a href="struct_board_data.html#a0e115f7ad1e79d337fe93185b4a0245f">More...</a><br /></td></tr>
 <tr class="separator:a0e115f7ad1e79d337fe93185b4a0245f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26611e206109440447531eb0a799d7f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_board_data.html#a26611e206109440447531eb0a799d7f5">silence_errors</a> {}</td></tr>
 <tr class="separator:a26611e206109440447531eb0a799d7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,6 +118,20 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt;std::atomic_uint16_t&gt; BoardData::analog_pin_values</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae6275193f06fdd00f7ee46c79eaa401d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6275193f06fdd00f7ee46c79eaa401d">&#9670;&nbsp;</a></span>board_thread_id</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::thread::id BoardData::board_thread_id</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -145,6 +166,34 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a2c4b686f7c8a28607b3e3ef14f1246e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4b686f7c8a28607b3e3ef14f1246e2">&#9670;&nbsp;</a></span>interrupt_mut</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;std::recursive_mutex&gt; BoardData::interrupt_mut</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3db199f981d88f68d0ff22fb05adf0ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3db199f981d88f68d0ff22fb05adf0ed">&#9670;&nbsp;</a></span>interrupts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_copy_on_move_atomic.html">CopyOnMoveAtomic</a>&lt;bool&gt; BoardData::interrupts = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0e115f7ad1e79d337fe93185b4a0245f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0e115f7ad1e79d337fe93185b4a0245f">&#9670;&nbsp;</a></span>interrupts_handlers</h2>
 
@@ -156,6 +205,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Whether the board wants interrupts to be fired; devices should check it before firing. </p>
 
 </div>
 </div>

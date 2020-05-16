@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fixbufferbus_432',['FixBufferBus',['../struct_fix_buffer_bus.html',1,'']]]
+  ['dynabufferbus_459',['DynaBufferBus',['../struct_dyna_buffer_bus.html',1,'']]]
 ];

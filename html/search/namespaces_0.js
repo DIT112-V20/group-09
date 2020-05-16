@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['anonymous_5fnamespace_7bruntime_2ecxx_7d_463',['anonymous_namespace{Runtime.cxx}',['../namespaceanonymous__namespace_02_runtime_8cxx_03.html',1,'']]]
+  ['detail_491',['detail',['../namespacesmce_1_1detail.html',1,'smce']]],
+  ['smce_492',['smce',['../namespacesmce.html',1,'']]]
 ];

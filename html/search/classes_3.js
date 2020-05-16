@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hardwareserial_433',['HardwareSerial',['../struct_hardware_serial.html',1,'']]]
+  ['fixbufferbus_460',['FixBufferBus',['../struct_fix_buffer_bus.html',1,'']]]
 ];
