@@ -28,29 +28,28 @@ namespace smce {
 
 SketchRuntime::~SketchRuntime() noexcept {
     switch (status) {
-    case Status::uninitialized:
+    case Status::uninitialized: [[fallthrough]];
     case Status::ready:
         break;
-    case Status::running:
+    case Status::running: [[fallthrough]];
     case Status::suspended:
         murder();
         clear();
         break;
     case Status::loop_paused:
         exit_tok = true;
+        stop_cv.notify_all();
         break;
     }
-    if (thr.joinable())
-        thr.join();
 }
 
 bool SketchRuntime::start() noexcept {
     if (status != Status::ready)
         return false;
     status = Status::running;
-    thr = std::thread{[&]() {
+    thr.set_mutex((vehicle_dat->interrupt_mut = std::make_unique<std::recursive_mutex>()).get());
+    thr.start([&]{
         vehicle_dat->board_thread_id = std::this_thread::get_id();
-        detail::make_self_suspendable(*(vehicle_dat->interrupt_mut = std::make_unique<std::recursive_mutex>()));
         curr_sketch.setup();
         while (true) {
             std::unique_lock lk{stop_mut};
@@ -65,7 +64,7 @@ bool SketchRuntime::start() noexcept {
             lk.unlock();
             curr_sketch.loop();
         }
-    }};
+    });
     return true;
 }
 
@@ -76,8 +75,9 @@ bool SketchRuntime::resume() noexcept {
         stop_cv.notify_all();
         break;
     case Status::suspended:
-        detail::resume_thread(thr);
-        break;
+        if(thr.resume())
+            break;
+        [[fallthrough]];
     default:
         return false;
     }
@@ -94,14 +94,14 @@ void SketchRuntime::pause_on_next_loop() noexcept {
 void SketchRuntime::pause_now() noexcept {
     if (status != Status::running)
         return;
-    detail::suspend_thread(thr);
+    assert(thr.suspend());
     status = Status::suspended;
 }
+
 void SketchRuntime::murder() noexcept {
     if (status != Status::running && status != Status::loop_paused && status != Status::suspended)
         return;
-    detail::murder_thread(thr);
-    clear();
+    assert(thr.murder());
 }
 
 bool SketchRuntime::set_sketch_and_car(SketchObject so, BoardData& bdata, const BoardInfo& binfo) noexcept {
@@ -120,9 +120,7 @@ bool SketchRuntime::clear() {
     if (status != Status::uninitialized) {
         vehicle_dat = nullptr;
         curr_sketch = {};
-        if (thr.joinable())
-            thr.join();
-        thr = {};
+        thr.reset();
         status = Status::uninitialized;
         return true;
     }

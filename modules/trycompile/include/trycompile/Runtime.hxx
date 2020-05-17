@@ -22,6 +22,7 @@
 #include <condition_variable>
 #include <mutex>
 #include <thread>
+#include "detail/Interrupt.hxx"
 #include "BoardData.hxx"
 #include "Object.hxx"
 
@@ -73,7 +74,7 @@ struct SketchRuntime {
             return;
         pause_now();
         std::invoke(std::forward<Invocable>(invocable), std::forward<Args>(args)...);
-        resume();
+        assert(resume());
     }
 
   private:
@@ -87,7 +88,7 @@ struct SketchRuntime {
 
     BoardData* vehicle_dat{};
     SketchLoadedObject curr_sketch;
-    std::thread thr;       // warn: RAII
+    smce::detail::SuspendableJThread thr;
     bool stop_tok = false; // C++2a: make atomic
     bool exit_tok = false;
     std::condition_variable stop_cv{}; // C++2a: squash with above
