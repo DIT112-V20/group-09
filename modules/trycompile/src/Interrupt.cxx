@@ -16,7 +16,9 @@
  *
  */
 
+#include <cassert>
 #include <ciso646>
+#include <condition_variable>
 #include <csignal>
 #include <mutex>
 #include <thread>
@@ -67,21 +69,20 @@
 
 namespace smce::detail {
 
-thread_local std::recursive_mutex* gtl_interrupt_mutex{};
-
 #ifdef SMCE_THREADS_POSIX
 #if defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE) || defined(__APPLE__)
 #if _POSIX_C_SOURCE >= 199506L || _XOPEN_SOURCE >= 500 || defined(__APPLE__)
 
 static_assert(std::is_same_v<std::thread::native_handle_type, pthread_t>);
 
-bool make_self_suspendable(std::recursive_mutex& guard) noexcept {
+std::condition_variable g_signal_awaiter_cv;
+std::mutex g_signal_awaiter_guard;
+
+void SuspendableJThread::make_suspendable() noexcept {
     // For termination
     int unused;
-    if (pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, &unused) != 0)
-        return false;
-    if (pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &unused) != 0)
-        return false;
+    assert(pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, &unused) == 0);
+    assert(pthread_setcanceltype(PTHREAD_CANCEL_ASYNCHRONOUS, &unused) == 0);
 
     // For suspension
     struct sigaction sa;
@@ -89,6 +90,7 @@ bool make_self_suspendable(std::recursive_mutex& guard) noexcept {
     sa.sa_handler = +[](int sig) noexcept -> void {
         switch (sig) {
         case SIGUSR1:
+            g_signal_awaiter_cv.notify_all();
             pause();
             break;
         case SIGUSR2:
@@ -98,47 +100,56 @@ bool make_self_suspendable(std::recursive_mutex& guard) noexcept {
         }
     };
 
-    if (sigemptyset(&sa.sa_mask) != 0)
-        return false;
-    if (sigaction(SIGUSR1, &sa, nullptr) == -1)
-        return false;
-    if (sigaction(SIGUSR2, &sa, nullptr) == -1)
-        return false;
-    if (sigaction(SIGTERM, &sa, nullptr) == -1)
-        return false;
+    assert(sigemptyset(&sa.sa_mask) == 0);
+    assert(sigaction(SIGUSR1, &sa, nullptr) == 0);
+    assert(sigaction(SIGUSR2, &sa, nullptr) == 0);
+    assert(sigaction(SIGTERM, &sa, nullptr) == 0);
+}
 
-    gtl_interrupt_mutex = &guard;
+bool SuspendableJThread::suspend() noexcept {
+    if (!m_started || (m_suspended && !m_mutex_ptr))
+        return false;
+    if (m_mutex_ptr)
+        m_mutex_ptr->lock();
+    std::lock_guard lk{g_signal_awaiter_guard};
+    std::mutex interrupt_wait_mutex;
+    std::unique_lock ulk{interrupt_wait_mutex};
+    if (pthread_kill(m_thread.native_handle(), SIGUSR1) != 0) {
+        if (m_mutex_ptr)
+            m_mutex_ptr->unlock();
+        return false;
+    }
+    g_signal_awaiter_cv.wait(ulk);
+    m_suspended = true;
     return true;
 }
 
-bool suspend_thread(std::thread& th) noexcept {
-    if (!gtl_interrupt_mutex)
+bool SuspendableJThread::resume() noexcept {
+    if (!m_started)
         return false;
-    gtl_interrupt_mutex->lock();
-    const auto res = pthread_kill(th.native_handle(), SIGUSR1);
-    if (res != 0)
-        gtl_interrupt_mutex->unlock();
-    return res == 0;
-}
-
-bool resume_thread(std::thread& th) noexcept {
-    if (!gtl_interrupt_mutex)
+    if (pthread_kill(m_thread.native_handle(), SIGUSR2) != 0)
         return false;
-    const auto res = pthread_kill(th.native_handle(), SIGUSR2);
-    if (res != 0)
-        return false;
-    gtl_interrupt_mutex->unlock();
+    if (m_mutex_ptr)
+        m_mutex_ptr->unlock();
+    m_suspended = false;
     return true;
 }
 
-bool murder_thread(std::thread& th) noexcept {
-    const pthread_t hdl = th.native_handle();
+bool SuspendableJThread::murder() noexcept {
+    if (!m_started)
+        return true;
+    const pthread_t hdl = m_thread.native_handle();
     if (pthread_cancel(hdl) != 0)
         return false;
     void* res{};
     if (pthread_join(hdl, &res) != 0)
         return false;
-    return res == PTHREAD_CANCELED;
+    const bool ret = (res == PTHREAD_CANCELED);
+    if (ret) {
+        m_started = false;
+        m_suspended = false;
+    }
+    return ret;
 }
 
 #else
@@ -152,33 +163,40 @@ bool murder_thread(std::thread& th) noexcept {
 #ifdef SMCE_THREADS_WIN32
 #if defined(_MSC_VER)
 
-bool make_self_suspendable(std::recursive_mutex& guard) noexcept {
-    gtl_interrupt_mutex = &guard;
+void SuspendableJThread::make_suspendable() noexcept {}
+
+bool SuspendableJThread::suspend() noexcept {
+    if (!m_started || (m_suspended && !m_mutex_ptr))
+        return false;
+    if (m_mutex_ptr)
+        m_mutex_ptr->lock();
+    if (SuspendThread(m_thread.native_handle()) == -1) {
+        if (m_mutex_ptr)
+            m_mutex_ptr->unlock();
+        return false;
+    }
+    m_suspended = true;
     return true;
 }
 
-bool suspend_thread(std::thread& th) noexcept {
-    if (!gtl_interrupt_mutex)
+bool SuspendableJThread::resume() noexcept {
+    if (!m_started)
         return false;
-    gtl_interrupt_mutex->lock();
-    const auto res = SuspendThread(th.native_handle());
-    if (res == -1)
-        gtl_interrupt_mutex->unlock();
-    return res != -1;
-}
-
-bool resume_thread(std::thread& th) noexcept {
-    if (!gtl_interrupt_mutex)
+    if (ResumeThread(m_thread.native_handle()) == -1)
         return false;
-    const auto res = ResumeThread(th.native_handle());
-    if (res != 0)
-        return false;
-    gtl_interrupt_mutex->unlock();
+    if (m_mutex_ptr)
+        m_mutex_ptr->unlock();
+    m_suspended = false;
     return true;
 }
 
-bool murder_thread(std::thread& th) noexcept {
-    return TerminateThread(th.native_handle(), -1);
+bool SuspendableJThread::murder() noexcept {
+    const bool ret = TerminateThread(m_thread.native_handle(), -1);
+    if (ret) {
+        m_started = false;
+        m_suspended = false;
+    }
+    return ret;
 }
 
 #endif

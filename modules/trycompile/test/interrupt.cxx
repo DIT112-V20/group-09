@@ -31,18 +31,22 @@ std::visit(Visitor{[](smce::SketchObject so) {
         bd.pin_modes = std::vector<std::atomic_uint8_t>(1);
         BoardInfo bi;
         bi.pins_caps.resize(1);
+        bi.pins_caps[0].digital_in = true;
+        bi.pins_caps[0].digital_out = true;
         smce::SketchRuntime sr;
         sr.set_sketch_and_car(std::move(so), bd, bi);
         sr.start();
         std::this_thread::sleep_for(2s); // Let the thread scheduler do its thing
-        REQUIRE(bd.pin_modes[0] == 0);
+        REQUIRE(bd.pin_modes[0] == '\x01');
         sr.interrupt([&](){
             bd.pin_modes[0] = 255u;
             std::this_thread::sleep_for(2s); // Let the thread scheduler do its thing;
             REQUIRE(bd.pin_modes[0] == 255);
         });
         std::this_thread::sleep_for(2s); // Let the thread scheduler do its thing;
-        REQUIRE(bd.pin_modes[0] == 0);
+        REQUIRE(bd.pin_modes[0] == '\x01');
+        sr.pause_on_next_loop();
+        std::this_thread::yield();
     },
     [](const std::runtime_error& err) { REQUIRE(false); }},
   std::move(ret));
