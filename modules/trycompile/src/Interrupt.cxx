@@ -170,7 +170,7 @@ bool SuspendableJThread::suspend() noexcept {
         return false;
     if (m_mutex_ptr)
         m_mutex_ptr->lock();
-    if (SuspendThread(m_thread.native_handle()) != -1) {
+    if (SuspendThread(m_thread.native_handle()) == -1) {
         if (m_mutex_ptr)
             m_mutex_ptr->unlock();
         return false;
@@ -182,7 +182,7 @@ bool SuspendableJThread::suspend() noexcept {
 bool SuspendableJThread::resume() noexcept {
     if (!m_started)
         return false;
-    if (ResumeThread(m_thread.native_handle()) != 0)
+    if (ResumeThread(m_thread.native_handle()) == -1)
         return false;
     if (m_mutex_ptr)
         m_mutex_ptr->unlock();
