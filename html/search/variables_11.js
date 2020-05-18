@@ -1,22 +1,10 @@
 var searchData=
 [
-  ['scl_5fpin_789',['scl_pin',['../structsmce_1_1_board_conf_1_1_i2c.html#a23d753d96caab00dbad37f9e16538588',1,'smce::BoardConf::I2c::scl_pin()'],['../struct_i2c_channel_info.html#a2ceaa86102ae67831c1f0c9690c303ee',1,'I2cChannelInfo::scl_pin()']]],
-  ['sda_5fpin_790',['sda_pin',['../structsmce_1_1_board_conf_1_1_i2c.html#a4745c7b623fa20f13383a6d70fbcc752',1,'smce::BoardConf::I2c::sda_pin()'],['../struct_i2c_channel_info.html#a52f3869cbaddc99ffc34037c8708e048',1,'I2cChannelInfo::sda_pin()']]],
-  ['serial_791',['Serial',['../_hardware_serial_8h.html#a7b8c4a195c58f9eb8750e94955c5aa4b',1,'HardwareSerial.h']]],
-  ['servo_5fvalue_792',['servo_value',['../struct_board_data.html#ac49ce35e7f09160724adfdeec77c3ab9',1,'BoardData']]],
-  ['setup_793',['setup',['../structsmce_1_1_sketch_loaded_object.html#a2e8ca1939e7e3a4474cf528899b81fda',1,'smce::SketchLoadedObject']]],
-  ['silence_5ferrors_794',['silence_errors',['../struct_board_data.html#a26611e206109440447531eb0a799d7f5',1,'BoardData']]],
-  ['slaves_795',['slaves',['../struct_i2c_bus.html#a1faa08ab07f3a97134586352d17d348e',1,'I2cBus::slaves()'],['../struct_spi_bus.html#ab866444c9c736b5a0c7be57446f7e634',1,'SpiBus::slaves()']]],
-  ['slaves_5fmut_796',['slaves_mut',['../struct_spi_bus.html#ac184d4a53696c4a98911591f6bb61c2c',1,'SpiBus']]],
-  ['smce_5fhome_797',['smce_home',['../structsmce_1_1_program_options.html#a5f391b585914ffd6fc2776ffb6fc894a',1,'smce::ProgramOptions']]],
-  ['spi_798',['SPI',['../_s_p_i_8cxx.html#a56953eb3affc2a9f56e1680bbc537bf7',1,'SPI():&#160;SPI.cxx'],['../_s_p_i_8h.html#a56953eb3affc2a9f56e1680bbc537bf7',1,'SPI():&#160;SPI.cxx']]],
-  ['spi_5fbuses_799',['spi_buses',['../struct_board_data.html#a3be3fe44ed32221bf8514cacc3738496',1,'BoardData']]],
-  ['spi_5fchans_800',['spi_chans',['../struct_board_info.html#ac8648a6982f6d1915611b191c55989c8',1,'BoardInfo']]],
-  ['spi_5fquads_801',['spi_quads',['../structsmce_1_1_board_conf.html#a06b57c8134d3aafc0da3e551d41eca6f',1,'smce::BoardConf']]],
-  ['start_5ftime_802',['start_time',['../struct_board_data.html#a936e1076cc09a74f46de80876a0e2a31',1,'BoardData']]],
-  ['status_803',['status',['../structsmce_1_1_sketch_runtime.html#ab2c0fd90dc6b698ebbaa4690768844de',1,'smce::SketchRuntime']]],
-  ['stop_5fcv_804',['stop_cv',['../structsmce_1_1_sketch_runtime.html#a185c215434c1b00b752829b056ed6810',1,'smce::SketchRuntime']]],
-  ['stop_5fmut_805',['stop_mut',['../structsmce_1_1_sketch_runtime.html#a81c53e8a304ea78cc18790390a0a478c',1,'smce::SketchRuntime']]],
-  ['stop_5ftok_806',['stop_tok',['../structsmce_1_1_sketch_runtime.html#ad059042e43a9966dc070b5d184c3b96c',1,'smce::SketchRuntime']]],
-  ['sync_807',['sync',['../struct_blocking_bus.html#a80c7b75c7da934a78111a86b7f8807d1',1,'BlockingBus']]]
+  ['thr_817',['thr',['../structsmce_1_1_sketch_runtime.html#ae3b1e36d2c9662d2d30a03a2fedff5b6',1,'smce::SketchRuntime']]],
+  ['trim_5fduration_818',['TRIM_DURATION',['../_servo_8cxx.html#ab793e56741b1cf03db3391750a4ccc90',1,'Servo.cxx']]],
+  ['tx_819',['tx',['../struct_fix_buffer_bus.html#af40e5e421685b02a07a0463fc45bc1f9',1,'FixBufferBus::tx()'],['../struct_dyna_buffer_bus.html#a41b55bea94047e4a03e631896eebb32d',1,'DynaBufferBus::tx()'],['../struct_packet_buffers.html#a283f858d11e0f3287a6a15b6d0374672',1,'PacketBuffers::tx()']]],
+  ['tx_5fmutex_820',['tx_mutex',['../struct_bidir_mutexes.html#ab582ab7fd77b2fb7c5cc6e3bb0930b33',1,'BidirMutexes']]],
+  ['tx_5fpin_821',['tx_pin',['../structsmce_1_1_board_conf_1_1_uart.html#a20072209d42d447b0a73f72cb69b6a2b',1,'smce::BoardConf::Uart::tx_pin()'],['../struct_uart_channel_info.html#ab1a7a698152f4f9abd111374b9126d96',1,'UartChannelInfo::tx_pin()']]],
+  ['tx_5fused_5fsize_822',['tx_used_size',['../struct_fix_buffer_bus.html#a55c43c9a1c75f9e968b8fe57f43b2050',1,'FixBufferBus']]],
+  ['type2str_823',['type2str',['../namespacesmce.html#ae644019b0b6079feeb9e034c5748727f',1,'smce']]]
 ];
