@@ -84,6 +84,7 @@ struct SketchRuntime {
         running,
         suspended,
         loop_paused,
+        murdered
     };
 
     BoardData* vehicle_dat{};

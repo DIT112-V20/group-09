@@ -30,6 +30,8 @@ SketchLoadedObject load(SketchObject so) {
 
     if (ret.dl.has("init"))
         ret.init = ret.dl.get<SketchLoadedObject::InitType>("init");
+    if (ret.dl.has("deinit"))
+        ret.deinit = ret.dl.get<SketchLoadedObject::DeinitType>("deinit");
     if (ret.dl.has("setup"))
         ret.setup = ret.dl.get<SketchLoadedObject::SetupType>("setup");
     if (ret.dl.has("loop"))

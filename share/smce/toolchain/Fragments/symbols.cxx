@@ -32,9 +32,12 @@ struct BoardData;
 struct BoardInfo;
 
 extern bool init(BoardData*, const BoardInfo*);
+extern void deinit();
 
 namespace {
 extern "C" SYM_EXPORT bool init(BoardData* pbd, const BoardInfo* pbi) { return ::init(pbd, pbi); }
+
+extern "C" SYM_EXPORT void deinit() { return ::deinit(); }
 
 extern "C" SYM_EXPORT void setup() { ::setup(); }
 
