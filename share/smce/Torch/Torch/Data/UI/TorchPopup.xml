@@ -1,0 +1,83 @@
+<element>
+    <element type="Window" style="CenterWindow">
+        <attribute name="Color" value="1 1 1 0.7"/>
+        <attribute name="Size" value="1000000 100000"/>
+    </element>
+    <attribute name="Horiz Alignment" value="Center"/>
+    <attribute name="Vert Alignment" value="Center"/>
+
+    <element type="Window" style="CenterWindow">
+        <attribute name="Color" value="0.3 0.3 0.3 1"/>
+
+        <attribute name="Min Size" value="400 200"/>
+        <element type="Window">
+            <attribute name="Color" value="0.5 0.5 0.5 1"/>
+
+            <attribute name="Min Size" value="400 0"/>
+            <attribute name="Layout Mode" value="Vertical"/>
+            <element type="Text">
+                <attribute name="Name" value="popup_title"/>
+                <attribute name="Text" value="Oopsie Doopsie"/>
+                <attribute name="Font Size" value="15px"/>
+                <attribute name="Text Alignment" value="Center"/>
+            </element>
+        </element>
+        <element type="Window">
+            <attribute name="Horiz Alignment" value="Center"/>
+
+            <attribute name="Min Size" value="380 1"/>
+            <attribute name="Max Size" value="380 200"/>
+            <attribute name="Color" value="1 0.2 0.2 0"/>
+
+            <attribute name="Layout Mode" value="Vertical"/>
+            <element type="Text">
+                <attribute name="Text" value=" "/>
+                <attribute name="Word Wrap" value="true"/>
+                <attribute name="Font Size" value="25px"/>
+            </element>
+            <element type="Text">
+                <attribute name="Name" value="popup_text"/>
+                <attribute name="Text" value="Something went wrong :)"/>
+                <attribute name="Word Wrap" value="true"/>
+                <attribute name="Font Size" value="15px"/>
+                <attribute name="Text Alignment" value="Center"/>
+            </element>
+        </element>
+        <element type="Window">
+            <attribute name="Position" value="0 -10"/>
+            <attribute name="Layout Mode" value="Horizontal"/>
+            <attribute name="Vert Alignment" value="Bottom"/>
+            <attribute name="Min Size" value="400 0"/>
+            <attribute name="Color" value="1 0.2 0.2 0"/>
+
+            <element type="Text">
+                <attribute name="Horiz Alignment" value="Left"/>
+                <attribute name="Text" value=" "/>
+                <attribute name="Font Size" value="20px"/>
+            </element>
+
+            <element type="Button">
+                <attribute name="Name" value="ok_button"/>
+                <attribute name="Layout Mode" value="Vertical"/>
+                <attribute name="Color" value="0.6 0.6 0.6 1"/>
+                <element type="Text" style="spacer4px"/>
+                <element type="Text">
+                    <attribute name="Horiz Alignment" value="Center"/>
+                    <attribute name="Text Alignment" value="Center"/>
+                    <attribute name="Text" value="OK"/>
+                    <attribute name="Font Size" value="15px"/>
+                </element>
+                <element type="Text" style="spacer4px"/>
+
+            </element>
+            <element type="Text">
+                <attribute name="Horiz Alignment" value="Left"/>
+                <attribute name="Text Alignment" value="Left"/>
+                <attribute name="Text" value=" "/>
+                <attribute name="Font Size" value="20px"/>
+            </element>
+        </element>
+
+
+    </element>
+</element>

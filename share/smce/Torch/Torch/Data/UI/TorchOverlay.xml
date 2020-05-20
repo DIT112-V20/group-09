@@ -1,0 +1,116 @@
+<element>
+    <element type="Window">
+        <attribute name="Layout Mode" value="Vertical"/>
+        <attribute name="Min Size" value="300 1000000000"/>
+        <attribute name="Max Size" value="300 1000000000"/>
+        <attribute name="Color" value="0.2 0.2 0.2 1"/>
+        <element type="Text"/>
+        <element type="Text">
+            <attribute name="Text Alignment" value="Center"/>
+            <attribute name="Text" value="Smartcar Emulator"/>
+            <attribute name="Font Size" value="20"/>
+            <attribute name="Min Size" value="300 1000000000"/>
+        </element>
+        <element type="Text">
+            <attribute name="Text" value="Experimental!  "/>
+            <attribute name="Font Size" value="10"/>
+            <attribute name="Min Size" value="300 1000000000"/>
+            <attribute name="Text Alignment" value="Right"/>
+        </element>
+        <element type="Text" style="Spacer5px"/>
+        <element type="Window">
+            <attribute name="Max Size" value="300 1"/>
+            <attribute name="Color" value="0.4 0.4 0.4 1"/>
+        </element>
+        <element type="Text" style="Spacer15px"/>
+        <element type="Window">
+            <attribute name="Layout Mode" value="Vertical"/>
+            <attribute name="Max Size" value="250 200"/>
+            <attribute name="Horiz Alignment" value="Center"/>
+            <attribute name="Color" value="1 1 1 0"/>
+
+            <element type="Button" style="NiceButton">
+                <attribute name="Name" value="load_button"/>
+                <element type="Text" style="Spacer4px"/>
+                <element type="Text" style="NiceBText">
+                    <attribute name="Name" value="load_button_text"/>
+                    <attribute name="Text" value="Load"/>
+                </element>
+                <element type="Text" style="Spacer4px"/>
+            </element>
+            <element type="Button" style="NiceButton">
+                <attribute name="Is Enabled" value="false"/>
+                <attribute name="Name" value="reset_button"/>
+                <element type="Text" style="Spacer4px"/>
+                <element type="Text" style="NiceBText">
+                    <attribute name="Text" value="Reset"/>
+                </element>
+                <element type="Text" style="Spacer4px"/>
+            </element>
+            <element type="Button" style="NiceButton">
+                <attribute name="Name" value="settings_button"/>
+                <element type="Text" style="Spacer4px"/>
+                <element type="Text" style="NiceBText">
+                    <attribute name="Text" value="Settings"/>
+                </element>
+                <element type="Text" style="Spacer4px"/>
+            </element>
+            <element type="Button" style="NiceButton">
+                <attribute name="Name" value="exit_button"/>
+                <element type="Text" style="Spacer4px"/>
+                <element type="Text" style="NiceBText">
+                    <attribute name="Text" value="Quit"/>
+                </element>
+                <element type="Text" style="Spacer4px"/>
+            </element>
+        </element>
+        <element type="Text" style="Spacer5px"/>
+        <element type="Window">
+            <attribute name="Max Size" value="300 1"/>
+            <attribute name="Color" value="0.4 0.4 0.4 1"/>
+        </element>
+        <element type="Text" style="Spacer10px"/>
+        <element type="Text">
+            <attribute name="Text" value=" Current Runtime:"/>
+            <attribute name="Font Size" value="15"/>
+        </element>
+        <element type="Text">
+            <attribute name="Name" value="sketch_info"/>
+            <attribute name="Text" value="  - Sketch: ..."/>
+            <attribute name="Font Size" value="10"/>
+        </element>
+        <element type="Text">
+            <attribute name="Name" value="veh_conf_info1"/>
+            <attribute name="Text" value="  - Vehicle Conf: ..."/>
+            <attribute name="Font Size" value="10"/>
+        </element>
+        <element type="Text">
+            <attribute name="Name" value="board_conf_info1"/>
+            <attribute name="Text" value="  - Board Conf: ..."/>
+            <attribute name="Font Size" value="10"/>
+        </element>
+        <element type="Text" style="Spacer10px"/>
+        <element type="Window">
+            <attribute name="Layout Mode" value="Vertical"/>
+            <attribute name="Max Size" value="250 40"/>
+            <attribute name="Horiz Alignment" value="Center"/>
+            <attribute name="Color" value="1 1 1 0"/>
+
+            <element type="Button" style="NiceButton">
+                <attribute name="Name" value="toggle_pause_button"/>
+                <attribute name="Is Enabled" value="false"/>
+                <element type="Text" style="Spacer4px"/>
+                <element type="Text" style="NiceBText">
+                    <attribute name="Name" value="toggle_pause_button_text"/>
+                    <attribute name="Text" value="Pause"/>
+                </element>
+                <element type="Text" style="Spacer4px"/>
+            </element>
+        </element>
+        <element type="Text" style="Spacer10px"/>
+        <element type="Window">
+            <attribute name="Max Size" value="300 1"/>
+            <attribute name="Color" value="0.4 0.4 0.4 1"/>
+        </element>
+    </element>
+</element>
