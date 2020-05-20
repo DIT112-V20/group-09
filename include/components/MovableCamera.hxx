@@ -53,7 +53,7 @@ class MovableCamera : public Urho3D::Camera {
 
     explicit MovableCamera(Urho3D::Context* context);
     static void RegisterObject(Urho3D::Context* context);
-    void move(float delta_time);
+    void Update(Urho3D::StringHash, Urho3D::VariantMap& event_data);
     void setKey(MoveKey key, int new_key) { key_map[static_cast<int>(key)].first = new_key; }
     void unsetKey(MoveKey key) { key_map[static_cast<int>(key)].first = -1; }
 };
