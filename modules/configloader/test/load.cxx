@@ -14,11 +14,11 @@ bool write_file(const stdfs::path& source_path, std::string_view src) {
 
 TEST_CASE("Load config file", "[load config]") {
     constexpr auto ini = R"([paths]
-preprocessor_bin=testing
+arduinocli_bin=testing
 smce_home=testing
+vehicle_config=testing
+board_config=testing
 lib_path=testing
-[versions]
-cpp_std=14
 )";
     constexpr auto ini_name = "sample.ini";
 
@@ -29,29 +29,31 @@ cpp_std=14
     REQUIRE(write_file(ini_name, ini));
     auto config = smce::LoadProgramOptions(ini_name);
 
-    REQUIRE(config.preprocessor_bin == "testing");
+    REQUIRE(config.arduinocli_bin == "testing");
     REQUIRE(config.smce_home == "testing");
+    REQUIRE(config.vehicle_config == "testing");
+    REQUIRE(config.board_config == "testing");
     REQUIRE(config.lib_path == "testing");
-    REQUIRE(config.cpp_std == 14);
 }
 
 TEST_CASE("Non existent directories", "[load bad dirs config]") {
     constexpr auto ini = R"([paths]
 preprocessor_bin=nottesting
 smce_home=nottesting
+vehicle_config=nottesting
+board_config=nottesting
 lib_path=nottesting
-[versions]
-cpp_std=17
 )";
     constexpr auto ini_name = "sample_bad.ini";
 
     REQUIRE(write_file(ini_name, ini));
     auto config = smce::LoadProgramOptions(ini_name);
 
-    REQUIRE(config.preprocessor_bin == "");
+    REQUIRE(config.arduinocli_bin == "");
     REQUIRE(config.smce_home == ".");
+    REQUIRE(config.vehicle_config == "");
+    REQUIRE(config.board_config == "");
     REQUIRE(config.lib_path == ".");
-    REQUIRE(config.cpp_std == 17);
 }
 
 TEST_CASE("Parsing fail config", "[Parse fail]") {
@@ -66,10 +68,11 @@ cpp_std17
     REQUIRE(write_file(ini_name, ini));
     auto config = smce::LoadProgramOptions(ini_name);
 
-    REQUIRE(config.preprocessor_bin == "");
+    REQUIRE(config.arduinocli_bin == "");
     REQUIRE(config.smce_home == ".");
+    REQUIRE(config.vehicle_config == "");
+    REQUIRE(config.board_config == "");
     REQUIRE(config.lib_path == ".");
-    REQUIRE(config.cpp_std == 17);
 }
 
 TEST_CASE("Export config", "[Export config]") {
@@ -78,15 +81,15 @@ TEST_CASE("Export config", "[Export config]") {
     REQUIRE(!e);
 
     auto test = smce::ProgramOptions{};
-    test.cpp_std = 11;
     test.smce_home = "helloworld";
 
     const auto out = stdfs::path{"export.ini"};
     smce::ExportProgramOptions(test, out);
     const auto comp = smce::LoadProgramOptions(out);
 
-    REQUIRE(test.preprocessor_bin == comp.preprocessor_bin);
+    REQUIRE(test.arduinocli_bin == comp.arduinocli_bin);
     REQUIRE(test.smce_home == comp.smce_home);
+    REQUIRE(test.vehicle_config == comp.vehicle_config);
+    REQUIRE(test.board_config == comp.board_config);
     REQUIRE(test.lib_path == comp.lib_path);
-    REQUIRE(test.cpp_std == comp.cpp_std);
 }

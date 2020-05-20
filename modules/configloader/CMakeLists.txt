@@ -33,7 +33,8 @@ target_link_libraries(ConfigLoader INTERFACE
         fmt::fmt
         nameof::nameof
         range-v3::range-v3
-        Urho3D-rapidjson)
+        Urho3D-rapidjson
+        Boost::predef)
 
 add_executable(TestsConfigLoader test/load.cxx test/BoardConf.cxx test/VehicleConf.cxx)
 
