@@ -26,6 +26,6 @@
 #include <rapidjson/document.h>
 #include "BoardData.hxx"
 
-std::array<std::pair<std::string_view, Urho3D::LogicComponent*(*)(BoardData&, Urho3D::Node*, const rapidjson::Value&)>, 0> attachments_registry = {};
+constexpr std::array<std::pair<std::string_view, Urho3D::LogicComponent*(*)(BoardData&, Urho3D::Node*, const rapidjson::Value&)>, 0> attachments_registry{};
 
 #endif // SMARTCAR_EMUL_REGISTRY_HXX
