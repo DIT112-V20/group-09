@@ -8,6 +8,8 @@
 #include "Wire.h"
 #include "utility.hxx"
 
+TwoWire Wire;
+
 void TwoWire::begin() { begun = true; }
 
 void TwoWire::begin(std::uint8_t with_address) {
