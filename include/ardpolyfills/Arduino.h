@@ -19,6 +19,7 @@
 #ifndef Arduino_h
 #define Arduino_h
 #include <cctype>
+#include <cstdint>
 #include <cmath>
 #include <cstdlib>
 #include <algorithm>
