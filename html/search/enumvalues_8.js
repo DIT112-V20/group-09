@@ -1,20 +1,8 @@
 var searchData=
 [
-  ['sketch_871',['sketch',['../namespacesmce.html#ae4493b241703abad8cd49a8b5b9035a3a834feae744c43369c32b2cdbf2ada1e6',1,'smce']]],
-  ['sketch_5fdir_5frecurse_872',['sketch_dir_recurse',['../namespacesmce.html#ae4493b241703abad8cd49a8b5b9035a3a7b9d36a025ba519bbf50cd832f37e5fb',1,'smce']]],
-  ['skip_5fall_873',['SKIP_ALL',['../_stream_8h.html#ab2c5d00ddee50ff8d5d68cd2d7a7fa49a823ae842da6939bbada21ab3b5c4f2eb',1,'Stream.h']]],
-  ['skip_5fnone_874',['SKIP_NONE',['../_stream_8h.html#ab2c5d00ddee50ff8d5d68cd2d7a7fa49a141996d9ff8288dd50fb39c1aa3e4a95',1,'Stream.h']]],
-  ['skip_5fwhitespace_875',['SKIP_WHITESPACE',['../_stream_8h.html#ab2c5d00ddee50ff8d5d68cd2d7a7fa49a4c6e81602f86235fb8e040f22b743b07',1,'Stream.h']]],
-  ['sktech_5fdir_876',['sktech_dir',['../namespacesmce.html#ae4493b241703abad8cd49a8b5b9035a3a2511fa80f3b63837dcb5fca478d3a863',1,'smce']]],
-  ['spi_5fclock_5fdiv128_877',['SPI_CLOCK_DIV128',['../_s_p_i_8h.html#ae42726a5c40fa435d120e70217e34fe1afb9b19383009fad61e4b19a3b862fd62',1,'SPI.h']]],
-  ['spi_5fclock_5fdiv16_878',['SPI_CLOCK_DIV16',['../_s_p_i_8h.html#ae42726a5c40fa435d120e70217e34fe1af0f398fee6fedcb4d6266c5853b59737',1,'SPI.h']]],
-  ['spi_5fclock_5fdiv2_879',['SPI_CLOCK_DIV2',['../_s_p_i_8h.html#ae42726a5c40fa435d120e70217e34fe1ac7657001e55da93c3604e25145d297e8',1,'SPI.h']]],
-  ['spi_5fclock_5fdiv32_880',['SPI_CLOCK_DIV32',['../_s_p_i_8h.html#ae42726a5c40fa435d120e70217e34fe1a0c8bd44107fb7046b6e2420f85ba328f',1,'SPI.h']]],
-  ['spi_5fclock_5fdiv4_881',['SPI_CLOCK_DIV4',['../_s_p_i_8h.html#ae42726a5c40fa435d120e70217e34fe1aec8e9dc69b38cea257dd859bb1877ef5',1,'SPI.h']]],
-  ['spi_5fclock_5fdiv64_882',['SPI_CLOCK_DIV64',['../_s_p_i_8h.html#ae42726a5c40fa435d120e70217e34fe1a7143e5bbfeb29506704012efb6e7abf5',1,'SPI.h']]],
-  ['spi_5fclock_5fdiv8_883',['SPI_CLOCK_DIV8',['../_s_p_i_8h.html#ae42726a5c40fa435d120e70217e34fe1a7af75cfa72a9244e7d3e1771a66f8411',1,'SPI.h']]],
-  ['spi_5fmode0_884',['SPI_MODE0',['../_s_p_i_8h.html#a1b1b04472b9cc70fa34f3c48a4f9c080aacf2eef6aadb9f0de11862660cd9ade6',1,'SPI.h']]],
-  ['spi_5fmode1_885',['SPI_MODE1',['../_s_p_i_8h.html#a1b1b04472b9cc70fa34f3c48a4f9c080abd92ab028fcac05cf2ed27b4838d1590',1,'SPI.h']]],
-  ['spi_5fmode2_886',['SPI_MODE2',['../_s_p_i_8h.html#a1b1b04472b9cc70fa34f3c48a4f9c080a2607e91fc0c8ae3334284808d7f94cf5',1,'SPI.h']]],
-  ['spi_5fmode3_887',['SPI_MODE3',['../_s_p_i_8h.html#a1b1b04472b9cc70fa34f3c48a4f9c080ad9636eac0759655110aa77dd6c22da6c',1,'SPI.h']]]
+  ['reset_907',['RESET',['../_torch_events_8hxx.html#a939eab61376b3ba811f243e6cd87046eab5859d8721cfdc0312b2838b9c985bc1',1,'TorchEvents.hxx']]],
+  ['resume_908',['RESUME',['../_torch_events_8hxx.html#a939eab61376b3ba811f243e6cd87046eabac2aec3ee8d7d495123dbe5ca2fdac9',1,'TorchEvents.hxx']]],
+  ['right_909',['RIGHT',['../class_movable_camera.html#a1dbb64095f09bbe91231cecc7e04d907a21507b40c80068eda19865706fdc2403',1,'MovableCamera']]],
+  ['rightmostbit_910',['RIGHTMOSTBIT',['../_arduino_8h.html#a988fca5c11584635222eb51fe06901bdafa1355ee600408182d1479a511b46ee3',1,'Arduino.h']]],
+  ['rising_911',['RISING',['../_arduino_8h.html#aa004d28b3cc128fb30f577f93d370794ad93abe7aced82e9a4fcac4127a36ece3',1,'Arduino.h']]]
 ];

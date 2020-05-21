@@ -12,13 +12,14 @@ var searchData=
   ['analogwrite_10',['analogWrite',['../_arduino_8cxx.html#a7cd99e00586774325da766f614837947',1,'analogWrite(uint16_t pin, uint16_t val):&#160;Arduino.cxx'],['../_arduino_8h.html#a7cd99e00586774325da766f614837947',1,'analogWrite(uint16_t pin, uint16_t val):&#160;Arduino.cxx']]],
   ['arduino_2ecxx_11',['Arduino.cxx',['../_arduino_8cxx.html',1,'']]],
   ['arduino_2eh_12',['Arduino.h',['../_arduino_8h.html',1,'']]],
-  ['as_5fdata_13',['as_data',['../namespacesmce.html#ab9f48423a5590a8a245176acddb4f1dd',1,'smce']]],
-  ['as_5finfo_14',['as_info',['../namespacesmce.html#aec25854ae695701fcdbbf8f133c96f63',1,'smce']]],
-  ['attach_15',['attach',['../class_servo.html#aea34a630b13ec42e2700eec53ae0a382',1,'Servo::attach(int pin)'],['../class_servo.html#ae8d8a8e190a6144364e21678d2137a79',1,'Servo::attach(int pin, int min, int max)']]],
-  ['attached_16',['attached',['../class_servo.html#adeef1244505aa67e509528bdc825c824',1,'Servo']]],
-  ['attachinterrupt_17',['attachInterrupt',['../_arduino_8cxx.html#af95acf9c160c14a5c1ea018c0494da19',1,'attachInterrupt(uint8_t pin, void(*user_func)(), int mode):&#160;Arduino.cxx'],['../_arduino_8h.html#a3d0c1f37b8b457ad4ab7aa6cddcca1e7',1,'attachInterrupt(uint8_t interruptNum, void(*userFunc)(), int mode):&#160;Arduino.cxx']]],
-  ['attachments_18',['attachments',['../classsmce_1_1_vehicle_config.html#a5e5557798fc92dc687dcf7f406cfc6a9',1,'smce::VehicleConfig']]],
-  ['attachments_5fregistry_19',['attachments_registry',['../_registry_8hxx.html#aa250cca9f0f3abab6dc7d54ab317ba38',1,'Registry.hxx']]],
-  ['available_20',['available',['../struct_hardware_serial.html#a3ba8028d63deb239fc732ff4dcaa5596',1,'HardwareSerial::available()'],['../struct_stream.html#a9c98a763395005c08ce95afb2f06c7b1',1,'Stream::available()'],['../class_two_wire.html#a8930ea2b8ca5a402f864d6a0e2bf9b07',1,'TwoWire::available()']]],
-  ['availableforwrite_21',['availableForWrite',['../struct_hardware_serial.html#a6f2fe7a97168416a977d1b4190193c20',1,'HardwareSerial::availableForWrite()'],['../class_print.html#ae278602698f895c25820f18da4e765be',1,'Print::availableForWrite()']]]
+  ['arduinocli_5fbin_13',['arduinocli_bin',['../structsmce_1_1_program_options.html#ac9e2cea742fa30f6a5e7e2295868d50b',1,'smce::ProgramOptions']]],
+  ['as_5fdata_14',['as_data',['../namespacesmce.html#ab9f48423a5590a8a245176acddb4f1dd',1,'smce']]],
+  ['as_5finfo_15',['as_info',['../namespacesmce.html#aec25854ae695701fcdbbf8f133c96f63',1,'smce']]],
+  ['attach_16',['attach',['../class_servo.html#aea34a630b13ec42e2700eec53ae0a382',1,'Servo::attach(int pin)'],['../class_servo.html#ae8d8a8e190a6144364e21678d2137a79',1,'Servo::attach(int pin, int min, int max)']]],
+  ['attached_17',['attached',['../class_servo.html#adeef1244505aa67e509528bdc825c824',1,'Servo']]],
+  ['attachinterrupt_18',['attachInterrupt',['../_arduino_8cxx.html#af95acf9c160c14a5c1ea018c0494da19',1,'attachInterrupt(uint8_t pin, void(*user_func)(), int mode):&#160;Arduino.cxx'],['../_arduino_8h.html#a3d0c1f37b8b457ad4ab7aa6cddcca1e7',1,'attachInterrupt(uint8_t interruptNum, void(*userFunc)(), int mode):&#160;Arduino.cxx']]],
+  ['attachments_19',['attachments',['../classsmce_1_1_vehicle_config.html#a5e5557798fc92dc687dcf7f406cfc6a9',1,'smce::VehicleConfig']]],
+  ['attachments_5fregistry_20',['attachments_registry',['../_registry_8hxx.html#affc0d4263c02d23c676cdf6eebef4414',1,'Registry.hxx']]],
+  ['available_21',['available',['../struct_hardware_serial.html#a3ba8028d63deb239fc732ff4dcaa5596',1,'HardwareSerial::available()'],['../struct_stream.html#a9c98a763395005c08ce95afb2f06c7b1',1,'Stream::available()'],['../class_two_wire.html#a8930ea2b8ca5a402f864d6a0e2bf9b07',1,'TwoWire::available()']]],
+  ['availableforwrite_22',['availableForWrite',['../struct_hardware_serial.html#a6f2fe7a97168416a977d1b4190193c20',1,'HardwareSerial::availableForWrite()'],['../class_print.html#ae278602698f895c25820f18da4e765be',1,'Print::availableForWrite()']]]
 ];

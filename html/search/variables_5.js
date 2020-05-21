@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exit_5ftok_753',['exit_tok',['../structsmce_1_1_sketch_runtime.html#a7cf1ff211fa8b594af6b42c215637c08',1,'smce::SketchRuntime']]]
+  ['exit_5ftok_788',['exit_tok',['../structsmce_1_1_sketch_runtime.html#a7cf1ff211fa8b594af6b42c215637c08',1,'smce::SketchRuntime']]]
 ];

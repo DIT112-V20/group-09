@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fixbufferbus_464',['FixBufferBus',['../struct_fix_buffer_bus.html',1,'']]]
+  ['emulglue_482',['EmulGlue',['../class_emul_glue.html',1,'']]]
 ];
