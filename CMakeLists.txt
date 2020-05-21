@@ -101,7 +101,12 @@ target_sources (smartcar_emul PRIVATE
         include/components/Registry.hxx
         include/components/MovableCamera.hxx
         src/components/MovableCamera.cxx
-        include/UrhoUtility.hxx)
+        include/UrhoUtility.hxx
+        src/gui/TorchMenu.cxx
+        include/gui/TorchMenu.hxx
+        src/components/EmulGlue.cxx
+        include/components/EmulGlue.hxx
+        include/gui/TorchEvents.hxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 

@@ -45,11 +45,14 @@ struct SketchObject {
 struct SketchLoadedObject {
 
     using InitType = bool(BoardData*, const BoardInfo*);
+    using DeinitType = void();
     using SetupType = void();
     using LoopType = void();
 
     /// initializer function for the Arduino runtime
     InitType* init = nullptr;
+    /// Deinitializer function for the Arduino runtime
+    DeinitType* deinit = nullptr;
     /// Arduino setup function
     SetupType* setup = nullptr;
     /// Arduino loop function

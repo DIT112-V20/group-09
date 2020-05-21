@@ -19,23 +19,38 @@
 #ifndef SMARTCAR_EMUL_PROGRAMOPTIONS_HXX
 #define SMARTCAR_EMUL_PROGRAMOPTIONS_HXX
 #include <filesystem>
+#include <boost/predef/os.h>
 
 namespace smce {
 namespace stdfs = std::filesystem;
 
+#if BOOST_OS_UNIX || BOOST_OS_MACOS
+const stdfs::path PLATFORM_SMCE_HOME = "/usr/share/smce";
+#elif BOOST_OS_WINDOWS
+const stdfs::path PLATFORM_SMCE_HOME = std::filesystem::current_path().root_path() / "Program Files" / "Smce";
+#else
+const stdfs::path PLATFORM_SMCE_HOME = ".";
+#endif
+
 struct ProgramOptions {
-    static constexpr auto DEFAULT_PREPROCESSOR_BIN = "";
+
+    static constexpr auto DEFAULT_CONFIG_FILE_NAME = "smce_options.ini";
+    static constexpr auto DEFAULT_ARDUINOCLI_BIN = "";
     static constexpr auto DEFAULT_SMCE_HOME = ".";
+    static constexpr auto DEFAULT_VEHICLE_CONFIG = "";
+    static constexpr auto DEFAULT_BOARD_CONFIG = "";
     static constexpr auto DEFAULT_LIB_PATH = ".";
-    static constexpr int DEFAULT_CPP_STD = 17;
 
-    stdfs::path preprocessor_bin = DEFAULT_PREPROCESSOR_BIN;
+    stdfs::path arduinocli_bin = DEFAULT_ARDUINOCLI_BIN;
     stdfs::path smce_home = DEFAULT_SMCE_HOME;
-    stdfs::path lib_path = DEFAULT_LIB_PATH;
-    int cpp_std = DEFAULT_CPP_STD;
+    stdfs::path vehicle_config = DEFAULT_VEHICLE_CONFIG;
+    stdfs::path board_config = DEFAULT_BOARD_CONFIG;
 
-    ProgramOptions(stdfs::path preprocessor_bin, stdfs::path smce_home, stdfs::path lib_path, int cpp_std)
-        : preprocessor_bin{std::move(preprocessor_bin)}, smce_home{std::move(smce_home)}, lib_path{std::move(lib_path)}, cpp_std{cpp_std} {}
+    stdfs::path lib_path = DEFAULT_LIB_PATH;
+
+    // TODO: Remove when P0960R3 is supported
+    ProgramOptions(stdfs::path preprocessor_bin, stdfs::path smce_home, stdfs::path vehicle_config, stdfs::path board_config, stdfs::path lib_path)
+        : arduinocli_bin{std::move(preprocessor_bin)}, smce_home{std::move(smce_home)}, vehicle_config{std::move(vehicle_config)}, board_config{std::move(board_config)}, lib_path{std::move(lib_path)} {}
 
     ProgramOptions() = default;
 };

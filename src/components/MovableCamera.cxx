@@ -15,15 +15,19 @@
  *  limitations under the License.
  */
 
+#include <Urho3D/Core/CoreEvents.h>
 #include <Urho3D/Input/Input.h>
 #include <Urho3D/UI/UI.h>
 #include "components/MovableCamera.hxx"
 
-MovableCamera::MovableCamera(Urho3D::Context* context) : Urho3D::Camera{context} {}
+MovableCamera::MovableCamera(Urho3D::Context* context) : Urho3D::Camera{context} {
+    SubscribeToEvent(Urho3D::E_UPDATE, URHO3D_HANDLER(MovableCamera, Update));
+}
 
 void MovableCamera::RegisterObject(Urho3D::Context* context) { context->RegisterFactory<MovableCamera>(); }
 
-void MovableCamera::move(float delta_time) {
+void MovableCamera::Update(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
+    const float delta_time = event_data[Urho3D::Update::P_TIMESTEP].GetFloat();
     const auto* const input = GetSubsystem<Urho3D::Input>();
     if (!node_ || GetSubsystem<Urho3D::UI>()->GetFocusElement() || input->IsMouseVisible())
         return;

@@ -28,13 +28,14 @@ namespace smce {
 
 SketchRuntime::~SketchRuntime() noexcept {
     switch (status) {
-    case Status::uninitialized: [[fallthrough]];
+    case Status::uninitialized:
+        [[fallthrough]];
     case Status::ready:
         break;
-    case Status::running: [[fallthrough]];
+    case Status::running:
+        [[fallthrough]];
     case Status::suspended:
         murder();
-        clear();
         break;
     case Status::loop_paused:
         exit_tok = true;
@@ -48,7 +49,7 @@ bool SketchRuntime::start() noexcept {
         return false;
     status = Status::running;
     thr.set_mutex((vehicle_dat->interrupt_mut = std::make_unique<std::recursive_mutex>()).get());
-    thr.start([&]{
+    thr.start([&] {
         vehicle_dat->board_thread_id = std::this_thread::get_id();
         curr_sketch.setup();
         while (true) {
@@ -75,7 +76,7 @@ bool SketchRuntime::resume() noexcept {
         stop_cv.notify_all();
         break;
     case Status::suspended:
-        if(thr.resume())
+        if (thr.resume())
             break;
         [[fallthrough]];
     default:
@@ -86,6 +87,8 @@ bool SketchRuntime::resume() noexcept {
 }
 
 void SketchRuntime::pause_on_next_loop() noexcept {
+    if (status != Status::running)
+        return;
     std::lock_guard lk{stop_mut};
     stop_tok = true;
     status = Status::loop_paused;
@@ -102,6 +105,8 @@ void SketchRuntime::murder() noexcept {
     if (status != Status::running && status != Status::loop_paused && status != Status::suspended)
         return;
     assert(thr.murder());
+    status = Status::murdered;
+    clear();
 }
 
 bool SketchRuntime::set_sketch_and_car(SketchObject so, BoardData& bdata, const BoardInfo& binfo) noexcept {
@@ -117,14 +122,29 @@ bool SketchRuntime::set_sketch_and_car(SketchObject so, BoardData& bdata, const 
 }
 
 bool SketchRuntime::clear() {
-    if (status != Status::uninitialized) {
-        vehicle_dat = nullptr;
-        curr_sketch = {};
-        thr.reset();
-        status = Status::uninitialized;
+    switch (status) {
+    case Status::uninitialized:
+        [[fallthrough]];
+    case Status::ready:
         return true;
+    case Status::running:
+        [[fallthrough]];
+    case Status::suspended:
+        murder(); // murder set status = Status::murdered and calls clear() itself.
+        return true;
+    case Status::loop_paused:
+        std::scoped_lock stop_lock{stop_mut};
+        exit_tok = true;
+        stop_cv.notify_all();
+        break;
     }
-    return false;
+    vehicle_dat = nullptr;
+    curr_sketch.deinit();
+    curr_sketch = {};
+    thr.reset();
+    stop_tok = exit_tok = false;
+    status = Status::uninitialized;
+    return true;
 }
 
 } // namespace smce

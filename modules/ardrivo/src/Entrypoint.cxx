@@ -41,6 +41,11 @@ bool init(BoardData* brd, const BoardInfo* info) {
     return true;
 }
 
+void deinit() {
+    board_data = nullptr;
+    board_info = nullptr;
+}
+
 void maybe_init() noexcept {
     if (board_data)
         return;

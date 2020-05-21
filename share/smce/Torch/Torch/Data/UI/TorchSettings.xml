@@ -1,0 +1,107 @@
+<element>
+    <element type="Window">
+        <attribute name="Layout Mode" value="Vertical"/>
+        <attribute name="Min Size" value="300 1000000000"/>
+        <attribute name="Max Size" value="300 1000000000"/>
+        <attribute name="Color" value="0.2 0.2 0.2 1"/>
+        <element type="Text"/>
+        <element type="Text">
+            <attribute name="Text Alignment" value="Center"/>
+            <attribute name="Text" value="Emulator Settings"/>
+            <attribute name="Font Size" value="20"/>
+            <attribute name="Min Size" value="300 1000000000"/>
+        </element>
+        <element type="Text">
+            <attribute name="Text" value="Technology nice!  "/>
+            <attribute name="Font Size" value="10"/>
+            <attribute name="Min Size" value="300 1000000000"/>
+            <attribute name="Text Alignment" value="Right"/>
+        </element>
+        <element type="Text" style="Spacer5px"/>
+        <element type="Window">
+            <attribute name="Max Size" value="300 1"/>
+            <attribute name="Color" value="0.4 0.4 0.4 1"/>
+        </element>
+        <element type="Text" style="Spacer15px"/>
+        <element type="Window">
+            <attribute name="Layout Mode" value="Vertical"/>
+            <attribute name="Max Size" value="250 40"/>
+            <attribute name="Horiz Alignment" value="Center"/>
+            <attribute name="Color" value="1 1 1 0"/>
+            <element type="Button" style="NiceButton">
+                <attribute name="Name" value="back_to_main_button"/>
+                <element type="Text" style="Spacer4px"/>
+                <element type="Text" style="NiceBText">
+                    <attribute name="Text" value="Main Menu"/>
+                </element>
+                <element type="Text" style="Spacer4px"/>
+            </element>
+        </element>
+        <element type="Text" style="Spacer10px" />
+        <element type="Window">
+            <attribute name="Max Size" value="300 1"/>
+            <attribute name="Color" value="0.4 0.4 0.4 1"/>
+        </element>
+        <element type="Text" style="Spacer10px"/>
+        <element type="Text">
+            <attribute name="Text" value=" Paths:"/>
+            <attribute name="Font Size" value="16"/>
+        </element>
+        <element type="Text" style="Spacer4px"/>
+        <element type="Text">
+            <attribute name="Text" value=" SMCE Home directory"/>
+            <attribute name="Font Size" value="12"/>
+        </element>
+        <element type="Text" style="Spacer4px"/>
+        <element type="Button" style="NiceButton">
+            <attribute name="Max Size" value="300 30"/>
+            <attribute name="Name" value="smce_home_set_button"/>
+            <element type="Text" style="Spacer2px"/>
+            <element type="Text">
+                <attribute name="Name" value="smce_home_set_button_text"/>
+                <attribute name="Text" value=" ..."/>
+                <attribute name="Font Size" value="10"/>
+            </element>
+            <element type="Text" style="Spacer2px"/>
+        </element>
+        <element type="Text" style="Spacer10px"/>
+        <element type="Text">
+            <attribute name="Text" value=" Vehicle Config"/>
+            <attribute name="Font Size" value="12"/>
+        </element>
+        <element type="Text" style="Spacer4px"/>
+        <element type="Button" style="NiceButton">
+            <attribute name="Max Size" value="300 30"/>
+            <attribute name="Name" value="veh_conf_set_button"/>
+            <element type="Text" style="Spacer2px"/>
+            <element type="Text">
+                <attribute name="Name" value="veh_conf_info0"/>
+                <attribute name="Text" value=" ..."/>
+                <attribute name="Font Size" value="10"/>
+            </element>
+            <element type="Text" style="Spacer2px"/>
+        </element>
+        <element type="Text" style="Spacer10px"/>
+        <element type="Text">
+            <attribute name="Text" value=" Board Config"/>
+            <attribute name="Font Size" value="12"/>
+        </element>
+        <element type="Text" style="Spacer4px"/>
+        <element type="Button" style="NiceButton">
+            <attribute name="Max Size" value="300 30"/>
+            <attribute name="Name" value="board_conf_set_button"/>
+            <element type="Text" style="Spacer2px"/>
+            <element type="Text">
+                <attribute name="Name" value="board_conf_info0"/>
+                <attribute name="Text" value=" ..."/>
+                <attribute name="Font Size" value="10"/>
+            </element>
+            <element type="Text" style="Spacer2px"/>
+        </element>
+        <element type="Text">
+            <attribute name="Font Size" value="10"/>
+        </element>
+
+
+    </element>
+</element>

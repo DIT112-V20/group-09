@@ -25,18 +25,21 @@
 #include <Urho3D/Graphics/Viewport.h>
 #include <Urho3D/IO/FileSystem.h>
 #include <Urho3D/Input/Input.h>
-#include <Urho3D/Input/InputEvents.h>
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Scene/Scene.h>
-#include <Urho3D/IO/Log.h>
-#include <range/v3/algorithm/find_if.hpp>
 #include "app/UrhoApp.hxx"
+#include "components/EmulGlue.hxx"
 #include "components/MovableCamera.hxx"
 #include "components/Registry.hxx"
+#include "gui/TorchMenu.hxx"
 #include "UrhoUtility.hxx"
 #include "VehicleConf.hxx"
 
-UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} { MovableCamera::RegisterObject(context); }
+UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} {
+    MovableCamera::RegisterObject(context);
+    TorchMenu::RegisterObject(context);
+    EmulGlue::RegisterObject(context);
+}
 
 void UrhoApp::Setup() {
     engineParameters_[Urho3D::EP_WINDOW_TITLE] = "Smart Car Emul";
@@ -65,7 +68,8 @@ void UrhoApp::create_scene() {
     auto* const cache = GetSubsystem<Urho3D::ResourceCache>();
     m_scene = Urho3D::MakeShared<Urho3D::Scene>(context_);
     m_scene->CreateComponent<Urho3D::Octree>();
-
+    m_scene->CreateComponent<EmulGlue>();
+    m_scene->CreateComponent<TorchMenu>();
     Urho3D::Node* plane_node = m_scene->CreateChild("Ground");
     plane_node->SetScale(Urho3D::Vector3(200, 0, 200));
     auto* const planeObject = plane_node->CreateComponent<Urho3D::StaticModel>();
@@ -79,8 +83,6 @@ void UrhoApp::create_scene() {
     m_camera_node->CreateComponent<MovableCamera>();
     m_camera_node->SetPosition(Urho3D::Vector3(0.0f, 100.0f, 0.0f));
 
-    m_vehicle_node = m_scene->CreateChild("Vehicle");
-    m_vehicle_node->SetPosition(Urho3D::Vector3(0.0f, 1.0f, 0.0f));
 }
 
 void UrhoApp::create_viewport() {
@@ -89,45 +91,8 @@ void UrhoApp::create_viewport() {
     renderer->SetViewport(0, viewport);
 }
 
-void UrhoApp::setup_attachments(BoardData& board, const smce::VehicleConfig& vconf) {
-    for (const auto& [type_str, jconf] : vconf.attachments) {
-        const auto& type = type_str;
-        const auto it = ranges::find_if(attachments_registry, [&](const auto& pair) { return pair.first == type; });
-        if(it == attachments_registry.end()){
-            Urho3D::Log::Write(Urho3D::LOG_WARNING, Urho3D::String("Unkown component type ") + type_str.c_str());
-            continue;
-        }
-
-        auto* const att = it->second(board, m_vehicle_node.Get(), *jconf);
-        m_vehicle_attachments.push_back(att);
-        m_vehicle_node->AddComponent(att, 0, Urho3D::REPLICATED);
-    }
-}
-
-void UrhoApp::subscribe_to_events() {
-    SubscribeToEvent(Urho3D::E_KEYUP, URHO3D_HANDLER(UrhoApp, HandleKeyUp));
-    SubscribeToEvent(Urho3D::E_UPDATE, URHO3D_HANDLER(UrhoApp, HandleUpdate));
-    SubscribeToEvent(Urho3D::E_MOUSEBUTTONDOWN, URHO3D_HANDLER(UrhoApp, HandleMouseButtonDown));
-}
-
-void UrhoApp::HandleKeyUp(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
-    const auto key = event_data[Urho3D::KeyUp::P_KEY].GetInt();
-
-    switch (key) {
-    case Urho3D::KEY_ESCAPE:
-        engine_->Exit();
-        break;
-    default:
-        break;
-    }
-}
+void UrhoApp::subscribe_to_events() { SubscribeToEvent(Urho3D::E_UPDATE, URHO3D_HANDLER(UrhoApp, HandleUpdate)); }
 
 void UrhoApp::HandleUpdate(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
     const float delta_time = event_data[Urho3D::Update::P_TIMESTEP].GetFloat();
-    m_camera_node->GetComponent<MovableCamera>()->move(delta_time);
-}
-
-void UrhoApp::HandleMouseButtonDown(Urho3D::StringHash, Urho3D::VariantMap&) {
-    auto* const input = GetSubsystem<Urho3D::Input>();
-    input->SetMouseMode(input->GetMouseMode() == Urho3D::MM_ABSOLUTE ? Urho3D::MM_RELATIVE : Urho3D::MM_ABSOLUTE);
 }

@@ -46,7 +46,7 @@ CompilationResults compile_sketch(SketchSource src, stdfs::path prefix, SourceTy
         stdfs::remove_all(build_dir);
     stdfs::create_directory(build_dir);
 
-#if BOOST_OS_UNIX
+#if BOOST_OS_UNIX || BOOST_OS_MACOS
     constexpr std::string_view silent_output = "/dev/null";
 #elif BOOST_OS_WINDOWS
     constexpr std::string_view silent_output = "NUL";
