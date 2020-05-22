@@ -35,7 +35,7 @@ void static init_fake()
 
     init(loc_board_data.release(), loc_board_info.release());
 }
-
+//I am curious as to how you manage to have a pin in both input and output mode at the same time
 TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite], [digitalRead], [analogWrite], [analogRead]") {
     init_fake();
 
@@ -94,41 +94,45 @@ TEST_CASE("Delay the program", "[delay]")
     delay(1000);
     const auto end = std::chrono::steady_clock::now();
     const auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
-    //Added some margin
-
     REQUIRE(duration > 0s);
     REQUIRE(duration < 1.5s);
 }
 
-
 TEST_CASE("delay the thread in microseconds", "[delayMicroseconds]") 
 {
     const auto start = std::chrono::steady_clock::now();
-    delay(1000);
+    delayMicroseconds(1000);
     const auto end = std::chrono::steady_clock::now();
     const auto duration = std::chrono::duration_cast< std::chrono::microseconds >(end - start);
-    //Added some margin
-
-    REQUIRE(duration > 0us);
-    REQUIRE(duration < 1001000us);
+    
+    REQUIRE(duration > 1000us);
+    REQUIRE(duration < 2000us); 
 }
 
 TEST_CASE("Return number of microseconds since arduino board began", "[micros]") {
     init_fake();
-    const unsigned long duration = micros();
-
-    //Added some margin
-    REQUIRE(duration >= 15); 
-    REQUIRE(duration < 70);
+    const unsigned long durationBoardBegun = micros();
+    const auto start = std::chrono::steady_clock::now();
+    delay(1000);
+    const auto end = std::chrono::steady_clock::now();
+    const auto durationCheck = std::chrono::duration_cast< std::chrono::microseconds >(end - start);
+    auto durationBoardBegun2 = micros();    
+    const unsigned long totalDurationBegun = (durationBoardBegun2 - durationBoardBegun);
+    REQUIRE(totalDurationBegun > 1000100); 
+    REQUIRE(durationCheck > 1000100us);
 }
 
 TEST_CASE("Return number of milliseconds since arduino board began", "[millis]") {
     init_fake();
-    const unsigned long duration = millis();
-
-    //Added some margin
-    REQUIRE(duration >= 0);
-    REQUIRE(duration < 30);
+    const unsigned long durationBoardBegun = millis();
+    const auto start = std::chrono::steady_clock::now();
+    delay(1000);
+    const auto end = std::chrono::steady_clock::now();
+    const auto durationCheck = std::chrono::duration_cast< std::chrono::milliseconds >(end - start);
+    auto durationBoardBegun2 = micros();
+    const unsigned long totalDurationBegun = (durationBoardBegun2 - durationBoardBegun);
+    REQUIRE(durationCheck >= 1000ms);
+    REQUIRE(totalDurationBegun >= 1000);
 }
 
 TEST_CASE("Constrain number within a given range", "[constrain]") {
@@ -147,80 +151,86 @@ TEST_CASE("Re-maps number from one range to another" "[map]") {
 }
 
 TEST_CASE("Check is char i letter", "[isAlpha]") {
-    REQUIRE(isAlpha('a') == true);
-    REQUIRE(isAlpha('1') == false);
-    ;
+    REQUIRE(isAlpha('a'));
+    REQUIRE(!isAlpha('1'));
 }
 
 TEST_CASE("Check if a char is alphanumeric", "[isAlphaNumeric]") {
-    REQUIRE(isAlphaNumeric('a') == true);
-    REQUIRE(isAlphaNumeric('1') == true);
-    REQUIRE(isAlphaNumeric('!') == false);
+    REQUIRE(isAlphaNumeric('a'));
+    REQUIRE(isAlphaNumeric('1'));
+    REQUIRE(!isAlphaNumeric('!'));
 }
 
+//shit does not work
 TEST_CASE("Is the character a ascii", "[isAscii]") {
-    // REQUIRE(isAscii('a') == 97); //Eeehhh??????????????
-
-    int var = 97;
-    //std::cout << (char)var;
+    /*
+    char num = 'a';
+    REQUIRE(isAscii(num)); 
+    */
 }
 
 TEST_CASE("Check if the character a control character", "[isControl") {
-    REQUIRE(isControl('\t') == true);
-    REQUIRE(isControl('\n') == true);
-    REQUIRE(isControl('\v') == true);
+    REQUIRE(isControl('\t'));
+    REQUIRE(isControl('\n'));
+    REQUIRE(isControl('\v'));
 }
 TEST_CASE("Checks if the charahcter a digit" "[isDigit]") {
-    REQUIRE(isDigit('1') == true);
-    REQUIRE(isDigit('a') == false);
-    REQUIRE(isDigit('#') == false);
+    REQUIRE(isDigit('1'));
+    REQUIRE(!isDigit('a'));
+    REQUIRE(!isDigit('#'));
+}
+
+TEST_CASE("Checks if a character is a digit" "[isDigit]") {
+    REQUIRE(isDigit('1'));
+    REQUIRE(!isDigit('a'));
+    REQUIRE(!isDigit('#'));
 }
 
 TEST_CASE("Checks if a character is a graphical represention" "[isGraph]") {
-    REQUIRE(isGraph('a') == true);
-    REQUIRE(isGraph('1') == true);
-    REQUIRE(isGraph(' ') == false);
+    REQUIRE(isGraph('a'));
+    REQUIRE(isGraph('1'));
+    REQUIRE(!isGraph(' '));
 }
 
 TEST_CASE("Checks if a character is hexadecimal", "[isHexadecimalDigit]") {
-    REQUIRE(isHexadecimalDigit('a') == true);
-    REQUIRE(isHexadecimalDigit('!') == false);
+    REQUIRE(isHexadecimalDigit('a'));
+    REQUIRE(!isHexadecimalDigit('!'));
 }
 
 TEST_CASE("Checks if a character is lowercase", "[isLowerCase") {
-    REQUIRE(isLowerCase('a') == true);
-    REQUIRE(isLowerCase('A') == false);
+    REQUIRE(isLowerCase('a'));
+    REQUIRE(!isLowerCase('A'));
 }
 
 TEST_CASE("Checks if a character is printable", "[isPrintable]") {
-    REQUIRE(isPrintable('a') == true);
-    REQUIRE(isPrintable('1') == true);
-    REQUIRE(isPrintable(' ') == true);
+    REQUIRE(isPrintable('a'));
+    REQUIRE(isPrintable('1'));
+    REQUIRE(isPrintable(' '));
 }
 
 TEST_CASE("Checks if a character is a punctuation" "[isPunct") {
-    REQUIRE(isPunct('a') == false);
-    REQUIRE(isPunct(',') == true);
-    REQUIRE(isPunct('?') == true);
+    REQUIRE(!isPunct('a'));
+    REQUIRE(isPunct(','));
+    REQUIRE(isPunct('?'));
 }
 
 TEST_CASE("Checks if a character contains white-space", "[isSpace]") {
-    REQUIRE(isSpace('a') == false);
-    REQUIRE(isSpace('\t') == true);
-    REQUIRE(isSpace(' ') == true);
+    REQUIRE(!isSpace('a'));
+    REQUIRE(isSpace('\t'));
+    REQUIRE(isSpace(' '));
 }
 
 TEST_CASE("Checks if a character is uppercase" "[isUpperCase") 
 {
-    REQUIRE(isUpperCase('A') == true);
-    REQUIRE(isUpperCase('a') == false);
+    REQUIRE(isUpperCase('A'));
+    REQUIRE(!isUpperCase('a'));
 }
 
 TEST_CASE("Checks if a character is a blank character" "[isWhiteSpace]") 
 {
-    REQUIRE(isWhitespace(' ') == true);
-    REQUIRE(isWhitespace('\t') == true);
-    REQUIRE(isWhitespace('a') == false);
+    REQUIRE(isWhitespace(' '));
+    REQUIRE(isWhitespace('\t'));
+    REQUIRE(!isWhitespace('a'));
 }
 
 TEST_CASE("Checks if it returns a random number" "[isRandom]") 
@@ -229,6 +239,9 @@ TEST_CASE("Checks if it returns a random number" "[isRandom]")
     REQUIRE(i < 100);
     REQUIRE(i > -100);
 }
+
+//The test is lying, since it is testing a C random function rather than the Arduino ones
+
 TEST_CASE("Test randomSeed", "[randomSeed]") 
 {
     std::srand(2);
@@ -245,16 +258,18 @@ TEST_CASE("Test randomSeed", "[randomSeed]")
 void fun() {}
 
 TEST_CASE("Check if vector contains interupt", "[attachInterrupt]") 
-{
+{  
     // First test
-    void (*user_func)() = &fun;
-    attachInterrupt(0, (*user_func), 1);
+    auto (*user_func)() = &fun;
+    attachInterrupt(0, (user_func), 1);
     auto test = board_data->interrupts_handlers[0];
+    REQUIRE(test.first != NULL);
     REQUIRE(test.second == 1);
-
+    
     // Second test
     attachInterrupt(2, (*user_func), 2);
     auto test2 = board_data->interrupts_handlers[2];
+    REQUIRE(test2.first != NULL);
     REQUIRE(test2.second == 2);
 }
 
@@ -262,7 +277,11 @@ TEST_CASE("Delete a interupt from vector", "[detachInterrupt]")
 {
     auto test = board_data->interrupts_handlers[0];
     REQUIRE(test.first != NULL);
-    board_data->interrupts_handlers.erase(board_data->interrupts_handlers.begin());
+    detachInterrupt(0);
     test = board_data->interrupts_handlers[0];
     REQUIRE(test.first == NULL);
+    REQUIRE(test.second == 0);
+    auto test2 = board_data->interrupts_handlers[1];
+    REQUIRE(test2.first != NULL);
+    REQUIRE(test2.second == 2);
 }

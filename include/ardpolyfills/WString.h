@@ -52,7 +52,7 @@ class String {
             switch (base) {
             case BIN:
                 return 65;
-            case DEC:
+            case DEC:   
                 return 11;
             case HEX:
                 return 17;
