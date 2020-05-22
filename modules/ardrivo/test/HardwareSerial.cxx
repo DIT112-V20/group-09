@@ -36,7 +36,7 @@ void static init_fake()
     init(loc_board_data.release(), loc_board_info.release());
 }
 
-TEST_CASE("Hardwareserail begin and write" "[begin], [write]")
+TEST_CASE("Hardwareserial begin and write" "[begin], [write]")
 {
     init_fake();
 
@@ -58,18 +58,21 @@ TEST_CASE("Hardwareserail begin and write" "[begin], [write]")
     REQUIRE(static_cast<int>(c) == 0);
 }
 
+//Test not run in order, may fail
 TEST_CASE("Check available bytes for reading" "[available]")
 {
     HardwareSerial test;
     REQUIRE(test.available() == 3);
 }
 
+//Test not run in order, may fail
 TEST_CASE("Check how many avaiable bytes for writing" "[availableForWrite]")
 {
     HardwareSerial test;
     REQUIRE(test.availableForWrite() == 2147483647);
 }
 
+//Test not run in order, may fail
 TEST_CASE("Check peek of the next byte" "[peek]")
 {
     HardwareSerial test;
@@ -77,6 +80,7 @@ TEST_CASE("Check peek of the next byte" "[peek]")
     REQUIRE(test.peek() == 150);   
 }
 
+//Test not run in order, may fail
 TEST_CASE("The first byte" "[read]")
 {
     HardwareSerial test;
