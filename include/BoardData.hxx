@@ -33,11 +33,17 @@
 #include <vector>
 #include "utility.hxx"
 
+/**
+* Protects shared data from being simultaneously accessed by multiple threads
+**/
 struct BidirMutexes {
     std::mutex rx_mutex;
     std::mutex tx_mutex;
 };
 
+/**
+* Contains the fixed size of the buffer from transmitter and reciever and its used size
+**/
 template <std::size_t N>
 struct FixBufferBus : BidirMutexes {
     std::array<std::byte, N> rx;
@@ -46,6 +52,9 @@ struct FixBufferBus : BidirMutexes {
     std::size_t tx_used_size;
 };
 
+/**
+* Contains the dynamic size of the buffer from transmitter and reciever
+**/
 struct DynaBufferBus : BidirMutexes {
     std::vector<std::byte> rx;
     std::vector<std::byte> tx;
@@ -72,7 +81,9 @@ struct SpiBus {
     std::unordered_map<std::uint16_t, std::variant<BlockingBus<DynaBufferBus>, std::function<void(std::byte*, std::size_t)>>> slaves; // GCC10: use `std::span` in funcsig
     std::mutex slaves_mut;
 };
-
+/**
+* Contains the different board data settings 
+**/
 struct BoardData {
     std::vector<std::atomic_bool> digital_pin_values;
     std::vector<std::atomic_uint16_t> analog_pin_values;

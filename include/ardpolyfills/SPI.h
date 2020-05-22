@@ -20,12 +20,17 @@
 #define SPI_h
 
 #include <cstdint>
-
+/**
+* Unsigned digit for least sigficifant bit and most significant bit
+**/
 enum SMCE__BitOrdering : uint8_t {
     LSBFIRST,
     MSBFIRST
 };
 
+/**
+*  Integral quotient and remainder
+**/
 enum SMCE__SpiClockDivider : uint8_t {
     SPI_CLOCK_DIV4,
     SPI_CLOCK_DIV16,
@@ -36,7 +41,9 @@ enum SMCE__SpiClockDivider : uint8_t {
     SPI_CLOCK_DIV32
 };
 
-
+/**
+*SPI data modes
+**/
 enum SMCE__SpiMode : uint8_t {
     SPI_MODE0 = 0,
     SPI_MODE1 = 4,
@@ -63,19 +70,62 @@ class SPIClass {
     bool active = false;
 
   public:
+    /**
+    * Initializes the SPI bus
+    **/
     void begin();
     void begin(int slave_select); // Arduino Due only
+    
+    /**
+    * Disables the SPI bus 
+    **/
     void end();
+   
+    /**
+    * Initializes the SPI bus and sets slave_sel to true
+    **/
     void beginTransaction(SPISettings spi_settings = {});
+
+    /**
+    * Stop using the SPI bus
+    **/
     void endTransaction();
+
+    /**
+    * Sets the order of the bits shifted out of and into the SPI bus with given ordering
+    **/
     [[deprecated]] void setBitOrder(SMCE__BitOrdering bit_ordering);
+
+    /**
+    * Sets the SPI data mode with the given mode
+    **/
     [[deprecated]] void setDataMode(SMCE__SpiMode spi_mode);
     [[deprecated]] void setDataMode(int slave_select, std::uint8_t spi_mode); // Arduino Due only
+
+    /**
+    * Sets the SPI clock divider relative to the system clock
+    **/
     [[deprecated]] void setClockDivider(SMCE__SpiClockDivider divider);
     [[deprecated]] void setClockDivider(int slave_select, std::uint8_t divider); // Arduino Due only
+
+    /**
+    * Calls the transfer with given data and size of that data
+    **/
     uint8_t transfer(std::uint8_t data);
+
+    /**
+    * Same as transfer but with uin16_t as argument
+    **/
     uint16_t transfer16(std::uint16_t data);
+
+    /**
+    * 
+    **/
     void transfer(void* buf, std::uint16_t count);
+
+    /**
+    * 
+    **/
     bool pins(std::int8_t sck, std::int8_t miso, std::int8_t mosi, std::int8_t ss); // ESP only
 };
 

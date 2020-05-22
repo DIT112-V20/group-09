@@ -50,18 +50,46 @@
 
 struct HardwareSerial : Stream {
 
+    /**
+    * Set the begun variable to true to begin communication
+    **/
     void begin(unsigned long baud) { begin(baud, SERIAL_8N1); }
     void begin(unsigned long, std::uint8_t);
+
+    /**
+    * Sets the begun to false and ends the communication
+    **/
     void end();
 
+    /**
+    * Get the number of bytes available for reading from the serial port
+    **/
     [[nodiscard]] int available() override;
+
+    /**
+    * Reads incoming serial data
+    **/
     [[nodiscard]] int read() override;
+
+    /**
+    * Returns the next byte of incoming serial data 
+    **/
     [[nodiscard]] int peek() override;
 
+    /**
+    * Get the number of bytes available for writing
+    **/
     [[nodiscard]] int availableForWrite() override;
 
+    /**
+    * Writes the byte to the write_byte function pointer in boardData
+    **/
     size_t write(std::uint8_t) override;
     size_t write(const std::uint8_t*, size_t) override;
+
+    /**
+    * Returns the value written using write
+    **/
     inline size_t write(unsigned long n) { return write((std::uint8_t)n); }
     inline size_t write(long n) { return write((std::uint8_t)n); }
     inline size_t write(unsigned int n) { return write((std::uint8_t)n); }

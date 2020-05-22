@@ -21,8 +21,14 @@
 
 struct BoardData;
 struct BoardInfo;
-
+/**
+* Initializes boardData and boardInfo
+**/
 bool init(BoardData*, const BoardInfo*);
+
+/**
+* Initializes boardData and boardInfo if not init has initialized it
+**/
 void maybe_init() noexcept;
 void deinit();
 

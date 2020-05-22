@@ -28,34 +28,66 @@
 class Print {
     int write_error = 0;
 
+    /**
+    * Writes an error
+    **/
   protected:
     constexpr void setWriteError(int err = 1) noexcept { write_error = err; }
 
   public:
     Print() noexcept = default;
+    /**
+    * Get the error that is written 
+    **/
     [[nodiscard]] constexpr int getWriteError() noexcept { return write_error; }
+
+    /**
+    * Clears the error written
+    **/
     constexpr void clearWriteError() noexcept { setWriteError(0); }
 
+    /**
+    * Gets overridden by subclasses 
+    **/
     virtual std::size_t write(std::uint8_t) = 0;
+
+    /**
+    * Returns the number of bytes that was written 
+    **/
     inline virtual std::size_t write(const uint8_t* buffer, std::size_t size) {
         const auto beg = buffer;
         while (size-- && write(*buffer++))
             ;
         return std::distance(beg, buffer);
     }
+
+    /**
+    * Returns the value from write and terminates the null characters in str
+    **/
     inline std::size_t write(const char* str) {
         if (!str)
             return 0;
         return write(str, std::strlen(str));
     }
+
+    /**
+    * Converts between types (char and uint8_t) and returns the value from write
+    **/
     inline std::size_t write(const char* buffer, size_t size) { return write(reinterpret_cast<const std::uint8_t*>(buffer), size); }
 
     // default to zero, meaning "a single write may block"
     // should be overriden by subclasses with buffering
+    /**
+    * Gets overridden by subclasses
+    **/
     inline virtual int availableForWrite() { return 0; }
 
     // template <std::size_t N>
     // std::size_t print(const char (&lit)[N]) { return write(lit, N); }
+
+    /**
+    * 
+    **/
     inline std::size_t print(const String& s) { return write(s.c_str(), s.length()); }
     inline std::size_t print(const char* czstr) { return write(czstr); }
     inline std::size_t print(char c) { return write(c); }

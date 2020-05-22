@@ -21,7 +21,9 @@
 
 #include "BoardData.hxx"
 #include "BoardInfo.hxx"
-
+/**
+* Pointers fir board_data and board_info
+**/
 extern BoardData* board_data;
 extern const BoardInfo* board_info;
 
