@@ -8,7 +8,7 @@ static void init_fake() {
     if(board_data)
         (delete board_data), board_data = nullptr;
     if(board_info)
-        (delete board_info), board_data = nullptr;
+        (delete board_info), board_info = nullptr;
 
     auto loc_board_data = std::make_unique<BoardData>();
     loc_board_data->interrupt_mut = std::make_unique<std::recursive_mutex>();
