@@ -35,7 +35,7 @@ void static init_fake()
 
     init(loc_board_data.release(), loc_board_info.release());
 }
-//I am curious as to how you manage to have a pin in both input and output mode at the same time
+
 TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite], [digitalRead], [analogWrite], [analogRead]") {
     init_fake();
 
@@ -49,8 +49,11 @@ TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite
     SECTION("Set digital pins ") 
     {
         digitalWrite(1, LOW);
+        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::INPUT);
         REQUIRE(digitalRead(1) == LOW);
+        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::OUTPUT);
         digitalWrite(1, HIGH);
+        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::INPUT);
         REQUIRE(digitalRead(1) == HIGH);
 
         auto i = GENERATE(0, 1, 2);
@@ -58,9 +61,13 @@ TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite
         REQUIRE(digitalRead(i) == HIGH);     
     }
     SECTION("Set analog pins") {
+        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::OUTPUT);
         analogWrite(1, 0);
+        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::INPUT);
         REQUIRE(analogRead(1) == 0);
+        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::OUTPUT);
         analogWrite(1, 500);
+        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::INPUT);
         REQUIRE(analogRead(1) == 500);
     }
 
@@ -78,7 +85,6 @@ TEST_CASE("Set tone frequency on pin", "[tone], [noTone]")
     board_data->pin_frequency[i] = 30;
     REQUIRE(board_data->pin_frequency[i] == 30);
 }
-
 
 // TEST_CASE("Pulse in");
 
@@ -112,8 +118,6 @@ TEST_CASE("delay the thread in microseconds", "[delayMicroseconds]")
     REQUIRE(duration < 2000us); 
 }
 
-//Margin is useless; Ardrivo tests are unordered and take random amounts of time
-
 TEST_CASE("Return number of microseconds since arduino board began", "[micros]") {
     init_fake();
     const unsigned long durationBoardBegun = micros();
@@ -127,7 +131,6 @@ TEST_CASE("Return number of microseconds since arduino board began", "[micros]")
     REQUIRE(durationCheck > 1000100us);
 }
 
-//Same as above
 TEST_CASE("Return number of milliseconds since arduino board began", "[millis]") {
     init_fake();
     const unsigned long durationBoardBegun = millis();
@@ -244,16 +247,45 @@ TEST_CASE("Checks if it returns a random number" "[isRandom]")
 
 TEST_CASE("Test randomSeed", "[randomSeed]") 
 {
-    std::srand(2);
-    int num = std::rand();
-    int num2 = std::rand();
+    long arr[100];
+    long arr2[100];
+    long arr3[100];
+    auto count = 0;
+    randomSeed(2);
 
-    std::srand(2);
-    int num3 = std::rand();
+    for (int i = 0; i < 100; i++)
+    {
+        arr[i] = random(100);
+    }
+    randomSeed(3);
 
-    REQUIRE(num != num2);
-    REQUIRE(num == num3);
+    for (int i = 0; i < 100; i++)
+    {
+        arr2[i] = random(100);
+    }
+
+    for (int i = 0; i < 100; i++)
+    {
+        if (arr[i] == arr2[i])
+        {
+            count++;
+        }
+    }
+    REQUIRE(count < 3);
+
+    randomSeed(2);
+
+    for (int i = 0; i < 100; i++)
+    {
+        arr3[i] = random(100);
+    }
+
+    for (int i = 0; i < 100; i++)
+    {
+        REQUIRE(arr[i] == arr3[i]);
+    }
 }
+   
 
 void fun() {}
 

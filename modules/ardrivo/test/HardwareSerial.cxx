@@ -58,34 +58,35 @@ TEST_CASE("Hardwareserial begin and write" "[begin], [write]")
     REQUIRE(static_cast<int>(c) == 0);
 }
 
-//Test not run in order, may fail
 TEST_CASE("Check available bytes for reading" "[available]")
 {
+    init_fake();
     HardwareSerial test;
     REQUIRE(test.available() == 3);
 }
 
-//Test not run in order, may fail
 TEST_CASE("Check how many avaiable bytes for writing" "[availableForWrite]")
 {
+    init_fake();
     HardwareSerial test;
     REQUIRE(test.availableForWrite() == 2147483647);
 }
 
-//Test not run in order, may fail
 TEST_CASE("Check peek of the next byte" "[peek]")
 {
     HardwareSerial test;
     test.begin(1);
-    REQUIRE(test.peek() == 150);   
+    test.write(100);
+    REQUIRE(test.peek() == 100);   
 }
 
-//Test not run in order, may fail
 TEST_CASE("The first byte" "[read]")
 {
+    init_fake();
     HardwareSerial test;
     test.begin(1);
-    REQUIRE(test.read() == 150);
+    test.write(50);
+    REQUIRE(test.read() == 50);
     REQUIRE(test.read() == 0);
 }
 
