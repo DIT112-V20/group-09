@@ -1,5 +1,6 @@
 #include <catch2/catch.hpp>
 #include "WString.h"
+#include <string_view>
 
 using Catch::Contains;
 using Catch::EndsWith; 
@@ -11,8 +12,10 @@ TEST_CASE("Test compare a string to another" "[compareTo]")
 	String test2 = "test";
 	String test3 = "test";
 	String test4 = "est";	
-	REQUIRE(!test.compareTo(test2));		
-	REQUIRE(test3.compareTo(test4));
+	String test5 = "Test";
+	REQUIRE(test.compareTo(test2) == 0);
+	REQUIRE(test3.compareTo(test4) == 1);
+	REQUIRE(test5.compareTo(test) == -1);
 }
 
 TEST_CASE("Tests whether or not a String starts with the characters of another String" "[startsWith]")
@@ -23,7 +26,6 @@ TEST_CASE("Tests whether or not a String starts with the characters of another S
 	String test4 = "test";	
 	REQUIRE(test.startsWith(test2));
 	REQUIRE(!test3.startsWith(test4));
-
 }
 
 TEST_CASE("Tests whether or not a String ends with the characters of another String" "[endsWith]")
@@ -81,10 +83,8 @@ TEST_CASE("Test if string is given a new capacity" "[reserve]")
 { 
 	String cap = "";
 	REQUIRE(cap.length() == 0);
-	std::cout << cap.length() << "\n";
 
 	cap.reserve(25);
-	std::cout << cap.length();
 	//REQUIRE(cap.length() == 63);
 }
 
@@ -133,10 +133,8 @@ TEST_CASE("Converts a valid String to an double. The input String should start w
 {
 	String test = "1.0323414535 and 23";
 	double num =  test.toDouble();
-	REQUIRE(num == 1.0323414535);
-	String test2 = "123.4234512345";
-	double num2 =  test2.toDouble();
-	REQUIRE(num2 == 123.4234512345);
+	REQUIRE(num >= 1.03228);
+	REQUIRE(num <= 1.03240);
 }
 
 
@@ -144,12 +142,10 @@ TEST_CASE("Converts a valid String to an double. The input String should start w
 //values can be represented by all standard compliant floating-point implementations; do range checks instead
 TEST_CASE("Converts a valid String to an float. The input String should start with an float number" "[toFloat]")
 {
-	String test = "1.0123 and 23";
-	float num =  test.toFloat();
-	REQUIRE(num == 1.0123f);
-	String test2 = "123.23545";
-	float num2 =  test2.toFloat();
-	REQUIRE(num2 == 123.23545f);
+	String test = "33.34523345 stuff 23";
+	float num =  test.toFloat();		
+	REQUIRE(num >= 33.3445);
+	REQUIRE(num <= 33.3460);
 }
 
 TEST_CASE("Get a lower-case version of a String" "[toLowerCase]")
