@@ -27,7 +27,7 @@ PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(BoardData& bd, Urho3D::Node* 
 
     bus_id = pin["bus_id"].GetUint();
     store.address = pin["address"].GetUint();
-    store.data[0xC0] = 0xEE;
+    store.data = vlx.rom;
     bus = &bd.i2c_buses[bus_id];
     std::scoped_lock lock{bus->devices_mut};
     bus->slaves[store.address].second.emplace<1>([&](std::size_t size) mutable {
@@ -38,7 +38,7 @@ PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(BoardData& bd, Urho3D::Node* 
 
       std::basic_string<std::byte> ret{};
       ret.resize(size);
-      // Prevent reading beyond the rom
+      // Prevent reading beyond the ram
       if (reg + size > store.data.size()) {
           buf.rx.emplace_back(ret);
           return;
@@ -63,4 +63,7 @@ PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(BoardData& bd, Urho3D::Node* 
     });
 }
 
-void PerfectAnalogLaserSensor::Update(float timeStep) { p_laser_map::make_ticker(vlx, store, *bus, *this)(); }
+void PerfectAnalogLaserSensor::Update(float timeStep) {
+    const static auto ticker = p_laser_map::make_ticker(vlx, store, *bus, *this);
+    ticker();
+}

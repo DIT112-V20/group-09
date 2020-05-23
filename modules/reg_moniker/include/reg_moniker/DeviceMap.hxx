@@ -33,12 +33,12 @@ template <class Driver> struct Device {
     using RegAttachedFunction = void(Driver&, DeviceStorage&, gsl::span<const std::byte>);
     using RegAttachedFunctionPtr = RegAttachedFunction*;
 
-    using Storage = std::array<std::uint8_t, 255>;
+    using Storage = std::array<std::uint8_t, 256>;
 
     struct DeviceMap {
-        std::array<MapVals, 255> map{};
+        std::array<MapVals, 256> map{};
         Storage rom{};
-        std::array<RegAttachedFunctionPtr, 255> func = {};
+        std::array<RegAttachedFunctionPtr, 256> func = {};
     };
 
     struct DeviceStorage {
@@ -74,7 +74,6 @@ template <class Driver> struct Device {
           std::size_t index = 0;
           std::size_t size = buf.tx.size();
           for (const auto& packet : buf.tx) {
-              fmt::print("{}", packet.size());
               if (packet.size() == 1) // Read byte written but handle operation did not lock yet
                   break;              // Let handle operation lock
               const auto reg = static_cast<uint8_t>(packet.front());
@@ -88,11 +87,10 @@ template <class Driver> struct Device {
               ++index;
           }
 
-          if (index == buf.tx.size() + 1)
+          if (index == buf.tx.size())
               buf.tx = {};
           else
-              buf.tx.erase(buf.tx.begin(), buf.tx.begin() + index - 1);
-          int i = 0;
+              buf.tx.erase(buf.tx.begin(), buf.tx.begin() + index);
         };
     }
 };

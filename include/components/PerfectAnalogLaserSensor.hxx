@@ -30,15 +30,17 @@ class PerfectAnalogLaserSensor : public LaserCaster {
     std::uint8_t bus_id{};
     I2cBus* bus;
 
-    enum readRegs {
+    enum ReadRegs {
+        INTERRUPT_RESULT = 0x13,
         MEASUREMENT_RESULT = 0x14,
     };
 
-    enum writeRegs { SPAD_INFO = 0x83, DEVICE_ID = 0xC0, CHANGE_ADDRESS = 0x8A };
+    enum WriteRegs { SPAD_INFO = 0x83, DEVICE_ID = 0xC0, CHANGE_ADDRESS = 0x8A };
 
     using p_laser_map = regmon::Device<PerfectAnalogLaserSensor>;
-    p_laser_map::DeviceMap vlx =
+    const p_laser_map::DeviceMap vlx =
         p_laser_map::make_device(p_laser_map::DefaultsTo<DEVICE_ID>{0xEE}, p_laser_map::DefaultsTo<SPAD_INFO>{0x01},
+                                 p_laser_map::DefaultsTo<INTERRUPT_RESULT>{0x07},
                                  p_laser_map::InvokesFunction<CHANGE_ADDRESS>{
                                      +[](PerfectAnalogLaserSensor& drv, p_laser_map::DeviceStorage& store, gsl::span<const std::byte> incoming) {
                                        auto ex = drv.bus->slaves.extract(store.address);
