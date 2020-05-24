@@ -49,6 +49,7 @@ constexpr auto compile_registry(){
 }
 
 constexpr std::array attachments_registry = compile_registry<ServoMotor,
+                                                             SteeringServo,
                                                              PerfectDistanceI2CSensor,
                                                              PerfectGyroscopeI2CSensor,
                                                              PerfectDistanceAnalogSensor>();

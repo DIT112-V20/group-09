@@ -67,7 +67,13 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
 extern template class WheelServo<&Urho3D::RaycastVehicle::SetSteeringValue>;
 extern template class WheelServo<&Urho3D::RaycastVehicle::SetEngineForce>;
 
-using SteeringServo = WheelServo<&Urho3D::RaycastVehicle::SetSteeringValue>;
-using ServoMotor = WheelServo<&Urho3D::RaycastVehicle::SetEngineForce>;
+struct SteeringServo : WheelServo<&Urho3D::RaycastVehicle::SetSteeringValue> {
+    URHO3D_OBJECT(SteeringServo, WheelServo<&Urho3D::RaycastVehicle::SetSteeringValue>);
+    using WheelServo::WheelServo;
+};
+struct ServoMotor : WheelServo<&Urho3D::RaycastVehicle::SetEngineForce> {
+    URHO3D_OBJECT(ServoMotor, WheelServo<&Urho3D::RaycastVehicle::SetEngineForce>);
+    using WheelServo::WheelServo;
+};
 
 #endif // SMARTCAR_EMUL_WHEELSERVO_HXX
