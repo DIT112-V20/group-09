@@ -104,6 +104,8 @@ target_sources (smartcar_emul PRIVATE
         src/components/LaserCaster.cxx include/components/LaserCaster.hxx
         src/components/PerfectAnalogLaserSensor.cxx
         include/components/PerfectAnalogLaserSensor.hxx
+        src/components/PerfectGyroscopeI2C.cxx
+        include/components/PerfectGyroscopeI2C.hxx
         src/components/Servo.cxx include/components/Servo.hxx
         src/components/WheelServo.cxx
         include/components/WheelServo.hxx
