@@ -23,12 +23,13 @@
 #include <utility>
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Node.h>
-#include <rapidjson/document.h>
 #include <gsl/gsl>
 #include <nameof.hpp>
+#include <rapidjson/document.h>
+#include "components/PerfectDistanceI2CSensor.hxx"
+#include "components/PerfectDistanceAnalogSensor.hxx"
+#include "components/PerfectGyroscopeI2CSensor.hxx"
 #include "components/WheelServo.hxx"
-#include "components/PerfectAnalogLaserSensor.hxx"
-#include "components/PerfectGyroscopeI2C.hxx"
 #include "BoardData.hxx"
 #include "utility.hxx"
 
@@ -47,6 +48,9 @@ constexpr auto compile_registry(){
     return make_array(attachment_entry<Attachments>()...);
 }
 
-constexpr std::array attachments_registry = compile_registry<ServoMotor, PerfectAnalogLaserSensor, PerfectGyroscopeI2C>();
+constexpr std::array attachments_registry = compile_registry<ServoMotor,
+                                                             PerfectDistanceI2CSensor,
+                                                             PerfectGyroscopeI2CSensor,
+                                                             PerfectDistanceAnalogSensor>();
 
 #endif // SMARTCAR_EMUL_REGISTRY_HXX
