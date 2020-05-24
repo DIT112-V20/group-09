@@ -34,7 +34,9 @@
 #include "app/UrhoApp.hxx"
 #include "components/EmulGlue.hxx"
 #include "components/MovableCamera.hxx"
+#include "components/WheelServo.hxx"
 #include "components/Registry.hxx"
+#include "components/Vehicle.hxx"
 #include "gui/TorchMenu.hxx"
 #include "UrhoUtility.hxx"
 #include "VehicleConf.hxx"
@@ -43,6 +45,9 @@ UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} {
     MovableCamera::RegisterObject(context);
     TorchMenu::RegisterObject(context);
     EmulGlue::RegisterObject(context);
+    SteeringServo::RegisterObject(context);
+    ServoMotor::RegisterObject(context);
+    Vehicle::RegisterObject(context);
 }
 
 void UrhoApp::Setup() {
