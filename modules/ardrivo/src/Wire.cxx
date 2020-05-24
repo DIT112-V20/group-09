@@ -8,6 +8,8 @@
 #include "Wire.h"
 #include "utility.hxx"
 
+TwoWire Wire;
+
 void TwoWire::begin() { begun = true; }
 
 void TwoWire::begin(std::uint8_t with_address) {
@@ -69,10 +71,6 @@ std::size_t TwoWire::requestFrom(std::uint8_t address, std::size_t quantity, [[m
 
 std::uint8_t TwoWire::requestFrom(std::uint8_t address, std::uint8_t size, std::uint8_t stop) {
     return requestFrom(address, static_cast<std::size_t>(size), static_cast<bool>(stop));
-}
-
-uint8_t TwoWire::requestFrom(int address, int size, int stop) {
-    return requestFrom(static_cast<std::uint8_t>(address), static_cast<std::size_t>(size), static_cast<bool>(stop));
 }
 
 void TwoWire::beginTransmission(std::uint8_t address) {
