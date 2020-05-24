@@ -26,7 +26,7 @@
 #include "DeviceMap.hxx"
 
 
-class PerfectGyroscopeI2C : Urho3D::LogicComponent {
+class PerfectGyroscopeI2C : public Urho3D::LogicComponent {
     URHO3D_OBJECT(PerfectGyroscopeI2C, Urho3D::LogicComponent);
 
     enum Registers {
