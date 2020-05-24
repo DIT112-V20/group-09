@@ -37,17 +37,16 @@ class PerfectAnalogLaserSensor : public LaserCaster {
 
     enum WriteRegs { SPAD_INFO = 0x83, DEVICE_ID = 0xC0, CHANGE_ADDRESS = 0x8A };
 
-    using p_laser_map = regmon::Device<PerfectAnalogLaserSensor>;
-    const p_laser_map::DeviceMap vlx =
-        p_laser_map::make_device(p_laser_map::DefaultsTo<DEVICE_ID>{0xEE}, p_laser_map::DefaultsTo<SPAD_INFO>{0x01},
-                                 p_laser_map::DefaultsTo<INTERRUPT_RESULT>{0x07},
-                                 p_laser_map::InvokesFunction<CHANGE_ADDRESS>{
-                                     +[](PerfectAnalogLaserSensor& drv, p_laser_map::DeviceStorage& store, gsl::span<const std::byte> incoming) {
+    using RDev = regmon::Device<PerfectAnalogLaserSensor>;
+    const RDev::DeviceMap vlx = RDev::make_device(
+        RDev::DefaultsTo<DEVICE_ID>{0xEE}, RDev::DefaultsTo<SPAD_INFO>{0x01}, RDev::DefaultsTo<INTERRUPT_RESULT>{0x07},
+        RDev::InvokesFunction<CHANGE_ADDRESS>{
+                                     +[](PerfectAnalogLaserSensor& drv, RDev::DeviceStorage& store, gsl::span<const std::byte> incoming) {
                                        auto ex = drv.bus->slaves.extract(store.address);
                                        store.data[CHANGE_ADDRESS] = store.address = ex.key() = static_cast<uint8_t>(incoming.front());
                                        drv.bus->slaves.insert(std::move(ex));
                                      }});
-    p_laser_map::DeviceStorage store = p_laser_map::DeviceStorage{};
+    RDev::DeviceStorage store{};
 
   public:
     PerfectAnalogLaserSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);

@@ -64,6 +64,6 @@ PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(BoardData& bd, Urho3D::Node* 
 }
 
 void PerfectAnalogLaserSensor::Update(float timeStep) {
-    const static auto ticker = p_laser_map::make_ticker(vlx, store, *bus, *this);
+    const static auto ticker = RDev::make_ticker(vlx, store, *bus, *this);
     ticker();
 }
