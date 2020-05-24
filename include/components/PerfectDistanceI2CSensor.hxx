@@ -1,5 +1,5 @@
 /*
- *  PerfectAnalogLaserSensor.hxx
+ *  PerfectDistanceI2CSensor.hxx
  *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
  *  limitations under the License.
  */
 
-#ifndef SMARTCAR_EMUL_PERFECTANALOGLASERSENSOR_HXX
-#define SMARTCAR_EMUL_PERFECTANALOGLASERSENSOR_HXX
+#ifndef SMARTCAR_EMUL_PERFECTDISTANCEI2CSENSOR_HXX
+#define SMARTCAR_EMUL_PERFECTDISTANCEI2CSENSOR_HXX
 
 #include <cstdint>
 #include <rapidjson/include/rapidjson/document.h>
@@ -24,8 +24,8 @@
 #include "DeviceMap.hxx"
 #include "LaserCaster.hxx"
 
-class PerfectAnalogLaserSensor : public LaserCaster {
-  URHO3D_OBJECT(PerfectAnalogLaserSensor, LaserCaster);
+class PerfectDistanceI2CSensor : public LaserCaster {
+  URHO3D_OBJECT(PerfectDistanceI2CSensor, LaserCaster);
 
     std::uint8_t bus_id{};
     I2cBus* bus;
@@ -37,11 +37,11 @@ class PerfectAnalogLaserSensor : public LaserCaster {
 
     enum WriteRegs { SPAD_INFO = 0x83, DEVICE_ID = 0xC0, CHANGE_ADDRESS = 0x8A };
 
-    using RDev = regmon::Device<PerfectAnalogLaserSensor>;
+    using RDev = regmon::Device<PerfectDistanceI2CSensor>;
     const RDev::DeviceMap vlx = RDev::make_device(
         RDev::DefaultsTo<DEVICE_ID>{0xEE}, RDev::DefaultsTo<SPAD_INFO>{0x01}, RDev::DefaultsTo<INTERRUPT_RESULT>{0x07},
         RDev::InvokesFunction<CHANGE_ADDRESS>{
-                                     +[](PerfectAnalogLaserSensor& drv, RDev::DeviceStorage& store, gsl::span<const std::byte> incoming) {
+                                     +[](PerfectDistanceI2CSensor& drv, RDev::DeviceStorage& store, gsl::span<const std::byte> incoming) {
                                        auto ex = drv.bus->slaves.extract(store.address);
                                        store.data[CHANGE_ADDRESS] = store.address = ex.key() = static_cast<uint8_t>(incoming.front());
                                        drv.bus->slaves.insert(std::move(ex));
@@ -49,9 +49,9 @@ class PerfectAnalogLaserSensor : public LaserCaster {
     RDev::DeviceStorage store{};
 
   public:
-    PerfectAnalogLaserSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
+    PerfectDistanceI2CSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
 
     void Update(float timeStep) override;
 };
 
-#endif // SMARTCAR_EMUL_PERFECTANALOGLASERSENSOR_HXX
+#endif // SMARTCAR_EMUL_PERFECTDISTANCEI2CSENSOR_HXX

@@ -102,10 +102,14 @@ target_sources (smartcar_emul PRIVATE
         include/components/MovableCamera.hxx
         src/components/MovableCamera.cxx
         src/components/LaserCaster.cxx include/components/LaserCaster.hxx
-        src/components/PerfectAnalogLaserSensor.cxx
-        include/components/PerfectAnalogLaserSensor.hxx
-        src/components/PerfectGyroscopeI2C.cxx
-        include/components/PerfectGyroscopeI2C.hxx
+        src/components/PerfectDistanceI2CSensor.cxx
+        include/components/PerfectDistanceI2CSensor.hxx
+        src/components/PerfectDistanceAnalogSensor.cxx
+        include/components/PerfectDistanceAnalogSensor.hxx
+        src/components/PerfectGyroscopeI2CSensor.cxx
+        include/components/PerfectGyroscopeI2CSensor.hxx
+        include/components/PerfectDistanceAnalogSensor.hxx
+        src/components/PerfectDistanceAnalogSensor.cxx
         src/components/Servo.cxx include/components/Servo.hxx
         src/components/WheelServo.cxx
         include/components/WheelServo.hxx

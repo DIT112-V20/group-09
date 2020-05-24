@@ -1,6 +1,5 @@
-
 /*
- *  PerfectAnalogLaserSensor.cxx
+ *  PerfectDistanceI2CSensor.cxx
  *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,11 +16,11 @@
  */
 
 #include <range/v3/algorithm/find.hpp>
-#include "components/PerfectAnalogLaserSensor.hxx"
+#include "components/PerfectDistanceI2CSensor.hxx"
 
 constexpr auto err_msg = "Attempted to create component PerfectAnalogLaserSensor with an invalid configuration";
 
-PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin) : LaserCaster{node} {
+PerfectDistanceI2CSensor::PerfectDistanceI2CSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin) : LaserCaster{node} {
     if (!pin.HasMember("bus_id") || !pin.HasMember("address"))
         throw std::runtime_error{err_msg};
 
@@ -63,7 +62,7 @@ PerfectAnalogLaserSensor::PerfectAnalogLaserSensor(BoardData& bd, Urho3D::Node* 
     });
 }
 
-void PerfectAnalogLaserSensor::Update(float timeStep) {
+void PerfectDistanceI2CSensor::Update(float timeStep) {
     const static auto ticker = RDev::make_ticker(vlx, store, *bus, *this);
     ticker();
 }

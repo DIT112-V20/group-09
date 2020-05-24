@@ -1,5 +1,5 @@
 /*
- *  PerfectGyroscopeI2C.cxx
+ *  PerfectGyroscopeI2CSensor.cxx
  *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,34 +17,34 @@
 
 #include <cstdint>
 #include <Urho3D/Scene/Node.h>
-#include "components/PerfectGyroscopeI2C.hxx"
+#include "components/PerfectGyroscopeI2CSensor.hxx"
 
-[[maybe_unused]] [[nodiscard]] bool PerfectGyroscopeI2C::is_powered_up() const noexcept {
+[[maybe_unused]] [[nodiscard]] bool PerfectGyroscopeI2CSensor::is_powered_up() const noexcept {
     return store.data[CTRL_REG1] & (1u << 3u);
 }
 
-[[nodiscard]] auto PerfectGyroscopeI2C::get_power_mode() const noexcept -> PowerMode {
+[[nodiscard]] auto PerfectGyroscopeI2CSensor::get_power_mode() const noexcept -> PowerMode {
     const std::uint8_t bits = store.data[CTRL_REG1] & 0x0Fu;
     return bits & (1u << 3u) ? (bits & ~(1u << 3u) ? PowerMode::sleeping : PowerMode::normal) : PowerMode::powered_down;
 }
 
-[[maybe_unused]] [[nodiscard]] auto PerfectGyroscopeI2C::get_data_rate() const noexcept -> DataRate {
+[[maybe_unused]] [[nodiscard]] auto PerfectGyroscopeI2CSensor::get_data_rate() const noexcept -> DataRate {
     const std::uint8_t bits = store.data[CTRL_REG1] & 0xF0u;
     const std::uint8_t dr = (bits & 0xCu) >> 2u;
     [[maybe_unused]] const std::uint8_t bw = bits & 0x3u;
     return DataRate{dr};
 }
 
-[[nodiscard]] auto PerfectGyroscopeI2C::get_full_scale() const noexcept -> FullScale {
+[[nodiscard]] auto PerfectGyroscopeI2CSensor::get_full_scale() const noexcept -> FullScale {
     const std::uint8_t bits = store.data[CTRL_REG4];
     return bits & (1u << 5u) ? FullScale::dps2000 : bits & (1u << 4u) ? FullScale::dps500 : FullScale::dps250;
 }
 
-[[nodiscard]] std::endian PerfectGyroscopeI2C::get_data_endianness() const noexcept {
+[[nodiscard]] std::endian PerfectGyroscopeI2CSensor::get_data_endianness() const noexcept {
     return ((store.data[CTRL_REG4] >> 6u) & 1u) ? std::endian::big : std::endian::little;
 }
 
-PerfectGyroscopeI2C::PerfectGyroscopeI2C(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin) : Urho3D::LogicComponent(node->GetContext()) {
+PerfectGyroscopeI2CSensor::PerfectGyroscopeI2CSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin) : Urho3D::LogicComponent(node->GetContext()) {
     if (!pin.HasMember("bus_id") || !pin.HasMember("address"))
         throw std::runtime_error{"Attempted to create component PerfectGyroscopeI2C with an invalid configuration"};
 
@@ -73,7 +73,7 @@ PerfectGyroscopeI2C::PerfectGyroscopeI2C(BoardData& bd, Urho3D::Node* node, cons
     });
 }
 
-void PerfectGyroscopeI2C::Update(float timeStep) {
+void PerfectGyroscopeI2CSensor::Update(float timeStep) {
     if(get_power_mode() != PowerMode::normal)
         return;
 

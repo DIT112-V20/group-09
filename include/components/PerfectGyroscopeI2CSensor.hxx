@@ -15,8 +15,8 @@
  *  limitations under the License.
  */
 
-#ifndef SMARTCAR_EMUL_PERFECTGYROSCOPEI2C_HXX
-#define SMARTCAR_EMUL_PERFECTGYROSCOPEI2C_HXX
+#ifndef SMARTCAR_EMUL_PERFECTGYROSCOPEI2CSENSOR_HXX
+#define SMARTCAR_EMUL_PERFECTGYROSCOPEI2CSENSOR_HXX
 
 #include <array>
 #include <bit>
@@ -26,8 +26,8 @@
 #include "DeviceMap.hxx"
 
 
-class PerfectGyroscopeI2C : public Urho3D::LogicComponent {
-    URHO3D_OBJECT(PerfectGyroscopeI2C, Urho3D::LogicComponent);
+class PerfectGyroscopeI2CSensor : public Urho3D::LogicComponent {
+    URHO3D_OBJECT(PerfectGyroscopeI2CSensor, Urho3D::LogicComponent);
 
     enum Registers {
         WHO_AM_I = 0xF0,
@@ -72,7 +72,7 @@ class PerfectGyroscopeI2C : public Urho3D::LogicComponent {
     // Full scale to sensitivity
     constexpr static std::array fs2sens{0.00875f, 0.0175f, 0.07f};
 
-    using RDev = regmon::Device<PerfectGyroscopeI2C>;
+    using RDev = regmon::Device<PerfectGyroscopeI2CSensor>;
     const RDev::DeviceMap gy = RDev::make_device(
         RDev::DefaultsTo<WHO_AM_I>{0b11010011},
         RDev::DefaultsTo<OUT_TEMP>{20} // °C
@@ -88,10 +88,9 @@ class PerfectGyroscopeI2C : public Urho3D::LogicComponent {
     [[nodiscard]] FullScale get_full_scale() const noexcept;
     [[nodiscard]] std::endian get_data_endianness() const noexcept;
 public:
-
-    PerfectGyroscopeI2C(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
+  PerfectGyroscopeI2CSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
 
     void Update(float timeStep) override;
 };
 
-#endif // SMARTCAR_EMUL_PERFECTGYROSCOPEI2C_HXX
+#endif // SMARTCAR_EMUL_PERFECTGYROSCOPEI2CSENSOR_HXX
