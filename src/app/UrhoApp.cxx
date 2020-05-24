@@ -25,6 +25,10 @@
 #include <Urho3D/Graphics/Viewport.h>
 #include <Urho3D/IO/FileSystem.h>
 #include <Urho3D/Input/Input.h>
+#include <Urho3D/Input/InputEvents.h>
+#include <Urho3D/Physics/CollisionShape.h>
+#include <Urho3D/Physics/PhysicsWorld.h>
+#include <Urho3D/Physics/RigidBody.h>
 #include <Urho3D/Resource/ResourceCache.h>
 #include <Urho3D/Scene/Scene.h>
 #include "app/UrhoApp.hxx"
@@ -70,10 +74,17 @@ void UrhoApp::create_scene() {
     m_scene->CreateComponent<Urho3D::Octree>();
     m_scene->CreateComponent<EmulGlue>();
     m_scene->CreateComponent<TorchMenu>();
+    auto* world = m_scene->CreateComponent<Urho3D::PhysicsWorld>();
+    context_->RegisterSubsystem(world);
+
     Urho3D::Node* plane_node = m_scene->CreateChild("Ground");
     plane_node->SetScale(Urho3D::Vector3(200, 0, 200));
     auto* const planeObject = plane_node->CreateComponent<Urho3D::StaticModel>();
     planeObject->SetModel(cache->GetResource<Urho3D::Model>("Models/Cone.mdl"));
+    auto* body = plane_node->CreateComponent<Urho3D::RigidBody>();
+    body->SetCollisionLayer(2);
+    auto* shape = plane_node->CreateComponent<Urho3D::CollisionShape>();
+    shape->SetStaticPlane();
 
     Urho3D::Node* lightNode = m_scene->CreateChild("Sunlight");
     auto* const light = lightNode->CreateComponent<Urho3D::Light>();

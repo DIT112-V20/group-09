@@ -1,5 +1,5 @@
 /*
- *  main.cxx
+ *  PerfectDistanceAnalogSensor.hxx
  *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +14,22 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-#include <Urho3D/Engine/Application.h>
-#include "app/UrhoApp.hxx"
 
-#include "DeviceMap.hxx"
+#ifndef SMARTCAR_EMUL_PERFECTDISTANCEANALOGSENSOR_HXX
+#define SMARTCAR_EMUL_PERFECTDISTANCEANALOGSENSOR_HXX
 
-URHO3D_DEFINE_APPLICATION_MAIN(UrhoApp)
+#include <atomic>
+#include <rapidjson/document.h>
+#include "BoardData.hxx"
+#include "LaserCaster.hxx"
+
+class PerfectDistanceAnalogSensor : public LaserCaster {
+    std::atomic_uint16_t* m_pin_ptr;
+    std::uint8_t m_type;
+
+  public:
+    PerfectDistanceAnalogSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& conf);
+    void Update(float timeStep) override;
+};
+
+#endif // SMARTCAR_EMUL_PERFECTDISTANCEANALOGSENSOR_HXX

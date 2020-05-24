@@ -1,5 +1,5 @@
 /*
- *  main.cxx
+ *  LaserCaster.cxx
  *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +14,16 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-#include <Urho3D/Engine/Application.h>
-#include "app/UrhoApp.hxx"
 
-#include "DeviceMap.hxx"
+#include <Urho3D/Physics/PhysicsWorld.h>
+#include "components/LaserCaster.hxx"
+#include "components/MovableCamera.hxx"
 
-URHO3D_DEFINE_APPLICATION_MAIN(UrhoApp)
+LaserCaster::LaserCaster(Urho3D::Node* node) : Urho3D::LogicComponent{node->GetContext()}, node{node} {}
+
+[[nodiscard]] std::uint32_t LaserCaster::measure(float max_dist) const noexcept {
+    Urho3D::PhysicsRaycastResult ret;
+    Urho3D::Ray ray{node->GetPosition(), node->GetDirection()};
+    Object::GetSubsystem<Urho3D::PhysicsWorld>()->RaycastSingle(ret, ray, max_dist);
+    return ret.distance_;
+}

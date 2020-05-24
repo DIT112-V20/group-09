@@ -1,5 +1,5 @@
 /*
- *  main.cxx
+ *  WheelServo.cxx
  *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +14,8 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-#include <Urho3D/Engine/Application.h>
-#include "app/UrhoApp.hxx"
 
-#include "DeviceMap.hxx"
+#include "components/WheelServo.hxx"
 
-URHO3D_DEFINE_APPLICATION_MAIN(UrhoApp)
+template class WheelServo<&Urho3D::RaycastVehicle::SetSteeringValue>;
+template class WheelServo<&Urho3D::RaycastVehicle::SetEngineForce>;

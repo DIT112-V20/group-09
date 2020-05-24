@@ -23,9 +23,34 @@
 #include <utility>
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Node.h>
+#include <gsl/gsl>
+#include <nameof.hpp>
 #include <rapidjson/document.h>
+#include "components/PerfectDistanceI2CSensor.hxx"
+#include "components/PerfectDistanceAnalogSensor.hxx"
+#include "components/PerfectGyroscopeI2CSensor.hxx"
+#include "components/WheelServo.hxx"
 #include "BoardData.hxx"
+#include "utility.hxx"
 
-constexpr std::array<std::pair<std::string_view, Urho3D::LogicComponent*(*)(BoardData&, Urho3D::Node*, const rapidjson::Value&)>, 0> attachments_registry{};
+using namespace std::literals;
+
+template <class T>
+constexpr auto attachment_entry() {
+    return std::pair{nameof::nameof_type<T>(), +[](BoardData& bd, Urho3D::Node* node, const rapidjson::Value& conf)
+        -> gsl::owner<Urho3D::LogicComponent*> {
+                         return new T{bd, node, conf};
+                     }};
+}
+
+template <class... Attachments>
+constexpr auto compile_registry(){
+    return make_array(attachment_entry<Attachments>()...);
+}
+
+constexpr std::array attachments_registry = compile_registry<ServoMotor,
+                                                             PerfectDistanceI2CSensor,
+                                                             PerfectGyroscopeI2CSensor,
+                                                             PerfectDistanceAnalogSensor>();
 
 #endif // SMARTCAR_EMUL_REGISTRY_HXX

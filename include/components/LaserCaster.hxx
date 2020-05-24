@@ -1,5 +1,5 @@
 /*
- *  main.cxx
+ *  LaserCaster.hxx
  *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +14,20 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-#include <Urho3D/Engine/Application.h>
-#include "app/UrhoApp.hxx"
 
-#include "DeviceMap.hxx"
+#ifndef SMARTCAR_EMUL_LASERCASTER_HXX
+#define SMARTCAR_EMUL_LASERCASTER_HXX
 
-URHO3D_DEFINE_APPLICATION_MAIN(UrhoApp)
+#include <cstdint>
+#include <Urho3D/Scene/LogicComponent.h>
+
+class LaserCaster : public Urho3D::LogicComponent {
+  URHO3D_OBJECT(LaserCaster, Urho3D::LogicComponent);
+    Urho3D::Node* node;
+
+  public:
+    explicit LaserCaster(Urho3D::Node* node);
+    [[nodiscard]] std::uint32_t measure(float max_dist = std::numeric_limits<float>::max()) const noexcept;
+};
+
+#endif // SMARTCAR_EMUL_LASERCASTER_HXX
