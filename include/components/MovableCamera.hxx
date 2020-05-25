@@ -37,9 +37,14 @@
 class MovableCamera : public Urho3D::Camera {
     URHO3D_OBJECT(MovableCamera, Camera);
 
+    ///Defines the moving speed of the camera
     float move_speed = DEFAULT_MOVE_SPEED;
+    ///Defines the mouse sensitivity
     float mouse_sensitivity = DEFAULT_MOVE_SENSITIVITY;
 
+    /**
+    * Maps the keys so that you are able to move the cameara with keys w,s,a,d
+    **/
     std::array<std::pair<int, const Urho3D::Vector3>, 4> key_map{{{DEFAULT_FORWARD, Urho3D::Vector3::FORWARD},
                                                                   {DEFAULT_BACK, Urho3D::Vector3::BACK},
                                                                   {DEFAULT_LEFT, Urho3D::Vector3::LEFT},
@@ -49,11 +54,22 @@ class MovableCamera : public Urho3D::Camera {
     float m_pitch = 0.f;
 
   public:
+    /**
+    * Sets the directions to enum indexes
+    **/
     enum struct MoveKey { FORWARD, BACK, LEFT, RIGHT };
 
+    /**
+    * Provides access to subsystems, object factories and attributes, and event receivers
+    **/
     explicit MovableCamera(Urho3D::Context* context);
     static void RegisterObject(Urho3D::Context* context);
     void Update(Urho3D::StringHash, Urho3D::VariantMap& event_data);
+
+    /**
+    * Converts operating system window messages to input state and events
+    **/
+    void move(float delta_time);
     void setKey(MoveKey key, int new_key) { key_map[static_cast<int>(key)].first = new_key; }
     void unsetKey(MoveKey key) { key_map[static_cast<int>(key)].first = -1; }
 };

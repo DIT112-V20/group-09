@@ -19,12 +19,18 @@
 #ifndef SMARTCAR_EMUL_ERROR_HXX
 #define SMARTCAR_EMUL_ERROR_HXX
 
+/**
+* Thorws a runtime error
+**/
 template <class StringType>
 void handle_error(StringType&& err_msg) {
     if(!board_data->silence_errors)
         throw std::runtime_error{std::forward<StringType>(err_msg)};
 }
 
+/**
+* Handles an error and forwards a message
+**/
 template <class StringType, class T>
 T handle_error(StringType&& err_msg, T err_ret) {
     handle_error(std::forward<StringType>(err_msg));

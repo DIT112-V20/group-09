@@ -104,7 +104,7 @@ class String {
     void getBytes(byte* buffer, unsigned length) const noexcept;
 
     /**
-    * Locates a character within a string
+    * Locates a character within a string and retuns the index if it
     **/
     [[nodiscard]] int indexOf(const char* c) const noexcept;
 
@@ -179,12 +179,12 @@ class String {
     [[nodiscard]] float toFloat() const noexcept;
 
     /**
-    * Get a lower-case version of a String
+    * Modifies the string to lowercase
     **/
     void toLowerCase() noexcept;
 
     /**
-    * Get a upper-case version of a String
+    * Modifies the string to uppercase
     **/
     void toUpperCase() noexcept;
 

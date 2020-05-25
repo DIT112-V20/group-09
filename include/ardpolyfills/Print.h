@@ -86,7 +86,7 @@ class Print {
     // std::size_t print(const char (&lit)[N]) { return write(lit, N); }
 
     /**
-    * 
+    * Prints data to the serial port as ASCII text
     **/
     inline std::size_t print(const String& s) { return write(s.c_str(), s.length()); }
     inline std::size_t print(const char* czstr) { return write(czstr); }
@@ -98,6 +98,9 @@ class Print {
     std::size_t print(const struct Printable&); // FIXME: implement base Printable
 
     template <std::size_t N> std::size_t println(const char (&lit)[N]) { return write(lit, N) + println(); }
+    /**
+    * Prints data to the serial port as ASCII text and a newline character
+    **/
     inline std::size_t println(const String& s) { return print(s) + println(); }
     inline std::size_t println(const char* czstr) { return write(czstr) + println(); }
     inline std::size_t println(char c) { return write(c) + println(); }
@@ -108,6 +111,9 @@ class Print {
     inline std::size_t println(const Printable& p) { return print(p) + println(); }
     inline std::size_t println() { return print('\r') + print('\n'); }
 
+    /**
+    * Waits for the transmission of outgoing serial data to complete
+    **/
     inline virtual void flush() {} // Empty implementation for backward compatibility
 };
 

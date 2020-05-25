@@ -25,11 +25,10 @@ enum SMCE__Boundary{ MIN_PULSE_WIDTH = 1000, MAX_PULSE_WIDTH = 2000, DEFAULT_PUL
 
 class Servo {
   public:
-    /// Default constructor
     constexpr Servo() = default; 
    
     /**
-    * Attaches a pin to attached_pin
+    * Attach the Servo variable to a pin.
     **/
     void attach(int pin);
   
@@ -44,7 +43,7 @@ class Servo {
     void detach();
     
     /**
-    * Writes a value that controls the shaft accoddingly
+    * Writes a value that controls the shaft accodingly
     **/
     void write(int value);
 

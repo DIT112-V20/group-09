@@ -37,7 +37,7 @@ enum SignificantBit : bool { RIGHTMOSTBIT, LEFTMOSTBIT };
 enum SMCE__PINMODE_ENUM_STRUCT PinMode : std::uint8_t { INPUT, OUTPUT, INPUT_PULLUP };
 
 /**
-* Enum variables for the value of the pins
+* Enum variables for the value of the digital pins
 **/
 enum DigitalValue : bool { LOW, HIGH };
 
@@ -48,7 +48,7 @@ enum DigitalValue : bool { LOW, HIGH };
 void pinMode(uint8_t pin, uint8_t mode);
 
 /**
-* Set a digitzl pin to high or low
+* Set a digital pin to high or low
 **/
 void digitalWrite(uint8_t pin, bool val);
 
@@ -64,13 +64,13 @@ int analogRead(uint8_t pin);
 void analogReference(uint8_t mode);
 
 /**
-* Set a analog value to a pin
+* Set an analog value to a pin
 **/
 void analogWrite(uint16_t pin, uint16_t val);
 
 // advanced i/o
 /**
-* Set a frequency to a pin
+* Set pin to given frequency
 **/
 void tone(uint8_t pin, unsigned int frequency, unsigned long duration);
 
@@ -170,67 +170,67 @@ using std::tan;
 
 // Arduino Characters functions
 /**
-* Analyse if a char is alpha (that is a letter)
+* Returns true if the char is a alhpa(that is a letter)
 **/
 bool isAlpha(char thisChar);
 
 /**
-* Analyse if a char is alphanumeric (that is a letter or a numbers)
+* Returns true if a char is alphanumeric (that is a letter or a numbers)
 **/
 bool isAlphaNumeric(char thisChar);
 
 /**
-* Analyse if a char is Ascii
+* Returns true if a char is Ascii
 **/
 bool isAscii(char thisChar);
 
 /**
-* Analyse if a char is a control character
+* Returns true if a char is a control character
 **/
 bool isControl(char thisChar);
 
 /**
-* Analyse if a char is a digit (that is a number)
+* Returns true if a char is a digit (that is a number)
 **/
 bool isDigit(char thisChar);
 
 /**
-* Analyse if a char is printable with some content (space is printable but has no content)
+* Returns true if a char is printable with some content (space is printable but has no content)
 **/
 bool isGraph(char thisChar);
 
 /**
-* Analyse if a char is an hexadecimal digit (A-F, 0-9)
+* Returns true if a char is an hexadecimal digit (A-F, 0-9)
 **/
 bool isHexadecimalDigit(char thisChar);
 
 /**
-* Analyse if a char is lower case (that is a letter in lower case)
+* Returns true if a char is lower case (that is a letter in lower case)
 **/
 bool isLowerCase(char thisChar);
 
 /**
-* Analyse if a char is printable (that is any character that produces an output)
+* Returns true if a char is printable (that is any character that produces an output)
 **/
 bool isPrintable(char thisChar);
 
 /**
-* Analyse if a char is punctuation (that is a comma, a semicolon, an exclamation for example)
+* Returns true if a char is punctuation (that is a comma, a semicolon, an exclamation for example)
 **/
 bool isPunct(char thisChar);
 
 /**
-* Analyse if a char is a white-space character
+* Returns true if a char is a white-space character
 **/
 bool isSpace(char thisChar);
 
 /**
-* Analyse if a char is upper case (that is, a letter in upper case)
+* Returns true if a char is upper case (that is, a letter in upper case)
 **/
 bool isUpperCase(char thisChar);
 
 /**
-* Analyse if a char is a space character
+* Returns true if a char is a space character
 **/
 bool isWhitespace(char thisChar);
 

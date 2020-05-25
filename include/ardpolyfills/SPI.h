@@ -29,7 +29,8 @@ enum SMCE__BitOrdering : uint8_t {
 };
 
 /**
-*  Integral quotient and remainder
+*  Integral quotient and remainder  
+*  Sets the SPI clock divider relative to the system clock
 **/
 enum SMCE__SpiClockDivider : uint8_t {
     SPI_CLOCK_DIV4,
@@ -51,6 +52,9 @@ enum SMCE__SpiMode : uint8_t {
     SPI_MODE3 = 12
 };
 
+/**
+* Used to configure the SPI port for your SPI device
+**/
 struct SPISettings {
     constexpr SPISettings() noexcept = default;
     constexpr SPISettings(std::uint8_t clock, std::uint8_t bit_order, std::uint8_t data_mode) noexcept
@@ -119,7 +123,7 @@ class SPIClass {
     uint16_t transfer16(std::uint16_t data);
 
     /**
-    * 
+    * Sends an given amount of byte over the bus
     **/
     void transfer(void* buf, std::uint16_t count);
 

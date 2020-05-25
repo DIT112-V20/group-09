@@ -67,7 +67,7 @@ struct HardwareSerial : Stream {
     [[nodiscard]] int available() override;
 
     /**
-    * Reads incoming serial data
+    * Reads incoming serial data and removes it from the buffer
     **/
     [[nodiscard]] int read() override;
 

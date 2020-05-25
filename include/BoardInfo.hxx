@@ -20,7 +20,9 @@
 #define SMARTCAR_EMUL_BOARDINFO_HXX
 
 #include <vector>
-
+/**
+* Sets the capabilites of the pin
+**/
 struct PinCapability {
     bool digital_in : 1;
     bool digital_out : 1;

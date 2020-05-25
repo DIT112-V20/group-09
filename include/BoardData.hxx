@@ -71,7 +71,15 @@ struct BlockingBus : BufferBus {
     std::size_t request_bytes{}; // C++20: use `std::atomic_size_t` for thread-sync
 };
 
+/**
+* UartBus is used to read and write data to the console
+**/
 struct UartBus : DynaBufferBus {};
+
+/**
+* Each device store packet buffer and either a blocking bus that checks and responds to data requests or a generator function
+* to allow for non blocking data requets
+**/
 struct I2cBus {
     using Device = std::pair<PacketBuffers, std::variant<BlockingBus<std::tuple<>>, std::function<void(std::size_t)>>>;
     std::unordered_map<std::uint8_t, Device> slaves;
@@ -82,7 +90,7 @@ struct SpiBus {
     std::mutex slaves_mut;
 };
 /**
-* Contains the different board data settings 
+* BoardData stores the data for the different settings 
 **/
 struct BoardData {
     std::vector<std::atomic_bool> digital_pin_values;

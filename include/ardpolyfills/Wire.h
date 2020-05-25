@@ -10,8 +10,10 @@
 class TwoWire : public Stream {
     using OnRecieve = void(int);
     using OnRequest = void();
+    ///Default value for having no address
     constexpr static std::uint8_t no_address = 128;
 
+    ///Holds the value for the bus_id
     std::uint16_t bus_id = 0;
     ///Hold the value if the wire is Initiated
     bool begun{};
