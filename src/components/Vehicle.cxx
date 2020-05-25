@@ -64,7 +64,7 @@ Vehicle::Vehicle(Urho3D::Context* context) : LogicComponent(context) {
 }
 Vehicle::~Vehicle() = default;
 
-void Vehicle::Init() {
+void Vehicle::Init(const smce::VehicleConfig& vconf) {
     auto* vehicle = node_->CreateComponent<Urho3D::RaycastVehicle>();
     vehicle->Init();
     auto* hullBody = node_->GetComponent<Urho3D::RigidBody>();
@@ -85,7 +85,6 @@ void Vehicle::Init() {
     bool isFrontWheel = true;
     Urho3D::Vector3 wheelDirection(0, -1, 0);
     Urho3D::Vector3 wheelAxle(-1, 0, 0);
-   
     float wheelX = 0.09f;
     float wheelY = -0.02f;
     float wheelZ = 0.08f;
@@ -115,6 +114,7 @@ void Vehicle::Init() {
     }
     vehicle->ResetWheels();
 }
+
 void Vehicle::PostUpdate(float timeStep) {
     auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
     auto* vehicleBody = node_->GetComponent<Urho3D::RigidBody>();

@@ -50,7 +50,7 @@ class Vehicle : public Urho3D::LogicComponent {
     explicit Vehicle(Urho3D::Context* context);
     ~Vehicle() override;
     static void RegisterObject(Urho3D::Context* context);
-    void Init();
+    void Init(const smce::VehicleConfig& vconf);
     void PostUpdate(float timeStep);
     float GetWheelRadius() const { return wheelRadius_; }
 
