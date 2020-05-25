@@ -204,7 +204,7 @@ long map(long x, long in_min, long in_max, long out_min, long out_max) { return 
 // Arduino Characters functions
 bool isAlpha(char thisChar) { return std::isalpha(thisChar); }
 bool isAlphaNumeric(char thisChar) { return std::isalnum(thisChar); }
-bool isAscii(char thisChar) { return +thisChar < +'\x80'; }
+bool isAscii(char thisChar) { return static_cast<signed char>(thisChar) >= 0; }
 bool isControl(char thisChar) { return std::iscntrl(thisChar); }
 bool isDigit(char thisChar) { return std::isdigit(thisChar); }
 bool isGraph(char thisChar) { return std::isgraph(thisChar); }

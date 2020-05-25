@@ -100,8 +100,6 @@ TEST_CASE("Delay the program", "[delay]")
     delay(1000);
     const auto end = std::chrono::steady_clock::now();
     const auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
-    //Added some margin
-
     REQUIRE(duration >= 1s);
     REQUIRE(duration < 1.2s);
 }
@@ -111,11 +109,8 @@ TEST_CASE("delay the thread in microseconds", "[delayMicroseconds]")
     const auto start = std::chrono::steady_clock::now();
     delayMicroseconds(1000);
     const auto end = std::chrono::steady_clock::now();
-    const auto duration = std::chrono::duration_cast< std::chrono::microseconds >(end - start);
-    
-    //Added some margin
+    const auto duration = std::chrono::duration_cast< std::chrono::microseconds >(end - start);    
     REQUIRE(duration > 1000us);
-    REQUIRE(duration < 2000us); 
 }
 
 TEST_CASE("Return number of microseconds since arduino board began", "[micros]") {
@@ -145,18 +140,13 @@ TEST_CASE("Return number of milliseconds since arduino board began", "[millis]")
 }
 
 TEST_CASE("Constrain number within a given range", "[constrain]") {
-    long num = constrain(5, 2, 10);
-    REQUIRE(num == 5);
-    num = constrain(1, 2, 10);
-    REQUIRE(num == 2);
-    num = constrain(11, 2, 10);
-    REQUIRE(num == 10);
+    REQUIRE(constrain(5, 2, 10) == 5);
+    REQUIRE(constrain(1, 2, 10) == 2);
+    REQUIRE(constrain(11, 2, 10) == 10);
 }
 
 TEST_CASE("Re-maps number from one range to another" "[map]") {
-    long num = 1023;
-    long num2 = map(num, 0, 1023, 0, 255);
-    REQUIRE(num2 == 255);
+    REQUIRE(map(1023, 0, 1023, 0, 255) == 255);
 }
 
 TEST_CASE("Check is char i letter", "[isAlpha]") {
@@ -170,12 +160,9 @@ TEST_CASE("Check if a char is alphanumeric", "[isAlphaNumeric]") {
     REQUIRE(!isAlphaNumeric('!'));
 }
 
-//shit does not work
 TEST_CASE("Is the character a ascii", "[isAscii]") {
-    /*
     char num = 'a';
     REQUIRE(isAscii(num)); 
-    */
 }
 
 TEST_CASE("Check if the character a control character", "[isControl") {
@@ -236,37 +223,31 @@ TEST_CASE("Checks if a character is a blank character" "[isWhiteSpace]")
     REQUIRE(!isWhitespace('a'));
 }
 
-TEST_CASE("Checks if it returns a random number" "[isRandom]") 
+TEST_CASE("Checks if it returns a random number within a given range" "[isRandom]") 
 {
     auto i = GENERATE(take(100, filter([](int i) { return i; }, random(-100, 100))));
     REQUIRE(i < 100);
     REQUIRE(i > -100);
 }
 
-//The test is lying, since it is testing a C random function rather than the Arduino ones
 
 TEST_CASE("Test randomSeed", "[randomSeed]") 
 {
-    long arr[100];
-    long arr2[100];
-    long arr3[100];
+    std::array <long, 100> arr {};
+    std::array <long, 100> arr2 {};
+    std::array <long, 100> arr3 {};
+
     auto count = 0;
+    auto iterator = 0;
     randomSeed(2);
 
-    for (int i = 0; i < 100; i++)
-    {
-        arr[i] = random(100);
-    }
+    std::generate(arr.begin(), arr.end(), [](){ return random(100); });
     randomSeed(3);
+    std::generate(arr2.begin(), arr2.end(), [](){ return random(100); });
 
     for (int i = 0; i < 100; i++)
     {
-        arr2[i] = random(100);
-    }
-
-    for (int i = 0; i < 100; i++)
-    {
-        if (arr[i] == arr2[i])
+        if (arr == arr2)
         {
             count++;
         }
@@ -275,18 +256,14 @@ TEST_CASE("Test randomSeed", "[randomSeed]")
 
     randomSeed(2);
 
-    for (int i = 0; i < 100; i++)
-    {
-        arr3[i] = random(100);
-    }
+    std::generate(arr3.begin(), arr3.end(), [](){ return random(100); });
 
     for (int i = 0; i < 100; i++)
     {
-        REQUIRE(arr[i] == arr3[i]);
+        REQUIRE(arr == arr3);
     }
 }
-   
-
+ 
 void fun() {}
 
 TEST_CASE("Check if vector contains interupt", "[attachInterrupt]") 
