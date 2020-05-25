@@ -1,0 +1,3751 @@
+<?xml version="1.0"?>
+<scene id="1">
+	<attribute name="Name" value="" />
+	<attribute name="Time Scale" value="1" />
+	<attribute name="Smoothing Constant" value="50" />
+	<attribute name="Snap Threshold" value="5" />
+	<attribute name="Elapsed Time" value="6216.13" />
+	<attribute name="Next Replicated Node ID" value="220" />
+	<attribute name="Next Replicated Component ID" value="595" />
+	<attribute name="Next Local Node ID" value="16777375" />
+	<attribute name="Next Local Component ID" value="16777554" />
+	<attribute name="Variables" />
+	<attribute name="Variable Names" value="" />
+	<component type="Octree" id="1" />
+	<!--<component type="DebugRenderer" id="2" />-->
+	<component type="PhysicsWorld" id="8" />
+	<node id="2">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Sky" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="0 0 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="4 1 4" />
+		<attribute name="Variables" />
+		<component type="Skybox" id="3">
+			<attribute name="Model" value="Model;Models/Box.mdl" />
+			<attribute name="Material" value="Material;Materials/Skybox.xml" />
+		</component>
+	</node>
+	<node id="5">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Ground" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="0 0 0" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="5000 1 5000" />
+		<attribute name="Variables" />
+		<component type="StaticModel" id="4">
+			<attribute name="Model" value="Model;Models/Plane.mdl" />
+			<attribute name="Material" value="Material;Materials/StoneTiled.xml" />
+		</component>
+		<component type="CollisionShape" id="10">
+			<attribute name="Shape Type" value="StaticPlane" />
+		</component>
+		<component type="RigidBody" id="11">
+			<attribute name="Use Gravity" value="false" />
+		</component>
+	</node>
+	<node id="58">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="boxes" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="11.3694 1.7595 6.75147" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<node id="56">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-28.4913 -0.739505 6.04995" />
+			<attribute name="Rotation" value="1 -1.94015e-08 -0.000579586 -1.24411e-08" />
+			<attribute name="Scale" value="2.40029 2.03999 2.97488" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="144">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="145" />
+			<component type="RigidBody" id="146">
+				<attribute name="Physics Rotation" value="1 -1.93887e-08 -0.000579586 -1.24379e-08" />
+				<attribute name="Physics Position" value="-17.1219 1.01999 12.8014" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="54">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-25.2662 -1.2595 -11.8906" />
+			<attribute name="Rotation" value="0.99654 -1.76978e-08 -0.0831112 -3.19638e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="138">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="139" />
+			<component type="RigidBody" id="140">
+				<attribute name="Physics Rotation" value="0.99654 -1.76577e-08 -0.0831112 -3.19652e-07" />
+				<attribute name="Physics Position" value="-13.8968 0.5 -5.13915" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="53">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="482.181 93.2405 -826.826" />
+			<attribute name="Rotation" value="0.794326 2.2778e-09 -0.607492 2.55597e-08" />
+			<attribute name="Scale" value="190 190 190" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="135">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="136" />
+			<component type="RigidBody" id="137">
+				<attribute name="Physics Rotation" value="0.794326 2.2777e-09 -0.607492 2.55598e-08" />
+				<attribute name="Physics Position" value="493.551 95 -820.074" />
+				<attribute name="Mass" value="1000" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="52">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="4.64768 -1.2595 -42.9798" />
+			<attribute name="Rotation" value="0.984796 -1.33206e-08 -0.173715 -3.31379e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="132">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="133" />
+			<component type="RigidBody" id="134">
+				<attribute name="Physics Rotation" value="0.984796 -1.33237e-08 -0.173715 -3.31357e-07" />
+				<attribute name="Physics Position" value="16.0171 0.5 -36.2284" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="50">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-29.5546 -1.2595 -34.1923" />
+			<attribute name="Rotation" value="0.967864 3.73516e-08 0.251474 -3.03836e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="126">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="127" />
+			<component type="RigidBody" id="128">
+				<attribute name="Physics Rotation" value="0.967864 3.7357e-08 0.251474 -3.03825e-07" />
+				<attribute name="Physics Position" value="-18.1852 0.5 -27.4409" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="49">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-36.0078 -1.2595 10.5482" />
+			<attribute name="Rotation" value="0.984788 -8.80592e-09 -0.173758 -2.87614e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="123">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="124" />
+			<component type="RigidBody" id="125">
+				<attribute name="Physics Rotation" value="0.984788 -8.83419e-09 -0.173758 -2.87614e-07" />
+				<attribute name="Physics Position" value="-24.6384 0.5 17.2996" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="51">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-35.8449 -1.2595 -49.483" />
+			<attribute name="Rotation" value="0.984789 -4.59711e-08 -0.173753 -3.06824e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="129">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="130" />
+			<component type="RigidBody" id="131">
+				<attribute name="Physics Rotation" value="0.984789 -4.59608e-08 -0.173753 -3.06827e-07" />
+				<attribute name="Physics Position" value="-24.4755 0.5 -42.7316" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="43">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-54.9055 -1.2595 14.2063" />
+			<attribute name="Rotation" value="0.984791 -1.46161e-08 -0.173741 -3.29049e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="105">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="106" />
+			<component type="RigidBody" id="107">
+				<attribute name="Physics Rotation" value="0.984791 -1.45952e-08 -0.173741 -3.29029e-07" />
+				<attribute name="Physics Position" value="-43.5361 0.5 20.9577" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="38">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-53.6936 -1.2595 3.40346" />
+			<attribute name="Rotation" value="0.984789 -3.90851e-09 -0.173754 -3.0952e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="90">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="91" />
+			<component type="RigidBody" id="92">
+				<attribute name="Physics Rotation" value="0.984789 -3.92796e-09 -0.173754 -3.09512e-07" />
+				<attribute name="Physics Position" value="-42.3242 0.5 10.1549" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="39">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-31.9983 -1.2595 -21.2005" />
+			<attribute name="Rotation" value="0.984786 -1.33329e-08 -0.173772 -3.31377e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="93">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="94" />
+			<component type="RigidBody" id="95">
+				<attribute name="Physics Rotation" value="0.984786 -1.33114e-08 -0.173772 -3.31373e-07" />
+				<attribute name="Physics Position" value="-20.6289 0.5 -14.4491" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="40">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-17.9214 -1.2595 -21.5019" />
+			<attribute name="Rotation" value="0.984787 -1.60283e-08 -0.173766 -3.26755e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="96">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="97" />
+			<component type="RigidBody" id="98">
+				<attribute name="Physics Rotation" value="0.984787 -1.60144e-08 -0.173766 -3.26742e-07" />
+				<attribute name="Physics Position" value="-6.55198 0.5 -14.7505" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="41">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-38.751 -1.2595 19.8817" />
+			<attribute name="Rotation" value="0.681727 2.17169e-07 -0.731606 1.97346e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="99">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="100" />
+			<component type="RigidBody" id="101">
+				<attribute name="Physics Rotation" value="0.681727 2.1717e-07 -0.731606 1.97352e-07" />
+				<attribute name="Physics Position" value="-27.3816 0.5 26.6332" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="42">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-40.5748 -1.2595 -39.82" />
+			<attribute name="Rotation" value="0.984789 -4.59915e-08 -0.173753 -3.0688e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="102">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="103" />
+			<component type="RigidBody" id="104">
+				<attribute name="Physics Rotation" value="0.984789 -4.59864e-08 -0.173753 -3.06889e-07" />
+				<attribute name="Physics Position" value="-29.2054 0.5 -33.0686" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="44">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-49.745 -1.2595 -29.0021" />
+			<attribute name="Rotation" value="0.984791 -1.59426e-08 -0.173741 -3.26874e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="108">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="109" />
+			<component type="RigidBody" id="110">
+				<attribute name="Physics Rotation" value="0.984791 -1.59195e-08 -0.173741 -3.2688e-07" />
+				<attribute name="Physics Position" value="-38.3756 0.5 -22.2507" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="46">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-10.1228 -1.2595 -30.8356" />
+			<attribute name="Rotation" value="0.984787 -1.62086e-08 -0.173765 -3.26834e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="114">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="115" />
+			<component type="RigidBody" id="116">
+				<attribute name="Physics Rotation" value="0.984787 -1.62224e-08 -0.173765 -3.2683e-07" />
+				<attribute name="Physics Position" value="1.24664 0.5 -24.0842" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="47">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-3.65128 -1.2595 11.769" />
+			<attribute name="Rotation" value="0.92669 -4.84801e-08 -0.375827 -3.08443e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="117">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="118" />
+			<component type="RigidBody" id="119">
+				<attribute name="Physics Rotation" value="0.92669 -4.84533e-08 -0.375827 -3.08441e-07" />
+				<attribute name="Physics Position" value="7.71812 0.5 18.5205" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="48">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-408.855 4.8173 -43.211" />
+			<attribute name="Rotation" value="0.9938 3.98588e-10 -0.111183 4.42962e-12" />
+			<attribute name="Scale" value="30.6797 13.1536 10.2404" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="120">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="121" />
+			<component type="RigidBody" id="122">
+				<attribute name="Physics Rotation" value="0.9938 3.9892e-10 -0.111183 4.09864e-12" />
+				<attribute name="Physics Position" value="-397.485 6.5768 -36.4596" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="36">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-36.9929 -1.2595 -3.99038" />
+			<attribute name="Rotation" value="0.984788 -5.80631e-08 -0.17376 -3.24194e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="84">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="85" />
+			<component type="RigidBody" id="86">
+				<attribute name="Physics Rotation" value="0.984788 -5.80655e-08 -0.17376 -3.24208e-07" />
+				<attribute name="Physics Position" value="-25.6235 0.5 2.76109" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="21">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-1.24441 -1.2595 -20.3158" />
+			<attribute name="Rotation" value="0.984788 -1.58502e-08 -0.173761 -3.26776e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="39">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="40" />
+			<component type="RigidBody" id="41">
+				<attribute name="Physics Rotation" value="0.984788 -1.58322e-08 -0.173761 -3.26767e-07" />
+				<attribute name="Physics Position" value="10.125 0.5 -13.5644" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="22">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="22.399 -1.2595 -9.11506" />
+			<attribute name="Rotation" value="0.987457 3.0009e-08 -0.157887 3.20752e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="42">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+			</component>
+			<component type="CollisionShape" id="43" />
+			<component type="RigidBody" id="44">
+				<attribute name="Physics Rotation" value="0.987457 2.99959e-08 -0.157887 3.20764e-07" />
+				<attribute name="Physics Position" value="33.7684 0.5 -2.36359" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="23">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="105.502 3.2405 -46.0396" />
+			<attribute name="Rotation" value="0.617052 -6.52058e-08 0.786922 3.98525e-08" />
+			<attribute name="Scale" value="10 10 10" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="45">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="46" />
+			<component type="RigidBody" id="47">
+				<attribute name="Physics Rotation" value="0.617052 -6.51258e-08 0.786922 3.97893e-08" />
+				<attribute name="Physics Position" value="116.871 5 -39.2882" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="24">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-28.8337 -1.2595 -10.3328" />
+			<attribute name="Rotation" value="0.657725 -0.259609 -0.259609 0.657726" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="48">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="49" />
+			<component type="RigidBody" id="50">
+				<attribute name="Physics Rotation" value="0.657725 -0.259609 -0.259609 0.657726" />
+				<attribute name="Physics Position" value="-17.4643 0.5 -3.58137" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="25">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-11.0611 -0.713845 32.486" />
+			<attribute name="Rotation" value="0.644359 -0.644359 0.291208 0.291208" />
+			<attribute name="Scale" value="3.67942 3.26066 2.09131" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="51">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="52" />
+			<component type="RigidBody" id="53">
+				<attribute name="Physics Rotation" value="0.644359 -0.644359 0.291208 0.291208" />
+				<attribute name="Physics Position" value="0.308255 1.04565 39.2375" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="27">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="20.6769 -1.2595 9.13736" />
+			<attribute name="Rotation" value="0.984638 -4.05197e-09 -0.174608 -3.09469e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="57">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="58" />
+			<component type="RigidBody" id="59">
+				<attribute name="Physics Rotation" value="0.984638 -4.05856e-09 -0.174608 -3.09468e-07" />
+				<attribute name="Physics Position" value="32.0463 0.5 15.8888" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="28">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="284.758 2.51004 -12.6181" />
+			<attribute name="Rotation" value="0.627282 -0.627282 -0.32637 -0.32637" />
+			<attribute name="Scale" value="9.21141 7.06768 8.53909" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="60">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="61" />
+			<component type="RigidBody" id="62">
+				<attribute name="Physics Rotation" value="0.627282 -0.627282 -0.32637 -0.32637" />
+				<attribute name="Physics Position" value="296.128 4.26954 -5.86665" />
+				<attribute name="Mass" value="700" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="30">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-23.3699 -1.2595 47.4204" />
+			<attribute name="Rotation" value="0.984792 -2.16741e-08 -0.17374 -3.00064e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="66">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="67" />
+			<component type="RigidBody" id="68">
+				<attribute name="Physics Rotation" value="0.984792 -2.1654e-08 -0.17374 -3.00068e-07" />
+				<attribute name="Physics Position" value="-12.0005 0.5 54.1718" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="32">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="7.78558 -1.2595 40.687" />
+			<attribute name="Rotation" value="0.984789 -1.01755e-08 -0.173753 -2.85333e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="72">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="73" />
+			<component type="RigidBody" id="74">
+				<attribute name="Physics Rotation" value="0.984789 -1.01762e-08 -0.173753 -2.85334e-07" />
+				<attribute name="Physics Position" value="19.155 0.5 47.4384" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="34">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="45.6926 -1.2595 20.8172" />
+			<attribute name="Rotation" value="0.984792 -1.47223e-08 -0.17374 -3.29148e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="78">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="79" />
+			<component type="RigidBody" id="80">
+				<attribute name="Physics Rotation" value="0.984792 -1.47204e-08 -0.17374 -3.29156e-07" />
+				<attribute name="Physics Position" value="57.062 0.5 27.5686" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="35">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="19.8395 -1.2595 -36.0854" />
+			<attribute name="Rotation" value="0.989836 1.95937e-08 -0.142211 2.78426e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="81">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="82" />
+			<component type="RigidBody" id="83">
+				<attribute name="Physics Rotation" value="0.989836 1.95908e-08 -0.142211 2.78448e-07" />
+				<attribute name="Physics Position" value="31.2089 0.5 -29.3339" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="37">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-52.1863 -1.2595 -16.0587" />
+			<attribute name="Rotation" value="0.984787 -2.03702e-08 -0.173765 -3.02401e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="87">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="88" />
+			<component type="RigidBody" id="89">
+				<attribute name="Physics Rotation" value="0.984787 -2.03604e-08 -0.173765 -3.02408e-07" />
+				<attribute name="Physics Position" value="-40.8169 0.5 -9.30721" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="20">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="36.8087 -1.2595 3.40356" />
+			<attribute name="Rotation" value="0.984787 -1.59925e-08 -0.173765 -3.2699e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="36">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="37" />
+			<component type="RigidBody" id="38">
+				<attribute name="Physics Rotation" value="0.984787 -1.59791e-08 -0.173765 -3.26979e-07" />
+				<attribute name="Physics Position" value="48.1781 0.5 10.155" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="11">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="8.75558 -1.2595 13.4037" />
+			<attribute name="Rotation" value="0.984788 -8.77603e-09 -0.173758 -2.87575e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="12">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="13" />
+			<component type="RigidBody" id="14">
+				<attribute name="Physics Rotation" value="0.984788 -8.77158e-09 -0.173758 -2.87597e-07" />
+				<attribute name="Physics Position" value="20.125 0.5 20.1551" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="13">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="3.16673 -1.2595 3.49972" />
+			<attribute name="Rotation" value="0.926691 -1.16713e-07 -0.375825 -3.80116e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="15">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="16" />
+			<component type="RigidBody" id="17">
+				<attribute name="Physics Rotation" value="0.926691 -1.16721e-07 -0.375825 -3.80087e-07" />
+				<attribute name="Physics Position" value="14.5361 0.5 10.2512" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="14">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="55.7573 -1.2595 16.4058" />
+			<attribute name="Rotation" value="0.984622 -2.17823e-08 -0.174697 -2.9998e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="18">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="19" />
+			<component type="RigidBody" id="20">
+				<attribute name="Physics Rotation" value="0.984622 -2.17948e-08 -0.174697 -2.99994e-07" />
+				<attribute name="Physics Position" value="67.1267 0.5 23.1572" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="15">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-15.2445 -1.2595 -40.5963" />
+			<attribute name="Rotation" value="0.984796 -1.90605e-08 -0.173715 -3.04749e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="21">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="22" />
+			<component type="RigidBody" id="23">
+				<attribute name="Physics Rotation" value="0.984796 -1.90712e-08 -0.173715 -3.04766e-07" />
+				<attribute name="Physics Position" value="-3.87506 0.5 -33.8449" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="16">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-27.0316 -1.2595 19.5205" />
+			<attribute name="Rotation" value="0.984792 -1.59881e-08 -0.17374 -3.26795e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="24">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="25" />
+			<component type="RigidBody" id="26">
+				<attribute name="Physics Rotation" value="0.984792 -1.59717e-08 -0.17374 -3.26792e-07" />
+				<attribute name="Physics Position" value="-15.6622 0.5 26.2719" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="17">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-1.49663 -1.2595 30.1226" />
+			<attribute name="Rotation" value="0.765586 2.49333e-07 -0.643334 2.1537e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="27">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="28" />
+			<component type="RigidBody" id="29">
+				<attribute name="Physics Rotation" value="0.765586 2.49478e-07 -0.643334 2.15827e-07" />
+				<attribute name="Physics Position" value="9.87277 0.5 36.8741" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="18">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="249.746 3.2405 40.9344" />
+			<attribute name="Rotation" value="0.985064 -1.96446e-08 -0.17219 -7.42073e-08" />
+			<attribute name="Scale" value="10 10 10" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="30">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="31" />
+			<component type="RigidBody" id="32">
+				<attribute name="Physics Rotation" value="0.985064 -1.95071e-08 -0.17219 -7.38214e-08" />
+				<attribute name="Physics Position" value="261.116 5 47.6858" />
+				<attribute name="Mass" value="700" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="19">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-17.8596 -1.2595 16.3941" />
+			<attribute name="Rotation" value="0.984791 -3.63832e-08 -0.173745 -2.92519e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="33">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="34" />
+			<component type="RigidBody" id="35">
+				<attribute name="Physics Rotation" value="0.984791 -3.6394e-08 -0.173745 -2.92534e-07" />
+				<attribute name="Physics Position" value="-6.49023 0.5 23.1455" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="26">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="100.294 1.60459 132.368" />
+			<attribute name="Rotation" value="0.705344 -0.0498989 0.0498989 -0.705344" />
+			<attribute name="Scale" value="6.72819 10 10" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="54">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="55" />
+			<component type="RigidBody" id="56">
+				<attribute name="Physics Rotation" value="0.705344 -0.0498989 0.0498989 -0.705344" />
+				<attribute name="Physics Position" value="111.663 3.36409 139.119" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="29">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="41.6538 -1.2595 44.807" />
+			<attribute name="Rotation" value="0.98479 -1.60621e-08 -0.17375 -3.26844e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="63">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="64" />
+			<component type="RigidBody" id="65">
+				<attribute name="Physics Rotation" value="0.98479 -1.60788e-08 -0.17375 -3.26844e-07" />
+				<attribute name="Physics Position" value="53.0232 0.5 51.5584" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="31">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="25.0467 -1.2595 39.6708" />
+			<attribute name="Rotation" value="0.984794 -5.94111e-08 -0.173726 -3.21909e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="69">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="70" />
+			<component type="RigidBody" id="71">
+				<attribute name="Physics Rotation" value="0.984794 -5.93847e-08 -0.173726 -3.21927e-07" />
+				<attribute name="Physics Position" value="36.4161 0.5 46.4222" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="201">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-59.2055 -1.2595 -8.77132" />
+			<attribute name="Rotation" value="0.984151 2.0619e-08 -0.177332 2.99548e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="548">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="549" />
+			<component type="RigidBody" id="550">
+				<attribute name="Physics Rotation" value="0.984151 2.06352e-08 -0.177332 2.99552e-07" />
+				<attribute name="Physics Position" value="-47.8361 0.5 -2.01986" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="202">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-101.571 4.8173 -7.16628" />
+			<attribute name="Rotation" value="0.993845 1.88538e-09 -0.110777 6.86408e-08" />
+			<attribute name="Scale" value="10.6797 13.1536 10.2404" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="551">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="552" />
+			<component type="RigidBody" id="553">
+				<attribute name="Physics Rotation" value="0.993845 1.8833e-09 -0.110777 6.8641e-08" />
+				<attribute name="Physics Position" value="-90.2015 6.5768 -0.414814" />
+				<attribute name="Mass" value="500" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="203">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-137.091 4.8173 76.3826" />
+			<attribute name="Rotation" value="0.979474 -1.90868e-08 0.201569 8.24292e-08" />
+			<attribute name="Scale" value="10.6797 13.1536 10.2404" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="554">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="555" />
+			<component type="RigidBody" id="556">
+				<attribute name="Physics Rotation" value="0.979474 -1.90865e-08 0.201569 8.24278e-08" />
+				<attribute name="Physics Position" value="-125.722 6.5768 83.134" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="207">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-0.746288 -1.2595 -58.1305" />
+			<attribute name="Rotation" value="0.792955 2.22379e-07 -0.60928 2.19367e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="566">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="567" />
+			<component type="RigidBody" id="568">
+				<attribute name="Physics Rotation" value="0.792955 2.22385e-07 -0.60928 2.19365e-07" />
+				<attribute name="Physics Position" value="10.6231 0.5 -51.3791" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="208">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-0.779017 7.7405 -182.93" />
+			<attribute name="Rotation" value="0.793912 -1.47495e-09 -0.608033 -3.88105e-08" />
+			<attribute name="Scale" value="19 19 19" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="569">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="570" />
+			<component type="RigidBody" id="571">
+				<attribute name="Physics Rotation" value="0.793912 -1.48644e-09 -0.608033 -3.88327e-08" />
+				<attribute name="Physics Position" value="10.5904 9.5 -176.178" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="210">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="168.653 2.51005 -70.1484" />
+			<attribute name="Rotation" value="0.637498 -0.637498 -0.305936 -0.305936" />
+			<attribute name="Scale" value="9.21141 7.06768 8.53909" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="575">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="576" />
+			<component type="RigidBody" id="577">
+				<attribute name="Physics Rotation" value="0.637498 -0.637498 -0.305936 -0.305936" />
+				<attribute name="Physics Position" value="180.023 4.26955 -63.397" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="211">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="18.4885 -1.2595 24.9156" />
+			<attribute name="Rotation" value="1 7.21207e-09 -6.10174e-05 -3.60749e-09" />
+			<attribute name="Scale" value="6.72819 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="578">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="579" />
+			<component type="RigidBody" id="580">
+				<attribute name="Physics Rotation" value="1 7.20546e-09 -6.10105e-05 -3.60229e-09" />
+				<attribute name="Physics Position" value="29.8579 0.5 31.667" />
+				<attribute name="Mass" value="10" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="212">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="113.757 3.2405 27.4067" />
+			<attribute name="Rotation" value="0.984362 4.13755e-08 -0.176158 8.05381e-08" />
+			<attribute name="Scale" value="10 10 10" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="581">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="582" />
+			<component type="RigidBody" id="583">
+				<attribute name="Physics Rotation" value="0.984362 4.13475e-08 -0.176158 8.04403e-08" />
+				<attribute name="Physics Position" value="125.126 5 34.1582" />
+				<attribute name="Mass" value="700" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="213">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="85.2143 7.7405 -182.909" />
+			<attribute name="Rotation" value="0.794175 -2.31468e-08 -0.607689 -3.20786e-08" />
+			<attribute name="Scale" value="19 19 19" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="584">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="585" />
+			<component type="RigidBody" id="586">
+				<attribute name="Physics Rotation" value="0.794175 -2.31463e-08 -0.607689 -3.20785e-08" />
+				<attribute name="Physics Position" value="96.5837 9.5 -176.157" />
+				<attribute name="Mass" value="1000" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+		<node id="215">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Box" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-167.613 4.8173 21.6833" />
+			<attribute name="Rotation" value="0.993854 -2.37224e-08 -0.1107 8.82659e-08" />
+			<attribute name="Scale" value="10.6797 13.1536 10.2404" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="590">
+				<attribute name="Model" value="Model;Models/Box.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="591" />
+			<component type="RigidBody" id="592">
+				<attribute name="Physics Rotation" value="0.993854 -2.3722e-08 -0.1107 8.82661e-08" />
+				<attribute name="Physics Position" value="-156.244 6.5768 28.4347" />
+				<attribute name="Mass" value="500" />
+				<attribute name="Friction" value="0.8" />
+			</component>
+		</node>
+	</node>
+	<node id="66">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Spheres" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="-17.9922 1 18.6463" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="2 2 2" />
+		<attribute name="Variables" />
+		<node id="8">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="497.14 0 941.547" />
+			<attribute name="Rotation" value="0.0515326 0.453707 0.866825 0.200272" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="6">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="7">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="9">
+				<attribute name="Physics Rotation" value="0.0515326 0.453707 0.866825 0.200272" />
+				<attribute name="Physics Position" value="976.288 1 1901.74" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="67">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="43.5322 -5.96046e-08 894.397" />
+			<attribute name="Rotation" value="0.899712 -0.436085 0.00284025 0.0184452" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="161">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="162">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="163">
+				<attribute name="Physics Rotation" value="0.899712 -0.436085 0.00284025 0.0184452" />
+				<attribute name="Physics Position" value="69.0722 1 1807.44" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="68">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-868.284 -2.98023e-08 -986.543" />
+			<attribute name="Rotation" value="0.791805 -0.579595 -0.146483 -0.125128" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="164">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="165">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="166">
+				<attribute name="Physics Rotation" value="0.791805 -0.579595 -0.146483 -0.125128" />
+				<attribute name="Physics Position" value="-1754.56 1 -1954.44" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="69">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-27.5566 0 -898.143" />
+			<attribute name="Rotation" value="0.879052 0.45647 0.135586 0.0227772" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="167">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="168">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="169">
+				<attribute name="Physics Rotation" value="0.879052 0.45647 0.135586 0.0227772" />
+				<attribute name="Physics Position" value="-73.1054 1 -1777.64" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="70">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="817.016 1.78814e-07 -354.577" />
+			<attribute name="Rotation" value="-0.260122 0.832 0.234131 0.43046" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="170">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="171">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="172">
+				<attribute name="Physics Rotation" value="-0.260122 0.832 0.234131 0.43046" />
+				<attribute name="Physics Position" value="1616.04 1 -690.508" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="71">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1485.66 -2.98023e-07 -1157.75" />
+			<attribute name="Rotation" value="-0.401323 0.575204 0.420948 0.575224" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="173">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="174">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="175">
+				<attribute name="Physics Rotation" value="-0.401323 0.575204 0.420948 0.575224" />
+				<attribute name="Physics Position" value="2953.33 0.999999 -2296.85" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="72">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="3129.54 5.96046e-08 -1341.1" />
+			<attribute name="Rotation" value="0.390835 0.617238 -0.173312 0.660476" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="176">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="177">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="178">
+				<attribute name="Physics Rotation" value="0.390835 0.617238 -0.173312 0.660476" />
+				<attribute name="Physics Position" value="6241.09 1 -2663.55" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="73">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="4593.32 0 -1532.85" />
+			<attribute name="Rotation" value="0.790522 0.411413 -0.375623 0.254405" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="179">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="180">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="181">
+				<attribute name="Physics Rotation" value="0.790522 0.411413 -0.375623 0.254405" />
+				<attribute name="Physics Position" value="9168.65 1 -3047.05" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="74">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="14755.8 2.38419e-07 -1181.66" />
+			<attribute name="Rotation" value="0.642613 -0.0811831 -0.450756 -0.614229" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="182">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="183">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="184">
+				<attribute name="Physics Rotation" value="0.642613 -0.0811831 -0.450756 -0.614229" />
+				<attribute name="Physics Position" value="29493.6 1 -2344.67" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="75">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="10584.3 0 -1335.48" />
+			<attribute name="Rotation" value="0.847752 -0.0458884 -0.311101 -0.427115" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="185">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="186">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="187">
+				<attribute name="Physics Rotation" value="0.847752 -0.0458884 -0.311101 -0.427115" />
+				<attribute name="Physics Position" value="21150.6 1 -2652.31" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="76">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1727.59 1.78814e-07 -712.573" />
+			<attribute name="Rotation" value="0.710582 0.0589568 -0.277126 0.644049" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="188">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="189">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="190">
+				<attribute name="Physics Rotation" value="0.710582 0.0589568 -0.277126 0.644049" />
+				<attribute name="Physics Position" value="3437.19 1 -1406.5" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="77">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="5332 0 -1982.69" />
+			<attribute name="Rotation" value="0.920239 0.210233 0.209059 -0.255455" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="191">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="192">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="193">
+				<attribute name="Physics Rotation" value="0.920239 0.210233 0.209059 -0.255455" />
+				<attribute name="Physics Position" value="10646 1 -3946.73" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="78">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="3264.56 2.98023e-07 -196.937" />
+			<attribute name="Rotation" value="0.666676 -0.121137 -0.0483568 0.733847" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="194">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="195">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="196">
+				<attribute name="Physics Rotation" value="0.666676 -0.121137 -0.0483568 0.733847" />
+				<attribute name="Physics Position" value="6511.13 1 -375.228" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="79">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="5870.4 0 -360.133" />
+			<attribute name="Rotation" value="0.90233 -0.0834624 -0.0828952 0.414684" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="197">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="198">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="199">
+				<attribute name="Physics Rotation" value="0.90233 -0.0834624 -0.0828952 0.414684" />
+				<attribute name="Physics Position" value="11722.8 1 -701.62" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="80">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="7412.85 0 622.187" />
+			<attribute name="Rotation" value="0.970311 -0.216673 -0.107242 0.00698684" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="200">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="201">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="202">
+				<attribute name="Physics Rotation" value="0.970311 -0.216673 -0.107242 0.00698684" />
+				<attribute name="Physics Position" value="14807.7 1 1263.02" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="81">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="18309.3 0 727.762" />
+			<attribute name="Rotation" value="0.903781 -0.199986 -0.105343 0.36344" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="203">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="204">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="205">
+				<attribute name="Physics Rotation" value="0.903781 -0.199986 -0.105343 0.36344" />
+				<attribute name="Physics Position" value="36600.6 1 1474.17" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="82">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="13650 0 923.652" />
+			<attribute name="Rotation" value="0.902102 -0.299649 -0.0853435 0.298562" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="206">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="207">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="208">
+				<attribute name="Physics Rotation" value="0.902102 -0.299649 -0.0853435 0.298562" />
+				<attribute name="Physics Position" value="27282 1 1865.95" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="83">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="9694.7 4.76837e-07 1389.16" />
+			<attribute name="Rotation" value="-0.110347 0.00500235 -0.395112 0.911968" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="209">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="210">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="211">
+				<attribute name="Physics Rotation" value="-0.110347 0.00500235 -0.395112 0.911968" />
+				<attribute name="Physics Position" value="19371.4 1 2796.97" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="84">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1542.86 1.78814e-07 870.757" />
+			<attribute name="Rotation" value="0.566554 -0.371768 0.457468 -0.575785" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="212">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="213">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="214">
+				<attribute name="Physics Rotation" value="0.566554 -0.371768 0.457468 -0.575785" />
+				<attribute name="Physics Position" value="3067.73 1 1760.16" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="85">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1515.53 0 830.492" />
+			<attribute name="Rotation" value="0.779516 -0.516353 0.338924 -0.104237" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="215">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="216">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="217">
+				<attribute name="Physics Rotation" value="0.779516 -0.516353 0.338924 -0.104237" />
+				<attribute name="Physics Position" value="3013.07 1 1679.63" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="86">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="12391.3 0 955.557" />
+			<attribute name="Rotation" value="0.726803 -0.661105 0.00779731 0.186109" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="218">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="219">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="220">
+				<attribute name="Physics Rotation" value="0.726803 -0.661105 0.00779731 0.186109" />
+				<attribute name="Physics Position" value="24764.6 1 1929.76" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="87">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="8631.75 0 1049.65" />
+			<attribute name="Rotation" value="0.353197 -0.343652 0.681756 -0.540707" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="221">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="222">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="223">
+				<attribute name="Physics Rotation" value="0.353197 -0.343652 0.681756 -0.540707" />
+				<attribute name="Physics Position" value="17245.5 1 2117.95" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="88">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1163.09 -3.27826e-07 947.637" />
+			<attribute name="Rotation" value="0.0238678 0.135826 -0.619925 0.772447" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="224">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="225">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="226">
+				<attribute name="Physics Rotation" value="0.0238678 0.135826 -0.619925 0.772447" />
+				<attribute name="Physics Position" value="2308.19 0.999999 1913.92" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="89">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="8050.3 -1.19209e-07 1152.64" />
+			<attribute name="Rotation" value="0.518548 -0.824457 -0.077109 -0.213148" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="227">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="228">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="229">
+				<attribute name="Physics Rotation" value="0.518548 -0.824457 -0.077109 -0.213148" />
+				<attribute name="Physics Position" value="16082.6 1 2323.93" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="90">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1165.19 -2.08616e-07 1122.37" />
+			<attribute name="Rotation" value="0.341457 0.264545 0.726508 -0.534424" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="230">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="231">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="232">
+				<attribute name="Physics Rotation" value="0.341457 0.264545 0.726508 -0.534424" />
+				<attribute name="Physics Position" value="2312.39 1 2263.39" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="91">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="7625.5 2.98023e-07 1122.99" />
+			<attribute name="Rotation" value="0.685045 -0.306682 -0.629273 0.201683" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="233">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="234">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="235">
+				<attribute name="Physics Rotation" value="0.685045 -0.306682 -0.629273 0.201683" />
+				<attribute name="Physics Position" value="15233 1 2264.63" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="92">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1009.73 1.78814e-07 948.622" />
+			<attribute name="Rotation" value="0.552807 0.00174822 -0.334261 -0.763329" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="236">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="237">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="238">
+				<attribute name="Physics Rotation" value="0.552807 0.00174822 -0.334261 -0.763329" />
+				<attribute name="Physics Position" value="2001.47 1 1915.89" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="93">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="6681.55 2.38419e-07 1315.02" />
+			<attribute name="Rotation" value="-0.493298 0.578051 -0.0710197 0.64612" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="239">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="240">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="241">
+				<attribute name="Physics Rotation" value="-0.493298 0.578051 -0.0710197 0.64612" />
+				<attribute name="Physics Position" value="13345.1 1 2648.69" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="94">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="662.881 -4.76837e-07 572.917" />
+			<attribute name="Rotation" value="-0.466561 -0.0272636 0.261463 0.84452" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="242">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="243">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="244">
+				<attribute name="Physics Rotation" value="-0.466561 -0.0272636 0.261463 0.84452" />
+				<attribute name="Physics Position" value="1307.77 0.999999 1164.48" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="95">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1636.14 1.19209e-07 39.4441" />
+			<attribute name="Rotation" value="0.499188 0.0231714 -0.567065 0.654761" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="245">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="246">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="247">
+				<attribute name="Physics Rotation" value="0.499188 0.0231714 -0.567065 0.654761" />
+				<attribute name="Physics Position" value="3254.29 1 97.5345" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="96">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="6920.7 -5.96046e-08 884.142" />
+			<attribute name="Rotation" value="0.688466 -0.580628 -0.414191 0.131649" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="248">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="249">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="250">
+				<attribute name="Physics Rotation" value="0.688466 -0.580628 -0.414191 0.131649" />
+				<attribute name="Physics Position" value="13823.4 1 1786.93" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="97">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="711.056 0 1734.25" />
+			<attribute name="Rotation" value="0.288512 0.408562 0.849349 -0.168654" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="251">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="252">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="253">
+				<attribute name="Physics Rotation" value="0.288512 0.408562 0.849349 -0.168654" />
+				<attribute name="Physics Position" value="1404.12 1 3487.15" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="98">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1380.9 0 1279.07" />
+			<attribute name="Rotation" value="0.0710912 0.172564 0.932377 0.309582" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="254">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="255">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="256">
+				<attribute name="Physics Rotation" value="0.0710912 0.172564 0.932377 0.309582" />
+				<attribute name="Physics Position" value="2743.81 1 2576.79" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="99">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="8425.7 0 1985.45" />
+			<attribute name="Rotation" value="-0.217297 0.736898 -0.316726 0.55628" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="257">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="258">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="259">
+				<attribute name="Physics Rotation" value="-0.217297 0.736898 -0.316726 0.55628" />
+				<attribute name="Physics Position" value="16833.4 1 3989.55" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="100">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="4773.58 0 2392.57" />
+			<attribute name="Rotation" value="-0.41601 0.825049 -0.0653381 0.376778" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="260">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="0.5" />
+			</component>
+			<component type="CollisionShape" id="261">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="262">
+				<attribute name="Physics Rotation" value="-0.41601 0.825049 -0.0653381 0.376778" />
+				<attribute name="Physics Position" value="9529.17 1 4803.79" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="103">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="32.5783 -0.3 -0.7785" />
+			<attribute name="Rotation" value="0.990874 0.0902398 -0.0117246 -0.0994367" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="263">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="264">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="265">
+				<attribute name="Physics Rotation" value="0.990874 0.0902398 -0.0117246 -0.0994367" />
+				<attribute name="Physics Position" value="47.1644 0.4 17.0893" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="104">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-150.669 -0.3 2.26605" />
+			<attribute name="Rotation" value="0.518339 -0.067932 0.011162 -0.8524" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="266">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="267">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="268">
+				<attribute name="Physics Rotation" value="0.518339 -0.067932 0.011162 -0.8524" />
+				<attribute name="Physics Position" value="-319.33 0.4 23.1784" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="105">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1.62925 4.5 -138.744" />
+			<attribute name="Rotation" value="0.979136 -0.0297924 -0.160401 -0.121146" />
+			<attribute name="Scale" value="10 10 10" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="269">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="270">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="271">
+				<attribute name="Physics Rotation" value="0.979136 -0.0297924 -0.160401 -0.121146" />
+				<attribute name="Physics Position" value="-14.7337 10 -258.842" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="106">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="554.926 -0.3 6.74675" />
+			<attribute name="Rotation" value="0.954327 0.0703091 -0.0736483 -0.280878" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="272">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="273">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="274">
+				<attribute name="Physics Rotation" value="0.954327 0.0703091 -0.0736483 -0.280878" />
+				<attribute name="Physics Position" value="1091.86 0.4 32.1398" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="1" />
+				<attribute name="Rolling Friction" value="1" />
+			</component>
+		</node>
+		<node id="107">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-360.364 -0.3 169.955" />
+			<attribute name="Rotation" value="-0.471349 0.342852 -0.124747 0.802945" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="275">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="276">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="277">
+				<attribute name="Physics Rotation" value="-0.471349 0.342852 -0.124747 0.802945" />
+				<attribute name="Physics Position" value="-738.72 0.4 358.556" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="108">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-56.3834 -0.3 160.081" />
+			<attribute name="Rotation" value="-0.24813 0.702138 -0.0962129 0.660437" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="278">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="279">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="280">
+				<attribute name="Physics Rotation" value="-0.24813 0.702138 -0.0962129 0.660437" />
+				<attribute name="Physics Position" value="-130.759 0.4 338.808" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="109">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-23.9327 4.5 48.0943" />
+			<attribute name="Rotation" value="0.959745 -0.134405 0.246235 0.0139147" />
+			<attribute name="Scale" value="10 10 10" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="281">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="282">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="283">
+				<attribute name="Physics Rotation" value="0.959745 -0.134405 0.246235 0.0139147" />
+				<attribute name="Physics Position" value="-65.8576 10 114.835" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="110">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-43.5009 1 -170.298" />
+			<attribute name="Rotation" value="0.528722 -0.419046 -0.737024 0.0406184" />
+			<attribute name="Scale" value="3 3 3" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="284">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="285">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="286">
+				<attribute name="Physics Rotation" value="0.528722 -0.419046 -0.737024 0.0406184" />
+				<attribute name="Physics Position" value="-104.994 3 -321.95" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="111">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-87.6519 -0.3 -100.255" />
+			<attribute name="Rotation" value="0.062604 -0.636513 -0.384412 0.665702" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="287">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="288">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="289">
+				<attribute name="Physics Rotation" value="0.062604 -0.636513 -0.384412 0.665702" />
+				<attribute name="Physics Position" value="-193.296 0.4 -181.864" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="131">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-2.0357 -0.3 -6.24812" />
+			<attribute name="Rotation" value="0.226418 -0.184973 0.142405 0.945643" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="347">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="348">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="349">
+				<attribute name="Physics Rotation" value="0.226418 -0.184973 0.142405 0.945643" />
+				<attribute name="Physics Position" value="-22.0636 0.4 6.15006" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="112">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-183.768 -0.3 -59.6371" />
+			<attribute name="Rotation" value="0.747161 -0.359358 -0.0411297 -0.557602" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="290">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="291">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="292">
+				<attribute name="Physics Rotation" value="0.747161 -0.359358 -0.0411297 -0.557602" />
+				<attribute name="Physics Position" value="-385.528 0.4 -100.628" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="113">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-80.8204 -0.3 1.92695" />
+			<attribute name="Rotation" value="0.747767 -0.360598 0.0711888 -0.552943" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="293">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="294">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="295">
+				<attribute name="Physics Rotation" value="0.747767 -0.360598 0.0711888 -0.552943" />
+				<attribute name="Physics Position" value="-179.633 0.4 22.5002" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="125">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="8.396 -0.300001 -12.2736" />
+			<attribute name="Rotation" value="0.226412 -0.184973 0.142405 0.945644" />
+			<attribute name="Scale" value="0.399999 0.399999 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="329">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="330">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="331">
+				<attribute name="Physics Rotation" value="0.226412 -0.184973 0.142405 0.945644" />
+				<attribute name="Physics Position" value="-1.2002 0.399998 -5.9009" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="126">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="14.6248 0.999998 59.9998" />
+			<attribute name="Rotation" value="0.226411 -0.184975 0.142405 0.945644" />
+			<attribute name="Scale" value="3 3 3" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="332">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="333">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="334">
+				<attribute name="Physics Rotation" value="0.226411 -0.184975 0.142405 0.945644" />
+				<attribute name="Physics Position" value="11.2574 3 138.646" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="127">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-2.8488 -0.3 3.9921" />
+			<attribute name="Rotation" value="0.225629 -0.184568 0.142494 0.945897" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="335">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Is Occluder" value="true" />
+			</component>
+			<component type="CollisionShape" id="336">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="337">
+				<attribute name="Physics Rotation" value="0.225629 -0.184568 0.142494 0.945897" />
+				<attribute name="Physics Position" value="-23.6898 0.4 26.6305" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="128">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="7.2964 -0.3 2.7198" />
+			<attribute name="Rotation" value="0.226419 -0.184972 0.142405 0.945643" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="338">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Is Occluder" value="true" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="339">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="340">
+				<attribute name="Physics Rotation" value="0.226419 -0.184972 0.142405 0.945643" />
+				<attribute name="Physics Position" value="-3.3994 0.4 24.0859" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="129">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1.4641 -0.3 -9.00702" />
+			<attribute name="Rotation" value="0.226334 -0.184986 0.142408 0.94566" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="341">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Is Occluder" value="true" />
+			</component>
+			<component type="CollisionShape" id="342">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="343">
+				<attribute name="Physics Rotation" value="0.226334 -0.184986 0.142408 0.94566" />
+				<attribute name="Physics Position" value="-15.064 0.4 0.632259" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="130">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-6.33755 -0.3 -10.1915" />
+			<attribute name="Rotation" value="0.225629 -0.184568 0.142494 0.945897" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="344">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Is Occluder" value="true" />
+			</component>
+			<component type="CollisionShape" id="345">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="346">
+				<attribute name="Physics Rotation" value="0.225629 -0.184568 0.142494 0.945897" />
+				<attribute name="Physics Position" value="-30.6673 0.4 -1.73662" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="132">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-2.911 -0.3 5.7108" />
+			<attribute name="Rotation" value="0.225629 -0.184568 0.142494 0.945897" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="350">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="351">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="352">
+				<attribute name="Physics Rotation" value="0.225629 -0.184568 0.142494 0.945897" />
+				<attribute name="Physics Position" value="-23.8142 0.4 30.0679" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="133">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-2.4798 -0.300001 -12.0081" />
+			<attribute name="Rotation" value="0.226412 -0.184973 0.142405 0.945644" />
+			<attribute name="Scale" value="0.399999 0.399999 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="353">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="354">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="355">
+				<attribute name="Physics Rotation" value="0.226412 -0.184973 0.142405 0.945644" />
+				<attribute name="Physics Position" value="-22.9518 0.399998 -5.36986" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="134">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-4.59135 -0.299999 -3.69645" />
+			<attribute name="Rotation" value="0.226385 -0.184979 0.142406 0.94565" />
+			<attribute name="Scale" value="0.400001 0.400001 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="356">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="357">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="358">
+				<attribute name="Physics Rotation" value="0.226385 -0.184979 0.142406 0.94565" />
+				<attribute name="Physics Position" value="-27.1749 0.400002 11.2534" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="135">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="8.2384 -0.3 -6.36356" />
+			<attribute name="Rotation" value="0.226418 -0.184973 0.142405 0.945643" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="359">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="1" />
+			</component>
+			<component type="CollisionShape" id="360">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="361">
+				<attribute name="Physics Rotation" value="0.226418 -0.184973 0.142405 0.945643" />
+				<attribute name="Physics Position" value="-1.5154 0.4 5.91918" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="141">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-2.96075 -0.3 -24.6493" />
+			<attribute name="Rotation" value="0.226389 -0.184988 0.142405 0.945647" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="377">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="378">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="379">
+				<attribute name="Physics Rotation" value="0.226389 -0.184988 0.142405 0.945647" />
+				<attribute name="Physics Position" value="-23.9137 0.4 -30.6523" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="136">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-14.68 -0.3 7.0456" />
+			<attribute name="Rotation" value="0.22638 -0.184978 0.142406 0.945651" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="362">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="363">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="364">
+				<attribute name="Physics Rotation" value="0.22638 -0.184978 0.142406 0.945651" />
+				<attribute name="Physics Position" value="-47.3523 0.4 32.7375" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="137">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-0.8643 -0.300001 10.9535" />
+			<attribute name="Rotation" value="0.226339 -0.184983 0.142408 0.945659" />
+			<attribute name="Scale" value="0.399999 0.399999 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="365">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="366">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="367">
+				<attribute name="Physics Rotation" value="0.226339 -0.184983 0.142408 0.945659" />
+				<attribute name="Physics Position" value="-19.7208 0.399998 40.5532" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="138">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-2.5211 -0.3 -33.6378" />
+			<attribute name="Rotation" value="0.226411 -0.184973 0.142405 0.945645" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="368">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="369">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="370">
+				<attribute name="Physics Rotation" value="0.226411 -0.184973 0.142405 0.945645" />
+				<attribute name="Physics Position" value="-23.0344 0.400001 -48.6293" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="139">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="1 -0.299999 1" />
+			<attribute name="Rotation" value="0.226385 -0.184979 0.142406 0.94565" />
+			<attribute name="Scale" value="0.400001 0.400001 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="371">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Shadow Distance" value="1" />
+			</component>
+			<component type="CollisionShape" id="372">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="373">
+				<attribute name="Physics Rotation" value="0.226385 -0.184979 0.142406 0.94565" />
+				<attribute name="Physics Position" value="-15.9922 0.400002 20.6463" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="140">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="10.6146 -0.3 -17.8803" />
+			<attribute name="Rotation" value="0.226411 -0.184973 0.142405 0.945645" />
+			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="374">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="375">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="376">
+				<attribute name="Physics Rotation" value="0.226411 -0.184973 0.142405 0.945645" />
+				<attribute name="Physics Position" value="3.237 0.400001 -17.1143" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="144">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="3.8266 -0.3 -6.88206" />
+			<attribute name="Rotation" value="0.226381 -0.184979 0.142406 0.945651" />
+			<attribute name="Scale" value="0.399999 0.399999 0.4" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="386">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="387">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="388">
+				<attribute name="Physics Rotation" value="0.226381 -0.184979 0.142406 0.945651" />
+				<attribute name="Physics Position" value="-10.339 0.4 4.88218" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+		<node id="209">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Sphere" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="115.49 4.5 54.8153" />
+			<attribute name="Rotation" value="0.959745 -0.134405 0.246235 0.0139147" />
+			<attribute name="Scale" value="10 10 10" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="572">
+				<attribute name="Model" value="Model;Models/Sphere.mdl" />
+				<attribute name="Material" value="Material;" />
+				<attribute name="Cast Shadows" value="true" />
+			</component>
+			<component type="CollisionShape" id="573">
+				<attribute name="Shape Type" value="Sphere" />
+			</component>
+			<component type="RigidBody" id="574">
+				<attribute name="Physics Rotation" value="0.959745 -0.134405 0.246235 0.0139147" />
+				<attribute name="Physics Position" value="212.988 10 128.277" />
+				<attribute name="Mass" value="100" />
+				<attribute name="Friction" value="25" />
+				<attribute name="Rolling Friction" value="25" />
+			</component>
+		</node>
+	</node>
+	<node id="145">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="text" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="-200 60 999" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="500 500 500" />
+		<attribute name="Variables" />
+		<component type="Text3D" id="390">
+			<attribute name="Font" value="Font;Fonts/BlueHighway.ttf" />
+			<attribute name="Material" value="Material;Materials/Editor/DebugIconPointLight.xml" />
+			<attribute name="Text" value="ItJustWorksTM" />
+			<attribute name="Width" value="98" />
+		</component>
+	</node>
+	<node id="216">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Mushroomss" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="-0.726082 -1.49983 8.9004" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<node id="204">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-53.3949 1.99983 -63.9209" />
+			<attribute name="Rotation" value="0.997642 1.40736e-08 -0.0686318 -3.25412e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="557">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="558">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="179">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-33.1939 1.99983 22.3938" />
+			<attribute name="Rotation" value="0.997642 -1.53462e-08 -0.0686285 -3.20137e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="482">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="483">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="180">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-12.7468 1.99983 -37.4219" />
+			<attribute name="Rotation" value="0.997642 1.69601e-09 -0.0686318 -3.36167e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="485">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="486">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="181">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-35.0634 1.99983 -57.2703" />
+			<attribute name="Rotation" value="0.997642 1.40736e-08 -0.0686318 -3.25412e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="488">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="489">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="182">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="18.8397 1.99983 -49.8042" />
+			<attribute name="Rotation" value="0.997642 -1.41854e-08 -0.06863 -3.22545e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="491">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="492">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="183">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-16.9337 1.99983 9.6565" />
+			<attribute name="Rotation" value="0.997642 2.98956e-09 -0.0686291 -3.38609e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="494">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="495">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="184">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-15.8649 1.99983 -27.4019" />
+			<attribute name="Rotation" value="0.997642 1.69226e-09 -0.0686291 -3.36313e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="497">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="498">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="185">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-578.9 2.49983 -493.887" />
+			<attribute name="Rotation" value="0.997642 1.40736e-08 -0.0686318 -3.25412e-07" />
+			<attribute name="Scale" value="40 40 40" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="500">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="501">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="186">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-50.3858 1.99983 -49.2875" />
+			<attribute name="Rotation" value="0.997642 -1.75192e-09 -0.0686318 -3.11642e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="503">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="504">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="187">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="4.25484 1.99983 43.9887" />
+			<attribute name="Rotation" value="0.997642 -1.41532e-08 -0.0686318 -3.22309e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="506">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="507">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="188">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="18.5776 1.99983 29.6035" />
+			<attribute name="Rotation" value="0.997642 -1.41854e-08 -0.06863 -3.22545e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="509">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="510" />
+		</node>
+		<node id="189">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="26.7184 1.99983 40.2318" />
+			<attribute name="Rotation" value="0.997642 -1.41161e-08 -0.06863 -3.2262e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="512">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="513">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="190">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="40.0816 1.99983 -4.54455" />
+			<attribute name="Rotation" value="0.997642 -2.92372e-09 -0.06863 -3.09114e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="515">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="516">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="191">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="39.6402 1.99983 26.4186" />
+			<attribute name="Rotation" value="0.997642 -1.8045e-09 -0.0686318 -3.11533e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="518">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="519">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="192">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="42.7463 1.99983 -23.4511" />
+			<attribute name="Rotation" value="0.997642 1.18367e-08 -0.0686291 -3.20509e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="521">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="522">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="193">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="30.5861 1.99983 -15.6946" />
+			<attribute name="Rotation" value="0.997642 1.17634e-08 -0.06863 -3.20646e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="524">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="525">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="194">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="20.2192 1.99983 -6.91579" />
+			<attribute name="Rotation" value="0.997642 3.83482e-08 -0.0686274 -2.98931e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="527">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="528">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="195">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="35.2357 1.99983 -27.8168" />
+			<attribute name="Rotation" value="0.997642 -1.53462e-08 -0.0686285 -3.20137e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="530">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="531">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="196">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-30.3142 1.99983 12.8406" />
+			<attribute name="Rotation" value="0.997642 1.69226e-09 -0.0686291 -3.36313e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="533">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="534">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="197">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-32.1268 1.99983 -17.8517" />
+			<attribute name="Rotation" value="0.997642 1.18367e-08 -0.0686291 -3.20509e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="536">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="537">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="198">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-5.5288 1.99983 -16.7267" />
+			<attribute name="Rotation" value="0.997642 1.17853e-08 -0.0686291 -3.20618e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="539">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="540">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="199">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-42.1661 1.99983 -6.91579" />
+			<attribute name="Rotation" value="0.997642 -1.41009e-08 -0.06863 -3.22408e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="542">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="543">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="200">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-34.6583 1.99983 3.5437" />
+			<attribute name="Rotation" value="0.997642 1.08935e-08 -0.0686297 -2.93321e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="545">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="546">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="205">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-85.5633 2.49983 -208.596" />
+			<attribute name="Rotation" value="0.997642 1.40736e-08 -0.0686318 -3.25412e-07" />
+			<attribute name="Scale" value="10 10 10" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="560">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWind.xml" />
+			</component>
+			<component type="CollisionShape" id="561">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="206">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-106.436 2.49983 -63.9209" />
+			<attribute name="Rotation" value="0.997642 1.40736e-08 -0.0686318 -3.25412e-07" />
+			<attribute name="Scale" value="10 10 10" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="563">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="564">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="214">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-56.2852 1.99983 10.23" />
+			<attribute name="Rotation" value="0.997642 5.13458e-08 -0.0686285 -3.0654e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="587">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="588">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="173">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-28.866 1.99983 -2.30727" />
+			<attribute name="Rotation" value="0.997642 1.52195e-08 -0.0686291 -3.27631e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="464">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="465">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="153">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-3.87604 1.99983 20.7298" />
+			<attribute name="Rotation" value="0.997642 -1.83506e-09 -0.068637 -3.11472e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="404">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="405">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="154">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-11.8181 1.99983 -0.423398" />
+			<attribute name="Rotation" value="0.997642 -1.85915e-09 -0.06863 -3.1153e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="407">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="408">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="155">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-0.584568 1.99983 11.0504" />
+			<attribute name="Rotation" value="0.997642 6.49909e-08 -0.0686326 -2.94541e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="410">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="411">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="156">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="22.208 1.99983 21.5159" />
+			<attribute name="Rotation" value="0.997642 1.73916e-09 -0.0686291 -3.36302e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="413">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="414">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="157">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="27.2415 1.99983 6.0025" />
+			<attribute name="Rotation" value="0.997642 1.30134e-08 -0.0686305 -3.22859e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="416">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="417">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="158">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-18.3669 1.99983 19.9849" />
+			<attribute name="Rotation" value="0.997642 2.98956e-09 -0.0686291 -3.38609e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="419">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="420">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="159">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-3.87939 1.99983 38.2286" />
+			<attribute name="Rotation" value="0.997642 3.82782e-08 -0.0686291 -2.98895e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="422">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="423">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="160">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-33.319 1.99983 44.4546" />
+			<attribute name="Rotation" value="0.997642 -1.75192e-09 -0.0686318 -3.11642e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="425">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="426">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="161">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-255.976 2.49983 99.0496" />
+			<attribute name="Rotation" value="0.997642 5.13458e-08 -0.0686285 -3.0654e-07" />
+			<attribute name="Scale" value="10 10 10" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="428">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="429">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="162">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="10.7731 1.99983 -12.7345" />
+			<attribute name="Rotation" value="0.997642 2.60088e-08 -0.06863 -2.97302e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="431">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="432">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="163">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-1.25312 1.99983 -29.2269" />
+			<attribute name="Rotation" value="0.997642 -1.28971e-08 -0.0686378 -3.24743e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="434">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="435">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="164">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="20.8057 1.99983 -15.2226" />
+			<attribute name="Rotation" value="0.997642 1.17634e-08 -0.06863 -3.20646e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="437">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="438">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="165">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-18.6075 1.99983 -47.1194" />
+			<attribute name="Rotation" value="0.997642 -1.41854e-08 -0.06863 -3.22545e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="440">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="441">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="166">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-10.5275 1.99983 -63.1012" />
+			<attribute name="Rotation" value="0.997642 2.61257e-08 -0.0686291 -2.97275e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="443">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="444">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="167">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="10.9973 1.99983 -42.8898" />
+			<attribute name="Rotation" value="0.997642 2.61257e-08 -0.0686291 -2.97275e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="446">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="447">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="168">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-39.076 1.99983 -40.3448" />
+			<attribute name="Rotation" value="0.997642 1.19355e-08 -0.06863 -3.20564e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="449">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="450">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="169">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-52.9319 1.99983 -26.6937" />
+			<attribute name="Rotation" value="0.997642 5.13866e-08 -0.0686285 -3.0656e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="452">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="453">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="170">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-5.86295 1.99983 -7.08019" />
+			<attribute name="Rotation" value="0.997079 -3.3963e-08 -0.0763816 1.51783e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="455">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="456">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="172">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="12.9702 1.99983 15.2192" />
+			<attribute name="Rotation" value="0.997642 1.69601e-09 -0.0686318 -3.36167e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="461">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="462">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="174">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="20.7728 1.99983 -34.8143" />
+			<attribute name="Rotation" value="0.997642 2.98956e-09 -0.0686291 -3.38609e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="467">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="468">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="175">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-0.0225111 1.99983 -51.689" />
+			<attribute name="Rotation" value="0.997642 -4.90527e-09 -0.0686318 -3.09204e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="470">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="471">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="176">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="9.60484 1.99983 34.944" />
+			<attribute name="Rotation" value="0.997642 2.61257e-08 -0.0686291 -2.97275e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="473">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="474">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="177">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-24.9459 1.99983 33.6296" />
+			<attribute name="Rotation" value="0.997642 -1.41392e-08 -0.06863 -3.22407e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="476">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="477">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="178">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-42.2261 1.99983 30.935" />
+			<attribute name="Rotation" value="0.997642 -1.8045e-09 -0.0686318 -3.11533e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="479">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="480">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="151">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="6.57316 1.99983 -34.6081" />
+			<attribute name="Rotation" value="0.997641 3.8387e-08 -0.0686404 -2.98856e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="398">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="399">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="149">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-30.1768 1.99983 -28.8552" />
+			<attribute name="Rotation" value="0.997642 5.14645e-08 -0.0686291 -3.06617e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="392">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="393">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="150">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="13.23 1.99983 -23.3872" />
+			<attribute name="Rotation" value="0.997642 4.93721e-08 -0.0686326 -2.81254e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="395">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="396">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+		<node id="152">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="Mushrooms" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="38.7286 1.99983 5.796" />
+			<attribute name="Rotation" value="0.997642 1.18367e-08 -0.0686291 -3.20509e-07" />
+			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Variables" />
+			<component type="StaticModel" id="401">
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+			</component>
+			<component type="CollisionShape" id="402">
+				<attribute name="Shape Type" value="TriangleMesh" />
+				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+			</component>
+		</node>
+	</node>
+	<node id="218">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Lights" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="-1.34047 1.97982 18.2599" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="1 1 1" />
+		<attribute name="Variables" />
+		<node id="217">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="-35.1356 180 6.11951" />
+			<attribute name="Rotation" value="0.965926 0.258819 0 0" />
+			<attribute name="Scale" value="0.309925 0.999764 0.999993" />
+			<attribute name="Variables" />
+			<component type="Light" id="593">
+				<attribute name="Light Type" value="Directional" />
+				<attribute name="Spot FOV" value="60" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Depth Constant Bias" value="0.0001" />
+			</component>
+		</node>
+		<node id="219">
+			<attribute name="Is Enabled" value="true" />
+			<attribute name="Name" value="" />
+			<attribute name="Tags" />
+			<attribute name="Position" value="35.1356 180 6.11951" />
+			<attribute name="Rotation" value="0.92388 0.382683 0 0" />
+			<attribute name="Scale" value="0.309925 0.999764 0.999993" />
+			<attribute name="Variables" />
+			<component type="Light" id="594">
+				<attribute name="Light Type" value="Directional" />
+				<attribute name="Spot FOV" value="60" />
+				<attribute name="Cast Shadows" value="true" />
+				<attribute name="Depth Constant Bias" value="0.0001" />
+			</component>
+		</node>
+	</node>
+</scene>
