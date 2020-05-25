@@ -50,13 +50,9 @@ TEST_CASE("Hardwareserial begin and write" "[begin], [write]")
     test.begin(1);
     int succes = test.write(150);
     REQUIRE(succes == 1);
-    std::byte a = board_data->uart_buses[0].rx[0];
-    std::byte b = board_data->uart_buses[2].rx[2];
-    std::byte c = board_data->uart_buses[1].rx[1];    
-
-    REQUIRE(static_cast<int>(a) == 150);
-    REQUIRE(static_cast<int>(b) == 150);
-    REQUIRE(static_cast<int>(c) == 0);
+    REQUIRE(static_cast<int>(board_data->uart_buses[0].rx[0]) == 150);
+    REQUIRE(static_cast<int>(board_data->uart_buses[2].rx[2]) == 150);
+    REQUIRE(static_cast<int>(board_data->uart_buses[1].rx[1]) == 0);
 }
 
 TEST_CASE("Check available bytes for reading" "[available]")

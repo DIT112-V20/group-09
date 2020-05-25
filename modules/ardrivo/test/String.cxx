@@ -2,10 +2,6 @@
 #include "WString.h"
 #include <string_view>
 
-using Catch::Contains;
-using Catch::EndsWith; 
-
-//Insufficient
 TEST_CASE("Test compare a string to another" "[compareTo]")
 {
 	String test = "test";
@@ -40,12 +36,11 @@ TEST_CASE("Tests whether or not a String ends with the characters of another Str
 
 TEST_CASE("Copies the String’s characters to the supplied buffer" "[getBytes]")
 {
-	using Catch::Contains; 
 	String test = "test";
 	byte arr[5];
 	test.getBytes(arr, test.length());	
 	const char *p = reinterpret_cast<const char*>(arr);
-	REQUIRE_THAT(p, Contains("test"));
+	REQUIRE_THAT(p, Catch::Contains("test"));
 }
 
 TEST_CASE("Locates a character or String within another String" "[indexOf]")
@@ -59,23 +54,17 @@ TEST_CASE("Locates a character or String within another String" "[indexOf]")
 
 TEST_CASE("Modify in place a String removing chars from the provided index to the end of the String or from the provided index to index plus count" "[remove]")
 {
-	using Catch::EndsWith; 
 	String test = "test";
-	char arr[4];
 	test.remove(3);
-	strcpy(arr, test.c_str());
-	REQUIRE_THAT(arr, EndsWith("tes"));
+	REQUIRE_THAT(test.c_str(), Catch::Contains("tes"));
 }
 
 TEST_CASE("Check if string gets swapped" "[replace]")
 {
-	using Catch::EndsWith; 
 	String test = "ab";
 	String test2 = "cd";
 	test.replace(test, test2);
-	char arr[3];
-	strcpy(arr, test.c_str());	
-	REQUIRE_THAT(arr, EndsWith( "cd" ));
+	REQUIRE_THAT(test.c_str(), Catch::EndsWith("cd"));
 }
 
 //Crap does not work without std::string
@@ -90,45 +79,36 @@ TEST_CASE("Test if string is given a new capacity" "[reserve]")
 
 TEST_CASE("Sets a character of the String" "[setCharAt]")
 {
-	using Catch::EndsWith; 
 	String test = "Hejsan";
 	test.setCharAt(1, '\x84');
-	char arr[7];
-	strcpy(arr, test.c_str());
-	REQUIRE_THAT(arr, EndsWith("H\x84jsan"));
+	REQUIRE_THAT(test.c_str(), Catch::EndsWith("H\x84jsan"));
 }
 
 TEST_CASE("Get a substring of a String" "[subsring]")
-{	
-	using Catch::Contains; 
+{	 
 	String test = "test";
 	String newString = test.substring(2);
-	char arr[3];
-	strcpy(arr, newString.c_str());
-	REQUIRE_THAT(arr, Contains("st"));
+	REQUIRE_THAT(newString.c_str(), Catch::Contains("st"));
 }
 
 TEST_CASE("Copies the String’s characters to the supplied buffer" "[toCharArray]")
 {
-	using Catch::Contains; 
 	String test = "test";
 	char arr[5] = "init";
 	test.toCharArray(arr, test.length());
-	REQUIRE_THAT(arr, Contains("test"));
+	REQUIRE_THAT(arr, Catch::Contains("test"));
 }
 
 TEST_CASE("Converts a valid String to an integer. The input String should start with an integer number" "[toInt]") 
 {
 	String test = "1 and 23";
-	unsigned long num =  test.toInt();
+	auto num =  test.toInt();
 	REQUIRE(num == 1);
 	String test2 = "123";
-	unsigned long num2 =  test2.toInt();
+	auto num2 =  test2.toInt();
 	REQUIRE(num2 == 123);
 }
 
-//Dangerous tests, since you have not proven that these 
-//values can be represented by all standard compliant floating-point implementations; do range checks instead
 TEST_CASE("Converts a valid String to an double. The input String should start with an double number" "[toDouble]")
 {
 	String test = "1.0323414535 and 23";
@@ -137,9 +117,6 @@ TEST_CASE("Converts a valid String to an double. The input String should start w
 	REQUIRE(num <= 1.03240);
 }
 
-
-//Dangerous tests, since you have not proven that these 
-//values can be represented by all standard compliant floating-point implementations; do range checks instead
 TEST_CASE("Converts a valid String to an float. The input String should start with an float number" "[toFloat]")
 {
 	String test = "33.34523345 stuff 23";
@@ -150,32 +127,23 @@ TEST_CASE("Converts a valid String to an float. The input String should start wi
 
 TEST_CASE("Get a lower-case version of a String" "[toLowerCase]")
 {
-	using Catch::Contains; 
 	String test = "I LIKE BANANAS";
 	test.toLowerCase();
-	char* arr = new char[test.length() + 1];
-	strcpy(arr, test.c_str());
-	REQUIRE_THAT(arr, Contains("i like bananas"));
+	REQUIRE_THAT(test.c_str(), Catch::Contains("i like bananas"));
 }
 
 TEST_CASE("Get a upper-case version of a String" "[toUpperCase]")
 {
-	using Catch::Contains; 
 	String test = "i like bigger bananas";
 	test.toUpperCase();
-	char arr[22];
-	strcpy(arr, test.c_str());
-	REQUIRE_THAT(arr, Contains("I LIKE BIGGER BANANAS"));
+	REQUIRE_THAT(test.c_str(), Catch::Contains("I LIKE BIGGER BANANAS"));
 }
 
 TEST_CASE("Remove spaces in a string" "[trim]")
 {
-	using Catch::Contains; 
 	String test = "i like bigger bananas";
 	test.trim();
-	char* arr = new char[test.length() + 1];
-	strcpy(arr, test.c_str());
-	REQUIRE_THAT(arr, Contains("ilikebiggerbananas"));
+	REQUIRE_THAT(test.c_str(), Catch::Contains("ilikebiggerbananas"));
 }
 
 TEST_CASE("Checks if a string is equal to another" "[equals]")
@@ -231,11 +199,8 @@ TEST_CASE("Check operators" "[String::operator]")
 
 	SECTION("Operator+")
 	{
-		using Catch::Contains; 
 		std::string str = "Hello, ";
 		str += "world" ;
-		char arr[13];
-		strcpy(arr, str.c_str());
-		REQUIRE_THAT(arr, Contains("Hello, world"));
+		REQUIRE_THAT(str.c_str(), Catch::Contains("Hello, world"));
 	}
 }
