@@ -16,7 +16,8 @@
  *
  */
 
-#include "Arduino.h"
+extern void setup();
+extern void loop();
 
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(__CYGWIN__)
 #  define SYM_EXPORT __declspec(dllexport)

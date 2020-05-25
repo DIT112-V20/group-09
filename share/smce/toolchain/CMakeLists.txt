@@ -26,6 +26,7 @@
 #
 
 cmake_minimum_required (VERSION 3.13)
+set (CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set (SILENCE_UNUSED ${ARDUINOCLI_PATH})
 message (STATUS "Processing ${SOURCE_FILE}")
@@ -33,6 +34,7 @@ message (STATUS "Processing ${SOURCE_FILE}")
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_EXTENSIONS OFF)
 
+include_directories (${CMAKE_SOURCE_DIR}/include/ardpolyfills)
 if (WIN32)
     add_compile_definitions (VC_EXTRALEAN WIN32_LEAN_AND_MEAN)
 endif ()
@@ -52,23 +54,29 @@ if (SOURCE_IS_INO)
 endif ()
 
 add_library (${BUILD_DIRNAME} MODULE)
-target_sources (${BUILD_DIRNAME} PRIVATE "${SOURCE_FILE}")
+target_sources (${BUILD_DIRNAME} PUBLIC "${CMAKE_SOURCE_DIR}/Fragments/symbols.cxx")
 add_custom_command (
 		TARGET ${BUILD_DIRNAME}
 		POST_BUILD
 		COMMAND ${CMAKE_COMMAND}
  		ARGS -E rename $<TARGET_FILE:${BUILD_DIRNAME}> ${CMAKE_CURRENT_BINARY_DIR}/${BUILD_DIRNAME})
 
-if (SOURCE_IS_INO)
-    target_sources (${BUILD_DIRNAME} PRIVATE "${CMAKE_SOURCE_DIR}/Fragments/symbols.cxx")
-endif ()
+add_library (UserSource OBJECT "${SOURCE_FILE}")
+target_link_libraries (${BUILD_DIRNAME} UserSource)
 
 include (ArduinoRuntimeLocation)
 add_library (ArdRuntime STATIC IMPORTED)
 set_target_properties (ArdRuntime PROPERTIES
         IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/lib/${ARDUINO_RUNTIME_FILENAME}")
-target_include_directories (ArdRuntime SYSTEM INTERFACE ${CMAKE_SOURCE_DIR}/include/ardpolyfills)
 
-set (CMAKE_POSITION_INDEPENDENT_CODE ON)
+target_link_libraries (UserSource PRIVATE ArdRuntime)
 
-target_link_libraries (${BUILD_DIRNAME} PRIVATE ArdRuntime)
+set (SMARTCAR_SOURCE_PATH "${CMAKE_SOURCE_DIR}/libraries/smartcar_shield/src")
+file (GLOB_RECURSE SMARTCAR_SOURCES ${SMARTCAR_SOURCE_PATH}/*)
+message ("SMARTCAR_SOURCE_PATH: ${SMARTCAR_SOURCE_PATH}")
+add_library (SmartcarShield STATIC)
+target_sources (SmartcarShield PRIVATE ${SMARTCAR_SOURCES})
+target_include_directories (SmartcarShield PUBLIC ${SMARTCAR_SOURCE_PATH})
+target_link_libraries (SmartcarShield PUBLIC ArdRuntime)
+
+target_link_libraries (UserSource PUBLIC ArdRuntime SmartcarShield)

@@ -70,7 +70,7 @@ void Vehicle::RegisterObject(Context* context) {
 Vehicle::Vehicle(Urho3D::Context* context) : LogicComponent(context) {
     SetUpdateEventMask(USE_FIXEDUPDATE | USE_POSTUPDATE);
     engineForce_ = 0.0f; // NOT CORRECT VALUES
-    brakingForce_ = 50.0f;
+    brakingForce_ = 0.0f;
     maxEngineForce_ = 2500.0f;
     wheelRadius_ = 0.5f;
     suspensionRestLength_ = 0.6f;
@@ -142,62 +142,6 @@ void Vehicle::Init() {
         pWheel->SetCastShadows(true);
     }
     vehicle->ResetWheels();
-}
-void Vehicle::resetDifferential() {
-    auto* vehicle = node_->GetComponent<RaycastVehicle>();
-    engineForce_ = 0;
-    vehicle->SetEngineForce(0, 0);
-    vehicle->SetEngineForce(2, 0);
-    vehicle->SetEngineForce(1, 0);
-    vehicle->SetEngineForce(3, 0);
-}
-void Vehicle::setDifferential(float engineForce, const unsigned int control) {
-    auto* vehicle = node_->GetComponent<RaycastVehicle>();
-    if (control == 8) {
-        engineForce = engineForce * -10;
-    } else {
-        engineForce = engineForce * 10;
-    }
-    vehicle->SetEngineForce(1, engineForce);
-    vehicle->SetEngineForce(3, engineForce);
-    vehicle->SetEngineForce(0, -engineForce);
-    vehicle->SetEngineForce(2, -engineForce);
-}
-void Vehicle::FixedUpdate(float timeStep) {
-    float accelerator = 0.0f;
-    bool brake = false;
-    auto* vehicle = node_->GetComponent<RaycastVehicle>();
-    // Read controls
-
-    if (controls_.buttons_ & CTRL_LEFT) {
-        setDifferential(maxEngineForce_, CTRL_LEFT);
-    }
-    if (controls_.buttons_ & CTRL_RIGHT) {
-        setDifferential(maxEngineForce_, CTRL_RIGHT);
-    }
-    if (controls_.buttons_ & CTRL_FORWARD) {
-        resetDifferential();
-        accelerator = 1.0f;
-    }
-    if (controls_.buttons_ & CTRL_BACK) {
-        resetDifferential();
-        accelerator = -0.5f;
-    }
-    if (controls_.buttons_ & CTRL_BRAKE) {
-        brake = true;
-    }
-
-    // apply forces
-    engineForce_ = maxEngineForce_ * accelerator;
-    // fmt::print("{} {} {} {}", vehicle->GetEngineForce(0), vehicle->GetEngineForce(1), vehicle->GetEngineForce(2), vehicle->GetEngineForce(3));
-
-    for (int i = 0; i < vehicle->GetNumWheels(); i++) {
-        if (brake) {
-            vehicle->SetBrake(i, brakingForce_ * 4);
-        } else {
-            vehicle->SetBrake(i, 0.0f);
-        }
-    }
 }
 void Vehicle::PostUpdate(float timeStep) {
     auto* vehicle = node_->GetComponent<RaycastVehicle>();

@@ -65,12 +65,7 @@ class Vehicle : public LogicComponent {
     ~Vehicle() override;
     static void RegisterObject(Context* context);
     void Init();
-    void FixedUpdate(float timeStep) override;
     void PostUpdate(float timeStep) override;
-
-    /// Setting Differancial. NOT FINAL VERSION. IT WILL BE IN ITS OWN CLASS
-    void resetDifferential();
-    void setDifferential(float engineForce, const unsigned int control);
 
     Controls controls_;
 

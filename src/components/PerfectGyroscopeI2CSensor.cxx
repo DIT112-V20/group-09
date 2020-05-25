@@ -25,7 +25,7 @@
 
 [[nodiscard]] auto PerfectGyroscopeI2CSensor::get_power_mode() const noexcept -> PowerMode {
     const std::uint8_t bits = store.data[CTRL_REG1] & 0x0Fu;
-    return bits & (1u << 3u) ? (bits & ~(1u << 3u) ? PowerMode::sleeping : PowerMode::normal) : PowerMode::powered_down;
+    return bits & (1u << 3u) ? (bits & 7u ? PowerMode::normal : PowerMode::sleeping) : PowerMode::powered_down;
 }
 
 [[maybe_unused]] [[nodiscard]] auto PerfectGyroscopeI2CSensor::get_data_rate() const noexcept -> DataRate {
@@ -74,6 +74,8 @@ PerfectGyroscopeI2CSensor::PerfectGyroscopeI2CSensor(BoardData& bd, Urho3D::Node
 }
 
 void PerfectGyroscopeI2CSensor::Update(float timeStep) {
+    static auto tick = RDev::make_ticker(gy, store, *bus, *this);
+    tick();
     if(get_power_mode() != PowerMode::normal)
         return;
 
@@ -94,12 +96,9 @@ void PerfectGyroscopeI2CSensor::Update(float timeStep) {
 
     const auto dps = delta_dir / timeStep / fs2sens[static_cast<unsigned>(get_full_scale())];
     if (store.data[CTRL_REG1] & Enabled::x)
-        write_datareg(OUT_X_L, OUT_X_H, dps.x_);
+        write_datareg(OUT_X_L, OUT_X_H, dps.z_);
     if (store.data[CTRL_REG1] & Enabled::y)
-        write_datareg(OUT_Y_L, OUT_Y_H, dps.y_);
+        write_datareg(OUT_Y_L, OUT_Y_H, dps.x_);
     if (store.data[CTRL_REG1] & Enabled::z)
-        write_datareg(OUT_Z_L, OUT_Z_H, dps.z_);
-
-    static auto tick = RDev::make_ticker(gy, store, *bus, *this);
-    tick();
+        write_datareg(OUT_Z_L, OUT_Z_H, dps.y_);
 }

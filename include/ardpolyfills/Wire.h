@@ -5,7 +5,6 @@
 #include <array>
 #include <cstdint>
 #include <optional>
-#include "BoardData.hxx"
 #include "Stream.h"
 
 class TwoWire : public Stream {

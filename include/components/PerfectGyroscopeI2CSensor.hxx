@@ -64,9 +64,9 @@ class PerfectGyroscopeI2CSensor : public Urho3D::LogicComponent {
         dps2000,
     };
     enum Enabled {
-        z = 1,
+        x = 1,
         y = 2,
-        x = 4,
+        z = 4,
     };
 
     // Full scale to sensitivity

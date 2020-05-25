@@ -60,11 +60,11 @@ endfunction()
 
 function(ino_preprocess SOURCE_FILE ARDUINOCLI_PATH)
     set (WORK_FILE "${CMAKE_BINARY_DIR}/source.cpp")
-    set (FQBN "esp32:esp32:esp32")
+    set (FQBN "arduino:avr:uno")
     execute_process (COMMAND ${ARDUINOCLI_PATH} core update-index --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml")
     execute_process (COMMAND "${ARDUINOCLI_PATH}" core install esp32:esp32 --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml")
     execute_process (
-            COMMAND "${ARDUINOCLI_PATH}" compile -b "${FQBN}" --preprocess "${SOURCE_FILE}"
+            COMMAND "${ARDUINOCLI_PATH}" compile --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml" --libraries "smartcar_shield" -b "${FQBN}" --preprocess "${SOURCE_FILE}"
             WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
             OUTPUT_FILE "${WORK_FILE}")
 
@@ -108,6 +108,7 @@ function(fetch_ardcli ARDUINOCLI_PATH)
         message (FATAL_ERROR "Installation of ArduinoCLI failed")
     endif ()
     file (REMOVE "${CMAKE_SOURCE_DIR}/${DL_FILE}")
-    file (WRITE "${CMAKE_SOURCE_DIR}/arduino-cli.yaml" "board_manager:\n  additional_urls:\n    - https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json")
+    file (WRITE "${CMAKE_SOURCE_DIR}/arduino-cli.yaml" "board_manager:\n  additional_urls:\n    - https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json\n")
+    file (APPEND "${CMAKE_SOURCE_DIR}/arduino-cli.yaml" "directories:\n  user: \"${CMAKE_SOURCE_DIR}\"\n")
     execute_process (COMMAND ${ARDUINOCLI_PATH} core update-index)
 endfunction()
