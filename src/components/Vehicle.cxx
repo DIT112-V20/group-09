@@ -66,6 +66,7 @@ Vehicle::~Vehicle() = default;
 
 void Vehicle::Init(const smce::VehicleConfig& vconf) {
     auto* vehicle = node_->CreateComponent<Urho3D::RaycastVehicle>();
+    vehicle = vconf.hull_model_file;
     vehicle->Init();
     auto* hullBody = node_->GetComponent<Urho3D::RigidBody>();
     // the car weigth is 1.33kg
