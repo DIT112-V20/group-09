@@ -102,11 +102,17 @@ TEST_CASE("Copies the String’s characters to the supplied buffer" "[toCharArray]
 TEST_CASE("Converts a valid String to an integer. The input String should start with an integer number" "[toInt]") 
 {
 	String test = "1 and 23";
-	auto num =  test.toInt();
-	REQUIRE(num == 1);
 	String test2 = "123";
-	auto num2 =  test2.toInt();
+	String test3 = "-100";
+	String test4 = "--100";
+	auto num = test.toInt();
+	auto num2 = test2.toInt();
+	auto num3 = test3.toInt();
+	auto num4 = test4.toInt();
+	REQUIRE(num == 1);
 	REQUIRE(num2 == 123);
+	REQUIRE(num3 == 0);
+	REQUIRE(num4 == 0);
 }
 
 TEST_CASE("Converts a valid String to an double. The input String should start with an double number" "[toDouble]")
