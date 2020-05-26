@@ -71,7 +71,7 @@ TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite
         REQUIRE(analogRead(1) == 500);
     }
 
-    SECTION("Set value of pins over vector size. digitalWrite and analogWrite") 
+    SECTION("Set value of pins over vector size, digitalWrite and analogWrite") 
     {
         REQUIRE_THROWS_WITH(digitalWrite(32, HIGH), "digitalWrite(32, true): Pin does not exist");
         REQUIRE_THROWS_WITH(analogWrite(32, 100), "analogWrite(32, 100): Pin does not exist");
@@ -86,13 +86,31 @@ TEST_CASE("Set tone frequency on pin", "[tone], [noTone]")
     REQUIRE(board_data->pin_frequency[i] == 30);
 }
 
-// TEST_CASE("Pulse in");
+TEST_CASE("Shifts in a byte of data one bit at a time, start from either the leftmost or rightmost significant bit" "[shiftIn]")
+{
+    digitalWrite(1, HIGH);
+    digitalWrite(2, HIGH);
+    REQUIRE(shiftIn(1, 2, RIGHTMOSTBIT) == 255);
+    REQUIRE(!digitalRead(2));
 
-// TEST_CASE("Pulse long in ");
+    digitalWrite(1, LOW);
+    digitalWrite(2, LOW);
+    REQUIRE(shiftIn(1, 2, LEFTMOSTBIT) == 0);
+}
 
-// TEST_CASE("shift in");
-
-// TEST_CASE("shift out");
+TEST_CASE("Shifts out a byte of data one bit at a time, start from either the leftmost or rightmost significant bit" "[shiftOut]" )
+{
+    digitalWrite(1, HIGH);
+    digitalWrite(2, HIGH);
+    std::cout << digitalRead(1);
+    shiftOut(1, 2, 0, 1);
+    REQUIRE(digitalRead(2) == LOW);
+    REQUIRE(digitalRead(1) == LOW);
+    shiftOut(1, 2, 1, 1);
+    REQUIRE(digitalRead(1) == HIGH);
+    shiftOut(1, 2, 0, 0);
+    REQUIRE(digitalRead(1) == LOW);
+}
 
 TEST_CASE("Delay the program", "[delay]") 
 {
