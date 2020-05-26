@@ -78,25 +78,16 @@ void String::toCharArray(char* buffer, unsigned length) noexcept {
     std::memcpy(buffer, m_u.c_str(), (std::min)(static_cast<std::size_t>(length), m_u.length()));
 }
 
-[[nodiscard]] long String::toInt() const noexcept {
-        if (isdigit(m_u[0])) {
-        return std::stoi(m_u);
-        } 
-        else return 0;
+[[nodiscard]] long String::toInt() const noexcept try { return std::stoi(m_u); } catch (const std::exception& e) {
+    return 0;
 }
 
-[[nodiscard]] double String::toDouble() const noexcept {
-        if (isdigit(m_u[0])) {
-        return std::stod(m_u);
-        } 
-        else return 0;
+[[nodiscard]] double String::toDouble() const noexcept try { return std::stod(m_u); } catch (const std::exception& e) {
+    return 0;
 }
 
-[[nodiscard]] float String::toFloat() const noexcept {
-        if (isdigit(m_u[0])) {
-        return std::stof(m_u);
-        } 
-        else return 0;
+[[nodiscard]] float String::toFloat() const noexcept try { return std::stof(m_u); } catch (const std::exception& e) {
+    return 0;
 }
 
 void String::toLowerCase() noexcept{ std::transform(m_u.begin(), m_u.end(), m_u.begin(),
