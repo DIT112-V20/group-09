@@ -69,7 +69,7 @@ void EmulGlue::setup_attachments(BoardData& board, const smce::VehicleConfig& vc
             Urho3D::Log::Write(Urho3D::LOG_WARNING, Urho3D::String("Unknown component type ") + type_str.c_str());
             continue;
         }
-
+        //=================
         auto* const att = it->second(board, m_vehicle_node.Get(), *jconf);
         m_vehicle_attachments.push_back(att);
         m_vehicle_node->AddComponent(att, 0, Urho3D::REPLICATED);

@@ -53,6 +53,7 @@ class Vehicle : public Urho3D::LogicComponent {
     void Init(const smce::VehicleConfig& vconf);
     void PostUpdate(float timeStep);
     float GetWheelRadius() const { return wheelRadius_; }
+    //Urho3D::SharedPtr<Urho3D::Scene> m_vehicle_nodes;
 
   private:
     float engineForce_ = 0.0f;

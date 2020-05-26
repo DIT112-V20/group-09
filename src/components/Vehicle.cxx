@@ -81,6 +81,8 @@ void Vehicle::Init(const smce::VehicleConfig& vconf) {
     node_->SetScale(Urho3D::Vector3(0.195f, 0.0666f, 0.236f)); /// Chassi 195mm*66.6mm*236mm
     hullObject->SetModel(cache->GetResource<Urho3D::Model>("Models/SmartCar.mdl"));
     hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/offroadVehicle.xml"));
+    
+    for (int i =0 ; i < vconf.attachments.size(); i++)
     hullObject->SetCastShadows(true);
     bool isFrontWheel = true;
     Urho3D::Vector3 wheelDirection(0, -1, 0);
