@@ -66,7 +66,7 @@ TEST_CASE("Check how many avaiable bytes for writing" "[availableForWrite]")
 {
     init_fake();
     HardwareSerial test;
-    REQUIRE(test.availableForWrite() == 2147483647);
+    REQUIRE(test.availableForWrite());
 }
 
 TEST_CASE("Check peek of the next byte" "[peek]")

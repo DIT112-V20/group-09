@@ -5,33 +5,27 @@
 TEST_CASE("Test compare a string to another" "[compareTo]")
 {
 	String test = "test";
-	String test2 = "test";
 	String test3 = "test";
-	String test4 = "est";	
 	String test5 = "Test";
-	REQUIRE(test.compareTo(test2) == 0);
-	REQUIRE(test3.compareTo(test4) == 1);
-	REQUIRE(test5.compareTo(test) == -1);
+	REQUIRE(test.compareTo("test") == 0);
+	REQUIRE(test3.compareTo("est") == 1);
+	REQUIRE(test5.compareTo("test") == -1);
 }
 
 TEST_CASE("Tests whether or not a String starts with the characters of another String" "[startsWith]")
 {
 	String test = "test";
-	String test2 = "test";
 	String test3 = "est";
-	String test4 = "test";	
-	REQUIRE(test.startsWith(test2));
-	REQUIRE(!test3.startsWith(test4));
+	REQUIRE(test.startsWith("test"));
+	REQUIRE(!test3.startsWith("test"));
 }
 
 TEST_CASE("Tests whether or not a String ends with the characters of another String" "[endsWith]")
 {
 	String test = "test";
-	String test2 = "test";
 	String test3 = "est";
-	String test4 = "test";
-	REQUIRE(test.startsWith(test2));
-	REQUIRE(!test3.startsWith(test4));
+	REQUIRE(test.endsWith("test"));
+	REQUIRE(!test3.endsWith("test"));
 }
 
 TEST_CASE("Copies the String’s characters to the supplied buffer" "[getBytes]")
@@ -67,14 +61,13 @@ TEST_CASE("Check if string gets swapped" "[replace]")
 	REQUIRE_THAT(test.c_str(), Catch::EndsWith("cd"));
 }
 
-//Crap does not work without std::string
 TEST_CASE("Test if string is given a new capacity" "[reserve]")
 { 
-	String cap = "";
-	REQUIRE(cap.length() == 0);
-
-	cap.reserve(25);
-	//REQUIRE(cap.length() == 63);
+	String test = "test";
+	intptr_t addr1 =  reinterpret_cast<intptr_t>(test.c_str());
+	test.reserve(25);
+	intptr_t addr2 =  reinterpret_cast<intptr_t>(test.c_str());
+	REQUIRE(addr1 != addr2);
 }
 
 TEST_CASE("Sets a character of the String" "[setCharAt]")
@@ -106,16 +99,11 @@ TEST_CASE("Converts a valid String to an integer. The input String should start 
 	String test3 = "-100";
 	String test4 = "--100";
 	String test5 = "+100";
-	auto num = test.toInt();
-	auto num2 = test2.toInt();
-	auto num3 = test3.toInt();
-	auto num4 = test4.toInt();
-	auto num5 = test5.toInt();
-	REQUIRE(num == 1);
-	REQUIRE(num2 == 123);
-	REQUIRE(num3 == 0);
-	REQUIRE(num4 == 0);
-	REQUIRE(num5 == 0);
+	REQUIRE(test.toInt() == 1);
+	REQUIRE(test2.toInt() == 123);
+	REQUIRE(test3.toInt() == 0);
+	REQUIRE(test4.toInt() == 0);
+	REQUIRE(test5.toInt() == 0);
 }
 
 TEST_CASE("Converts a valid String to an double. The input String should start with an double number" "[toDouble]")
@@ -150,7 +138,7 @@ TEST_CASE("Get a upper-case version of a String" "[toUpperCase]")
 
 TEST_CASE("Remove spaces in a string" "[trim]")
 {
-	String test = "i like bigger bananas";
+	String test = "   i like bigger bananas";
 	test.trim();
 	REQUIRE_THAT(test.c_str(), Catch::Contains("ilikebiggerbananas"));
 }
@@ -158,17 +146,13 @@ TEST_CASE("Remove spaces in a string" "[trim]")
 TEST_CASE("Checks if a string is equal to another" "[equals]")
 {
 	String test = "i like bigger bananas";
-	String test2 = "i LIKE BIGGER bananas";
-	bool isEqual = test.equals(test2);
-	REQUIRE(!isEqual);
+	REQUIRE(!test.equals("i LIKE BIGGER bananas"));
 }
 
 TEST_CASE("Checks if a string is equal to another and ignores case" "[equalsIgnoreCase]")
 {
 	String test = "i like bigger bananas";
-	String test2 = "i LIKE BIGGER bananas";
-	bool equalsIgnoreCase = test.equalsIgnoreCase(test2);
-	REQUIRE(equalsIgnoreCase);
+	REQUIRE(test.equalsIgnoreCase("i LIKE BIGGER bananas"));
 }
 
 TEST_CASE("Check operators" "[String::operator]")
