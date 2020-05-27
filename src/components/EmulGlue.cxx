@@ -69,7 +69,6 @@ void EmulGlue::setup_attachments(BoardData& board, const smce::VehicleConfig& vc
             Urho3D::Log::Write(Urho3D::LOG_WARNING, Urho3D::String("Unknown component type ") + type_str.c_str());
             continue;
         }
-        //=================
         auto* const att = it->second(board, m_vehicle_node.Get(), *jconf);
         m_vehicle_attachments.push_back(att);
         m_vehicle_node->AddComponent(att, 0, Urho3D::REPLICATED);
@@ -104,10 +103,9 @@ void EmulGlue::handle_compile_order(Urho3D::StringHash, Urho3D::VariantMap& even
     if (!m_vehicle_node)
         m_vehicle_node = node_->CreateChild("EmulGlueVehicle");
 
-    // uncomment once we have a vehicle class
-    // m_vehicle = m_vehicle_node->CreateComponent<Vehicle>();
-    // m_vehicle->Init();
-    // setup_attachments(b_data, *veh_config_opt);
+     m_vehicle = m_vehicle_node->CreateComponent<Vehicle>();
+    // m_vehicle->Init(vconf); 
+     setup_attachments(b_data, *veh_config_opt);
 
     m_compile_tr = std::async([&, ino_path, smce_home]() {
         auto ret = smce::compile_sketch({ino_path}, smce_home);

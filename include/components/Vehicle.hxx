@@ -52,12 +52,9 @@ class Vehicle : public Urho3D::LogicComponent {
     static void RegisterObject(Urho3D::Context* context);
     void Init(const smce::VehicleConfig& vconf);
     void PostUpdate(float timeStep);
-    float GetWheelRadius() const { return wheelRadius_; }
-    //Urho3D::SharedPtr<Urho3D::Scene> m_vehicle_nodes;
+
 
   private:
-    float engineForce_ = 0.0f;
-    float maxEngineForce_ = 1.097f;
     float wheelRadius_ = 0.0335f;
     float suspensionRestLength_ = 0.0345f;
     float suspensionStiffness_ = 100.61f;
@@ -67,6 +64,5 @@ class Vehicle : public Urho3D::LogicComponent {
     float wheelFriction_ = 2.7f;
     float rollInfluence_ = 0.01f;
     Urho3D::Vector3 prevVelocity_;
-    std::array<Urho3D::Vector3, 4> connectionPoints_;
 };
 #endif // SMARTCAR_EMUL_VEHICLE_HXX

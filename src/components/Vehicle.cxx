@@ -66,10 +66,8 @@ Vehicle::~Vehicle() = default;
 
 void Vehicle::Init(const smce::VehicleConfig& vconf) {
     auto* vehicle = node_->CreateComponent<Urho3D::RaycastVehicle>();
-    vehicle = vconf.hull_model_file;
     vehicle->Init();
     auto* hullBody = node_->GetComponent<Urho3D::RigidBody>();
-    // the car weigth is 1.33kg
     hullBody->SetMass(1.33f);
     hullBody->SetLinearDamping(0.2f);
     hullBody->SetAngularDamping(0.5f);
@@ -80,40 +78,31 @@ void Vehicle::Init(const smce::VehicleConfig& vconf) {
     Urho3D::Vector3 v3BoxExtents = Urho3D::Vector3::ONE;
     hullColShape->SetBox(v3BoxExtents);
     node_->SetScale(Urho3D::Vector3(0.195f, 0.0666f, 0.236f)); /// Chassi 195mm*66.6mm*236mm
-    hullObject->SetModel(cache->GetResource<Urho3D::Model>("Models/SmartCar.mdl"));
+    hullObject->SetModel(cache->GetResource<Urho3D::Model>(vconf.hull_model_file.generic_string().c_str()));
     hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/offroadVehicle.xml"));
-    
-    for (int i =0 ; i < vconf.attachments.size(); i++)
     hullObject->SetCastShadows(true);
-    bool isFrontWheel = true;
     Urho3D::Vector3 wheelDirection(0, -1, 0);
     Urho3D::Vector3 wheelAxle(-1, 0, 0);
-    float wheelX = 0.09f;
-    float wheelY = -0.02f;
-    float wheelZ = 0.08f;
-    connectionPoints_[0] = Urho3D::Vector3(-wheelX, wheelY, wheelZ);
-    connectionPoints_[1] = Urho3D::Vector3(wheelX, wheelY, wheelZ);
-    connectionPoints_[2] = Urho3D::Vector3(-wheelX, wheelY, -wheelZ);
-    connectionPoints_[3] = Urho3D::Vector3(wheelX, wheelY, -wheelZ);
-    const Urho3D::Color LtBrown(0.972f, 0.780f, 0.412f);
-    for (int id = 0; id < connectionPoints_.size(); id++) {
-        Urho3D::Node* wheelNode = GetScene()->CreateChild();
-        Urho3D::Vector3 connectionPoint = connectionPoints_[id];
-        
-        bool isFrontWheel = connectionPoints_[id].z_ > 0.0f;
-        wheelNode->SetRotation(connectionPoint.x_ >= 0.0 ? Urho3D::Quaternion(0.0f, 0.0f, -90.0f) : Urho3D::Quaternion(0.0f, 0.0f, 90.0f));
-        wheelNode->SetWorldPosition(node_->GetWorldPosition() + node_->GetWorldRotation() * connectionPoints_[id]);
-        vehicle->AddWheel(wheelNode, wheelDirection, wheelAxle, suspensionRestLength_, wheelRadius_, isFrontWheel);
+    for (auto& i = vconf.parts.begin(); i != vconf.parts.end(); i++) {
+        Urho3D::Node* partNode = GetNode()->CreateChild();
+        partNode->SetPosition(i->second.position);
+        partNode->SetRotation(Urho3D::Quaternion(i->second.rotation.Data()));
+        // if (i->second.model_position_offset) {
+        //         Urho3D::Node* partNode = GetNode()->CreateChild();
+        //  }
+        vehicle->AddWheel(partNode, wheelDirection, wheelAxle, suspensionRestLength_, wheelRadius_, true);
+        int id = 0;
         vehicle->SetWheelSuspensionStiffness(id, suspensionStiffness_);
         vehicle->SetWheelDampingRelaxation(id, suspensionDamping_);
         vehicle->SetWheelDampingCompression(id, suspensionCompression_);
         vehicle->SetWheelFrictionSlip(id, wheelFriction_);
         vehicle->SetWheelRollInfluence(id, rollInfluence_);
-        wheelNode->SetScale(Urho3D::Vector3(0.067f, 0.023f, 0.067f));// tire Diameter: 67mm
-        auto* pWheel = wheelNode->CreateComponent<Urho3D::StaticModel>();
-        pWheel->SetModel(cache->GetResource<Urho3D::Model>("Models/SmartTire.mdl"));
+        partNode->SetScale(Urho3D::Vector3(0.067f, 0.023f, 0.067f)); // tire Diameter: 67mm
+        auto* pWheel = partNode->CreateComponent<Urho3D::StaticModel>();
+        pWheel->SetModel(cache->GetResource<Urho3D::Model>(i->second.model_file.generic_string().c_str()));
         pWheel->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
         pWheel->SetCastShadows(true);
+        id++;
     }
     vehicle->ResetWheels();
 }

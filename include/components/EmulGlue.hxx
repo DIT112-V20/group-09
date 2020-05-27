@@ -34,14 +34,14 @@
 #include <VehicleConf.hxx>
 #include "Toolchain.hxx"
 #include "utility.hxx"
+#include "components/Vehicle.hxx"
 
 class EmulGlue : public Urho3D::LogicComponent {
     URHO3D_OBJECT(EmulGlue, Urho3D::LogicComponent);
 
     Urho3D::SharedPtr<Urho3D::Node> m_vehicle_node;
     std::vector<Urho3D::LogicComponent*> m_vehicle_attachments;
-    // uncomment once we have a vehicle class
-    // Urho3D::SharedPtr<Vehicle> m_vehicle;
+     Urho3D::SharedPtr<Vehicle> m_vehicle;
 
     BoardData m_bdata;
     BoardInfo m_binfo;
