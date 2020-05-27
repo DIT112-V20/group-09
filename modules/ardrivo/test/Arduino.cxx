@@ -1,6 +1,7 @@
 
 #include <catch2/catch.hpp>
 #include <iostream>
+#include <thread>
 #include <vector>
 #include <range/v3/algorithm/equal.hpp>
 #include <range/v3/algorithm/for_each.hpp>
@@ -34,6 +35,32 @@ void static init_fake()
     });
 
     init(loc_board_data.release(), loc_board_info.release());
+}
+
+TEST_CASE("pulse in", "[pulseIn success], [pulseIn fail]") {
+    init_fake();
+
+    SECTION("pulseIn proper pulse", "[pulseIn success]") {
+        auto test_pulse = [&](auto state, auto pin, auto delay) {
+            board_data->digital_pin_values[pin] = state;
+            auto set_pulse_tr = std::thread([&]() {
+                std::this_thread::sleep_for(delay);
+                board_data->digital_pin_values[pin] = !state;
+                std::this_thread::sleep_for(delay);
+                board_data->digital_pin_values[pin] = state;
+            });
+            REQUIRE(pulseIn(pin, state, delay.count() * 2) > delay.count() * 0.7);
+            set_pulse_tr.join();
+        };
+
+        test_pulse(HIGH, 0, std::chrono::microseconds(2000000));
+        test_pulse(LOW, 0, std::chrono::microseconds(2000000));
+    }
+
+    SECTION("pulseIn timeout", "[pulseIn fail]") {
+        board_data->digital_pin_values[0] = HIGH;
+        REQUIRE(!pulseIn(0, HIGH, 1));
+    }
 }
 
 TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite], [digitalRead], [analogWrite], [analogRead]") {
