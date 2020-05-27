@@ -65,7 +65,6 @@ class EmulGlue : public Urho3D::LogicComponent {
   public:
     explicit EmulGlue(Urho3D::Context* context);
     ~EmulGlue();
-    EmulGlue(EmulGlue&&) = default;
     static void RegisterObject(Urho3D::Context* context) { context->RegisterFactory<EmulGlue>(); }
 };
 
