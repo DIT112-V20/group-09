@@ -102,7 +102,6 @@ TEST_CASE("Shifts out a byte of data one bit at a time, start from either the le
 {
     digitalWrite(1, HIGH);
     digitalWrite(2, HIGH);
-    std::cout << digitalRead(1);
     shiftOut(1, 2, 0, 1);
     REQUIRE(digitalRead(2) == LOW);
     REQUIRE(digitalRead(1) == LOW);
