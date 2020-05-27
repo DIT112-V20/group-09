@@ -98,7 +98,12 @@ void String::toUpperCase() noexcept{ std::transform(m_u.begin(), m_u.end(), m_u.
        [](char c) { return static_cast<char>(std::toupper(+c)); });
 }
 
-void String::trim() { m_u.erase(std::remove(m_u.begin(), m_u.end(), ' '), m_u.end()); }
+void String::trim() {
+    if (const auto spos = m_u.find_first_not_of(' '); spos != std::string::npos && spos != 0)
+        m_u.erase(m_u.begin(), m_u.begin() + spos);
+    if (const auto lpos = m_u.find_last_not_of(' '); lpos != std::string::npos)
+        m_u.erase(m_u.begin() + lpos + 1, m_u.end());
+}
 
 [[nodiscard]] bool String::equals(const String& s) const noexcept { return m_u == s.m_u; }
 
