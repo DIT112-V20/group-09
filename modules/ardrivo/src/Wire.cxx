@@ -6,7 +6,6 @@
 #include "Entrypoint.hxx"
 #include "Error.hxx"
 #include "Wire.h"
-#include "utility.hxx"
 
 TwoWire Wire;
 
