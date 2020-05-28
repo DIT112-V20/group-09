@@ -57,17 +57,14 @@ void Vehicle::Init(const smce::VehicleConfig& vconf) {
     hullColShape->SetBox(v3BoxExtents);
     node_->SetScale(Urho3D::Vector3(0.195f, 0.0666f, 0.236f)); /// Chassi 195mm*66.6mm*236mm
     hullObject->SetModel(cache->GetResource<Urho3D::Model>(vconf.hull_model_file.generic_string().c_str()));
-    hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/offroadVehicle.xml"));
+    hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
     hullObject->SetCastShadows(true);
     Urho3D::Vector3 wheelDirection(0, -1, 0);
     Urho3D::Vector3 wheelAxle(-1, 0, 0);
-    for (auto& i : vconf.parts) {
+    for (auto& [name, part] : vconf.parts) {
         Urho3D::Node* partNode = GetNode()->CreateChild();
-        partNode->SetPosition(i.second.position);
-        partNode->SetRotation(Urho3D::Quaternion(i.second.rotation.Data()));
-        // if (i->second.model_position_offset) {
-        //         Urho3D::Node* partNode = GetNode()->CreateChild();
-        //  }
+        partNode->SetPosition(part.position);
+        partNode->SetRotation(Urho3D::Quaternion(part.rotation.Data()));
         vehicle->AddWheel(partNode, wheelDirection, wheelAxle, suspensionRestLength_, wheelRadius_, true);
         int id = 0;
         vehicle->SetWheelSuspensionStiffness(id, suspensionStiffness_);
@@ -77,8 +74,10 @@ void Vehicle::Init(const smce::VehicleConfig& vconf) {
         vehicle->SetWheelRollInfluence(id, rollInfluence_);
         partNode->SetScale(Urho3D::Vector3(0.067f, 0.023f, 0.067f)); // tire Diameter: 67mm
         auto* pWheel = partNode->CreateComponent<Urho3D::StaticModel>();
-        pWheel->SetModel(cache->GetResource<Urho3D::Model>(i.second.model_file.generic_string().c_str()));
+        pWheel->SetModel(cache->GetResource<Urho3D::Model>(part.model_file.generic_string().c_str()));
         pWheel->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
+        partNode->SetPosition(part.model_position_offset);
+        partNode->SetRotation(Urho3D::Quaternion(part.model_rotation_offset.Data()));
         pWheel->SetCastShadows(true);
         id++;
     }
