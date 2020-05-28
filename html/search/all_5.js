@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['emulglue_106',['EmulGlue',['../class_emul_glue.html',1,'EmulGlue'],['../class_emul_glue.html#a8e3aa2a2b42ce0496557ca2ce942aae6',1,'EmulGlue::EmulGlue(Urho3D::Context *context)'],['../class_emul_glue.html#a8671b1c952f94c55b4aa098700453fc2',1,'EmulGlue::EmulGlue(EmulGlue &amp;&amp;)=default']]],
+  ['emulglue_106',['EmulGlue',['../class_emul_glue.html',1,'EmulGlue'],['../class_emul_glue.html#a8e3aa2a2b42ce0496557ca2ce942aae6',1,'EmulGlue::EmulGlue()']]],
   ['emulglue_2ecxx_107',['EmulGlue.cxx',['../_emul_glue_8cxx.html',1,'']]],
   ['emulglue_2ehxx_108',['EmulGlue.hxx',['../_emul_glue_8hxx.html',1,'']]],
   ['end_109',['end',['../struct_hardware_serial.html#a0f86c41f580e04bdf30ea00e9014eacd',1,'HardwareSerial::end()'],['../class_s_p_i_class.html#a79d89d8e3f5f1b003cb7b0aed2d77eab',1,'SPIClass::end()']]],
