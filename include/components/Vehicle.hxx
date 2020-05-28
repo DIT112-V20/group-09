@@ -29,7 +29,7 @@ class Vehicle : public Urho3D::LogicComponent {
 
   public:
     explicit Vehicle(Urho3D::Context* context);
-    ~Vehicle() override;
+    ~Vehicle();
     static void RegisterObject(Urho3D::Context* context);
     void Init(const smce::VehicleConfig& vconf);
     void PostUpdate(float timeStep);

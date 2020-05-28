@@ -40,7 +40,7 @@ void Vehicle::RegisterObject(Urho3D::Context* context) {
 
 Vehicle::Vehicle(Urho3D::Context* context) : LogicComponent(context) {
 }
-Vehicle::~Vehicle() = default;
+Vehicle::~Vehicle(){};
 
 void Vehicle::Init(const smce::VehicleConfig& vconf) {
     auto* vehicle = node_->CreateComponent<Urho3D::RaycastVehicle>();
@@ -61,10 +61,10 @@ void Vehicle::Init(const smce::VehicleConfig& vconf) {
     hullObject->SetCastShadows(true);
     Urho3D::Vector3 wheelDirection(0, -1, 0);
     Urho3D::Vector3 wheelAxle(-1, 0, 0);
-    for (auto& i = vconf.parts.begin(); i != vconf.parts.end(); i++) {
+    for (auto& i : vconf.parts) {
         Urho3D::Node* partNode = GetNode()->CreateChild();
-        partNode->SetPosition(i->second.position);
-        partNode->SetRotation(Urho3D::Quaternion(i->second.rotation.Data()));
+        partNode->SetPosition(i.second.position);
+        partNode->SetRotation(Urho3D::Quaternion(i.second.rotation.Data()));
         // if (i->second.model_position_offset) {
         //         Urho3D::Node* partNode = GetNode()->CreateChild();
         //  }
@@ -77,7 +77,7 @@ void Vehicle::Init(const smce::VehicleConfig& vconf) {
         vehicle->SetWheelRollInfluence(id, rollInfluence_);
         partNode->SetScale(Urho3D::Vector3(0.067f, 0.023f, 0.067f)); // tire Diameter: 67mm
         auto* pWheel = partNode->CreateComponent<Urho3D::StaticModel>();
-        pWheel->SetModel(cache->GetResource<Urho3D::Model>(i->second.model_file.generic_string().c_str()));
+        pWheel->SetModel(cache->GetResource<Urho3D::Model>(i.second.model_file.generic_string().c_str()));
         pWheel->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
         pWheel->SetCastShadows(true);
         id++;
