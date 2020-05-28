@@ -126,7 +126,7 @@ execute_process (
         COMMAND "${CMAKE_COMMAND}" -E copy_directory "${URHO3D_RESOURCES}/CoreData" "${SMCE_SHARE}/Resources/CoreData"
         COMMAND "${CMAKE_COMMAND}" -E copy_directory "${URHO3D_RESOURCES}/Data" "${SMCE_SHARE}/Resources/Data")
 
-add_executable (smartcar_emul_tests test/sanity.cxx "include/components/Vehicle.hxx" "src/components/Vehicle.cxx")
+add_executable (smartcar_emul_tests test/sanity.cxx)
 add_dependencies(smartcar_emul_tests TestTag)
 target_link_libraries (smartcar_emul_tests PRIVATE
         smartcar_emul_deps
