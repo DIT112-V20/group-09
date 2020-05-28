@@ -105,7 +105,7 @@ void EmulGlue::handle_compile_order(Urho3D::StringHash, Urho3D::VariantMap& even
 
      m_vehicle = m_vehicle_node->CreateComponent<Vehicle>();
      m_vehicle->Init(*veh_config_opt); 
-     setup_attachments(b_data, *veh_config_opt);
+     setup_attachments(m_bdata, *veh_config_opt);
 
     m_compile_tr = std::async([&, ino_path, smce_home]() {
         auto ret = smce::compile_sketch({ino_path}, smce_home);
