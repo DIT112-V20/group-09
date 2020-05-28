@@ -44,6 +44,7 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
             throw std::runtime_error{err_msg};
         if (!pin.HasMember("max_speed"))
             throw std::runtime_error{err_msg};
+        pwm_pin->store(90);
         max_speed = pin["max_speed"].GetFloat();
         for (const auto& x : pin["wheels"].GetArray()) {
             auto val = x.GetUint();
@@ -56,10 +57,10 @@ template <void (Urho3D::RaycastVehicle::*mptr)(int, float)> class WheelServo : p
     void Update(float timeStep) override {
         if constexpr (to_enum<mptr>() == RayMembers::SetSteeringValue) {
             for (const auto& no : wheels)
-                (vehicle->*mptr)(no, deg2rad(math_map(+pwm_pin->load(), 0, 180, -1.f, +1.f)));
+                (vehicle->*mptr)(no, deg2rad(math_map(+pwm_pin->load(), 0, 180, movement_mode->angle_min, movement_mode->angle_max)));
         } else if constexpr (to_enum<mptr>() == RayMembers::SetEngineForce) {
             for (const auto& no : wheels)
-                (vehicle->*mptr)(no, math_map(static_cast<float>(+pwm_pin->load()), 0.f, 180.f, -1.0f, +1.0f) * max_speed);
+                (vehicle->*mptr)(no, math_map(static_cast<float>(+pwm_pin->load()), 0.f, 180.f, -1.f, +1.f) * max_speed);
         }
     }
 };
