@@ -22,6 +22,7 @@
 #include <bit>
 #include <rapidjson/include/rapidjson/document.h>
 #include <Urho3D/Scene/LogicComponent.h>
+#include <Urho3D/Core/Context.h>
 #include "BoardData.hxx"
 #include "DeviceMap.hxx"
 
@@ -79,7 +80,6 @@ class PerfectGyroscopeI2CSensor : public Urho3D::LogicComponent {
     );
 
     RDev::DeviceStorage store{};
-    Urho3D::Vector3 last_direction;
     I2cBus* bus;
 
     [[maybe_unused]] [[nodiscard]] bool is_powered_up() const noexcept;
@@ -87,10 +87,10 @@ class PerfectGyroscopeI2CSensor : public Urho3D::LogicComponent {
     [[maybe_unused]] [[nodiscard]] DataRate get_data_rate() const noexcept;
     [[nodiscard]] FullScale get_full_scale() const noexcept;
     [[nodiscard]] std::endian get_data_endianness() const noexcept;
-public:
-  PerfectGyroscopeI2CSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
+  public:
+    PerfectGyroscopeI2CSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin);
+    void UpdatePy(Urho3D::StringHash, Urho3D::VariantMap& event_data);
 
-    void Update(float timeStep) override;
 };
 
 #endif // SMARTCAR_EMUL_PERFECTGYROSCOPEI2CSENSOR_HXX

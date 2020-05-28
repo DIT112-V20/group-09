@@ -54,6 +54,7 @@ add_custom_target (TestTag)
 include (CTest)
 include (Catch)
 include (SetupUrho3D)
+include (SmartcarLib)
 include (StdPolyfills)
 include (BoostDLL)
 

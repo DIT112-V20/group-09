@@ -18,6 +18,7 @@
 #include <cstdint>
 #include <Urho3D/Scene/Node.h>
 #include "components/PerfectGyroscopeI2CSensor.hxx"
+#include <Urho3D/Physics/PhysicsEvents.h>
 
 [[maybe_unused]] [[nodiscard]] bool PerfectGyroscopeI2CSensor::is_powered_up() const noexcept {
     return store.data[CTRL_REG1] & (1u << 3u);
@@ -45,6 +46,9 @@
 }
 
 PerfectGyroscopeI2CSensor::PerfectGyroscopeI2CSensor(BoardData& bd, Urho3D::Node* node, const rapidjson::Value& pin) : Urho3D::LogicComponent(node->GetContext()) {
+    SetUpdateEventMask(Urho3D::USE_FIXEDUPDATE | Urho3D::USE_POSTUPDATE);
+    SubscribeToEvent(Urho3D::E_PHYSICSPOSTSTEP, URHO3D_HANDLER(PerfectGyroscopeI2CSensor, UpdatePy));
+
     if (!pin.HasMember("bus_id") || !pin.HasMember("address"))
         throw std::runtime_error{"Attempted to create component PerfectGyroscopeI2C with an invalid configuration"};
 
@@ -73,32 +77,30 @@ PerfectGyroscopeI2CSensor::PerfectGyroscopeI2CSensor(BoardData& bd, Urho3D::Node
     });
 }
 
-void PerfectGyroscopeI2CSensor::Update(float timeStep) {
+void PerfectGyroscopeI2CSensor::UpdatePy(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
     static auto tick = RDev::make_ticker(gy, store, *bus, *this);
     tick();
     if(get_power_mode() != PowerMode::normal)
         return;
 
-    const auto direction = GetNode()->GetWorldDirection();
-    const auto delta_dir = direction - last_direction;
-    last_direction = direction;
+    // For now we patch smartcar_lib to accept straight absolute angles
+    const auto direction = node_->GetWorldRotation().EulerAngles();
 
-
-    auto write_datareg = [&] (auto lreg, auto hreg, std::uint16_t val) {
-        if (get_data_endianness() == std::endian::little) {
-            store.data[lreg] = val & 0xFu;
-            store.data[hreg] = val >> 4u;
+    auto write_datareg = [&] (auto lreg, auto hreg, std::int16_t val) {
+      val += 180;
+      if (get_data_endianness() == std::endian::little) {
+            store.data[lreg] = val & 0xFFu;
+            store.data[hreg] = val >> 8u;
         } else {
-            store.data[lreg] = val >> 4u;
-            store.data[hreg] = val & 0xFu;
+            store.data[lreg] = val >> 8u;
+            store.data[hreg] = val & 0xFFu;
         }
     };
 
-    const auto dps = delta_dir / timeStep / fs2sens[static_cast<unsigned>(get_full_scale())];
     if (store.data[CTRL_REG1] & Enabled::x)
-        write_datareg(OUT_X_L, OUT_X_H, dps.z_);
+        write_datareg(OUT_X_L, OUT_X_H, direction.z_);
     if (store.data[CTRL_REG1] & Enabled::y)
-        write_datareg(OUT_Y_L, OUT_Y_H, dps.x_);
+        write_datareg(OUT_Y_L, OUT_Y_H, direction.x_);
     if (store.data[CTRL_REG1] & Enabled::z)
-        write_datareg(OUT_Z_L, OUT_Z_H, dps.y_);
+        write_datareg(OUT_Z_L, OUT_Z_H, direction.y_);
 }
