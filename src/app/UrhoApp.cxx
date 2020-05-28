@@ -83,6 +83,7 @@ void UrhoApp::create_viewport() {
     auto* renderer = GetSubsystem<Urho3D::Renderer>();
     auto viewport = Urho3D::MakeShared<Urho3D::Viewport>(context_, m_scene, m_camera_node->GetComponent<MovableCamera>());
     renderer->SetViewport(0, viewport);
+    renderer->SetShadowMapSize(3000);
 }
 
 void UrhoApp::subscribe_to_events() { SubscribeToEvent(Urho3D::E_UPDATE, URHO3D_HANDLER(UrhoApp, HandleUpdate)); }

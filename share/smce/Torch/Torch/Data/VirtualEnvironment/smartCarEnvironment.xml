@@ -5,10 +5,10 @@
 	<attribute name="Smoothing Constant" value="50" />
 	<attribute name="Snap Threshold" value="5" />
 	<attribute name="Elapsed Time" value="6216.13" />
-	<attribute name="Next Replicated Node ID" value="220" />
-	<attribute name="Next Replicated Component ID" value="595" />
-	<attribute name="Next Local Node ID" value="16777375" />
-	<attribute name="Next Local Component ID" value="16777554" />
+	<attribute name="Next Replicated Node ID" value="223" />
+	<attribute name="Next Replicated Component ID" value="597" />
+	<attribute name="Next Local Node ID" value="16777379" />
+	<attribute name="Next Local Component ID" value="16777602" />
 	<attribute name="Variables" />
 	<attribute name="Variable Names" value="" />
 	<component type="Octree" id="1" />
@@ -20,7 +20,7 @@
 		<attribute name="Tags" />
 		<attribute name="Position" value="0 0 0" />
 		<attribute name="Rotation" value="1 0 0 0" />
-		<attribute name="Scale" value="4 1 4" />
+		<attribute name="Scale" value="500 500 500" />
 		<attribute name="Variables" />
 		<component type="Skybox" id="3">
 			<attribute name="Model" value="Model;Models/Box.mdl" />
@@ -37,7 +37,7 @@
 		<attribute name="Variables" />
 		<component type="StaticModel" id="4">
 			<attribute name="Model" value="Model;Models/Plane.mdl" />
-			<attribute name="Material" value="Material;Materials/StoneTiled.xml" />
+			<attribute name="Material" value="Material;Materials/Stone.xml" />
 		</component>
 		<component type="CollisionShape" id="10">
 			<attribute name="Shape Type" value="StaticPlane" />
@@ -100,9 +100,9 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Box" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="482.181 93.2405 -826.826" />
+			<attribute name="Position" value="319.988 78.2552 -636.478" />
 			<attribute name="Rotation" value="0.794326 2.2778e-09 -0.607492 2.55597e-08" />
-			<attribute name="Scale" value="190 190 190" />
+			<attribute name="Scale" value="150 150 150" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="135">
 				<attribute name="Model" value="Model;Models/Box.mdl" />
@@ -112,7 +112,7 @@
 			<component type="CollisionShape" id="136" />
 			<component type="RigidBody" id="137">
 				<attribute name="Physics Rotation" value="0.794326 2.2777e-09 -0.607492 2.55598e-08" />
-				<attribute name="Physics Position" value="493.551 95 -820.074" />
+				<attribute name="Physics Position" value="331.357 80.0147 -629.726" />
 				<attribute name="Mass" value="1000" />
 				<attribute name="Friction" value="0.8" />
 			</component>
@@ -1158,22 +1158,21 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Sphere" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="497.14 0 941.547" />
-			<attribute name="Rotation" value="0.0515326 0.453707 0.866825 0.200272" />
-			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Position" value="497.14 2.18693 941.547" />
+			<attribute name="Rotation" value="-0.0242123 0.469435 0.868018 0.159967" />
+			<attribute name="Scale" value="3 3 3" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="6">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="7">
 				<attribute name="Shape Type" value="Sphere" />
 			</component>
 			<component type="RigidBody" id="9">
-				<attribute name="Physics Rotation" value="0.0515326 0.453707 0.866825 0.200272" />
-				<attribute name="Physics Position" value="976.288 1 1901.74" />
+				<attribute name="Physics Rotation" value="-0.0242123 0.469435 0.868018 0.159967" />
+				<attribute name="Physics Position" value="976.288 5.37386 1901.74" />
 				<attribute name="Mass" value="100" />
 				<attribute name="Friction" value="1" />
 				<attribute name="Rolling Friction" value="1" />
@@ -1191,7 +1190,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="162">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1216,7 +1214,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="165">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1241,7 +1238,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="168">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1266,7 +1262,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="171">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1291,7 +1286,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="174">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1316,7 +1310,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="177">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1341,7 +1334,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="180">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1366,7 +1358,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="183">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1391,7 +1382,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="186">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1416,7 +1406,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="189">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1441,7 +1430,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="192">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1466,7 +1454,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="195">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1491,7 +1478,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="198">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1516,7 +1502,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="201">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1541,7 +1526,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="204">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1566,7 +1550,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="207">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1591,7 +1574,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="210">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1616,7 +1598,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="213">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1641,7 +1622,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="216">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1666,7 +1646,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="219">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1691,7 +1670,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="222">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1716,7 +1694,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="225">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1741,7 +1718,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="228">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1766,7 +1742,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="231">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1791,7 +1766,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="234">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1816,7 +1790,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="237">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1841,7 +1814,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="240">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1866,7 +1838,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="243">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1891,7 +1862,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="246">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1910,13 +1880,12 @@
 			<attribute name="Tags" />
 			<attribute name="Position" value="6920.7 -5.96046e-08 884.142" />
 			<attribute name="Rotation" value="0.688466 -0.580628 -0.414191 0.131649" />
-			<attribute name="Scale" value="1 1 1" />
+			<attribute name="Scale" value="3 3 3" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="248">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="249">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1941,7 +1910,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="252">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1966,7 +1934,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="255">
 				<attribute name="Shape Type" value="Sphere" />
@@ -1991,7 +1958,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="258">
 				<attribute name="Shape Type" value="Sphere" />
@@ -2016,7 +1982,6 @@
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
 				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="0.5" />
 			</component>
 			<component type="CollisionShape" id="261">
 				<attribute name="Shape Type" value="Sphere" />
@@ -2039,7 +2004,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="263">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="264">
@@ -2057,13 +2022,13 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Sphere" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-150.669 -0.3 2.26605" />
+			<attribute name="Position" value="-150.669 1.61389 2.26605" />
 			<attribute name="Rotation" value="0.518339 -0.067932 0.011162 -0.8524" />
-			<attribute name="Scale" value="0.4 0.4 0.4" />
+			<attribute name="Scale" value="4 4 4" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="266">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="267">
@@ -2071,7 +2036,7 @@
 			</component>
 			<component type="RigidBody" id="268">
 				<attribute name="Physics Rotation" value="0.518339 -0.067932 0.011162 -0.8524" />
-				<attribute name="Physics Position" value="-319.33 0.4 23.1784" />
+				<attribute name="Physics Position" value="-319.33 4.22777 23.1784" />
 				<attribute name="Mass" value="100" />
 				<attribute name="Friction" value="1" />
 				<attribute name="Rolling Friction" value="1" />
@@ -2087,7 +2052,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="269">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="270">
@@ -2111,7 +2076,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="272">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="273">
@@ -2135,7 +2100,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="275">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="276">
@@ -2159,7 +2124,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="278">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="279">
@@ -2183,7 +2148,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="281">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="282">
@@ -2207,7 +2172,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="284">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="285">
@@ -2231,7 +2196,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="287">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneTiledH.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="288">
@@ -2255,7 +2220,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="347">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneTiledH.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="348">
@@ -2279,7 +2244,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="290">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneTiledH.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="291">
@@ -2303,7 +2268,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="293">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneTiledH.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="294">
@@ -2327,7 +2292,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="329">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneTiledH.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="330">
@@ -2351,7 +2316,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="332">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Terrain.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="333">
@@ -2375,8 +2340,9 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="335">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneTiled.xml" />
 				<attribute name="Is Occluder" value="true" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="336">
 				<attribute name="Shape Type" value="Sphere" />
@@ -2424,8 +2390,9 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="341">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Is Occluder" value="true" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="342">
 				<attribute name="Shape Type" value="Sphere" />
@@ -2448,8 +2415,9 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="344">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Is Occluder" value="true" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="345">
 				<attribute name="Shape Type" value="Sphere" />
@@ -2472,7 +2440,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="350">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneTiled.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="351">
@@ -2496,7 +2464,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="353">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneEnvMap.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="354">
@@ -2520,7 +2488,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="356">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneEnvMap.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="357">
@@ -2544,9 +2512,8 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="359">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="1" />
 			</component>
 			<component type="CollisionShape" id="360">
 				<attribute name="Shape Type" value="Sphere" />
@@ -2569,7 +2536,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="377">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneEnvMap.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="378">
@@ -2593,7 +2560,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="362">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneEnvMap.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="363">
@@ -2601,7 +2568,7 @@
 			</component>
 			<component type="RigidBody" id="364">
 				<attribute name="Physics Rotation" value="0.22638 -0.184978 0.142406 0.945651" />
-				<attribute name="Physics Position" value="-47.3523 0.4 32.7375" />
+				<attribute name="Physics Position" value="-47.3522 0.4 32.7375" />
 				<attribute name="Mass" value="100" />
 				<attribute name="Friction" value="25" />
 				<attribute name="Rolling Friction" value="25" />
@@ -2617,7 +2584,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="365">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneEnvMap.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="366">
@@ -2625,7 +2592,7 @@
 			</component>
 			<component type="RigidBody" id="367">
 				<attribute name="Physics Rotation" value="0.226339 -0.184983 0.142408 0.945659" />
-				<attribute name="Physics Position" value="-19.7208 0.399998 40.5532" />
+				<attribute name="Physics Position" value="-19.7208 0.399998 40.5533" />
 				<attribute name="Mass" value="100" />
 				<attribute name="Friction" value="25" />
 				<attribute name="Rolling Friction" value="25" />
@@ -2641,7 +2608,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="368">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/StoneEnvMap.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="369">
@@ -2649,32 +2616,7 @@
 			</component>
 			<component type="RigidBody" id="370">
 				<attribute name="Physics Rotation" value="0.226411 -0.184973 0.142405 0.945645" />
-				<attribute name="Physics Position" value="-23.0344 0.400001 -48.6293" />
-				<attribute name="Mass" value="100" />
-				<attribute name="Friction" value="25" />
-				<attribute name="Rolling Friction" value="25" />
-			</component>
-		</node>
-		<node id="139">
-			<attribute name="Is Enabled" value="true" />
-			<attribute name="Name" value="Sphere" />
-			<attribute name="Tags" />
-			<attribute name="Position" value="1 -0.299999 1" />
-			<attribute name="Rotation" value="0.226385 -0.184979 0.142406 0.94565" />
-			<attribute name="Scale" value="0.400001 0.400001 0.4" />
-			<attribute name="Variables" />
-			<component type="StaticModel" id="371">
-				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;Materials/Stone.xml" />
-				<attribute name="Cast Shadows" value="true" />
-				<attribute name="Shadow Distance" value="1" />
-			</component>
-			<component type="CollisionShape" id="372">
-				<attribute name="Shape Type" value="Sphere" />
-			</component>
-			<component type="RigidBody" id="373">
-				<attribute name="Physics Rotation" value="0.226385 -0.184979 0.142406 0.94565" />
-				<attribute name="Physics Position" value="-15.9922 0.400002 20.6463" />
+				<attribute name="Physics Position" value="-23.0344 0.4 -48.6293" />
 				<attribute name="Mass" value="100" />
 				<attribute name="Friction" value="25" />
 				<attribute name="Rolling Friction" value="25" />
@@ -2690,7 +2632,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="374">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="375">
@@ -2698,7 +2640,7 @@
 			</component>
 			<component type="RigidBody" id="376">
 				<attribute name="Physics Rotation" value="0.226411 -0.184973 0.142405 0.945645" />
-				<attribute name="Physics Position" value="3.237 0.400001 -17.1143" />
+				<attribute name="Physics Position" value="3.237 0.4 -17.1143" />
 				<attribute name="Mass" value="100" />
 				<attribute name="Friction" value="25" />
 				<attribute name="Rolling Friction" value="25" />
@@ -2714,7 +2656,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="386">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="387">
@@ -2738,7 +2680,7 @@
 			<attribute name="Variables" />
 			<component type="StaticModel" id="572">
 				<attribute name="Model" value="Model;Models/Sphere.mdl" />
-				<attribute name="Material" value="Material;" />
+				<attribute name="Material" value="Material;Materials/Stone.xml" />
 				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="573">
@@ -2753,21 +2695,6 @@
 			</component>
 		</node>
 	</node>
-	<node id="145">
-		<attribute name="Is Enabled" value="true" />
-		<attribute name="Name" value="text" />
-		<attribute name="Tags" />
-		<attribute name="Position" value="-200 60 999" />
-		<attribute name="Rotation" value="1 0 0 0" />
-		<attribute name="Scale" value="500 500 500" />
-		<attribute name="Variables" />
-		<component type="Text3D" id="390">
-			<attribute name="Font" value="Font;Fonts/BlueHighway.ttf" />
-			<attribute name="Material" value="Material;Materials/Editor/DebugIconPointLight.xml" />
-			<attribute name="Text" value="ItJustWorksTM" />
-			<attribute name="Width" value="98" />
-		</component>
-	</node>
 	<node id="216">
 		<attribute name="Is Enabled" value="true" />
 		<attribute name="Name" value="Mushroomss" />
@@ -2780,13 +2707,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-53.3949 1.99983 -63.9209" />
+			<attribute name="Position" value="-53.3949 1.5 -63.9209" />
 			<attribute name="Rotation" value="0.997642 1.40736e-08 -0.0686318 -3.25412e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="557">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="558">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2797,13 +2725,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-33.1939 1.99983 22.3938" />
+			<attribute name="Position" value="-33.1939 1.5 22.3938" />
 			<attribute name="Rotation" value="0.997642 -1.53462e-08 -0.0686285 -3.20137e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="482">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="483">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2814,13 +2743,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-12.7468 1.99983 -37.4219" />
+			<attribute name="Position" value="-12.7468 1.5 -37.4219" />
 			<attribute name="Rotation" value="0.997642 1.69601e-09 -0.0686318 -3.36167e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="485">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="486">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2831,13 +2761,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-35.0634 1.99983 -57.2703" />
+			<attribute name="Position" value="-35.0634 1.5 -57.2703" />
 			<attribute name="Rotation" value="0.997642 1.40736e-08 -0.0686318 -3.25412e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="488">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="489">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2848,13 +2779,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="18.8397 1.99983 -49.8042" />
+			<attribute name="Position" value="18.8397 1.5 -49.8042" />
 			<attribute name="Rotation" value="0.997642 -1.41854e-08 -0.06863 -3.22545e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="491">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="492">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2865,13 +2797,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-16.9337 1.99983 9.6565" />
+			<attribute name="Position" value="-16.9337 1.5 9.6565" />
 			<attribute name="Rotation" value="0.997642 2.98956e-09 -0.0686291 -3.38609e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="494">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="495">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2882,13 +2815,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-15.8649 1.99983 -27.4019" />
+			<attribute name="Position" value="-15.8649 1.5 -27.4019" />
 			<attribute name="Rotation" value="0.997642 1.69226e-09 -0.0686291 -3.36313e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="497">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="498">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2899,13 +2833,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-578.9 2.49983 -493.887" />
+			<attribute name="Position" value="-578.9 1.5 -493.887" />
 			<attribute name="Rotation" value="0.997642 1.40736e-08 -0.0686318 -3.25412e-07" />
 			<attribute name="Scale" value="40 40 40" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="500">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="501">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2916,13 +2851,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-50.3858 1.99983 -49.2875" />
+			<attribute name="Position" value="-50.3858 1.5 -49.2875" />
 			<attribute name="Rotation" value="0.997642 -1.75192e-09 -0.0686318 -3.11642e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="503">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="504">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2933,13 +2869,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="4.25484 1.99983 43.9887" />
+			<attribute name="Position" value="4.25484 1.5 43.9887" />
 			<attribute name="Rotation" value="0.997642 -1.41532e-08 -0.0686318 -3.22309e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="506">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="507">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2950,13 +2887,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="18.5776 1.99983 29.6035" />
+			<attribute name="Position" value="18.5776 1.5 29.6035" />
 			<attribute name="Rotation" value="0.997642 -1.41854e-08 -0.06863 -3.22545e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="509">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="510" />
 		</node>
@@ -2964,13 +2902,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="26.7184 1.99983 40.2318" />
+			<attribute name="Position" value="26.7184 1.5 40.2318" />
 			<attribute name="Rotation" value="0.997642 -1.41161e-08 -0.06863 -3.2262e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="512">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="513">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2981,13 +2920,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="40.0816 1.99983 -4.54455" />
+			<attribute name="Position" value="40.0816 1.5 -4.54455" />
 			<attribute name="Rotation" value="0.997642 -2.92372e-09 -0.06863 -3.09114e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="515">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="516">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -2998,13 +2938,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="39.6402 1.99983 26.4186" />
+			<attribute name="Position" value="39.6402 1.5 26.4186" />
 			<attribute name="Rotation" value="0.997642 -1.8045e-09 -0.0686318 -3.11533e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="518">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="519">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3015,13 +2956,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="42.7463 1.99983 -23.4511" />
+			<attribute name="Position" value="42.7463 1.5 -23.4511" />
 			<attribute name="Rotation" value="0.997642 1.18367e-08 -0.0686291 -3.20509e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="521">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="522">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3032,13 +2974,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="30.5861 1.99983 -15.6946" />
+			<attribute name="Position" value="30.5861 1.5 -15.6946" />
 			<attribute name="Rotation" value="0.997642 1.17634e-08 -0.06863 -3.20646e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="524">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="525">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3049,13 +2992,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="20.2192 1.99983 -6.91579" />
+			<attribute name="Position" value="20.2192 1.5 -6.91579" />
 			<attribute name="Rotation" value="0.997642 3.83482e-08 -0.0686274 -2.98931e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="527">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="528">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3066,13 +3010,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="35.2357 1.99983 -27.8168" />
+			<attribute name="Position" value="35.2357 1.5 -27.8168" />
 			<attribute name="Rotation" value="0.997642 -1.53462e-08 -0.0686285 -3.20137e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="530">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="531">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3083,13 +3028,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-30.3142 1.99983 12.8406" />
+			<attribute name="Position" value="-30.3142 1.5 12.8406" />
 			<attribute name="Rotation" value="0.997642 1.69226e-09 -0.0686291 -3.36313e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="533">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="534">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3100,13 +3046,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-32.1268 1.99983 -17.8517" />
+			<attribute name="Position" value="-32.1268 1.5 -17.8517" />
 			<attribute name="Rotation" value="0.997642 1.18367e-08 -0.0686291 -3.20509e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="536">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="537">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3117,13 +3064,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-5.5288 1.99983 -16.7267" />
+			<attribute name="Position" value="-5.5288 1.5 -16.7267" />
 			<attribute name="Rotation" value="0.997642 1.17853e-08 -0.0686291 -3.20618e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="539">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="540">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3134,13 +3082,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-42.1661 1.99983 -6.91579" />
+			<attribute name="Position" value="-42.1661 1.5 -6.91579" />
 			<attribute name="Rotation" value="0.997642 -1.41009e-08 -0.06863 -3.22408e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="542">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="543">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3151,13 +3100,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-34.6583 1.99983 3.5437" />
+			<attribute name="Position" value="-34.6583 1.5 3.5437" />
 			<attribute name="Rotation" value="0.997642 1.08935e-08 -0.0686297 -2.93321e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="545">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="546">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3168,13 +3118,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-85.5633 2.49983 -208.596" />
+			<attribute name="Position" value="-85.5633 1.5 -208.596" />
 			<attribute name="Rotation" value="0.997642 1.40736e-08 -0.0686318 -3.25412e-07" />
 			<attribute name="Scale" value="10 10 10" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="560">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWind.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="561">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3185,13 +3136,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-106.436 2.49983 -63.9209" />
+			<attribute name="Position" value="-106.436 1.5 -63.9209" />
 			<attribute name="Rotation" value="0.997642 1.40736e-08 -0.0686318 -3.25412e-07" />
 			<attribute name="Scale" value="10 10 10" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="563">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="564">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3202,13 +3154,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-56.2852 1.99983 10.23" />
+			<attribute name="Position" value="-56.2852 1.5 10.23" />
 			<attribute name="Rotation" value="0.997642 5.13458e-08 -0.0686285 -3.0654e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="587">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="588">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3219,13 +3172,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-28.866 1.99983 -2.30727" />
+			<attribute name="Position" value="-28.866 1.5 -2.30727" />
 			<attribute name="Rotation" value="0.997642 1.52195e-08 -0.0686291 -3.27631e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="464">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="465">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3236,13 +3190,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-3.87604 1.99983 20.7298" />
+			<attribute name="Position" value="-3.87604 1.5 20.7298" />
 			<attribute name="Rotation" value="0.997642 -1.83506e-09 -0.068637 -3.11472e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="404">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="405">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3253,13 +3208,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-11.8181 1.99983 -0.423398" />
+			<attribute name="Position" value="-11.8181 1.5 -0.423398" />
 			<attribute name="Rotation" value="0.997642 -1.85915e-09 -0.06863 -3.1153e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="407">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="408">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3270,13 +3226,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-0.584568 1.99983 11.0504" />
+			<attribute name="Position" value="-0.584568 1.5 11.0504" />
 			<attribute name="Rotation" value="0.997642 6.49909e-08 -0.0686326 -2.94541e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="410">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="411">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3287,13 +3244,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="22.208 1.99983 21.5159" />
+			<attribute name="Position" value="22.208 1.5 21.5159" />
 			<attribute name="Rotation" value="0.997642 1.73916e-09 -0.0686291 -3.36302e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="413">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="414">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3304,13 +3262,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="27.2415 1.99983 6.0025" />
+			<attribute name="Position" value="27.2415 1.5 6.0025" />
 			<attribute name="Rotation" value="0.997642 1.30134e-08 -0.0686305 -3.22859e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="416">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="417">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3321,13 +3280,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-18.3669 1.99983 19.9849" />
+			<attribute name="Position" value="-18.3669 1.5 19.9849" />
 			<attribute name="Rotation" value="0.997642 2.98956e-09 -0.0686291 -3.38609e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="419">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="420">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3338,13 +3298,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-3.87939 1.99983 38.2286" />
+			<attribute name="Position" value="-3.87939 1.5 38.2286" />
 			<attribute name="Rotation" value="0.997642 3.82782e-08 -0.0686291 -2.98895e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="422">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="423">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3355,13 +3316,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-33.319 1.99983 44.4546" />
+			<attribute name="Position" value="-33.319 1.5 44.4546" />
 			<attribute name="Rotation" value="0.997642 -1.75192e-09 -0.0686318 -3.11642e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="425">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="426">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3379,6 +3341,7 @@
 			<component type="StaticModel" id="428">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="429">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3389,13 +3352,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="10.7731 1.99983 -12.7345" />
+			<attribute name="Position" value="10.7731 1.5 -12.7345" />
 			<attribute name="Rotation" value="0.997642 2.60088e-08 -0.06863 -2.97302e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="431">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="432">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3406,13 +3370,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-1.25312 1.99983 -29.2269" />
+			<attribute name="Position" value="-1.25312 1.5 -29.2269" />
 			<attribute name="Rotation" value="0.997642 -1.28971e-08 -0.0686378 -3.24743e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="434">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="435">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3423,13 +3388,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="20.8057 1.99983 -15.2226" />
+			<attribute name="Position" value="20.8057 1.5 -15.2226" />
 			<attribute name="Rotation" value="0.997642 1.17634e-08 -0.06863 -3.20646e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="437">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="438">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3440,13 +3406,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-18.6075 1.99983 -47.1194" />
+			<attribute name="Position" value="-18.6075 1.5 -47.1194" />
 			<attribute name="Rotation" value="0.997642 -1.41854e-08 -0.06863 -3.22545e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="440">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="441">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3457,13 +3424,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-10.5275 1.99983 -63.1012" />
+			<attribute name="Position" value="-10.5275 1.5 -63.1012" />
 			<attribute name="Rotation" value="0.997642 2.61257e-08 -0.0686291 -2.97275e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="443">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="444">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3474,13 +3442,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="10.9973 1.99983 -42.8898" />
+			<attribute name="Position" value="10.9973 1.5 -42.8898" />
 			<attribute name="Rotation" value="0.997642 2.61257e-08 -0.0686291 -2.97275e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="446">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="447">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3491,13 +3460,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-39.076 1.99983 -40.3448" />
+			<attribute name="Position" value="-39.076 1.5 -40.3448" />
 			<attribute name="Rotation" value="0.997642 1.19355e-08 -0.06863 -3.20564e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="449">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="450">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3508,47 +3478,49 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-52.9319 1.99983 -26.6937" />
+			<attribute name="Position" value="-52.9319 1.5 -26.6937" />
 			<attribute name="Rotation" value="0.997642 5.13866e-08 -0.0686285 -3.0656e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="452">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="453">
 				<attribute name="Shape Type" value="TriangleMesh" />
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 			</component>
-		</node>
-		<node id="170">
-			<attribute name="Is Enabled" value="true" />
-			<attribute name="Name" value="Mushrooms" />
-			<attribute name="Tags" />
-			<attribute name="Position" value="-5.86295 1.99983 -7.08019" />
-			<attribute name="Rotation" value="0.997079 -3.3963e-08 -0.0763816 1.51783e-07" />
-			<attribute name="Scale" value="1 1 1" />
-			<attribute name="Variables" />
-			<component type="StaticModel" id="455">
-				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
-				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
-			</component>
-			<component type="CollisionShape" id="456">
-				<attribute name="Shape Type" value="TriangleMesh" />
-				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
-			</component>
+			<node id="170">
+				<attribute name="Is Enabled" value="true" />
+				<attribute name="Name" value="Mushrooms" />
+				<attribute name="Tags" />
+				<attribute name="Position" value="49.3113 3.12951e-05 12.9834" />
+				<attribute name="Rotation" value="0.99997 -5.12872e-08 -0.00777355 4.63345e-07" />
+				<attribute name="Scale" value="1 1 1" />
+				<attribute name="Variables" />
+				<component type="StaticModel" id="455">
+					<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+					<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				</component>
+				<component type="CollisionShape" id="456">
+					<attribute name="Shape Type" value="TriangleMesh" />
+					<attribute name="Model" value="Model;Models/Mushroom.mdl" />
+				</component>
+			</node>
 		</node>
 		<node id="172">
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="12.9702 1.99983 15.2192" />
+			<attribute name="Position" value="12.9702 1.5 15.2192" />
 			<attribute name="Rotation" value="0.997642 1.69601e-09 -0.0686318 -3.36167e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="461">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="462">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3559,13 +3531,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="20.7728 1.99983 -34.8143" />
+			<attribute name="Position" value="20.7728 1.5 -34.8143" />
 			<attribute name="Rotation" value="0.997642 2.98956e-09 -0.0686291 -3.38609e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="467">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="468">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3576,13 +3549,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-0.0225111 1.99983 -51.689" />
+			<attribute name="Position" value="-0.0225111 1.5 -51.689" />
 			<attribute name="Rotation" value="0.997642 -4.90527e-09 -0.0686318 -3.09204e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="470">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="471">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3593,13 +3567,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="9.60484 1.99983 34.944" />
+			<attribute name="Position" value="9.60484 1.5 34.944" />
 			<attribute name="Rotation" value="0.997642 2.61257e-08 -0.0686291 -2.97275e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="473">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="474">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3610,13 +3585,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-24.9459 1.99983 33.6296" />
+			<attribute name="Position" value="-24.9459 1.5 33.6296" />
 			<attribute name="Rotation" value="0.997642 -1.41392e-08 -0.06863 -3.22407e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="476">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="477">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3627,13 +3603,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-42.2261 1.99983 30.935" />
+			<attribute name="Position" value="-42.2261 1.5 30.935" />
 			<attribute name="Rotation" value="0.997642 -1.8045e-09 -0.0686318 -3.11533e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="479">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="480">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3644,13 +3621,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="6.57316 1.99983 -34.6081" />
+			<attribute name="Position" value="6.57316 1.5 -34.6081" />
 			<attribute name="Rotation" value="0.997641 3.8387e-08 -0.0686404 -2.98856e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="398">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="399">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3661,13 +3639,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-30.1768 1.99983 -28.8552" />
+			<attribute name="Position" value="-30.1768 1.5 -28.8552" />
 			<attribute name="Rotation" value="0.997642 5.14645e-08 -0.0686291 -3.06617e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="392">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="393">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3678,13 +3657,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="13.23 1.99983 -23.3872" />
+			<attribute name="Position" value="13.23 1.5 -23.3872" />
 			<attribute name="Rotation" value="0.997642 4.93721e-08 -0.0686326 -2.81254e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="395">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="396">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3695,13 +3675,14 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="Mushrooms" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="38.7286 1.99983 5.796" />
+			<attribute name="Position" value="38.7286 1.5 5.796" />
 			<attribute name="Rotation" value="0.997642 1.18367e-08 -0.0686291 -3.20509e-07" />
 			<attribute name="Scale" value="1 1 1" />
 			<attribute name="Variables" />
 			<component type="StaticModel" id="401">
 				<attribute name="Model" value="Model;Models/Mushroom.mdl" />
 				<attribute name="Material" value="Material;Materials/MushroomWindUnlit.xml" />
+				<attribute name="Cast Shadows" value="true" />
 			</component>
 			<component type="CollisionShape" id="402">
 				<attribute name="Shape Type" value="TriangleMesh" />
@@ -3721,31 +3702,51 @@
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="-35.1356 180 6.11951" />
-			<attribute name="Rotation" value="0.965926 0.258819 0 0" />
+			<attribute name="Position" value="160.136 200 6.11951" />
+			<attribute name="Rotation" value="0.469846 0.17101 0.813798 -0.296198" />
 			<attribute name="Scale" value="0.309925 0.999764 0.999993" />
 			<attribute name="Variables" />
 			<component type="Light" id="593">
 				<attribute name="Light Type" value="Directional" />
 				<attribute name="Spot FOV" value="60" />
-				<attribute name="Cast Shadows" value="true" />
 				<attribute name="Depth Constant Bias" value="0.0001" />
 			</component>
 		</node>
-		<node id="219">
+		<node id="220">
 			<attribute name="Is Enabled" value="true" />
 			<attribute name="Name" value="" />
 			<attribute name="Tags" />
-			<attribute name="Position" value="35.1356 180 6.11951" />
-			<attribute name="Rotation" value="0.92388 0.382683 0 0" />
+			<attribute name="Position" value="-35.1356 180 6.11951" />
+			<attribute name="Rotation" value="0.965926 0.258819 0 0" />
 			<attribute name="Scale" value="0.309925 0.999764 0.999993" />
 			<attribute name="Variables" />
-			<component type="Light" id="594">
+			<component type="Light" id="595">
 				<attribute name="Light Type" value="Directional" />
 				<attribute name="Spot FOV" value="60" />
 				<attribute name="Cast Shadows" value="true" />
 				<attribute name="Depth Constant Bias" value="0.0001" />
 			</component>
 		</node>
+	</node>
+	<node id="222">
+		<attribute name="Is Enabled" value="true" />
+		<attribute name="Name" value="Text" />
+		<attribute name="Tags" />
+		<attribute name="Position" value="-200 60 700" />
+		<attribute name="Rotation" value="1 0 0 0" />
+		<attribute name="Scale" value="70 70 70" />
+		<attribute name="Variables" />
+		<component type="Text3D" id="596">
+			<attribute name="Font" value="Font;Fonts/Anonymous Pro.ttf" />
+			<attribute name="Font Size" value="800" />
+			<attribute name="Text" value="ItJustWorksTM" />
+			<attribute name="Width" value="910" />
+			<attribute name="Color" value="0 0 0 1" />
+			<attribute name="Top Left Color" value="0 0 0 1" />
+			<attribute name="Top Right Color" value="0 0 0 1" />
+			<attribute name="Bottom Left Color" value="0 0 0 1" />
+			<attribute name="Bottom Right Color" value="0 0 0 1" />
+			<attribute name="Text Effect" value="Stroke" />
+		</component>
 	</node>
 </scene>
