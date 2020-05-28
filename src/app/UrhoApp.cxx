@@ -75,7 +75,7 @@ void UrhoApp::create_scene() {
     
     m_camera_node = m_scene->CreateChild("Camera");
     m_camera_node->CreateComponent<MovableCamera>();
-    m_camera_node->SetPosition(Urho3D::Vector3(0.0f, 100.0f, 0.0f));
+    m_camera_node->SetPosition(Urho3D::Vector3(0.0f, 1.0f, 0.0f));
 
 }
 
