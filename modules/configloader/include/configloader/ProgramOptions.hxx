@@ -57,6 +57,7 @@ struct ProgramOptions {
 
 ProgramOptions LoadProgramOptions(const stdfs::path& file);
 void ExportProgramOptions(const ProgramOptions& config, const stdfs::path& path);
+ProgramOptions get_default_options();
 
 } // namespace smce
 

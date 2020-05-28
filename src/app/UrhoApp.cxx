@@ -66,13 +66,13 @@ void UrhoApp::Stop() {}
 
 void UrhoApp::create_scene() {
     auto* const cache = GetSubsystem<Urho3D::ResourceCache>();
+    cache->AddResourceDir((smce::get_default_options().smce_home / "share/smce/Torch").c_str());
     m_scene = Urho3D::MakeShared<Urho3D::Scene>(context_);
-    m_scene -> CreateComponent<EmulGlue>();
-    m_scene -> CreateComponent<TorchMenu>();
-    Urho3D::ResourceCache* plane_node = GetSubsystem<Urho3D::ResourceCache>();
     Urho3D::SharedPtr<Urho3D::File> file = cache->GetFile("Torch/Data/VirtualEnvironment/smartCarEnvironment.xml");
     m_scene->LoadXML(*file);
-
+    m_scene -> CreateComponent<EmulGlue>();
+    m_scene -> CreateComponent<TorchMenu>();
+    
     m_camera_node = m_scene->CreateChild("Camera");
     m_camera_node->CreateComponent<MovableCamera>();
     m_camera_node->SetPosition(Urho3D::Vector3(0.0f, 100.0f, 0.0f));

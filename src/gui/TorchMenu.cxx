@@ -32,21 +32,9 @@ TorchMenu::TorchMenu(Urho3D::Context* context)
     SubscribeToEvent(Urho3D::E_KEYUP, URHO3D_HANDLER(TorchMenu, handle_key));
     SubscribeToEvent(E_INO_COMPILE_RESULT, URHO3D_HANDLER(TorchMenu, handle_compile_result));
 
-    std::filesystem::path config_path{};
-
-    if (std::filesystem::exists(smce::ProgramOptions::DEFAULT_CONFIG_FILE_NAME)) {
-        config_path = smce::ProgramOptions::DEFAULT_CONFIG_FILE_NAME;
-    } else if (auto* env = std::getenv("SMCE_OPTIONS"); env) {
-        if (std::filesystem::exists(env))
-            config_path = env;
-    } else if (auto tmp = smce::PLATFORM_SMCE_HOME / smce::ProgramOptions::DEFAULT_CONFIG_FILE_NAME; std::filesystem::exists(tmp)) {
-        config_path = tmp;
-    }
-
-    options = smce::LoadProgramOptions(config_path);
+    options = smce::get_default_options();
 
     auto* cache = GetSubsystem<Urho3D::ResourceCache>();
-    cache->AddResourceDir((options.smce_home / "share/smce/Torch").c_str());
 
     main_gui = ui->GetRoot()->CreateChild<Urho3D::UIElement>();
     main_gui->SetSize(ui->GetRoot()->GetSize());
