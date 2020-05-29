@@ -66,22 +66,16 @@ void UrhoApp::Stop() {}
 
 void UrhoApp::create_scene() {
     auto* const cache = GetSubsystem<Urho3D::ResourceCache>();
+    cache->AddResourceDir((smce::get_default_options().smce_home / "share/smce/Torch").c_str());
     m_scene = Urho3D::MakeShared<Urho3D::Scene>(context_);
-    m_scene->CreateComponent<Urho3D::Octree>();
-    m_scene->CreateComponent<EmulGlue>();
-    m_scene->CreateComponent<TorchMenu>();
-    Urho3D::Node* plane_node = m_scene->CreateChild("Ground");
-    plane_node->SetScale(Urho3D::Vector3(200, 0, 200));
-    auto* const planeObject = plane_node->CreateComponent<Urho3D::StaticModel>();
-    planeObject->SetModel(cache->GetResource<Urho3D::Model>("Models/Cone.mdl"));
-
-    Urho3D::Node* lightNode = m_scene->CreateChild("Sunlight");
-    auto* const light = lightNode->CreateComponent<Urho3D::Light>();
-    light->SetLightType(Urho3D::LIGHT_DIRECTIONAL);
-
+    Urho3D::SharedPtr<Urho3D::File> file = cache->GetFile("Torch/Data/VirtualEnvironment/smartCarEnvironment.xml");
+    m_scene->LoadXML(*file);
+    m_scene -> CreateComponent<EmulGlue>();
+    m_scene -> CreateComponent<TorchMenu>();
+    
     m_camera_node = m_scene->CreateChild("Camera");
     m_camera_node->CreateComponent<MovableCamera>();
-    m_camera_node->SetPosition(Urho3D::Vector3(0.0f, 100.0f, 0.0f));
+    m_camera_node->SetPosition(Urho3D::Vector3(0.0f, 1.0f, 0.0f));
 
 }
 
@@ -89,6 +83,7 @@ void UrhoApp::create_viewport() {
     auto* renderer = GetSubsystem<Urho3D::Renderer>();
     auto viewport = Urho3D::MakeShared<Urho3D::Viewport>(context_, m_scene, m_camera_node->GetComponent<MovableCamera>());
     renderer->SetViewport(0, viewport);
+    renderer->SetShadowMapSize(3000);
 }
 
 void UrhoApp::subscribe_to_events() { SubscribeToEvent(Urho3D::E_UPDATE, URHO3D_HANDLER(UrhoApp, HandleUpdate)); }
