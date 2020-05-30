@@ -116,8 +116,8 @@ target_sources (smartcar_emul PRIVATE
         src/components/Servo.cxx include/components/Servo.hxx
         src/components/WheelServo.cxx
         include/components/WheelServo.hxx
-        include/components/Vehicle.hxx
-        src/components/Vehicle.cxx
+        include/components/SimpleVehicle.hxx
+        src/components/SimpleVehicle.cxx
         include/UrhoUtility.hxx
         src/gui/TorchMenu.cxx
         include/gui/TorchMenu.hxx
