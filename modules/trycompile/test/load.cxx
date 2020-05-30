@@ -1,4 +1,5 @@
 #include <filesystem>
+#include <iostream>
 #include <variant>
 #include <catch2/catch.hpp>
 #include <utility.hxx>
@@ -21,11 +22,12 @@ void loop() {})";
     std::visit(Visitor{[](const smce::SketchObject& so) {
                            auto ld = smce::load(so);
                            REQUIRE(ld);
-                           REQUIRE(ld.init);
-                           REQUIRE(ld.loop);
                            REQUIRE(ld.setup);
+                           REQUIRE(ld.init);
+                           REQUIRE(ld.deinit);
+                           REQUIRE(ld.loop);
                            REQUIRE(ld.init(nullptr, nullptr));
-                       },
-                       [](const std::runtime_error& err) { REQUIRE(false); }},
+                    },
+                   [](const std::runtime_error& err) { REQUIRE(false); }},
                ret);
 }

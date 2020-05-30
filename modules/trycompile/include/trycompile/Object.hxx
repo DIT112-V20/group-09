@@ -36,6 +36,7 @@ namespace smce {
  **/
 struct SketchObject {
     std::filesystem::path location; /// Full filesystem path to the file
+    std::filesystem::path runtime; /// Full filesystem path to the runtime file if any
 };
 
 
@@ -74,6 +75,7 @@ struct SketchLoadedObject {
 
   private:
     boost::dll::shared_library dl;
+    boost::dll::shared_library rt;
 
     friend SketchLoadedObject load(SketchObject);
     template <class R, class... Args>

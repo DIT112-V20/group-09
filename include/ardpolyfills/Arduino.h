@@ -112,9 +112,19 @@ void detachInterrupt(uint8_t interruptNum);
 void interrupts();
 void noInterrupts();
 
+#define DLL_EXPORT
+#if defined(_MSC_VER) && defined(SMCE__COMPILING_USERCODE)
+#define DLL_EXPORT __declspec(dllexport)
+#endif
+
 // User defined functions
-extern void setup();
-extern void loop();
+extern "C" DLL_EXPORT void setup();
+extern "C" DLL_EXPORT void loop();
+
+#ifdef SMCE__COMPILING_USERCODE
+extern bool stub();
+const static bool smce__stub = stub();
+#endif
 
 #include "WString.h"
 #include "HardwareSerial.h"
