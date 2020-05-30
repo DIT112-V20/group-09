@@ -71,6 +71,7 @@ void UrhoApp::create_scene() {
     m_scene = Urho3D::MakeShared<Urho3D::Scene>(context_);
     Urho3D::SharedPtr<Urho3D::File> file = cache->GetFile("Torch/Data/VirtualEnvironment/smartCarEnvironment.xml");
     m_scene->LoadXML(*file);
+    context_->RegisterSubsystem(m_scene->GetComponent(8));
     m_scene -> CreateComponent<EmulGlue>();
     m_scene -> CreateComponent<TorchMenu>();
     
