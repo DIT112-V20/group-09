@@ -106,7 +106,9 @@ target_sources (smartcar_emul PRIVATE
         include/gui/TorchMenu.hxx
         src/components/EmulGlue.cxx
         include/components/EmulGlue.hxx
-        include/gui/TorchEvents.hxx)
+        include/gui/TorchEvents.hxx
+        include/components/SimpleVehicle.hxx
+        src/components/SimpleVehicle.cxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 

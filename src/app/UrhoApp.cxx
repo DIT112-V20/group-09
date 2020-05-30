@@ -39,6 +39,7 @@ UrhoApp::UrhoApp(Urho3D::Context* context) : Urho3D::Application{context} {
     MovableCamera::RegisterObject(context);
     TorchMenu::RegisterObject(context);
     EmulGlue::RegisterObject(context);
+    SimpleVehicle::RegisterObject(context);
 }
 
 void UrhoApp::Setup() {
