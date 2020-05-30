@@ -4,7 +4,7 @@ const int degreesToTurn = 45;
 
 BrushedMotor leftMotor{smartcarlib::pins::v2::leftMotorPins};
 BrushedMotor rightMotor{smartcarlib::pins::v2::rightMotorPins};
-DifferentialControl control{leftMotor, rightMotor};
+AckermanControl control{leftMotor, rightMotor};
 
 SimpleCar car{control};
 
