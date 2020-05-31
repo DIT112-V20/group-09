@@ -15,7 +15,13 @@
 #  limitations under the License.
 #
 
-add_subdirectory (ardrivo)
-add_subdirectory (trycompile)
-add_subdirectory (configloader)
-add_subdirectory (reg_moniker)
+
+add_library (RegMoniker INTERFACE)
+
+target_include_directories (RegMoniker INTERFACE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/reg_moniker
+        ${CMAKE_SOURCE_DIR}/include)
+target_sources (RegMoniker INTERFACE
+        include/reg_moniker/DeviceMap.hxx)
+target_compile_definitions (RegMoniker INTERFACE)
+target_link_libraries (RegMoniker INTERFACE stdpolyfills::stdpolyfills)

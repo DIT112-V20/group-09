@@ -90,7 +90,7 @@ target_link_libraries (smartcar_emul_deps INTERFACE
         stdpolyfills::stdpolyfills
         TryCompile
         ConfigLoader
-        )
+        RegMoniker)
 
 add_executable (smartcar_emul src/main.cxx)
 target_include_directories (smartcar_emul PRIVATE include thirdparty/inih)
