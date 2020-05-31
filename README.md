@@ -1,5 +1,7 @@
-# SmartcarEmul
+# SmartcarEmul ![Emul C++ CI](https://github.com/DIT112-V20/group-09/workflows/Emul%20C++%20CI/badge.svg)
 _A [Smartcar](https://github.com/platisd/smartcar_shield) emulator_
+
+[![IMAGE ALT TEXT](https://aerostun.codes/smce_cover_vid.jpg)](https://youtu.be/1SiTh60qjD0 "SmartCarEmul Demo - An emulator for devices based on the SmartCar.")
 
 ### Description
 
@@ -71,6 +73,16 @@ cmake ..                                   # Configure
 cmake --build .                            # Build
 ctest                                      # Optional: run tests
 ```
+
+### Developer guidance
+
+[A hacker's guide to SMCE](https://github.com/DIT112-V20/group-09/wiki/A-hacker's-guide-to-SMCE)
+
+### User guidance
+
+[MacOS user guidance](https://github.com/DIT112-V20/group-09/wiki/MacOS-user-build-guidance)
+
+[Windows user guidance](https://github.com/DIT112-V20/group-09/wiki/Windows-user-build-guidance)
 
 ### Features overview (not exhaustive)
 
