@@ -95,10 +95,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a736937dcb7e6ff0020a9b04528889fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0add5bc2454b4b4bddbdf9909ce6266c"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_two_wire.html#a0add5bc2454b4b4bddbdf9909ce6266c">requestFrom</a> (std::uint8_t slave_address, std::size_t quantity, bool stop=true)</td></tr>
 <tr class="separator:a0add5bc2454b4b4bddbdf9909ce6266c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6890d9351c97e82d9145bd1a15994e92"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_two_wire.html#a6890d9351c97e82d9145bd1a15994e92">requestFrom</a> (std::uint8_t slave_address, std::uint8_t quantity, std::uint8_t)</td></tr>
-<tr class="separator:a6890d9351c97e82d9145bd1a15994e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad67c52841b631baf89a10095753b60f6"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_two_wire.html#ad67c52841b631baf89a10095753b60f6">requestFrom</a> (int slave_address, int quantity, int stop=0)</td></tr>
-<tr class="separator:ad67c52841b631baf89a10095753b60f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a386d65f64621f2938898741d7d83b61e"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_two_wire.html#a386d65f64621f2938898741d7d83b61e">requestFrom</a> (std::uint8_t slave_address, std::uint8_t quantity, std::uint8_t=1)</td></tr>
+<tr class="separator:a386d65f64621f2938898741d7d83b61e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af783b11ef54add276be9d659c597aec3"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_two_wire.html#af783b11ef54add276be9d659c597aec3">requestFrom</a> (int slave_address, int quantity, int stop=1)</td></tr>
+<tr class="separator:af783b11ef54add276be9d659c597aec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5429ddf7d8d1ba49457ee118c59fea71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_two_wire.html#a5429ddf7d8d1ba49457ee118c59fea71">beginTransmission</a> (std::uint8_t slave_address)</td></tr>
 <tr class="separator:a5429ddf7d8d1ba49457ee118c59fea71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9e682b4e75979051833849a085a27ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_two_wire.html#aa9e682b4e75979051833849a085a27ee">beginTransmission</a> (int slave_address)</td></tr>
@@ -170,8 +170,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae347f6b7b6b7c125a24df3e5a4b27247 inherit pub_methods_class_print"><td class="memTemplParams" colspan="2">template&lt;class Int , class  = std::enable_if_t&lt;std::is_integral&lt;Int&gt;::value&gt;&gt; </td></tr>
 <tr class="memitem:ae347f6b7b6b7c125a24df3e5a4b27247 inherit pub_methods_class_print"><td class="memTemplItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_print.html#ae347f6b7b6b7c125a24df3e5a4b27247">print</a> (Int val, <a class="el" href="_w_string_8h.html#a3735e8977ab31f1f8c1170b9f0efff97">StringBaseConv</a> base=<a class="el" href="_w_string_8h.html#a3735e8977ab31f1f8c1170b9f0efff97a851043138f8ef49c6eeea75760b69481">DEC</a>)</td></tr>
 <tr class="separator:ae347f6b7b6b7c125a24df3e5a4b27247 inherit pub_methods_class_print"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c7d936e912fcb6c7ffda383cc3445fa inherit pub_methods_class_print"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_print.html#a3c7d936e912fcb6c7ffda383cc3445fa">print</a> (const struct Printable &amp;)</td></tr>
-<tr class="separator:a3c7d936e912fcb6c7ffda383cc3445fa inherit pub_methods_class_print"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa738939e3e6f6829eca225ee5d6955e8 inherit pub_methods_class_print"><td class="memTemplParams" colspan="2">template&lt;std::size_t N&gt; </td></tr>
 <tr class="memitem:aa738939e3e6f6829eca225ee5d6955e8 inherit pub_methods_class_print"><td class="memTemplItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_print.html#aa738939e3e6f6829eca225ee5d6955e8">println</a> (const char(&amp;lit)[N])</td></tr>
 <tr class="separator:aa738939e3e6f6829eca225ee5d6955e8 inherit pub_methods_class_print"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,8 +182,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab80cce73c03762c21645143122fb7447 inherit pub_methods_class_print"><td class="memTemplParams" colspan="2">template&lt;class Int , class  = std::enable_if_t&lt;std::is_integral&lt;Int&gt;::value&gt;&gt; </td></tr>
 <tr class="memitem:ab80cce73c03762c21645143122fb7447 inherit pub_methods_class_print"><td class="memTemplItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_print.html#ab80cce73c03762c21645143122fb7447">println</a> (Int val, <a class="el" href="_w_string_8h.html#a3735e8977ab31f1f8c1170b9f0efff97">StringBaseConv</a> base=<a class="el" href="_w_string_8h.html#a3735e8977ab31f1f8c1170b9f0efff97a851043138f8ef49c6eeea75760b69481">DEC</a>)</td></tr>
 <tr class="separator:ab80cce73c03762c21645143122fb7447 inherit pub_methods_class_print"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8acc3820a5cbe1455d0125c41797cdb inherit pub_methods_class_print"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_print.html#ae8acc3820a5cbe1455d0125c41797cdb">println</a> (const Printable &amp;p)</td></tr>
-<tr class="separator:ae8acc3820a5cbe1455d0125c41797cdb inherit pub_methods_class_print"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72862852c1185203cdfcca03a9656135 inherit pub_methods_class_print"><td class="memItemLeft" align="right" valign="top">std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_print.html#a72862852c1185203cdfcca03a9656135">println</a> ()</td></tr>
 <tr class="separator:a72862852c1185203cdfcca03a9656135 inherit pub_methods_class_print"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add7f8450dfdc7f94eeec685f220573f7 inherit pub_methods_class_print"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_print.html#add7f8450dfdc7f94eeec685f220573f7">flush</a> ()</td></tr>
@@ -496,8 +492,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad67c52841b631baf89a10095753b60f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad67c52841b631baf89a10095753b60f6">&#9670;&nbsp;</a></span>requestFrom() <span class="overload">[1/3]</span></h2>
+<a id="af783b11ef54add276be9d659c597aec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af783b11ef54add276be9d659c597aec3">&#9670;&nbsp;</a></span>requestFrom() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -518,7 +514,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>stop</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>stop</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -564,8 +560,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a6890d9351c97e82d9145bd1a15994e92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6890d9351c97e82d9145bd1a15994e92">&#9670;&nbsp;</a></span>requestFrom() <span class="overload">[3/3]</span></h2>
+<a id="a386d65f64621f2938898741d7d83b61e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a386d65f64621f2938898741d7d83b61e">&#9670;&nbsp;</a></span>requestFrom() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -586,7 +582,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::uint8_t&#160;</td>
-          <td class="paramname"><em>stop</em>&#160;</td>
+          <td class="paramname"><em>stop</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

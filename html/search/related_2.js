@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_2b_933',['operator+',['../class_string.html#a69168388b95717b8f5b06019b297cf3d',1,'String::operator+()'],['../class_string.html#a21ee1cfc74d0f2e5b3339c8543b48a06',1,'String::operator+()'],['../class_string.html#ae5e797982e0c0c5a4cc9f22e438d6e8a',1,'String::operator+()']]]
+  ['operator_2b_944',['operator+',['../class_string.html#a4f4909569074be6d3725f5626fa9acaa',1,'String::operator+()'],['../class_string.html#aad7359fbc855387803f22687c2d5e404',1,'String::operator+()'],['../class_string.html#acc09eb5d1632b814ba2cf45a6c168073',1,'String::operator+()']]]
 ];

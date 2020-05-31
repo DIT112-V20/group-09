@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SmartCar Emul: modules/ardrivo/include/ardrivo/Entrypoint.hxx Source File</title>
+<title>SmartCar Emul: include/ardpolyfills/SMCE__dll.hxx Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,17 +63,17 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_e05d7e2b1ecd646af5bb94391405f3b5.html">modules</a></li><li class="navelem"><a class="el" href="dir_4d6c1d2899420f54b49d33224f9b9876.html">ardrivo</a></li><li class="navelem"><a class="el" href="dir_fe0c8a1cf6965da310cc4ebb1fff4117.html">include</a></li><li class="navelem"><a class="el" href="dir_3e1f3078defb2f2b84af49d21d44d267.html">ardrivo</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_5857b323563c1e08f6338c00d5a4c4b6.html">ardpolyfills</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Entrypoint.hxx</div>  </div>
+<div class="title">SMCE__dll.hxx</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_entrypoint_8hxx.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *  Entrypoint.hxx</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *  Copyright 2020 AeroStun</span></div>
+<a href="_s_m_c_e____dll_8hxx.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *  SMCE__dll.hxx</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *  Copyright 2020 ItJustWorksTM</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *  you may not use this file except in compliance with the License.</span></div>
@@ -89,27 +89,24 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef SMARTCAR_EMUL_ENTRYPOINT_HXX</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define SMARTCAR_EMUL_ENTRYPOINT_HXX</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef SMARTCAR_EMUL_SMCE__DLL_HXX</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define SMARTCAR_EMUL_SMCE__DLL_HXX</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_s_m_c_e____dll_8hxx.html">ardpolyfills/SMCE__dll.hxx</a>&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">struct </span><a class="code" href="struct_board_data.html">BoardData</a>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">struct </span><a class="code" href="struct_board_info.html">BoardInfo</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <a class="code" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> <span class="keywordtype">bool</span> <a class="code" href="_entrypoint_8hxx.html#a3fae242031236f7afd85fd996b08b24c">init</a>(<a class="code" href="struct_board_data.html">BoardData</a>*, <span class="keyword">const</span> <a class="code" href="struct_board_info.html">BoardInfo</a>*);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_entrypoint_8hxx.html#a8b928e7ef7e7ca3dce68fd2f51a1c197">maybe_init</a>() noexcept;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;extern &quot;C&quot; <a class="code" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> <span class="keywordtype">void</span> <a class="code" href="_entrypoint_8hxx.html#a1dd44452d3c05cef02fee548faf9e93b">deinit</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif // SMARTCAR_EMUL_ENTRYPOINT_HXX</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#if defined(_MSC_VER)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#   if defined(SMCE__COMPILING_USERCODE)</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#       define SMCE__DLL_API __declspec(dllexport)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#       define SMCE__DLL_RT_API __declspec(dllimport)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#   else</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#       define SMCE__DLL_API</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#       define SMCE__DLL_RT_API __declspec(dllexport)</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#   endif</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#   define SMCE__DLL_RT_API</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">   32</a></span>&#160;<span class="preprocessor">#   define SMCE__DLL_API</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="_s_m_c_e____dll_8hxx.html#a30d34ef681558ae7f253d2d02cb876f6">   33</a></span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif // SMARTCAR_EMUL_SMCE__DLL_HXX</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="a_entrypoint_8hxx_html_a3fae242031236f7afd85fd996b08b24c"><div class="ttname"><a href="_entrypoint_8hxx.html#a3fae242031236f7afd85fd996b08b24c">init</a></div><div class="ttdeci">SMCE__DLL_RT_API bool init(BoardData *, const BoardInfo *)</div><div class="ttdef"><b>Definition:</b> Entrypoint.cxx:35</div></div>
-<div class="ttc" id="astruct_board_data_html"><div class="ttname"><a href="struct_board_data.html">BoardData</a></div><div class="ttdef"><b>Definition:</b> BoardData.hxx:76</div></div>
-<div class="ttc" id="a_entrypoint_8hxx_html_a1dd44452d3c05cef02fee548faf9e93b"><div class="ttname"><a href="_entrypoint_8hxx.html#a1dd44452d3c05cef02fee548faf9e93b">deinit</a></div><div class="ttdeci">SMCE__DLL_RT_API void deinit()</div><div class="ttdef"><b>Definition:</b> Object.cxx:23</div></div>
-<div class="ttc" id="a_entrypoint_8hxx_html_a8b928e7ef7e7ca3dce68fd2f51a1c197"><div class="ttname"><a href="_entrypoint_8hxx.html#a8b928e7ef7e7ca3dce68fd2f51a1c197">maybe_init</a></div><div class="ttdeci">void maybe_init() noexcept</div><div class="ttdef"><b>Definition:</b> Entrypoint.cxx:51</div></div>
-<div class="ttc" id="a_s_m_c_e____dll_8hxx_html"><div class="ttname"><a href="_s_m_c_e____dll_8hxx.html">SMCE__dll.hxx</a></div></div>
-<div class="ttc" id="a_s_m_c_e____dll_8hxx_html_a3433d21267c92a599ca3a87839200175"><div class="ttname"><a href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a></div><div class="ttdeci">#define SMCE__DLL_RT_API</div><div class="ttdef"><b>Definition:</b> SMCE__dll.hxx:31</div></div>
-<div class="ttc" id="astruct_board_info_html"><div class="ttname"><a href="struct_board_info.html">BoardInfo</a></div><div class="ttdef"><b>Definition:</b> BoardInfo.hxx:53</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

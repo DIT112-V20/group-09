@@ -81,6 +81,7 @@ $(function() {
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;cstdlib&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
+<code>#include &quot;<a class="el" href="_s_m_c_e____dll_8hxx_source.html">SMCE__dll.hxx</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_w_string_8h_source.html">WString.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_hardware_serial_8h_source.html">HardwareSerial.h</a>&quot;</code><br />
 </div>
@@ -88,6 +89,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:afdd9d1d80b09cdfb4d555b0140b5a135"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#afdd9d1d80b09cdfb4d555b0140b5a135">digitalPinToInterrupt</a>(x)&#160;&#160;&#160;(x)</td></tr>
+<tr class="separator:afdd9d1d80b09cdfb4d555b0140b5a135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8570e501c1f29de0c9a91f4bab4d2c4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a8570e501c1f29de0c9a91f4bab4d2c4d">SMCE__PINMODE_ENUM_STRUCT</a></td></tr>
 <tr class="separator:a8570e501c1f29de0c9a91f4bab4d2c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af419eea95c24741f969fbe9eb534404e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#af419eea95c24741f969fbe9eb534404e">bit</a>(b)&#160;&#160;&#160;(1UL &lt;&lt; (b))</td></tr>
@@ -123,89 +126,89 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abf453c1659ee9fafa5af689523ac71e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#abf453c1659ee9fafa5af689523ac71e7">pinMode</a> (uint8_t pin, uint8_t mode)</td></tr>
-<tr class="separator:abf453c1659ee9fafa5af689523ac71e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac49cfdc8df1e0b899f2c3d4077b11489"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ac49cfdc8df1e0b899f2c3d4077b11489">digitalWrite</a> (uint8_t pin, bool val)</td></tr>
-<tr class="separator:ac49cfdc8df1e0b899f2c3d4077b11489"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e9bc73864eb6276f87aa94078224b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ab3e9bc73864eb6276f87aa94078224b6">digitalRead</a> (uint8_t pin)</td></tr>
-<tr class="separator:ab3e9bc73864eb6276f87aa94078224b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2eda513a6bb35bf13675a24711d4e864"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a2eda513a6bb35bf13675a24711d4e864">analogRead</a> (uint8_t pin)</td></tr>
-<tr class="separator:a2eda513a6bb35bf13675a24711d4e864"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a529863849f86a63b517cd96cbcd47705"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a529863849f86a63b517cd96cbcd47705">analogReference</a> (uint8_t mode)</td></tr>
-<tr class="separator:a529863849f86a63b517cd96cbcd47705"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cd99e00586774325da766f614837947"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a7cd99e00586774325da766f614837947">analogWrite</a> (uint16_t pin, uint16_t val)</td></tr>
-<tr class="separator:a7cd99e00586774325da766f614837947"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50a33c8e1567480d7ae0221a7945d9a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a50a33c8e1567480d7ae0221a7945d9a8">tone</a> (uint8_t pin, unsigned int frequency, unsigned long duration)</td></tr>
-<tr class="separator:a50a33c8e1567480d7ae0221a7945d9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb6515d3e5c6a2079e5bccb03fc6c4f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#aeb6515d3e5c6a2079e5bccb03fc6c4f7">noTone</a> (uint8_t _pin)</td></tr>
-<tr class="separator:aeb6515d3e5c6a2079e5bccb03fc6c4f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ed2ad1a8590a020e15ba2b485428415"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a1ed2ad1a8590a020e15ba2b485428415">pulseIn</a> (uint8_t pin, uint8_t state, unsigned long timeout)</td></tr>
-<tr class="separator:a1ed2ad1a8590a020e15ba2b485428415"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c7c2a8ca6d056f09adb9adb1cd31516"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a5c7c2a8ca6d056f09adb9adb1cd31516">pulseInLong</a> (uint8_t pin, uint8_t state, unsigned long timeout)</td></tr>
-<tr class="separator:a5c7c2a8ca6d056f09adb9adb1cd31516"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bdbac5bf8702a438396867e88271d59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a7bdbac5bf8702a438396867e88271d59">shiftOut</a> (uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order, uint8_t val)</td></tr>
-<tr class="separator:a7bdbac5bf8702a438396867e88271d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1efecc975119046403adc60af645015d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a1efecc975119046403adc60af645015d">shiftIn</a> (uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder)</td></tr>
-<tr class="separator:a1efecc975119046403adc60af645015d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af152147ac460c58262157a9b2a440cf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#af152147ac460c58262157a9b2a440cf7">delay</a> (unsigned long duration)</td></tr>
-<tr class="separator:af152147ac460c58262157a9b2a440cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86d006647511ec52a60d99f678cd1811"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a86d006647511ec52a60d99f678cd1811">delayMicroseconds</a> (unsigned int duration)</td></tr>
-<tr class="separator:a86d006647511ec52a60d99f678cd1811"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b24cbb7c3486e1bfa05c86db83ecb01"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a8b24cbb7c3486e1bfa05c86db83ecb01">micros</a> ()</td></tr>
-<tr class="separator:a8b24cbb7c3486e1bfa05c86db83ecb01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ff7f2532a22366f0013bc41397129fd"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a6ff7f2532a22366f0013bc41397129fd">millis</a> ()</td></tr>
-<tr class="separator:a6ff7f2532a22366f0013bc41397129fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02a7ecbf5eb47f9daaca0bbf6b94f3a0"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a02a7ecbf5eb47f9daaca0bbf6b94f3a0">constrain</a> (long amt, long low, long high)</td></tr>
-<tr class="separator:a02a7ecbf5eb47f9daaca0bbf6b94f3a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aada2d75bc8a8c6eb845bd940eadfa3fd"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#aada2d75bc8a8c6eb845bd940eadfa3fd">map</a> (long x, long in_min, long in_max, long out_min, long out_max)</td></tr>
-<tr class="separator:aada2d75bc8a8c6eb845bd940eadfa3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef67317d990dd8e164d0a080fab2aa17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#aef67317d990dd8e164d0a080fab2aa17">pinMode</a> (uint8_t pin, uint8_t mode)</td></tr>
+<tr class="separator:aef67317d990dd8e164d0a080fab2aa17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3168f96f06361cb869d6a298c9ca275"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#af3168f96f06361cb869d6a298c9ca275">digitalWrite</a> (uint8_t pin, bool val)</td></tr>
+<tr class="separator:af3168f96f06361cb869d6a298c9ca275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a099c7fc0b045029a5abcbe194a74fff2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a099c7fc0b045029a5abcbe194a74fff2">digitalRead</a> (uint8_t pin)</td></tr>
+<tr class="separator:a099c7fc0b045029a5abcbe194a74fff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3c8e24e3f919941bf8783b7c8e87c1a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ad3c8e24e3f919941bf8783b7c8e87c1a">analogRead</a> (uint8_t pin)</td></tr>
+<tr class="separator:ad3c8e24e3f919941bf8783b7c8e87c1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaca04278085b8dc4b1fd33923ca4ef7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#abaca04278085b8dc4b1fd33923ca4ef7">analogReference</a> (uint8_t mode)</td></tr>
+<tr class="separator:abaca04278085b8dc4b1fd33923ca4ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba2f49430be19d6d00b13823246313e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#aba2f49430be19d6d00b13823246313e0">analogWrite</a> (uint16_t pin, uint16_t val)</td></tr>
+<tr class="separator:aba2f49430be19d6d00b13823246313e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1a7d203a03ae302778bd7be1f3149d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ac1a7d203a03ae302778bd7be1f3149d5">tone</a> (uint8_t pin, unsigned int frequency, unsigned long duration)</td></tr>
+<tr class="separator:ac1a7d203a03ae302778bd7be1f3149d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30e84f3cd1f40f15908194d04cbd0053"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a30e84f3cd1f40f15908194d04cbd0053">noTone</a> (uint8_t _pin)</td></tr>
+<tr class="separator:a30e84f3cd1f40f15908194d04cbd0053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a082786786f778100023ab1e5ec6e66b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a082786786f778100023ab1e5ec6e66b6">pulseIn</a> (uint8_t pin, uint8_t state, unsigned long timeout)</td></tr>
+<tr class="separator:a082786786f778100023ab1e5ec6e66b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad6d7007140ff017d348a6abc293d131"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#aad6d7007140ff017d348a6abc293d131">pulseInLong</a> (uint8_t pin, uint8_t state, unsigned long timeout)</td></tr>
+<tr class="separator:aad6d7007140ff017d348a6abc293d131"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c9d539803239b6cf45b3945be073ea6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a4c9d539803239b6cf45b3945be073ea6">shiftOut</a> (uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order, uint8_t val)</td></tr>
+<tr class="separator:a4c9d539803239b6cf45b3945be073ea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e991364dc3307e7f7e6248034dd8407"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a2e991364dc3307e7f7e6248034dd8407">shiftIn</a> (uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder)</td></tr>
+<tr class="separator:a2e991364dc3307e7f7e6248034dd8407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56dd5b8eca1b987ba0f34965a0156425"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a56dd5b8eca1b987ba0f34965a0156425">delay</a> (unsigned long duration)</td></tr>
+<tr class="separator:a56dd5b8eca1b987ba0f34965a0156425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf33d4e6d903fd2cfee8c38a5e606cad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#abf33d4e6d903fd2cfee8c38a5e606cad">delayMicroseconds</a> (unsigned int duration)</td></tr>
+<tr class="separator:abf33d4e6d903fd2cfee8c38a5e606cad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01ea4ae952c03722298f9d9faad0440f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a01ea4ae952c03722298f9d9faad0440f">micros</a> ()</td></tr>
+<tr class="separator:a01ea4ae952c03722298f9d9faad0440f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2e1d5c63c2a9c0f2b88726b57db4771"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ad2e1d5c63c2a9c0f2b88726b57db4771">millis</a> ()</td></tr>
+<tr class="separator:ad2e1d5c63c2a9c0f2b88726b57db4771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbf8fe5188dc8c0e145b3fa348b16720"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#abbf8fe5188dc8c0e145b3fa348b16720">constrain</a> (long amt, long low, long high)</td></tr>
+<tr class="separator:abbf8fe5188dc8c0e145b3fa348b16720"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c18415bca44e6f4818354115ccaee18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a1c18415bca44e6f4818354115ccaee18">map</a> (long x, long in_min, long in_max, long out_min, long out_max)</td></tr>
+<tr class="separator:a1c18415bca44e6f4818354115ccaee18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e50ca1131ca16a5964bff998f574962"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:a2e50ca1131ca16a5964bff998f574962"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a2e50ca1131ca16a5964bff998f574962">sq</a> (T x)</td></tr>
 <tr class="separator:a2e50ca1131ca16a5964bff998f574962"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a967ac183ef1d6d2a782940bc7f25e0ca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a967ac183ef1d6d2a782940bc7f25e0ca">isAlpha</a> (char thisChar)</td></tr>
-<tr class="separator:a967ac183ef1d6d2a782940bc7f25e0ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86f751ffea50a70b0ce3640657448e50"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a86f751ffea50a70b0ce3640657448e50">isAlphaNumeric</a> (char thisChar)</td></tr>
-<tr class="separator:a86f751ffea50a70b0ce3640657448e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a474876a19be21eda7eebc2bd1281813d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a474876a19be21eda7eebc2bd1281813d">isAscii</a> (char thisChar)</td></tr>
-<tr class="separator:a474876a19be21eda7eebc2bd1281813d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63332fca6226ba064e7ac4544935c3c1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a63332fca6226ba064e7ac4544935c3c1">isControl</a> (char thisChar)</td></tr>
-<tr class="separator:a63332fca6226ba064e7ac4544935c3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8314a051377a787b99bc64c64f40edeb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a8314a051377a787b99bc64c64f40edeb">isDigit</a> (char thisChar)</td></tr>
-<tr class="separator:a8314a051377a787b99bc64c64f40edeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a883b879b1377079d80fb97bafeff5dc9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a883b879b1377079d80fb97bafeff5dc9">isGraph</a> (char thisChar)</td></tr>
-<tr class="separator:a883b879b1377079d80fb97bafeff5dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cc726fd6695b120ce0d8cbc1d064a62"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a4cc726fd6695b120ce0d8cbc1d064a62">isHexadecimalDigit</a> (char thisChar)</td></tr>
-<tr class="separator:a4cc726fd6695b120ce0d8cbc1d064a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19fe3e20d8636df7a1087a42508922c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a19fe3e20d8636df7a1087a42508922c9">isLowerCase</a> (char thisChar)</td></tr>
-<tr class="separator:a19fe3e20d8636df7a1087a42508922c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af64c2a3d56e2d8d8529e7693eea8d3fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#af64c2a3d56e2d8d8529e7693eea8d3fb">isPrintable</a> (char thisChar)</td></tr>
-<tr class="separator:af64c2a3d56e2d8d8529e7693eea8d3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0f4d16745f068c9094fd979cd221e2d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ab0f4d16745f068c9094fd979cd221e2d">isPunct</a> (char thisChar)</td></tr>
-<tr class="separator:ab0f4d16745f068c9094fd979cd221e2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0793eb80c5da05f3cba0186c5ba0ab6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#af0793eb80c5da05f3cba0186c5ba0ab6">isSpace</a> (char thisChar)</td></tr>
-<tr class="separator:af0793eb80c5da05f3cba0186c5ba0ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa63f956c9ccf28bfe1becba1e381600e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#aa63f956c9ccf28bfe1becba1e381600e">isUpperCase</a> (char thisChar)</td></tr>
-<tr class="separator:aa63f956c9ccf28bfe1becba1e381600e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4e2299ca9e57c4a42dd5a08aa61c331"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ab4e2299ca9e57c4a42dd5a08aa61c331">isWhitespace</a> (char thisChar)</td></tr>
-<tr class="separator:ab4e2299ca9e57c4a42dd5a08aa61c331"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07da44cd136848332e2b70879a4385b4"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a07da44cd136848332e2b70879a4385b4">random</a> (long max)</td></tr>
-<tr class="separator:a07da44cd136848332e2b70879a4385b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d69632859fb548f0e5a74f77d36b1eb"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a2d69632859fb548f0e5a74f77d36b1eb">random</a> (long min, long max)</td></tr>
-<tr class="separator:a2d69632859fb548f0e5a74f77d36b1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f20cd490a0ba7f2d37cbb8b04d92e3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a0f20cd490a0ba7f2d37cbb8b04d92e3e">randomSeed</a> (unsigned long seed)</td></tr>
-<tr class="separator:a0f20cd490a0ba7f2d37cbb8b04d92e3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d0c1f37b8b457ad4ab7aa6cddcca1e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a3d0c1f37b8b457ad4ab7aa6cddcca1e7">attachInterrupt</a> (uint8_t interruptNum, void(*userFunc)(), int mode)</td></tr>
-<tr class="separator:a3d0c1f37b8b457ad4ab7aa6cddcca1e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa47ad728b5e830ac48f4085affea7d1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#aa47ad728b5e830ac48f4085affea7d1c">detachInterrupt</a> (uint8_t interruptNum)</td></tr>
-<tr class="separator:aa47ad728b5e830ac48f4085affea7d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3a4471e1b3085323ec2067aaaccb52c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ab3a4471e1b3085323ec2067aaaccb52c">interrupts</a> ()</td></tr>
-<tr class="separator:ab3a4471e1b3085323ec2067aaaccb52c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10e6193b0f9d7fc1ea6342ca38b1402f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a10e6193b0f9d7fc1ea6342ca38b1402f">noInterrupts</a> ()</td></tr>
-<tr class="separator:a10e6193b0f9d7fc1ea6342ca38b1402f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
-<tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
-<tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9334acc4c0dd6cb9c0814b95a6225ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ad9334acc4c0dd6cb9c0814b95a6225ae">isAlpha</a> (char thisChar)</td></tr>
+<tr class="separator:ad9334acc4c0dd6cb9c0814b95a6225ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a434a7a36e37ccff6b9bd72a133f28818"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a434a7a36e37ccff6b9bd72a133f28818">isAlphaNumeric</a> (char thisChar)</td></tr>
+<tr class="separator:a434a7a36e37ccff6b9bd72a133f28818"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e57f3f5519e2937fc05bca04500afdc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a8e57f3f5519e2937fc05bca04500afdc">isAscii</a> (char thisChar)</td></tr>
+<tr class="separator:a8e57f3f5519e2937fc05bca04500afdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89ce9ce03e0bb76e2f6ac3267f713f78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a89ce9ce03e0bb76e2f6ac3267f713f78">isControl</a> (char thisChar)</td></tr>
+<tr class="separator:a89ce9ce03e0bb76e2f6ac3267f713f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49828980bf2ec2517c303393d05fe85a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a49828980bf2ec2517c303393d05fe85a">isDigit</a> (char thisChar)</td></tr>
+<tr class="separator:a49828980bf2ec2517c303393d05fe85a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51f6490bf1aaf19052f6878f4a910566"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a51f6490bf1aaf19052f6878f4a910566">isGraph</a> (char thisChar)</td></tr>
+<tr class="separator:a51f6490bf1aaf19052f6878f4a910566"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad24c1ee02b765a302f11570634420dc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ad24c1ee02b765a302f11570634420dc1">isHexadecimalDigit</a> (char thisChar)</td></tr>
+<tr class="separator:ad24c1ee02b765a302f11570634420dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a987b7be7049c9e45ce0f38d4e3536962"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a987b7be7049c9e45ce0f38d4e3536962">isLowerCase</a> (char thisChar)</td></tr>
+<tr class="separator:a987b7be7049c9e45ce0f38d4e3536962"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bd4a10f5f8a4d6ef45344002bcafaaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a5bd4a10f5f8a4d6ef45344002bcafaaa">isPrintable</a> (char thisChar)</td></tr>
+<tr class="separator:a5bd4a10f5f8a4d6ef45344002bcafaaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a454ccaa1993ce949c974860b79439d4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a454ccaa1993ce949c974860b79439d4c">isPunct</a> (char thisChar)</td></tr>
+<tr class="separator:a454ccaa1993ce949c974860b79439d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88031b971ada30e8d5a77669ac46c7da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a88031b971ada30e8d5a77669ac46c7da">isSpace</a> (char thisChar)</td></tr>
+<tr class="separator:a88031b971ada30e8d5a77669ac46c7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab23cf55cb5c8c10bcc9fb92202be1f1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ab23cf55cb5c8c10bcc9fb92202be1f1f">isUpperCase</a> (char thisChar)</td></tr>
+<tr class="separator:ab23cf55cb5c8c10bcc9fb92202be1f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eb713fc9ee731c3c9c66bcea46b0465"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a7eb713fc9ee731c3c9c66bcea46b0465">isWhitespace</a> (char thisChar)</td></tr>
+<tr class="separator:a7eb713fc9ee731c3c9c66bcea46b0465"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76feb149f5866ecfbe6daba97c3605a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a76feb149f5866ecfbe6daba97c3605a4">random</a> (long max)</td></tr>
+<tr class="separator:a76feb149f5866ecfbe6daba97c3605a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae323fa0658cba99176a45a4e477a87b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ae323fa0658cba99176a45a4e477a87b2">random</a> (long min, long max)</td></tr>
+<tr class="separator:ae323fa0658cba99176a45a4e477a87b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7db8b7ab69bbb6ff022fbbeee303c69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#ae7db8b7ab69bbb6ff022fbbeee303c69">randomSeed</a> (unsigned long seed)</td></tr>
+<tr class="separator:ae7db8b7ab69bbb6ff022fbbeee303c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a036cb5395055aed6698d7fbf912dacbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a036cb5395055aed6698d7fbf912dacbd">attachInterrupt</a> (uint8_t interruptNum, void(*userFunc)(), int mode)</td></tr>
+<tr class="separator:a036cb5395055aed6698d7fbf912dacbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3862372e0a5be3dc2e49c312c3a699c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a3862372e0a5be3dc2e49c312c3a699c1">detachInterrupt</a> (uint8_t interruptNum)</td></tr>
+<tr class="separator:a3862372e0a5be3dc2e49c312c3a699c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99f789ea1bfaebf6c59ab2eb54952cf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a99f789ea1bfaebf6c59ab2eb54952cf2">interrupts</a> ()</td></tr>
+<tr class="separator:a99f789ea1bfaebf6c59ab2eb54952cf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca6203a3ac08ad5d28618d156ee6baf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#aca6203a3ac08ad5d28618d156ee6baf7">noInterrupts</a> ()</td></tr>
+<tr class="separator:aca6203a3ac08ad5d28618d156ee6baf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a12515975da29a6d28913b35256a2a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a30d34ef681558ae7f253d2d02cb876f6">SMCE__DLL_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a1a12515975da29a6d28913b35256a2a5">setup</a> ()</td></tr>
+<tr class="separator:a1a12515975da29a6d28913b35256a2a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4527b0a883e40c10829f640f5908a18d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_s_m_c_e____dll_8hxx.html#a30d34ef681558ae7f253d2d02cb876f6">SMCE__DLL_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_arduino_8h.html#a4527b0a883e40c10829f640f5908a18d">loop</a> ()</td></tr>
+<tr class="separator:a4527b0a883e40c10829f640f5908a18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -353,6 +356,24 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="afdd9d1d80b09cdfb4d555b0140b5a135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdd9d1d80b09cdfb4d555b0140b5a135">&#9670;&nbsp;</a></span>digitalPinToInterrupt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define digitalPinToInterrupt</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;(x)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a32fff07c58e569ce66ad409fe85c73bb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a32fff07c58e569ce66ad409fe85c73bb">&#9670;&nbsp;</a></span>highByte</h2>
 
@@ -460,14 +481,14 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a2eda513a6bb35bf13675a24711d4e864"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2eda513a6bb35bf13675a24711d4e864">&#9670;&nbsp;</a></span>analogRead()</h2>
+<a id="ad3c8e24e3f919941bf8783b7c8e87c1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3c8e24e3f919941bf8783b7c8e87c1a">&#9670;&nbsp;</a></span>analogRead()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int analogRead </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> int analogRead </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>pin</em></td><td>)</td>
@@ -478,14 +499,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a529863849f86a63b517cd96cbcd47705"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a529863849f86a63b517cd96cbcd47705">&#9670;&nbsp;</a></span>analogReference()</h2>
+<a id="abaca04278085b8dc4b1fd33923ca4ef7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaca04278085b8dc4b1fd33923ca4ef7">&#9670;&nbsp;</a></span>analogReference()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void analogReference </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void analogReference </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>mode</em></td><td>)</td>
@@ -496,14 +517,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a7cd99e00586774325da766f614837947"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7cd99e00586774325da766f614837947">&#9670;&nbsp;</a></span>analogWrite()</h2>
+<a id="aba2f49430be19d6d00b13823246313e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba2f49430be19d6d00b13823246313e0">&#9670;&nbsp;</a></span>analogWrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void analogWrite </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void analogWrite </td>
           <td>(</td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>pin</em>, </td>
@@ -524,14 +545,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a3d0c1f37b8b457ad4ab7aa6cddcca1e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d0c1f37b8b457ad4ab7aa6cddcca1e7">&#9670;&nbsp;</a></span>attachInterrupt()</h2>
+<a id="a036cb5395055aed6698d7fbf912dacbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a036cb5395055aed6698d7fbf912dacbd">&#9670;&nbsp;</a></span>attachInterrupt()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void attachInterrupt </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void attachInterrupt </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>interruptNum</em>, </td>
@@ -558,14 +579,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a02a7ecbf5eb47f9daaca0bbf6b94f3a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02a7ecbf5eb47f9daaca0bbf6b94f3a0">&#9670;&nbsp;</a></span>constrain()</h2>
+<a id="abbf8fe5188dc8c0e145b3fa348b16720"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbf8fe5188dc8c0e145b3fa348b16720">&#9670;&nbsp;</a></span>constrain()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">long constrain </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> long constrain </td>
           <td>(</td>
           <td class="paramtype">long&#160;</td>
           <td class="paramname"><em>amt</em>, </td>
@@ -592,14 +613,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="af152147ac460c58262157a9b2a440cf7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af152147ac460c58262157a9b2a440cf7">&#9670;&nbsp;</a></span>delay()</h2>
+<a id="a56dd5b8eca1b987ba0f34965a0156425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56dd5b8eca1b987ba0f34965a0156425">&#9670;&nbsp;</a></span>delay()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delay </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void delay </td>
           <td>(</td>
           <td class="paramtype">unsigned long&#160;</td>
           <td class="paramname"><em>duration</em></td><td>)</td>
@@ -610,14 +631,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a86d006647511ec52a60d99f678cd1811"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86d006647511ec52a60d99f678cd1811">&#9670;&nbsp;</a></span>delayMicroseconds()</h2>
+<a id="abf33d4e6d903fd2cfee8c38a5e606cad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf33d4e6d903fd2cfee8c38a5e606cad">&#9670;&nbsp;</a></span>delayMicroseconds()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void delayMicroseconds </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void delayMicroseconds </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>duration</em></td><td>)</td>
@@ -628,14 +649,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aa47ad728b5e830ac48f4085affea7d1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa47ad728b5e830ac48f4085affea7d1c">&#9670;&nbsp;</a></span>detachInterrupt()</h2>
+<a id="a3862372e0a5be3dc2e49c312c3a699c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3862372e0a5be3dc2e49c312c3a699c1">&#9670;&nbsp;</a></span>detachInterrupt()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void detachInterrupt </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void detachInterrupt </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>interruptNum</em></td><td>)</td>
@@ -646,14 +667,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ab3e9bc73864eb6276f87aa94078224b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3e9bc73864eb6276f87aa94078224b6">&#9670;&nbsp;</a></span>digitalRead()</h2>
+<a id="a099c7fc0b045029a5abcbe194a74fff2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a099c7fc0b045029a5abcbe194a74fff2">&#9670;&nbsp;</a></span>digitalRead()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int digitalRead </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> int digitalRead </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>pin</em></td><td>)</td>
@@ -664,14 +685,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ac49cfdc8df1e0b899f2c3d4077b11489"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac49cfdc8df1e0b899f2c3d4077b11489">&#9670;&nbsp;</a></span>digitalWrite()</h2>
+<a id="af3168f96f06361cb869d6a298c9ca275"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3168f96f06361cb869d6a298c9ca275">&#9670;&nbsp;</a></span>digitalWrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void digitalWrite </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void digitalWrite </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>pin</em>, </td>
@@ -692,14 +713,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ab3a4471e1b3085323ec2067aaaccb52c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3a4471e1b3085323ec2067aaaccb52c">&#9670;&nbsp;</a></span>interrupts()</h2>
+<a id="a99f789ea1bfaebf6c59ab2eb54952cf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99f789ea1bfaebf6c59ab2eb54952cf2">&#9670;&nbsp;</a></span>interrupts()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void interrupts </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void interrupts </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -709,14 +730,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a967ac183ef1d6d2a782940bc7f25e0ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a967ac183ef1d6d2a782940bc7f25e0ca">&#9670;&nbsp;</a></span>isAlpha()</h2>
+<a id="ad9334acc4c0dd6cb9c0814b95a6225ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9334acc4c0dd6cb9c0814b95a6225ae">&#9670;&nbsp;</a></span>isAlpha()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isAlpha </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isAlpha </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -727,14 +748,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a86f751ffea50a70b0ce3640657448e50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86f751ffea50a70b0ce3640657448e50">&#9670;&nbsp;</a></span>isAlphaNumeric()</h2>
+<a id="a434a7a36e37ccff6b9bd72a133f28818"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a434a7a36e37ccff6b9bd72a133f28818">&#9670;&nbsp;</a></span>isAlphaNumeric()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isAlphaNumeric </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isAlphaNumeric </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -745,14 +766,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a474876a19be21eda7eebc2bd1281813d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a474876a19be21eda7eebc2bd1281813d">&#9670;&nbsp;</a></span>isAscii()</h2>
+<a id="a8e57f3f5519e2937fc05bca04500afdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e57f3f5519e2937fc05bca04500afdc">&#9670;&nbsp;</a></span>isAscii()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isAscii </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isAscii </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -763,14 +784,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a63332fca6226ba064e7ac4544935c3c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63332fca6226ba064e7ac4544935c3c1">&#9670;&nbsp;</a></span>isControl()</h2>
+<a id="a89ce9ce03e0bb76e2f6ac3267f713f78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89ce9ce03e0bb76e2f6ac3267f713f78">&#9670;&nbsp;</a></span>isControl()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isControl </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isControl </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -781,14 +802,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a8314a051377a787b99bc64c64f40edeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8314a051377a787b99bc64c64f40edeb">&#9670;&nbsp;</a></span>isDigit()</h2>
+<a id="a49828980bf2ec2517c303393d05fe85a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49828980bf2ec2517c303393d05fe85a">&#9670;&nbsp;</a></span>isDigit()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isDigit </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isDigit </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -799,14 +820,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a883b879b1377079d80fb97bafeff5dc9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a883b879b1377079d80fb97bafeff5dc9">&#9670;&nbsp;</a></span>isGraph()</h2>
+<a id="a51f6490bf1aaf19052f6878f4a910566"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51f6490bf1aaf19052f6878f4a910566">&#9670;&nbsp;</a></span>isGraph()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isGraph </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isGraph </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -817,14 +838,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4cc726fd6695b120ce0d8cbc1d064a62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cc726fd6695b120ce0d8cbc1d064a62">&#9670;&nbsp;</a></span>isHexadecimalDigit()</h2>
+<a id="ad24c1ee02b765a302f11570634420dc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad24c1ee02b765a302f11570634420dc1">&#9670;&nbsp;</a></span>isHexadecimalDigit()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isHexadecimalDigit </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isHexadecimalDigit </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -835,14 +856,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a19fe3e20d8636df7a1087a42508922c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19fe3e20d8636df7a1087a42508922c9">&#9670;&nbsp;</a></span>isLowerCase()</h2>
+<a id="a987b7be7049c9e45ce0f38d4e3536962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a987b7be7049c9e45ce0f38d4e3536962">&#9670;&nbsp;</a></span>isLowerCase()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isLowerCase </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isLowerCase </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -853,14 +874,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="af64c2a3d56e2d8d8529e7693eea8d3fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af64c2a3d56e2d8d8529e7693eea8d3fb">&#9670;&nbsp;</a></span>isPrintable()</h2>
+<a id="a5bd4a10f5f8a4d6ef45344002bcafaaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bd4a10f5f8a4d6ef45344002bcafaaa">&#9670;&nbsp;</a></span>isPrintable()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isPrintable </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isPrintable </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -871,14 +892,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ab0f4d16745f068c9094fd979cd221e2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0f4d16745f068c9094fd979cd221e2d">&#9670;&nbsp;</a></span>isPunct()</h2>
+<a id="a454ccaa1993ce949c974860b79439d4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a454ccaa1993ce949c974860b79439d4c">&#9670;&nbsp;</a></span>isPunct()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isPunct </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isPunct </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -889,14 +910,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="af0793eb80c5da05f3cba0186c5ba0ab6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0793eb80c5da05f3cba0186c5ba0ab6">&#9670;&nbsp;</a></span>isSpace()</h2>
+<a id="a88031b971ada30e8d5a77669ac46c7da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88031b971ada30e8d5a77669ac46c7da">&#9670;&nbsp;</a></span>isSpace()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isSpace </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isSpace </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -907,14 +928,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aa63f956c9ccf28bfe1becba1e381600e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa63f956c9ccf28bfe1becba1e381600e">&#9670;&nbsp;</a></span>isUpperCase()</h2>
+<a id="ab23cf55cb5c8c10bcc9fb92202be1f1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab23cf55cb5c8c10bcc9fb92202be1f1f">&#9670;&nbsp;</a></span>isUpperCase()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isUpperCase </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isUpperCase </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -925,14 +946,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ab4e2299ca9e57c4a42dd5a08aa61c331"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4e2299ca9e57c4a42dd5a08aa61c331">&#9670;&nbsp;</a></span>isWhitespace()</h2>
+<a id="a7eb713fc9ee731c3c9c66bcea46b0465"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7eb713fc9ee731c3c9c66bcea46b0465">&#9670;&nbsp;</a></span>isWhitespace()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool isWhitespace </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> bool isWhitespace </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
           <td class="paramname"><em>thisChar</em></td><td>)</td>
@@ -943,31 +964,39 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="afe461d27b9c48d5921c00d521181f12f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe461d27b9c48d5921c00d521181f12f">&#9670;&nbsp;</a></span>loop()</h2>
+<a id="a4527b0a883e40c10829f640f5908a18d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4527b0a883e40c10829f640f5908a18d">&#9670;&nbsp;</a></span>loop()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void loop </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a30d34ef681558ae7f253d2d02cb876f6">SMCE__DLL_API</a> void loop </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="aada2d75bc8a8c6eb845bd940eadfa3fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aada2d75bc8a8c6eb845bd940eadfa3fd">&#9670;&nbsp;</a></span>map()</h2>
+<a id="a1c18415bca44e6f4818354115ccaee18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c18415bca44e6f4818354115ccaee18">&#9670;&nbsp;</a></span>map()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">long map </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> long map </td>
           <td>(</td>
           <td class="paramtype">long&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -1006,14 +1035,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a8b24cbb7c3486e1bfa05c86db83ecb01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b24cbb7c3486e1bfa05c86db83ecb01">&#9670;&nbsp;</a></span>micros()</h2>
+<a id="a01ea4ae952c03722298f9d9faad0440f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01ea4ae952c03722298f9d9faad0440f">&#9670;&nbsp;</a></span>micros()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned long micros </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> unsigned long micros </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1023,14 +1052,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a6ff7f2532a22366f0013bc41397129fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ff7f2532a22366f0013bc41397129fd">&#9670;&nbsp;</a></span>millis()</h2>
+<a id="ad2e1d5c63c2a9c0f2b88726b57db4771"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2e1d5c63c2a9c0f2b88726b57db4771">&#9670;&nbsp;</a></span>millis()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned long millis </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> unsigned long millis </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1040,14 +1069,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a10e6193b0f9d7fc1ea6342ca38b1402f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10e6193b0f9d7fc1ea6342ca38b1402f">&#9670;&nbsp;</a></span>noInterrupts()</h2>
+<a id="aca6203a3ac08ad5d28618d156ee6baf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca6203a3ac08ad5d28618d156ee6baf7">&#9670;&nbsp;</a></span>noInterrupts()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void noInterrupts </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void noInterrupts </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1057,14 +1086,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb6515d3e5c6a2079e5bccb03fc6c4f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb6515d3e5c6a2079e5bccb03fc6c4f7">&#9670;&nbsp;</a></span>noTone()</h2>
+<a id="a30e84f3cd1f40f15908194d04cbd0053"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30e84f3cd1f40f15908194d04cbd0053">&#9670;&nbsp;</a></span>noTone()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void noTone </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void noTone </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>_pin</em></td><td>)</td>
@@ -1075,14 +1104,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="abf453c1659ee9fafa5af689523ac71e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf453c1659ee9fafa5af689523ac71e7">&#9670;&nbsp;</a></span>pinMode()</h2>
+<a id="aef67317d990dd8e164d0a080fab2aa17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef67317d990dd8e164d0a080fab2aa17">&#9670;&nbsp;</a></span>pinMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void pinMode </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void pinMode </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>pin</em>, </td>
@@ -1103,14 +1132,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a1ed2ad1a8590a020e15ba2b485428415"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ed2ad1a8590a020e15ba2b485428415">&#9670;&nbsp;</a></span>pulseIn()</h2>
+<a id="a082786786f778100023ab1e5ec6e66b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a082786786f778100023ab1e5ec6e66b6">&#9670;&nbsp;</a></span>pulseIn()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned long pulseIn </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> unsigned long pulseIn </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>pin</em>, </td>
@@ -1137,14 +1166,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a5c7c2a8ca6d056f09adb9adb1cd31516"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c7c2a8ca6d056f09adb9adb1cd31516">&#9670;&nbsp;</a></span>pulseInLong()</h2>
+<a id="aad6d7007140ff017d348a6abc293d131"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad6d7007140ff017d348a6abc293d131">&#9670;&nbsp;</a></span>pulseInLong()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned long pulseInLong </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> unsigned long pulseInLong </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>pin</em>, </td>
@@ -1171,14 +1200,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a07da44cd136848332e2b70879a4385b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07da44cd136848332e2b70879a4385b4">&#9670;&nbsp;</a></span>random() <span class="overload">[1/2]</span></h2>
+<a id="a76feb149f5866ecfbe6daba97c3605a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76feb149f5866ecfbe6daba97c3605a4">&#9670;&nbsp;</a></span>random() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">long random </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> long random </td>
           <td>(</td>
           <td class="paramtype">long&#160;</td>
           <td class="paramname"><em>max</em></td><td>)</td>
@@ -1189,14 +1218,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a2d69632859fb548f0e5a74f77d36b1eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d69632859fb548f0e5a74f77d36b1eb">&#9670;&nbsp;</a></span>random() <span class="overload">[2/2]</span></h2>
+<a id="ae323fa0658cba99176a45a4e477a87b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae323fa0658cba99176a45a4e477a87b2">&#9670;&nbsp;</a></span>random() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">long random </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> long random </td>
           <td>(</td>
           <td class="paramtype">long&#160;</td>
           <td class="paramname"><em>min</em>, </td>
@@ -1217,14 +1246,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a0f20cd490a0ba7f2d37cbb8b04d92e3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f20cd490a0ba7f2d37cbb8b04d92e3e">&#9670;&nbsp;</a></span>randomSeed()</h2>
+<a id="ae7db8b7ab69bbb6ff022fbbeee303c69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7db8b7ab69bbb6ff022fbbeee303c69">&#9670;&nbsp;</a></span>randomSeed()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void randomSeed </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void randomSeed </td>
           <td>(</td>
           <td class="paramtype">unsigned long&#160;</td>
           <td class="paramname"><em>seed</em></td><td>)</td>
@@ -1235,31 +1264,39 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4fc01d736fe50cf5b977f755b675f11d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fc01d736fe50cf5b977f755b675f11d">&#9670;&nbsp;</a></span>setup()</h2>
+<a id="a1a12515975da29a6d28913b35256a2a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a12515975da29a6d28913b35256a2a5">&#9670;&nbsp;</a></span>setup()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void setup </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a30d34ef681558ae7f253d2d02cb876f6">SMCE__DLL_API</a> void setup </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a1efecc975119046403adc60af645015d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1efecc975119046403adc60af645015d">&#9670;&nbsp;</a></span>shiftIn()</h2>
+<a id="a2e991364dc3307e7f7e6248034dd8407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e991364dc3307e7f7e6248034dd8407">&#9670;&nbsp;</a></span>shiftIn()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t shiftIn </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> uint8_t shiftIn </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>dataPin</em>, </td>
@@ -1286,14 +1323,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a7bdbac5bf8702a438396867e88271d59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bdbac5bf8702a438396867e88271d59">&#9670;&nbsp;</a></span>shiftOut()</h2>
+<a id="a4c9d539803239b6cf45b3945be073ea6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c9d539803239b6cf45b3945be073ea6">&#9670;&nbsp;</a></span>shiftOut()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void shiftOut </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void shiftOut </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>data_pin</em>, </td>
@@ -1346,14 +1383,14 @@ template&lt;class T &gt; </div>
 
 </div>
 </div>
-<a id="a50a33c8e1567480d7ae0221a7945d9a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50a33c8e1567480d7ae0221a7945d9a8">&#9670;&nbsp;</a></span>tone()</h2>
+<a id="ac1a7d203a03ae302778bd7be1f3149d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1a7d203a03ae302778bd7be1f3149d5">&#9670;&nbsp;</a></span>tone()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void tone </td>
+          <td class="memname"><a class="el" href="_s_m_c_e____dll_8hxx.html#a3433d21267c92a599ca3a87839200175">SMCE__DLL_RT_API</a> void tone </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>pin</em>, </td>
