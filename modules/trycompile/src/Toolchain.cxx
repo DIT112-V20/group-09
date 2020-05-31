@@ -61,7 +61,7 @@ CompilationResults compile_sketch(SketchSource src, stdfs::path prefix, SourceTy
     std::system(configure_cmd.c_str());
 
     auto obj_path = build_dir / loc_hash;
-    return stdfs::exists((build_dir / loc_hash)) ? CompilationResults{SketchObject{std::move(obj_path)}}
+    return stdfs::exists((build_dir / loc_hash)) ? CompilationResults{SketchObject{std::move(obj_path), share_dir / "lib/ArduinoRuntime"}}
                                                  : CompilationResults{std::runtime_error{"Compilation failed"}};
 }
 

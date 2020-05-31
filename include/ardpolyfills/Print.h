@@ -23,9 +23,10 @@
 #include <cstdint>
 #include <cstring>
 #include <iterator>
+#include "SMCE__dll.hxx"
 #include "WString.h"
 
-class Print {
+class SMCE__DLL_RT_API Print {
     int write_error = 0;
 
   protected:
@@ -63,7 +64,7 @@ class Print {
         return print(String(val, base));
     }
     // inline std::size_t print(double val, int prec = 2) { return print(String(val, prec)); }
-    std::size_t print(const struct Printable&); // FIXME: implement base Printable
+    // std::size_t print(const struct Printable&); // FIXME: implement base Printable
 
     template <std::size_t N> std::size_t println(const char (&lit)[N]) { return write(lit, N) + println(); }
     inline std::size_t println(const String& s) { return print(s) + println(); }
@@ -73,7 +74,7 @@ class Print {
         return print(val, base) + println();
     }
     // inline std::size_t println(double val, int prec = 2) { return print(val, prec) + println(); }
-    inline std::size_t println(const Printable& p) { return print(p) + println(); }
+    // inline std::size_t println(const Printable& p) { return print(p) + println(); }
     inline std::size_t println() { return print('\r') + print('\n'); }
 
     inline virtual void flush() {} // Empty implementation for backward compatibility

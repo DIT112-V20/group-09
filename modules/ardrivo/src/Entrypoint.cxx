@@ -30,7 +30,9 @@ const BoardInfo* board_info = nullptr;
 
 void merge_boards(BoardData old_board, BoardData& new_board) noexcept;
 
-bool init(BoardData* brd, const BoardInfo* info) {
+[[gnu::const]] bool stub() noexcept { return true; }
+
+extern "C" bool init(BoardData* brd, const BoardInfo* info) {
     if (board_data) {
         auto defer_del_bd = std::unique_ptr<BoardData>{board_data};
         auto defer_del_bi = std::unique_ptr<const BoardInfo>{board_info};
@@ -41,7 +43,7 @@ bool init(BoardData* brd, const BoardInfo* info) {
     return true;
 }
 
-void deinit() {
+extern "C" void deinit() {
     board_data = nullptr;
     board_info = nullptr;
 }

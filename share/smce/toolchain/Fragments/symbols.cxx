@@ -16,7 +16,8 @@
  *
  */
 
-#include "Arduino.h"
+extern void setup();
+extern void loop();
 
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32) || defined(__CYGWIN__)
 #  define SYM_EXPORT __declspec(dllexport)
@@ -34,12 +35,10 @@ struct BoardInfo;
 extern bool init(BoardData*, const BoardInfo*);
 extern void deinit();
 
-namespace {
-extern "C" SYM_EXPORT bool init(BoardData* pbd, const BoardInfo* pbi) { return ::init(pbd, pbi); }
+extern "C" SYM_EXPORT bool SMCE__init(BoardData* pbd, const BoardInfo* pbi) { return init(pbd, pbi); }
 
-extern "C" SYM_EXPORT void deinit() { return ::deinit(); }
+extern "C" SYM_EXPORT void SMCE__deinit() { return deinit(); }
 
-extern "C" SYM_EXPORT void setup() { ::setup(); }
+extern "C" SYM_EXPORT void SMCE__setup() { setup(); }
 
-extern "C" SYM_EXPORT void loop() { ::loop(); }
-}
+extern "C" SYM_EXPORT void SMCE__loop() { loop(); }

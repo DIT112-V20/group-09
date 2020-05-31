@@ -24,6 +24,7 @@
 #include <cstring>
 #include <iostream>
 #include <string>
+#include "SMCE__dll.hxx"
 
 enum StringBaseConv {
     BIN = 2,
@@ -33,7 +34,7 @@ enum StringBaseConv {
 
 using byte = std::uint8_t;
 
-class String {
+class SMCE__DLL_RT_API String {
     std::string m_u;
 
     String(std::string u) : m_u{std::move(u)} {}
@@ -127,7 +128,7 @@ class String {
 
     void trim();
 
-    friend String operator+(const String&, const String&);
+    friend SMCE__DLL_RT_API String operator+(const String&, const String&);
     [[nodiscard]] bool equals(const String& s) const noexcept;
     [[nodiscard]] bool equalsIgnoreCase(const String& s) const noexcept;
 
@@ -138,12 +139,12 @@ class String {
     [[nodiscard]] bool operator>(const String& s) const noexcept;
     [[nodiscard]] bool operator>=(const String& s) const noexcept;
 
-    friend String operator+(const String&, const char*);
-    friend String operator+(const char*, const String&);
+    friend SMCE__DLL_RT_API String operator+(const String&, const char*);
+    friend SMCE__DLL_RT_API String operator+(const char*, const String&);
 };
 
-[[nodiscard]] String operator+(const String& lhs, const String& rhs);
-[[nodiscard]] String operator+(const String& lhs, const char* rhs);
-[[nodiscard]] String operator+(const char* lhs, const String& rhs);
+[[nodiscard]] SMCE__DLL_RT_API String operator+(const String& lhs, const String& rhs);
+[[nodiscard]] SMCE__DLL_RT_API String operator+(const String& lhs, const char* rhs);
+[[nodiscard]] SMCE__DLL_RT_API String operator+(const char* lhs, const String& rhs);
 
 #endif

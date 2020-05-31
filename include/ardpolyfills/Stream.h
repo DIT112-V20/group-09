@@ -18,6 +18,7 @@
 
 #ifndef Stream_h
 #define Stream_h
+#include "SMCE__dll.hxx"
 #include "Print.h"
 
 #define NO_IGNORE_CHAR '\x01'
@@ -25,7 +26,7 @@
 
 enum LookaheadMode { SKIP_ALL, SKIP_NONE, SKIP_WHITESPACE };
 
-struct Stream : Print {
+struct SMCE__DLL_RT_API Stream : Print {
 
     long _timeout{DEFAULT_TIMEOUT};
 
