@@ -105,16 +105,16 @@ $(function() {
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;Urho3D/Scene/LogicComponent.h&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;Urho3D/Scene/Scene.h&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_vehicle_conf_8hxx.html">VehicleConf.hxx</a>&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_toolchain_8hxx.html">Toolchain.hxx</a>&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utility_8hxx.html">utility.hxx</a>&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_emul_glue.html">   38</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_emul_glue.html">EmulGlue</a> : <span class="keyword">public</span> Urho3D::LogicComponent {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    URHO3D_OBJECT(<a class="code" href="class_emul_glue.html">EmulGlue</a>, Urho3D::LogicComponent);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    Urho3D::SharedPtr&lt;Urho3D::Node&gt; m_vehicle_node;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::vector&lt;Urho3D::LogicComponent*&gt; m_vehicle_attachments;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// uncomment once we have a vehicle class</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// Urho3D::SharedPtr&lt;Vehicle&gt; m_vehicle;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_simple_vehicle_8hxx.html">components/SimpleVehicle.hxx</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_toolchain_8hxx.html">Toolchain.hxx</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utility_8hxx.html">utility.hxx</a>&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_emul_glue.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_emul_glue.html">EmulGlue</a> : <span class="keyword">public</span> Urho3D::LogicComponent {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    URHO3D_OBJECT(<a class="code" href="class_emul_glue.html">EmulGlue</a>, Urho3D::LogicComponent);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    Urho3D::SharedPtr&lt;Urho3D::Node&gt; m_vehicle_node;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::vector&lt;Urho3D::LogicComponent*&gt; m_vehicle_attachments;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    Urho3D::SharedPtr&lt;SimpleVehicle&gt; m_vehicle;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="struct_board_data.html">BoardData</a> m_bdata;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="struct_board_info.html">BoardInfo</a> m_binfo;</div>
@@ -155,9 +155,10 @@ $(function() {
 <div class="ttc" id="aclass_emul_glue_html_a6c0e6f8513d966efdc16af2ac6d26e9b"><div class="ttname"><a href="class_emul_glue.html#a6c0e6f8513d966efdc16af2ac6d26e9b">EmulGlue::RegisterObject</a></div><div class="ttdeci">static void RegisterObject(Urho3D::Context *context)</div><div class="ttdef"><b>Definition:</b> EmulGlue.hxx:68</div></div>
 <div class="ttc" id="autility_8hxx_html"><div class="ttname"><a href="utility_8hxx.html">utility.hxx</a></div></div>
 <div class="ttc" id="astructsmce_1_1_sketch_runtime_html"><div class="ttname"><a href="structsmce_1_1_sketch_runtime.html">smce::SketchRuntime</a></div><div class="ttdef"><b>Definition:</b> Runtime.hxx:34</div></div>
-<div class="ttc" id="aclass_emul_glue_html"><div class="ttname"><a href="class_emul_glue.html">EmulGlue</a></div><div class="ttdef"><b>Definition:</b> EmulGlue.hxx:38</div></div>
+<div class="ttc" id="aclass_emul_glue_html"><div class="ttname"><a href="class_emul_glue.html">EmulGlue</a></div><div class="ttdef"><b>Definition:</b> EmulGlue.hxx:39</div></div>
 <div class="ttc" id="a_vehicle_conf_8hxx_html"><div class="ttname"><a href="_vehicle_conf_8hxx.html">VehicleConf.hxx</a></div></div>
 <div class="ttc" id="astruct_copy_on_move_atomic_html"><div class="ttname"><a href="struct_copy_on_move_atomic.html">CopyOnMoveAtomic&lt; bool &gt;</a></div></div>
+<div class="ttc" id="a_simple_vehicle_8hxx_html"><div class="ttname"><a href="_simple_vehicle_8hxx.html">SimpleVehicle.hxx</a></div></div>
 <div class="ttc" id="astruct_board_info_html"><div class="ttname"><a href="struct_board_info.html">BoardInfo</a></div><div class="ttdef"><b>Definition:</b> BoardInfo.hxx:53</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
