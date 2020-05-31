@@ -33,18 +33,19 @@
 void SimpleVehicle::Init() {
     auto* cache = GetSubsystem<Urho3D::ResourceCache>();
 
-    node_->SetScale({0.575f, 0.25f, 0.75f});
+    hull_node = node_->CreateChild();
+    hull_node->SetScale({0.575f, 0.25f, 0.75f});
 
-    auto* vehicle = node_->CreateComponent<Urho3D::RaycastVehicle>();
+    auto* vehicle = hull_node->CreateComponent<Urho3D::RaycastVehicle>();
     vehicle->Init();
 
-    auto* hull_body = node_->GetComponent<Urho3D::RigidBody>();
+    auto* hull_body = hull_node->GetComponent<Urho3D::RigidBody>();
     hull_body->SetMass(mass);
     hull_body->SetCollisionLayer(1);
 
-    node_->CreateComponent<Urho3D::CollisionShape>()->SetBox(Urho3D::Vector3::ONE);
+    hull_node->CreateComponent<Urho3D::CollisionShape>()->SetBox(Urho3D::Vector3::ONE);
 
-    auto* hullObject = node_->CreateComponent<Urho3D::StaticModel>();
+    auto* hullObject = hull_node->CreateComponent<Urho3D::StaticModel>();
     hullObject->SetModel(cache->GetResource<Urho3D::Model>("Torch/Data/Models/SmartCar.mdl"));
     hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Torch/Data/Textures/solid_red.xml"));
     hullObject->SetCastShadows(true);
@@ -56,7 +57,7 @@ void SimpleVehicle::Init() {
         {-wheel_x, wheel_y, wheel_z}, {wheel_x, wheel_y, wheel_z}, {-wheel_x, wheel_y, -wheel_z}, {wheel_x, wheel_y, -wheel_z}};
 
     for (size_t id = 0; id < connectionPoints_.size(); ++id) {
-        auto* wheelNode = GetScene()->CreateChild();
+        auto* wheelNode = node_->CreateChild();
         auto connectionPoint = connectionPoints_[id];
         bool isFrontWheel = connectionPoints_[id].z_ > 0.0f;
         wheelNode->SetRotation(connectionPoint.x_ >= 0.0 ? Urho3D::Quaternion(0.0f, 0.0f, -90.0f) : Urho3D::Quaternion(0.0f, 0.0f, 90.0f));
@@ -79,7 +80,7 @@ void SimpleVehicle::Init() {
 }
 
 void SimpleVehicle::PostUpdate(float time_step) {
-    auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
+    auto* vehicle = hull_node->GetComponent<Urho3D::RaycastVehicle>();
     if (vehicle)
         for (size_t i = 0; i < vehicle->GetNumWheels(); ++i) {
             if (vehicle->GetEngineForce(i) == 0)

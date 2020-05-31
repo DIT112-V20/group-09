@@ -24,7 +24,6 @@
 #include <Urho3D/Scene/LogicComponent.h>
 #include "VehicleConf.hxx"
 
-
 class SimpleVehicle : public Urho3D::LogicComponent {
     URHO3D_OBJECT(SimpleVehicle, LogicComponent)
 
@@ -40,9 +39,12 @@ class SimpleVehicle : public Urho3D::LogicComponent {
     float wheel_friction = 20.f;
     float roll_influence = 0.02f;
 
+    Urho3D::Node* hull_node;
+
   public:
     static void RegisterObject(Urho3D::Context* context) { context->RegisterFactory<SimpleVehicle>(); }
     SimpleVehicle(Urho3D::Context* context) : LogicComponent(context) {}
+
     void Init();
     void PostUpdate(float time_step) override;
 };
