@@ -16,7 +16,6 @@
  */
 
 #include <Urho3D/Core/CoreEvents.h>
-#include <Urho3D/Input/Input.h>
 #include <Urho3D/UI/UI.h>
 #include "components/MovableCamera.hxx"
 

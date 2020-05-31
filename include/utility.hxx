@@ -24,6 +24,7 @@
 #endif
 
 #include <algorithm>
+#include <array>
 #include <atomic>
 #include <cmath>
 #include <concepts>
@@ -69,6 +70,11 @@ Visitor(T...) -> Visitor<T...>;
 
 template <class T, class V> void visit(V&& v, T&& t) {
     [v=std::forward<V>(v), t=std::forward<T>(t)]<size_t... I>(std::index_sequence<I...>) { (..., v(std::get<I>(t))); }(std::make_index_sequence<std::tuple_size_v<std::remove_cvref_t<T>>>());
+}
+
+template <class... Ts>
+constexpr auto make_array(Ts&&... ts){
+    return std::array{std::forward<Ts>(ts)...};
 }
 
 template <class T>

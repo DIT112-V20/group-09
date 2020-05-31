@@ -76,7 +76,7 @@ struct SpiBus {
 struct BoardData {
     std::vector<std::atomic_bool> digital_pin_values;
     std::vector<std::atomic_uint16_t> analog_pin_values;
-    std::vector<std::atomic_uint8_t> servo_value;
+    std::vector<std::atomic_uint8_t> pwm_values;
     std::vector<std::atomic_uint8_t> pin_frequency;
     std::vector<UartBus> uart_buses;
     std::vector<I2cBus> i2c_buses;
