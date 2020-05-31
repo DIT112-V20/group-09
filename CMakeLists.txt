@@ -94,7 +94,7 @@ target_link_libraries (smartcar_emul_deps INTERFACE
 
 add_executable (smartcar_emul src/main.cxx)
 target_include_directories (smartcar_emul PRIVATE include thirdparty/inih)
-target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps)
+target_link_libraries (smartcar_emul PRIVATE smartcar_emul_deps Urho3D-rapidjson)
 target_compile_options (smartcar_emul PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/permissive->)
 add_dependencies (smartcar_emul ArduinoRuntime)
 
@@ -111,7 +111,11 @@ target_sources (smartcar_emul PRIVATE
         include/components/EmulGlue.hxx
         include/gui/TorchEvents.hxx
         include/components/SimpleVehicle.hxx
-        src/components/SimpleVehicle.cxx)
+        src/components/SimpleVehicle.cxx
+        src/components/Servo.cxx
+        include/components/Servo.hxx
+        src/components/WheelServo.cxx
+        include/components/WheelServo.hxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 
