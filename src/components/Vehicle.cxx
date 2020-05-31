@@ -55,16 +55,17 @@ void Vehicle::Init(const smce::VehicleConfig& vconf) {
     auto* hullColShape = node_->CreateComponent<Urho3D::CollisionShape>();
     Urho3D::Vector3 v3BoxExtents = Urho3D::Vector3::ONE;
     hullColShape->SetBox(v3BoxExtents);
-    node_->SetScale(Urho3D::Vector3(0.195f, 0.0666f, 0.236f)); /// Chassi 195mm*66.6mm*236mm
+    node_->SetScale(Urho3D::Vector3(0.195f, 0.15f, 0.236f)); /// Chassi 195mm*66.6mm*236mm
     hullObject->SetModel(cache->GetResource<Urho3D::Model>(vconf.hull_model_file.generic_string().c_str()));
-    hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
+    hullObject->SetMaterial(cache->GetResource<Urho3D::Material>("/home/idrees/TheCar/offroadVehicle.xml"));
     hullObject->SetCastShadows(true);
     Urho3D::Vector3 wheelDirection(0, -1, 0);
     Urho3D::Vector3 wheelAxle(-1, 0, 0);
     for (auto& [name, part] : vconf.parts) {
         Urho3D::Node* partNode = GetNode()->CreateChild();
-        partNode->SetPosition(part.position);
-        partNode->SetRotation(Urho3D::Quaternion(part.rotation.Data()));
+        partNode->SetRotation(part.position.x_ >= 0.0 ? Urho3D::Quaternion(part.rotation.x_, part.rotation.y_, -part.rotation.z_)
+                                                      : Urho3D::Quaternion(part.rotation.x_, part.rotation.y_, part.rotation.z_));
+        partNode->SetWorldPosition(part.position);
         vehicle->AddWheel(partNode, wheelDirection, wheelAxle, suspensionRestLength_, wheelRadius_, true);
         int id = 0;
         vehicle->SetWheelSuspensionStiffness(id, suspensionStiffness_);
@@ -72,17 +73,16 @@ void Vehicle::Init(const smce::VehicleConfig& vconf) {
         vehicle->SetWheelDampingCompression(id, suspensionCompression_);
         vehicle->SetWheelFrictionSlip(id, wheelFriction_);
         vehicle->SetWheelRollInfluence(id, rollInfluence_);
-        partNode->SetScale(Urho3D::Vector3(0.067f, 0.023f, 0.067f)); // tire Diameter: 67mm
+        partNode->SetScale(Urho3D::Vector3(0.067f, 0.040f, 0.061)); // tire Diameter: 67mm
         auto* pWheel = partNode->CreateComponent<Urho3D::StaticModel>();
         pWheel->SetModel(cache->GetResource<Urho3D::Model>(part.model_file.generic_string().c_str()));
         pWheel->SetMaterial(cache->GetResource<Urho3D::Material>("Materials/Stone.xml"));
-        partNode->SetPosition(part.model_position_offset);
-        partNode->SetRotation(Urho3D::Quaternion(part.model_rotation_offset.Data()));
         pWheel->SetCastShadows(true);
         id++;
     }
     vehicle->ResetWheels();
 }
+
 
 void Vehicle::PostUpdate(float timeStep) {
     auto* vehicle = node_->GetComponent<Urho3D::RaycastVehicle>();
