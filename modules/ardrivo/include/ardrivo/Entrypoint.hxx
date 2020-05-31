@@ -19,11 +19,13 @@
 #ifndef SMARTCAR_EMUL_ENTRYPOINT_HXX
 #define SMARTCAR_EMUL_ENTRYPOINT_HXX
 
+#include "ardpolyfills/SMCE__dll.hxx"
+
 struct BoardData;
 struct BoardInfo;
 
-extern "C" bool init(BoardData*, const BoardInfo*);
+extern "C" SMCE__DLL_RT_API bool init(BoardData*, const BoardInfo*);
 void maybe_init() noexcept;
-extern "C" void deinit();
+extern "C" SMCE__DLL_RT_API void deinit();
 
 #endif // SMARTCAR_EMUL_ENTRYPOINT_HXX

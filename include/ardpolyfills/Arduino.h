@@ -117,11 +117,6 @@ SMCE__DLL_RT_API void noInterrupts();
 extern "C" SMCE__DLL_API void setup();
 extern "C" SMCE__DLL_API void loop();
 
-#ifdef SMCE__COMPILING_USERCODE
-extern bool stub();
-const static bool smce__stub = stub();
-#endif
-
 #include "WString.h"
 #include "HardwareSerial.h"
 #endif // Arduino_h
