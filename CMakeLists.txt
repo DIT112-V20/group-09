@@ -121,7 +121,9 @@ target_sources (smartcar_emul PRIVATE
         src/components/LaserCaster.cxx
         include/components/LaserCaster.hxx
         src/components/PerfectDistanceI2CSensor.cxx
-        include/components/PerfectDistanceI2CSensor.hxx)
+        include/components/PerfectDistanceI2CSensor.hxx
+        src/components/PerfectDistanceAnalogSensor.cxx
+        include/components/PerfectDistanceAnalogSensor.hxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 
