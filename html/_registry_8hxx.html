@@ -68,6 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Registry.hxx File Reference</div>  </div>
@@ -78,28 +79,49 @@ $(function() {
 <code>#include &lt;utility&gt;</code><br />
 <code>#include &lt;Urho3D/Scene/LogicComponent.h&gt;</code><br />
 <code>#include &lt;Urho3D/Scene/Node.h&gt;</code><br />
+<code>#include &lt;gsl/gsl&gt;</code><br />
+<code>#include &lt;nameof.hpp&gt;</code><br />
 <code>#include &lt;rapidjson/document.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="_perfect_distance_analog_sensor_8hxx_source.html">components/PerfectDistanceAnalogSensor.hxx</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_perfect_distance_i2_c_sensor_8hxx_source.html">components/PerfectDistanceI2CSensor.hxx</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_perfect_gyroscope_i2_c_sensor_8hxx_source.html">components/PerfectGyroscopeI2CSensor.hxx</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_wheel_servo_8hxx_source.html">components/WheelServo.hxx</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_board_data_8hxx_source.html">BoardData.hxx</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utility_8hxx_source.html">utility.hxx</a>&quot;</code><br />
 </div>
 <p><a href="_registry_8hxx_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a930b8837b682155136d2f0f8ab0d0a46"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a930b8837b682155136d2f0f8ab0d0a46"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_registry_8hxx.html#a930b8837b682155136d2f0f8ab0d0a46">attachment_entry</a> ()</td></tr>
+<tr class="separator:a930b8837b682155136d2f0f8ab0d0a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a429378615ac12a4bd9c8f7c64a028abd"><td class="memTemplParams" colspan="2">template&lt;class... Attachments&gt; </td></tr>
+<tr class="memitem:a429378615ac12a4bd9c8f7c64a028abd"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_registry_8hxx.html#a429378615ac12a4bd9c8f7c64a028abd">compile_registry</a> ()</td></tr>
+<tr class="separator:a429378615ac12a4bd9c8f7c64a028abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:affc0d4263c02d23c676cdf6eebef4414"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; std::pair&lt; std::string_view, Urho3D::LogicComponent *(*)(<a class="el" href="struct_board_data.html">BoardData</a> &amp;, Urho3D::Node *, const rapidjson::Value &amp;)&gt;, 0 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_registry_8hxx.html#affc0d4263c02d23c676cdf6eebef4414">attachments_registry</a> {}</td></tr>
-<tr class="separator:affc0d4263c02d23c676cdf6eebef4414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d44ab269db8a3abf5b9843c7a10e21e"><td class="memItemLeft" align="right" valign="top">constexpr std::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_registry_8hxx.html#a0d44ab269db8a3abf5b9843c7a10e21e">attachments_registry</a></td></tr>
+<tr class="separator:a0d44ab269db8a3abf5b9843c7a10e21e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="affc0d4263c02d23c676cdf6eebef4414"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affc0d4263c02d23c676cdf6eebef4414">&#9670;&nbsp;</a></span>attachments_registry</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a930b8837b682155136d2f0f8ab0d0a46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a930b8837b682155136d2f0f8ab0d0a46">&#9670;&nbsp;</a></span>attachment_entry()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr std::array&lt;std::pair&lt;std::string_view, Urho3D::LogicComponent*(*)(<a class="el" href="struct_board_data.html">BoardData</a>&amp;, Urho3D::Node*, const rapidjson::Value&amp;)&gt;, 0&gt; attachments_registry {}</td>
+          <td class="memname">constexpr auto attachment_entry </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -109,6 +131,58 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="a429378615ac12a4bd9c8f7c64a028abd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a429378615ac12a4bd9c8f7c64a028abd">&#9670;&nbsp;</a></span>compile_registry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class... Attachments&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto compile_registry </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a0d44ab269db8a3abf5b9843c7a10e21e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d44ab269db8a3abf5b9843c7a10e21e">&#9670;&nbsp;</a></span>attachments_registry</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::array attachments_registry</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    compile_registry&lt;ServoMotor, SteeringServo, ServoMotor, PerfectDistanceI2CSensor, PerfectGyroscopeI2CSensor, PerfectDistanceAnalogSensor&gt;()</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

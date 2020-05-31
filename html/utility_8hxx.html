@@ -78,6 +78,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;array&gt;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;concepts&gt;</code><br />
@@ -123,6 +124,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a675678e727807a3823c4b681161270ad"><td class="memTemplParams" colspan="2">template&lt;class T , class V &gt; </td></tr>
 <tr class="memitem:a675678e727807a3823c4b681161270ad"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="utility_8hxx.html#a675678e727807a3823c4b681161270ad">visit</a> (V &amp;&amp;v, T &amp;&amp;t)</td></tr>
 <tr class="separator:a675678e727807a3823c4b681161270ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3639739433c3ec83fbbd59d1669f7b03"><td class="memTemplParams" colspan="2">template&lt;class... Ts&gt; </td></tr>
+<tr class="memitem:a3639739433c3ec83fbbd59d1669f7b03"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="utility_8hxx.html#a3639739433c3ec83fbbd59d1669f7b03">make_array</a> (Ts &amp;&amp;... ts)</td></tr>
+<tr class="separator:a3639739433c3ec83fbbd59d1669f7b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -183,6 +187,34 @@ template&lt;std::floating_point F&gt; </div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3639739433c3ec83fbbd59d1669f7b03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3639739433c3ec83fbbd59d1669f7b03">&#9670;&nbsp;</a></span>make_array()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class... Ts&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto make_array </td>
+          <td>(</td>
+          <td class="paramtype">Ts &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>ts</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

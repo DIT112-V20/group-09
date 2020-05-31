@@ -64,6 +64,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_servo-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -72,6 +73,19 @@ $(function() {
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="_servo_8h_source.html">Servo.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Servo:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_servo.png" usemap="#Servo_map" alt=""/>
+  <map id="Servo_map" name="Servo_map">
+<area href="class_wheel_servo.html" alt="WheelServo&lt; mptr &gt;" shape="rect" coords="0,56,350,80"/>
+<area href="class_wheel_servo.html" alt="WheelServo&lt;&amp;Urho3D::RaycastVehicle::SetEngineForce &gt;" shape="rect" coords="360,56,710,80"/>
+<area href="class_wheel_servo.html" alt="WheelServo&lt;&amp;Urho3D::RaycastVehicle::SetSteeringValue &gt;" shape="rect" coords="720,56,1070,80"/>
+<area href="struct_servo_motor.html" alt="ServoMotor" shape="rect" coords="360,112,710,136"/>
+<area href="struct_steering_servo.html" alt="SteeringServo" shape="rect" coords="720,112,1070,136"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -91,10 +105,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaca0af33ba7d7c87c8a785b8eabf95a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adeef1244505aa67e509528bdc825c824"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_servo.html#adeef1244505aa67e509528bdc825c824">attached</a> () const noexcept</td></tr>
 <tr class="separator:adeef1244505aa67e509528bdc825c824"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678e4a4793b2d4233e7d5ad09f46b017"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_servo.html#a678e4a4793b2d4233e7d5ad09f46b017">Servo</a> (<a class="el" href="struct_board_data.html">BoardData</a> &amp;bd, Urho3D::Node *node, const rapidjson::Value &amp;pin)</td></tr>
+<tr class="separator:a678e4a4793b2d4233e7d5ad09f46b017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f10485353e4619c0a323488d767e674"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_servo.html#a1f10485353e4619c0a323488d767e674">Update</a> (float timeStep) override</td></tr>
+<tr class="separator:a1f10485353e4619c0a323488d767e674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac59317de8c69db820b06b04f3bd3677b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac59317de8c69db820b06b04f3bd3677b">&#9670;&nbsp;</a></span>Servo()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac59317de8c69db820b06b04f3bd3677b">&#9670;&nbsp;</a></span>Servo() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,6 +130,48 @@ Public Member Functions</h2></td></tr>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a678e4a4793b2d4233e7d5ad09f46b017"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678e4a4793b2d4233e7d5ad09f46b017">&#9670;&nbsp;</a></span>Servo() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Servo::Servo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_board_data.html">BoardData</a> &amp;&#160;</td>
+          <td class="paramname"><em>bd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Urho3D::Node *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const rapidjson::Value &amp;&#160;</td>
+          <td class="paramname"><em>pin</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -230,6 +290,34 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a1f10485353e4619c0a323488d767e674"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f10485353e4619c0a323488d767e674">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Servo::Update </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>timeStep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_wheel_servo.html#a3124226eb785e09802de571f08095f92">WheelServo&lt; mptr &gt;</a>, <a class="el" href="class_wheel_servo.html#a3124226eb785e09802de571f08095f92">WheelServo&lt;&amp;Urho3D::RaycastVehicle::SetSteeringValue &gt;</a>, and <a class="el" href="class_wheel_servo.html#a3124226eb785e09802de571f08095f92">WheelServo&lt;&amp;Urho3D::RaycastVehicle::SetEngineForce &gt;</a>.</p>
+
+</div>
+</div>
 <a id="a72b4b546912eada96a6ef705168ceb8a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a72b4b546912eada96a6ef705168ceb8a">&#9670;&nbsp;</a></span>write()</h2>
 
@@ -268,7 +356,8 @@ Public Member Functions</h2></td></tr>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/ardpolyfills/<a class="el" href="_servo_8h_source.html">Servo.h</a></li>
-<li>modules/ardrivo/src/<a class="el" href="_servo_8cxx.html">Servo.cxx</a></li>
+<li>include/components/<a class="el" href="_servo_8hxx_source.html">Servo.hxx</a></li>
+<li>modules/ardrivo/src/<a class="el" href="modules_2ardrivo_2src_2_servo_8cxx.html">Servo.cxx</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

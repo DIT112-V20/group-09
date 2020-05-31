@@ -96,16 +96,43 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;Urho3D/Scene/LogicComponent.h&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;Urho3D/Scene/Node.h&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;rapidjson/document.h&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_board_data_8hxx.html">BoardData.hxx</a>&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="_registry_8hxx.html#affc0d4263c02d23c676cdf6eebef4414">   29</a></span>&#160;constexpr std::array&lt;std::pair&lt;std::string_view, Urho3D::LogicComponent*(*)(<a class="code" href="struct_board_data.html">BoardData</a>&amp;, Urho3D::Node*, <span class="keyword">const</span> rapidjson::Value&amp;)&gt;, 0&gt; <a class="code" href="_registry_8hxx.html#affc0d4263c02d23c676cdf6eebef4414">attachments_registry</a>{};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif // SMARTCAR_EMUL_REGISTRY_HXX</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;gsl/gsl&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;nameof.hpp&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;rapidjson/document.h&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_perfect_distance_analog_sensor_8hxx.html">components/PerfectDistanceAnalogSensor.hxx</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_perfect_distance_i2_c_sensor_8hxx.html">components/PerfectDistanceI2CSensor.hxx</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_perfect_gyroscope_i2_c_sensor_8hxx.html">components/PerfectGyroscopeI2CSensor.hxx</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_wheel_servo_8hxx.html">components/WheelServo.hxx</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_board_data_8hxx.html">BoardData.hxx</a>&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utility_8hxx.html">utility.hxx</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">using namespace </span>std::literals;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="_registry_8hxx.html#a930b8837b682155136d2f0f8ab0d0a46">   38</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; constexpr <span class="keyword">auto</span> <a class="code" href="_registry_8hxx.html#a930b8837b682155136d2f0f8ab0d0a46">attachment_entry</a>() {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> std::pair{nameof::nameof_type&lt;T&gt;(),</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                     +[](<a class="code" href="struct_board_data.html">BoardData</a>&amp; bd, Urho3D::Node* node, <span class="keyword">const</span> rapidjson::Value&amp; conf) -&gt; gsl::owner&lt;Urho3D::LogicComponent*&gt; {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                         <span class="keywordflow">return</span> <span class="keyword">new</span> T{bd, node, conf};</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                     }};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="_registry_8hxx.html#a429378615ac12a4bd9c8f7c64a028abd">   45</a></span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span>... Attachments&gt; constexpr <span class="keyword">auto</span> <a class="code" href="_registry_8hxx.html#a429378615ac12a4bd9c8f7c64a028abd">compile_registry</a>() { <span class="keywordflow">return</span> <a class="code" href="utility_8hxx.html#a3639739433c3ec83fbbd59d1669f7b03">make_array</a>(attachment_entry&lt;Attachments&gt;()...); }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="_registry_8hxx.html#a0d44ab269db8a3abf5b9843c7a10e21e">   47</a></span>&#160;constexpr std::array <a class="code" href="_registry_8hxx.html#a0d44ab269db8a3abf5b9843c7a10e21e">attachments_registry</a> =</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    compile_registry&lt;ServoMotor, SteeringServo, ServoMotor, PerfectDistanceI2CSensor, PerfectGyroscopeI2CSensor, PerfectDistanceAnalogSensor&gt;();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif // SMARTCAR_EMUL_REGISTRY_HXX</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="a_registry_8hxx_html_affc0d4263c02d23c676cdf6eebef4414"><div class="ttname"><a href="_registry_8hxx.html#affc0d4263c02d23c676cdf6eebef4414">attachments_registry</a></div><div class="ttdeci">constexpr std::array&lt; std::pair&lt; std::string_view, Urho3D::LogicComponent *(*)(BoardData &amp;, Urho3D::Node *, const rapidjson::Value &amp;)&gt;, 0 &gt; attachments_registry</div><div class="ttdef"><b>Definition:</b> Registry.hxx:29</div></div>
+<div class="ttc" id="a_perfect_distance_analog_sensor_8hxx_html"><div class="ttname"><a href="_perfect_distance_analog_sensor_8hxx.html">PerfectDistanceAnalogSensor.hxx</a></div></div>
+<div class="ttc" id="autility_8hxx_html_a3639739433c3ec83fbbd59d1669f7b03"><div class="ttname"><a href="utility_8hxx.html#a3639739433c3ec83fbbd59d1669f7b03">make_array</a></div><div class="ttdeci">constexpr auto make_array(Ts &amp;&amp;... ts)</div><div class="ttdef"><b>Definition:</b> utility.hxx:76</div></div>
 <div class="ttc" id="a_board_data_8hxx_html"><div class="ttname"><a href="_board_data_8hxx.html">BoardData.hxx</a></div></div>
+<div class="ttc" id="a_registry_8hxx_html_a0d44ab269db8a3abf5b9843c7a10e21e"><div class="ttname"><a href="_registry_8hxx.html#a0d44ab269db8a3abf5b9843c7a10e21e">attachments_registry</a></div><div class="ttdeci">constexpr std::array attachments_registry</div><div class="ttdef"><b>Definition:</b> Registry.hxx:47</div></div>
 <div class="ttc" id="astruct_board_data_html"><div class="ttname"><a href="struct_board_data.html">BoardData</a></div><div class="ttdef"><b>Definition:</b> BoardData.hxx:76</div></div>
+<div class="ttc" id="a_perfect_distance_i2_c_sensor_8hxx_html"><div class="ttname"><a href="_perfect_distance_i2_c_sensor_8hxx.html">PerfectDistanceI2CSensor.hxx</a></div></div>
+<div class="ttc" id="autility_8hxx_html"><div class="ttname"><a href="utility_8hxx.html">utility.hxx</a></div></div>
+<div class="ttc" id="a_registry_8hxx_html_a930b8837b682155136d2f0f8ab0d0a46"><div class="ttname"><a href="_registry_8hxx.html#a930b8837b682155136d2f0f8ab0d0a46">attachment_entry</a></div><div class="ttdeci">constexpr auto attachment_entry()</div><div class="ttdef"><b>Definition:</b> Registry.hxx:38</div></div>
+<div class="ttc" id="a_perfect_gyroscope_i2_c_sensor_8hxx_html"><div class="ttname"><a href="_perfect_gyroscope_i2_c_sensor_8hxx.html">PerfectGyroscopeI2CSensor.hxx</a></div></div>
+<div class="ttc" id="a_wheel_servo_8hxx_html"><div class="ttname"><a href="_wheel_servo_8hxx.html">WheelServo.hxx</a></div></div>
+<div class="ttc" id="a_registry_8hxx_html_a429378615ac12a4bd9c8f7c64a028abd"><div class="ttname"><a href="_registry_8hxx.html#a429378615ac12a4bd9c8f7c64a028abd">compile_registry</a></div><div class="ttdeci">constexpr auto compile_registry()</div><div class="ttdef"><b>Definition:</b> Registry.hxx:45</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

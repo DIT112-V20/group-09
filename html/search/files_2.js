@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['cmakelists_2etxt_541',['CMakeLists.txt',['../ardrivo_2_c_make_lists_8txt.html',1,'(Global Namespace)'],['../_c_make_lists_8txt.html',1,'(Global Namespace)'],['../configloader_2_c_make_lists_8txt.html',1,'(Global Namespace)'],['../trycompile_2_c_make_lists_8txt.html',1,'(Global Namespace)']]],
-  ['confhelper_2ehxx_542',['ConfHelper.hxx',['../_conf_helper_8hxx.html',1,'']]]
+  ['cmakelists_2etxt_611',['CMakeLists.txt',['../ardrivo_2_c_make_lists_8txt.html',1,'(Global Namespace)'],['../_c_make_lists_8txt.html',1,'(Global Namespace)'],['../configloader_2_c_make_lists_8txt.html',1,'(Global Namespace)'],['../reg__moniker_2_c_make_lists_8txt.html',1,'(Global Namespace)'],['../trycompile_2_c_make_lists_8txt.html',1,'(Global Namespace)']]],
+  ['confhelper_2ehxx_612',['ConfHelper.hxx',['../_conf_helper_8hxx.html',1,'']]]
 ];
