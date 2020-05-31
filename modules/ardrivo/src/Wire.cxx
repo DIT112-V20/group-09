@@ -75,10 +75,6 @@ std::uint8_t TwoWire::requestFrom(std::uint8_t address, std::uint8_t size, std::
     return requestFrom(address, static_cast<std::size_t>(size), static_cast<bool>(stop));
 }
 
-uint8_t TwoWire::requestFrom(int address, int size, int stop) {
-    return requestFrom(static_cast<std::uint8_t>(address), static_cast<std::size_t>(size), static_cast<bool>(stop));
-}
-
 void TwoWire::beginTransmission(std::uint8_t address) {
     const auto debug_sig = [=](const char* msg) { return fmt::format("Wire.beginTransmission({}): {}", +address, msg); };
     if (address & no_address)
