@@ -23,6 +23,9 @@
 #include <cmath>
 #include <cstdlib>
 #include <algorithm>
+#include "SMCE__dll.hxx"
+
+#define digitalPinToInterrupt(x) (x)
 
 enum SignificantBit : bool { RIGHTMOSTBIT, LEFTMOSTBIT };
 
@@ -45,95 +48,75 @@ enum DigitalValue : bool { LOW, HIGH };
 /**
 * Set the value for a given pin with a configuration
 **/
-void pinMode(uint8_t pin, uint8_t mode);
-
+SMCE__DLL_RT_API void pinMode(uint8_t pin, uint8_t mode);
 /**
 * Set a digital pin to high or low
 **/
-void digitalWrite(uint8_t pin, bool val);
-
+SMCE__DLL_RT_API void digitalWrite(uint8_t pin, bool val);
 /**
 * Reads a value from a digital pin
 **/
-int digitalRead(uint8_t pin);
-
+SMCE__DLL_RT_API int digitalRead(uint8_t pin);
 /**
 * Reads a value from an analog pin
 **/
-int analogRead(uint8_t pin);
-void analogReference(uint8_t mode);
-
+SMCE__DLL_RT_API int analogRead(uint8_t pin);
+SMCE__DLL_RT_API void analogReference(uint8_t mode);
 /**
 * Set an analog value to a pin
 **/
-void analogWrite(uint16_t pin, uint16_t val);
+SMCE__DLL_RT_API void analogWrite(uint16_t pin, uint16_t val);
 
 // advanced i/o
 /**
 * Set pin to given frequency
 **/
-void tone(uint8_t pin, unsigned int frequency, unsigned long duration);
-
+SMCE__DLL_RT_API void tone(uint8_t pin, unsigned int frequency, unsigned long duration);
 /**
 * Set the pin to a no none frequency
 **/
-void noTone(uint8_t _pin);
-
+SMCE__DLL_RT_API void noTone(uint8_t _pin);
 /**
 * Reads how long it will take for a pin to go from low to high. Or if the pin is already in high when called
 * it waits for it to go down to low
 **/
-unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout);
+SMCE__DLL_RT_API unsigned long pulseIn(uint8_t pin, uint8_t state, unsigned long timeout);
 /**
 * Calls the pulseIn function
 **/
-unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout);
+SMCE__DLL_RT_API unsigned long pulseInLong(uint8_t pin, uint8_t state, unsigned long timeout);
 /**
 * Shifts out a byte of data one bit at a time
 **/
-void shiftOut(uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order, uint8_t val);
-
+SMCE__DLL_RT_API void shiftOut(uint8_t data_pin, uint8_t clock_pin, uint8_t bit_order, uint8_t val);
 /**
 * Shifts in a byte of data one bit at a time
 **/
-uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder);
+SMCE__DLL_RT_API uint8_t shiftIn(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder);
 
 // time
 /**
 * Puts the thread to sleep for a given millisecond duration
 **/
-void delay(unsigned long duration);
-
+SMCE__DLL_RT_API void delay(unsigned long duration);
 /**
 * Puts the thread to sleep for a given microseconds duration
 **/
-void delayMicroseconds(unsigned int duration);
-
+SMCE__DLL_RT_API void delayMicroseconds(unsigned int duration);
 /**
 * Returns the number of microseconds since the current program began running
 **/
-unsigned long micros();
-
+SMCE__DLL_RT_API unsigned long micros();
 /**
 * Returns the number of milliseconds since the current program began running
 **/
-unsigned long millis();
+SMCE__DLL_RT_API unsigned long millis();
 
 // Arduino Math functions
 using std::abs;
-/**
-* Constrains a number to be within a range
-**/
-long constrain(long amt, long low, long high);
+SMCE__DLL_RT_API long constrain(long amt, long low, long high);
+SMCE__DLL_RT_API long map(long x, long in_min, long in_max, long out_min, long out_max);
 
-/**
-* Re-maps a number from one range to another
-**/
-long map(long x, long in_min, long in_max, long out_min, long out_max);
-
-/**
-* Calculates the maximum of two numbers
-**/
 using std::max;
 
 /**
@@ -169,82 +152,69 @@ using std::sin;
 using std::tan;
 
 // Arduino Characters functions
-/**
+  /**
 * Returns true if the char is a alhpa(that is a letter)
 **/
-bool isAlpha(char thisChar);
-
+SMCE__DLL_RT_API bool isAlpha(char thisChar);
 /**
 * Returns true if a char is alphanumeric (that is a letter or a numbers)
 **/
-bool isAlphaNumeric(char thisChar);
-
+SMCE__DLL_RT_API bool isAlphaNumeric(char thisChar);
 /**
 * Returns true if a char is Ascii
 **/
-bool isAscii(char thisChar);
-
+SMCE__DLL_RT_API bool isAscii(char thisChar);
 /**
 * Returns true if a char is a control character
 **/
-bool isControl(char thisChar);
-
+SMCE__DLL_RT_API bool isControl(char thisChar);
 /**
 * Returns true if a char is a digit (that is a number)
 **/
-bool isDigit(char thisChar);
-
+SMCE__DLL_RT_API bool isDigit(char thisChar);
 /**
 * Returns true if a char is printable with some content (space is printable but has no content)
 **/
-bool isGraph(char thisChar);
-
+SMCE__DLL_RT_API bool isGraph(char thisChar);
 /**
 * Returns true if a char is an hexadecimal digit (A-F, 0-9)
 **/
-bool isHexadecimalDigit(char thisChar);
-
+SMCE__DLL_RT_API bool isHexadecimalDigit(char thisChar);
 /**
 * Returns true if a char is lower case (that is a letter in lower case)
 **/
-bool isLowerCase(char thisChar);
-
+SMCE__DLL_RT_API bool isLowerCase(char thisChar);
 /**
 * Returns true if a char is printable (that is any character that produces an output)
 **/
-bool isPrintable(char thisChar);
-
+SMCE__DLL_RT_API bool isPrintable(char thisChar);
 /**
 * Returns true if a char is punctuation (that is a comma, a semicolon, an exclamation for example)
 **/
-bool isPunct(char thisChar);
-
+SMCE__DLL_RT_API bool isPunct(char thisChar);
 /**
 * Returns true if a char is a white-space character
 **/
-bool isSpace(char thisChar);
-
+SMCE__DLL_RT_API bool isSpace(char thisChar);
 /**
 * Returns true if a char is upper case (that is, a letter in upper case)
 **/
-bool isUpperCase(char thisChar);
-
+SMCE__DLL_RT_API bool isUpperCase(char thisChar);
 /**
 * Returns true if a char is a space character
 **/
-bool isWhitespace(char thisChar);
+SMCE__DLL_RT_API bool isWhitespace(char thisChar);
 
 // Arduino Random Numbers functions
 /**
 * The random function generates pseudo-random numbers
 **/
-long random(long max);
-long random(long min, long max);
-
+SMCE__DLL_RT_API long random(long max);
+SMCE__DLL_RT_API long random(long min, long max);
 /**
 * initializes the pseudo-random number generator
 **/
-void randomSeed(unsigned long seed);
+SMCE__DLL_RT_API void randomSeed(unsigned long seed);
 
 // Arduino Bits and Bytes functions
 
@@ -284,34 +254,31 @@ void randomSeed(unsigned long seed);
 #define lowByte(w) ((uint8_t)((w) & 0xff))
 
 // Arduino External Interrupts functions
+
+enum InterruptMode { CHANGE = 1, FALLING, RISING  };
+
 /**
 * Stores the interupts in board_data as a single unit
 **/
-enum InterruptMode { CHANGE = 1, FALLING, RISING  };
-void attachInterrupt(uint8_t interruptNum, void (*userFunc)(), int mode);
-
+SMCE__DLL_RT_API void attachInterrupt(uint8_t interruptNum, void (*userFunc)(), int mode);
 /**
 * Detaches the stored interupt
 **/
-void detachInterrupt(uint8_t interruptNum);
-
+SMCE__DLL_RT_API void detachInterrupt(uint8_t interruptNum);
 /**
 * Re-enables the interupts
 **/
-void interrupts();
-
+SMCE__DLL_RT_API void interrupts();
 /**
 * disables the interupts
 **/
-void noInterrupts();
+SMCE__DLL_RT_API void noInterrupts();
 
 // User defined functions
 /**
 * setup function and loop for ardunio 
 **/
-extern void setup();
-extern void loop();
+extern "C" SMCE__DLL_API void setup();
+extern "C" SMCE__DLL_API void loop();
 
-#include "WString.h"
-#include "HardwareSerial.h"
 #endif // Arduino_h

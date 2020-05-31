@@ -20,10 +20,11 @@
 #define Servo_h
 
 #include <cstdint>
+#include "SMCE__dll.hxx"
 
 enum SMCE__Boundary{ MIN_PULSE_WIDTH = 1000, MAX_PULSE_WIDTH = 2000, DEFAULT_PULSE_WIDTH = 1500 };
 
-class Servo {
+class SMCE__DLL_RT_API Servo {
   public:
     constexpr Servo() = default; 
    

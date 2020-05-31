@@ -27,6 +27,9 @@
 #include "utility.hxx"
 
 SPIClass SPI;
+#ifdef _MSC_VER
+SPIClass& SMCE__DATA_TRAMPOLINE_SPI() noexcept { return SPI; }
+#endif
 
 void SPIClass::begin(){
     if (!board_info)

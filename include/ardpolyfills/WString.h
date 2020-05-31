@@ -24,6 +24,7 @@
 #include <cstring>
 #include <iostream>
 #include <string>
+#include "SMCE__dll.hxx"
 
 enum StringBaseConv {
     BIN = 2,
@@ -33,7 +34,7 @@ enum StringBaseConv {
 
 using byte = std::uint8_t;
 
-class String {
+class SMCE__DLL_RT_API String {
     std::string m_u;
 
     String(std::string u) : m_u{std::move(u)} {}
@@ -84,7 +85,7 @@ class String {
     }
 
     /**
-    * Compares two Strings, testing whether one comes before or after the other, or whether they’re equal
+    * Compares two Strings, testing whether one comes before or after the other, or whether theyï¿½re equal
     **/
     [[nodiscard]] int compareTo(const String& s) const noexcept;
 
@@ -99,7 +100,7 @@ class String {
     [[nodiscard]] bool endsWith(const String& s) const noexcept;
 
     /**
-    * Copies the String’s characters to the supplied buffer
+    * Copies the Stringï¿½s characters to the supplied buffer
     **/
     void getBytes(byte* buffer, unsigned length) const noexcept;
 
@@ -159,7 +160,7 @@ class String {
     [[nodiscard]] String substring(unsigned from, unsigned to) const;
 
     /**
-    * Copies the String’s characters to the supplied buffer
+    * Copies the Stringï¿½s characters to the supplied buffer
     **/
     void toCharArray(char* buffer, unsigned length) noexcept;
 
@@ -193,8 +194,7 @@ class String {
     **/
     void trim();
 
-    friend String operator+(const String&, const String&);
-    
+    friend SMCE__DLL_RT_API String operator+(const String&, const String&);
     /**
     * Compares two Strings for equality
     **/
@@ -212,12 +212,12 @@ class String {
     [[nodiscard]] bool operator>(const String& s) const noexcept;
     [[nodiscard]] bool operator>=(const String& s) const noexcept;
 
-    friend String operator+(const String&, const char*);
-    friend String operator+(const char*, const String&);
+    friend SMCE__DLL_RT_API String operator+(const String&, const char*);
+    friend SMCE__DLL_RT_API String operator+(const char*, const String&);
 };
 
-[[nodiscard]] String operator+(const String& lhs, const String& rhs);
-[[nodiscard]] String operator+(const String& lhs, const char* rhs);
-[[nodiscard]] String operator+(const char* lhs, const String& rhs);
+[[nodiscard]] SMCE__DLL_RT_API String operator+(const String& lhs, const String& rhs);
+[[nodiscard]] SMCE__DLL_RT_API String operator+(const String& lhs, const char* rhs);
+[[nodiscard]] SMCE__DLL_RT_API String operator+(const char* lhs, const String& rhs);
 
 #endif

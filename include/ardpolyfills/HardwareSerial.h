@@ -21,6 +21,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include "SMCE__dll.hxx"
 #include "Stream.h"
 
 #define SERIAL_5N1 0x00
@@ -48,7 +49,7 @@
 #define SERIAL_7O2 0x3C
 #define SERIAL_8O2 0x3E
 
-struct HardwareSerial : Stream {
+struct SMCE__DLL_RT_API HardwareSerial : Stream {
 
     /**
     * Set the begun variable to true to begin communication
@@ -101,7 +102,18 @@ struct HardwareSerial : Stream {
     bool begun = false;
 };
 
-inline HardwareSerial Serial;
+#ifndef _MSC_VER
+extern SMCE__DLL_RT_API HardwareSerial Serial;
+#else
+SMCE__DLL_RT_API HardwareSerial& SMCE__DATA_TRAMPOLINE_Serial() noexcept;
+#   ifdef SMCE__COMPILING_USERCODE
+#       define Serial SMCE__DATA_TRAMPOLINE_Serial()
+#   else
+extern HardwareSerial Serial;
+#   endif
+#endif
+
+
 #define HAVE_HWSERIAL0
 
 #endif // HardwareSerial_h

@@ -1,5 +1,6 @@
 #include <chrono>
 #include <filesystem>
+#include <iostream>
 #include <thread>
 #include <variant>
 #include <catch2/catch.hpp>
@@ -24,9 +25,9 @@ auto ret = smce::compile_sketch(smce::SketchSource{source_path}, "../../");
 std::visit(Visitor{[](smce::SketchObject so) {
         auto ld = smce::load(so);
         REQUIRE(ld);
-        REQUIRE(ld.init);
-        REQUIRE(ld.loop);
         REQUIRE(ld.setup);
+        REQUIRE(ld.loop);
+        REQUIRE(ld.init);
         BoardData bd;
         bd.pin_modes = std::vector<std::atomic_uint8_t>(1);
         BoardInfo bi;

@@ -1,6 +1,6 @@
 /*
- *  Entrypoint.hxx
- *  Copyright 2020 AeroStun
+ *  SMCE__dll.hxx
+ *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -16,22 +16,20 @@
  *
  */
 
-#ifndef SMARTCAR_EMUL_ENTRYPOINT_HXX
-#define SMARTCAR_EMUL_ENTRYPOINT_HXX
+#ifndef SMARTCAR_EMUL_SMCE__DLL_HXX
+#define SMARTCAR_EMUL_SMCE__DLL_HXX
 
-#include "ardpolyfills/SMCE__dll.hxx"
+#if defined(_MSC_VER)
+#   if defined(SMCE__COMPILING_USERCODE)
+#       define SMCE__DLL_API __declspec(dllexport)
+#       define SMCE__DLL_RT_API __declspec(dllimport)
+#   else
+#       define SMCE__DLL_API
+#       define SMCE__DLL_RT_API __declspec(dllexport)
+#   endif
+#else
+#   define SMCE__DLL_RT_API
+#   define SMCE__DLL_API
+#endif
 
-struct BoardData;
-struct BoardInfo;
-
-/**
-* Initializes boardData and boardInfo
-**/
-extern "C" SMCE__DLL_RT_API bool init(BoardData*, const BoardInfo*);
-/**
-* Initializes boardData and boardInfo if not init has initialized it
-**/
-void maybe_init() noexcept;
-extern "C" SMCE__DLL_RT_API void deinit();
-
-#endif // SMARTCAR_EMUL_ENTRYPOINT_HXX
+#endif // SMARTCAR_EMUL_SMCE__DLL_HXX

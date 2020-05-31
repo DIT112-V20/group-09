@@ -20,6 +20,8 @@
 #define SPI_h
 
 #include <cstdint>
+#include "SMCE__dll.hxx"
+
 /**
 * Unsigned digit for least sigficifant bit and most significant bit
 **/
@@ -67,7 +69,7 @@ struct SPISettings {
     SMCE__SpiMode data_mode{};
 };
 
-class SPIClass {
+class SMCE__DLL_RT_API SPIClass {
     SPISettings settings{};
     std::int16_t slave_sel = -1;
     std::uint8_t bus_id = 0;
@@ -133,6 +135,15 @@ class SPIClass {
     bool pins(std::int8_t sck, std::int8_t miso, std::int8_t mosi, std::int8_t ss); // ESP only
 };
 
+#ifndef _MSC_VER
+extern SMCE__DLL_RT_API SPIClass SPI;
+#else
+SMCE__DLL_RT_API SPIClass& SMCE__DATA_TRAMPOLINE_SPI() noexcept;
+#   ifdef SMCE__COMPILING_USERCODE
+#       define SPI SMCE__DATA_TRAMPOLINE_SPI()
+#   else
 extern SPIClass SPI;
+#   endif
+#endif
 
 #endif // SPI_h
