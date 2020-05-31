@@ -9,6 +9,9 @@
 #include "utility.hxx"
 
 TwoWire Wire;
+#ifdef _MSC_VER
+TwoWire& SMCE__DATA_TRAMPOLINE_Wire() noexcept { return Wire; }
+#endif
 
 void TwoWire::begin() { begun = true; }
 

@@ -22,6 +22,10 @@
 #include "Entrypoint.hxx"
 #include "HardwareSerial.h"
 
+HardwareSerial Serial;
+#ifdef _MSC_VER
+HardwareSerial& SMCE__DATA_TRAMPOLINE_Serial() noexcept { return Serial; }
+#endif
 
 void HardwareSerial::begin(unsigned long, uint8_t) {
     maybe_init();

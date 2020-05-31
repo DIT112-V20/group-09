@@ -1,5 +1,5 @@
 /*
- *  Servo.h
+ *  SMCE__dll.hxx
  *  Copyright 2020 ItJustWorksTM
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,29 +16,20 @@
  *
  */
 
-#ifndef Servo_h
-#define Servo_h
+#ifndef SMARTCAR_EMUL_SMCE__DLL_HXX
+#define SMARTCAR_EMUL_SMCE__DLL_HXX
 
-#include <cstdint>
-#include "SMCE__dll.hxx"
+#if defined(_MSC_VER)
+#   if defined(SMCE__COMPILING_USERCODE)
+#       define SMCE__DLL_API __declspec(dllexport)
+#       define SMCE__DLL_RT_API __declspec(dllimport)
+#   else
+#       define SMCE__DLL_API
+#       define SMCE__DLL_RT_API __declspec(dllexport)
+#   endif
+#else
+#   define SMCE__DLL_RT_API
+#   define SMCE__DLL_API
+#endif
 
-enum SMCE__Boundary{ MIN_PULSE_WIDTH = 1000, MAX_PULSE_WIDTH = 2000, DEFAULT_PULSE_WIDTH = 1500 };
-
-class SMCE__DLL_RT_API Servo {
-  public:
-    constexpr Servo() = default;
-    void attach(int pin);
-    void attach(int pin, int min, int max);
-    void detach();
-    void write(int value);
-    void writeMicroseconds(int value);
-    int read();
-    bool attached() const noexcept;
-
-  private:
-    int attached_pin = -1;
-    int8_t min = 0;
-    int8_t max = 0;
-};
-
-#endif // Servo_h
+#endif // SMARTCAR_EMUL_SMCE__DLL_HXX

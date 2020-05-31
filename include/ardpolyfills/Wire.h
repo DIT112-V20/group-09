@@ -5,9 +5,10 @@
 #include <array>
 #include <cstdint>
 #include <optional>
+#include "SMCE__dll.hxx"
 #include "Stream.h"
 
-class TwoWire : public Stream {
+class SMCE__DLL_RT_API TwoWire : public Stream {
     using OnRecieve = void(int);
     using OnRequest = void();
     constexpr static std::uint8_t no_address = 128;
@@ -43,6 +44,15 @@ class TwoWire : public Stream {
     void onRequest(OnRequest* hdl) noexcept;
 };
 
+#ifndef _MSC_VER
+extern SMCE__DLL_RT_API TwoWire Wire;
+#else
+SMCE__DLL_RT_API TwoWire& SMCE__DATA_TRAMPOLINE_Wire() noexcept;
+#   ifdef SMCE__COMPILING_USERCODE
+#       define Wire SMCE__DATA_TRAMPOLINE_Wire()
+#   else
 extern TwoWire Wire;
+#   endif
+#endif
 
 #endif // Wire_h

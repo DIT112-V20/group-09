@@ -64,9 +64,8 @@ execute_process (
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/include/ardpolyfills" "${CMAKE_BINARY_DIR}/share/smce/toolchain/include/ardpolyfills"
         COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib")
 
-add_library (ArduinoRuntime SHARED)
+add_library (ArduinoRuntime SHARED include/ardpolyfills/SMCE__dll.hxx)
 target_link_libraries(ArduinoRuntime PUBLIC Ardrivo)
-set_property(TARGET ArduinoRuntime PROPERTY WINDOWS_EXPORT_ALL_SYMBOLS True)
 add_custom_command (TARGET ArduinoRuntime POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ArduinoRuntime>" "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib/"
         COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_LINKER_FILE:ArduinoRuntime>" "${CMAKE_BINARY_DIR}/share/smce/toolchain/lib/"
