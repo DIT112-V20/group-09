@@ -1,4 +1,4 @@
-# SmartcarEmul
+# SmartcarEmul ![Emul C++ CI](https://github.com/DIT112-V20/group-09/workflows/Emul%20C++%20CI/badge.svg)
 _A [Smartcar](https://github.com/platisd/smartcar_shield) emulator_
 
 [![IMAGE ALT TEXT](https://aerostun.codes/smce_cover_vid.jpg)](https://youtu.be/1SiTh60qjD0 "SmartCarEmul Demo - An emulator for devices based on the SmartCar.")
