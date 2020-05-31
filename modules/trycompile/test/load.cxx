@@ -10,6 +10,7 @@ namespace stdfs = std::filesystem;
 
 TEST_CASE("Arduino format compile and load", "[Arduino compile]") {
     constexpr std::string_view src = R"(
+#include <Smartcar.h>
 void setup() {}
 void loop() {})";
     constexpr std::string_view src_name = "arduino.ino";
