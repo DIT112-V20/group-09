@@ -62,6 +62,7 @@ bool EmulGlue::load_config(std::filesystem::path config_path) {
 }
 
 void EmulGlue::setup_attachments(BoardData& board, const smce::VehicleConfig& vconf) {
+    m_vehicle_attachments.clear();
     for (const auto& [type_str, jconf] : vconf.attachments) {
         const auto& type = type_str;
         auto it = ranges::find_if(attachments_registry, [&](const auto& pair) { return pair.first == type; });
@@ -78,7 +79,15 @@ void EmulGlue::setup_attachments(BoardData& board, const smce::VehicleConfig& vc
 
 void EmulGlue::reset_sketch() {
     m_ino_runtime.pause_on_next_loop();
+    if (m_vehicle_node) {
+        m_vehicle_node->RemoveAllChildren();
+        m_vehicle_node->RemoveAllComponents();
+        m_vehicle_node.Reset();
+    }
     m_ino_runtime.clear();
+    m_vehicle_attachments.clear();
+    m_vehicle.Reset();
+
 }
 
 void EmulGlue::handle_compile_order(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
@@ -104,10 +113,9 @@ void EmulGlue::handle_compile_order(Urho3D::StringHash, Urho3D::VariantMap& even
     if (!m_vehicle_node)
         m_vehicle_node = node_->CreateChild("EmulGlueVehicle");
 
-    // uncomment once we have a vehicle class
-    // m_vehicle = m_vehicle_node->CreateComponent<Vehicle>();
-    // m_vehicle->Init();
-    // setup_attachments(b_data, *veh_config_opt);
+    m_vehicle = m_vehicle_node->CreateComponent<SimpleVehicle>();
+    m_vehicle->Init();
+    setup_attachments(m_bdata, *veh_config_opt);
 
     m_compile_tr = std::async([&, ino_path, smce_home]() {
         auto ret = smce::compile_sketch({ino_path}, smce_home);
