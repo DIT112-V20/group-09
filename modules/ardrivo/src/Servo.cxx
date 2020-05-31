@@ -47,7 +47,7 @@ void Servo::detach() { attached_pin = -1; }
 void Servo::write(int value) {
     maybe_init();
     if (attached())
-        board_data->servo_value[attached_pin] = std::clamp(value, 0, 180);
+        board_data->pwm_values[attached_pin] = std::clamp(value, 0, 180);
 }
 
 void Servo::writeMicroseconds(int value) {
@@ -59,7 +59,7 @@ void Servo::writeMicroseconds(int value) {
 
 int Servo::read() {
     maybe_init();
-    return attached() ? board_data->servo_value[attached_pin].load() : -1;
+    return attached() ? board_data->pwm_values[attached_pin].load() : -1;
 }
 
 bool Servo::attached() const noexcept { return attached_pin != -1; }

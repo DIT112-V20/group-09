@@ -81,7 +81,7 @@ void merge_boards(BoardData old_board, BoardData& new_board) noexcept {
             std::transform((old_board.*mvec).begin(), (old_board.*mvec).begin() + (std::min)((old_board.*mvec).size(), (new_board.*mvec).size()),
                            (new_board.*mvec).begin(), []<class U>(const std::atomic<U>& v) -> U { return v; });
         };
-    visit(copy_atomic_vals, std::tuple{&BoardData::pin_modes, &BoardData::digital_pin_values, &BoardData::analog_pin_values, &BoardData::servo_value});
+    visit(copy_atomic_vals, std::tuple{&BoardData::pin_modes, &BoardData::digital_pin_values, &BoardData::analog_pin_values, &BoardData::pwm_values});
 
     auto copy_proto_bufs = [&]<class T>(std::vector<T>(BoardData::* mvec)) {
         for(auto [from, to] : ranges::views::zip(old_board.*mvec, new_board.*mvec))
