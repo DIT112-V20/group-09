@@ -34,7 +34,7 @@ message (STATUS "Processing ${SOURCE_FILE}")
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_EXTENSIONS OFF)
 
-add_compile_definitions (SMCE__COMPILING_USERCODE)
+add_compile_definitions (SMCE__COMPILING_USERCODE boolean=bool)
 
 include_directories (${CMAKE_SOURCE_DIR}/include/ardpolyfills)
 if (WIN32)
@@ -80,4 +80,12 @@ target_sources (SmartcarShield PRIVATE ${SMARTCAR_SOURCES})
 target_include_directories (SmartcarShield PUBLIC ${SMARTCAR_SOURCE_PATH})
 target_link_libraries (SmartcarShield PUBLIC ArdRuntime)
 
-target_link_libraries (${BUILD_DIRNAME} PUBLIC SmartcarShield)
+set (VL53L0X_SOURCE_PATH "${CMAKE_SOURCE_DIR}/libraries/VL53L0X")
+file (GLOB_RECURSE VL53L0X_SOURCES ${VL53L0X_SOURCE_PATH}/*)
+message ("VL53L0X_SOURCE_PATH: ${VL53L0X_SOURCE_PATH}")
+add_library (vl53l0x STATIC ${VL53L0X_SOURCES})
+target_sources (vl53l0x PRIVATE ${VL53L0X_SOURCES})
+target_include_directories (vl53l0x PUBLIC ${VL53L0X_SOURCE_PATH})
+target_link_libraries (vl53l0x PUBLIC ArdRuntime)
+
+target_link_libraries (${BUILD_DIRNAME} PUBLIC SmartcarShield vl53l0x)
