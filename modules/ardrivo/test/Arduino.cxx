@@ -64,19 +64,22 @@ TEST_CASE("pulse in", "[pulseIn success], [pulseIn fail]") {
 TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite], [digitalRead], [analogWrite], [analogRead]") {
     init_fake();
 
+    auto input = static_cast<uint8_t>(PinMode::INPUT);
+    auto output = static_cast<uint8_t>(PinMode::OUTPUT);
+
     SECTION("Set pinModes", "[pinMode]") {
         auto i = GENERATE(0, 1, 2);
-        board_data->pin_modes[i] = static_cast<uint8_t>(PinMode::OUTPUT);
+        board_data->pin_modes[i] = output;
         REQUIRE(board_data->pin_modes[i] == 1U);
     }
 
     SECTION("Set digital pins ") {
         digitalWrite(1, LOW);
-        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::INPUT);
+        board_data->pin_modes[1] = input;
         REQUIRE(digitalRead(1) == LOW);
-        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::OUTPUT);
+        board_data->pin_modes[1] = output;
         digitalWrite(1, HIGH);
-        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::INPUT);
+        board_data->pin_modes[1] = input;
         REQUIRE(digitalRead(1) == HIGH);
 
         auto i = GENERATE(0, 1, 2);
@@ -84,13 +87,13 @@ TEST_CASE("Read and write digital & analog & pinMode", "[pinMode], [digitalWrite
         REQUIRE(digitalRead(i) == HIGH);
     }
     SECTION("Set analog pins") {
-        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::OUTPUT);
+        board_data->pin_modes[1] = output;
         analogWrite(1, 0);
-        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::INPUT);
+        board_data->pin_modes[1] = input;
         REQUIRE(analogRead(1) == 0);
-        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::OUTPUT);
+        board_data->pin_modes[1] = output;
         analogWrite(1, 500);
-        board_data->pin_modes[1] = static_cast<uint8_t>(PinMode::INPUT);
+        board_data->pin_modes[1] = input;
         REQUIRE(analogRead(1) == 500);
     }
 
@@ -287,25 +290,22 @@ TEST_CASE("Check if vector contains interupt", "[attachInterrupt]") {
     // First test
     auto (*user_func)() = &fun;
     attachInterrupt(0, (user_func), 1);
-    auto test = board_data->interrupts_handlers[0];
-    REQUIRE(test.first != NULL);
-    REQUIRE(test.second == 1);
+    auto& [func, pin] = board_data->interrupts_handlers[0];
+    REQUIRE(func != NULL);
+    REQUIRE(pin == 1);
 
     // Second test
     attachInterrupt(2, (*user_func), 2);
-    auto test2 = board_data->interrupts_handlers[2];
-    REQUIRE(test2.first != NULL);
-    REQUIRE(test2.second == 2);
+    auto& [func2, pin2] = board_data->interrupts_handlers[2];
+    REQUIRE(func2 != NULL);
+    REQUIRE(pin2 == 2);
 }
 
 TEST_CASE("Delete a interupt from vector", "[detachInterrupt]") {
-    auto test = board_data->interrupts_handlers[0];
-    REQUIRE(test.first != NULL);
+    auto& [func, pin] = board_data->interrupts_handlers[2];
+    REQUIRE(func != NULL);
     detachInterrupt(0);
-    test = board_data->interrupts_handlers[0];
-    REQUIRE(test.first == NULL);
-    REQUIRE(test.second == 0);
-    auto test2 = board_data->interrupts_handlers[1];
-    REQUIRE(test2.first != NULL);
-    REQUIRE(test2.second == 2);
+    auto& [func2, pin2] = board_data->interrupts_handlers[2];
+    REQUIRE(func2 != NULL);
+    REQUIRE(pin2 == 2);
 }

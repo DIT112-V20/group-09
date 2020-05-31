@@ -46,9 +46,9 @@ TEST_CASE("Hardwareserial begin and write"
     test.begin(1);
     int succes = test.write(150);
     REQUIRE(succes == 1);
-    REQUIRE(static_cast<int>(board_data->uart_buses[0].rx[0]) == 150);
-    REQUIRE(static_cast<int>(board_data->uart_buses[2].rx[2]) == 150);
-    REQUIRE(static_cast<int>(board_data->uart_buses[1].rx[1]) == 0);
+    REQUIRE(static_cast<uint8_t>(board_data->uart_buses[0].rx[0]) == 150);
+    REQUIRE(static_cast<uint8_t>(board_data->uart_buses[2].rx[2]) == 150);
+    REQUIRE(static_cast<uint8_t>(board_data->uart_buses[1].rx[1]) == 0);
 }
 
 TEST_CASE("Check available bytes for reading"
@@ -66,11 +66,14 @@ TEST_CASE("Check how many avaiable bytes for writing"
 }
 
 TEST_CASE("Check peek of the next byte"
-          "[peek]") {
+    "[peek]") {
     HardwareSerial test;
     test.begin(1);
     test.write(100);
-    REQUIRE(test.peek() == 100);
+    int peeked = test.peek();
+    REQUIRE(peeked == 100);
+    REQUIRE(peeked == test.read());
+    REQUIRE(peeked != test.read());
 }
 
 TEST_CASE("The first byte"

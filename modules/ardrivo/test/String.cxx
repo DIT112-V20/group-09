@@ -33,8 +33,7 @@ TEST_CASE("Copies the String’s characters to the supplied buffer"
     String test = "test";
     byte arr[5];
     test.getBytes(arr, test.length());
-    const char* p = reinterpret_cast<const char*>(arr);
-    REQUIRE_THAT(p, Catch::Contains("test"));
+    REQUIRE_THAT(reinterpret_cast<const char*>(arr), Catch::Contains("test"));
 }
 
 TEST_CASE("Locates a character or String within another String"
