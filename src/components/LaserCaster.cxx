@@ -18,12 +18,19 @@
 #include <Urho3D/Physics/PhysicsWorld.h>
 #include "components/LaserCaster.hxx"
 #include "components/MovableCamera.hxx"
+#include <fmt/printf.h>
 
 LaserCaster::LaserCaster(Urho3D::Node* node) : Urho3D::LogicComponent{node->GetContext()}, node{node} {}
 
 [[nodiscard]] std::uint32_t LaserCaster::measure(float max_dist) const noexcept {
     Urho3D::PhysicsRaycastResult ret;
-    Urho3D::Ray ray{node->GetPosition(), node->GetDirection()};
-    Object::GetSubsystem<Urho3D::PhysicsWorld>()->RaycastSingle(ret, ray, max_dist);
+    Urho3D::Ray ray{node->GetWorldPosition(), node->GetWorldDirection()};
+    //context_->GetSubsystem<Urho3D::PhysicsWorld>()->RaycastSingle(ret, ray, max_dist, 1);
+    context_->GetSubsystem<Urho3D::PhysicsWorld>()->RaycastSingle(ret, ray, 1000, 1);
+
+    //fmt::print("ray: {}\n", ret.distance_);
+    //fmt::print("x: {} y: {} z: {} ray: {}\n", ray.direction_.x_, ray.direction_.y_, ray.direction_.z_, ret.distance_);
+    //fmt::print("\nYYY x: {} y: {} z: {} ray: {}\n\n", node->GetPosition().x_,node->GetPosition().y_,node->GetPosition().z_, ret.distance_);
+
     return ret.distance_;
 }

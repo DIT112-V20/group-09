@@ -38,6 +38,8 @@ enum SMCE__PINMODE_ENUM_STRUCT PinMode : std::uint8_t { INPUT, OUTPUT, INPUT_PUL
 
 enum DigitalValue : bool { LOW, HIGH };
 
+using boolean = bool;
+
 // Digital and analog i/o
 void pinMode(uint8_t pin, uint8_t mode);
 void digitalWrite(uint8_t pin, bool val);

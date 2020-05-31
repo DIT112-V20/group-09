@@ -26,6 +26,7 @@
 #include <range/v3/algorithm/transform.hpp>
 #include "ConfHelper.hxx"
 #include "VehicleConf.hxx"
+#include <fmt/printf.h>
 
 auto jval_to_vec3(const rapidjson::Value& jval) -> std::optional<Urho3D::Vector3> {
     if(!jval.HasMember("x") || !jval["x"].IsNumber())
@@ -74,7 +75,7 @@ auto smce::VehicleConfig::load(rapidjson::Document doc) -> std::optional<Vehicle
         if(!jval.value.HasMember("model_file") || !jval.value["model_file"].IsString())
               return (void)(valid = false);
         el.model_file = jval.value["model_file"].GetString();
-
+        fmt::print("internal: {}\n", el.model_file.generic_string());
         pass_vec3(ADDR_AND_NAME(VehiclePart::position));
         pass_vec3(ADDR_AND_NAME(VehiclePart::rotation));
         pass_vec3(ADDR_AND_NAME(VehiclePart::model_position_offset));

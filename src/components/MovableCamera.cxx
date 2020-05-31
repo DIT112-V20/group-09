@@ -19,6 +19,9 @@
 #include <Urho3D/Input/Input.h>
 #include <Urho3D/UI/UI.h>
 #include "components/MovableCamera.hxx"
+#include <Urho3D/Physics/PhysicsWorld.h>
+#include "components/LaserCaster.hxx"
+#include <fmt/printf.h>
 
 MovableCamera::MovableCamera(Urho3D::Context* context) : Urho3D::Camera{context} {
     SubscribeToEvent(Urho3D::E_UPDATE, URHO3D_HANDLER(MovableCamera, Update));
@@ -43,4 +46,12 @@ void MovableCamera::Update(Urho3D::StringHash, Urho3D::VariantMap& event_data) {
         if (input->GetKeyDown(key))
             node_->Translate(vec * move_speed * delta_time);
     }
+
+    Urho3D::PhysicsRaycastResult ret;
+    Urho3D::Ray ray{node_->GetPosition(), node_->GetDirection()};
+    context_->GetSubsystem<Urho3D::PhysicsWorld>()->RaycastSingle(ret, ray, 1000, 1);
+
+    //fmt::print("\nXXX x: {} y: {} z: {} ray: {}\n\n", ray.direction_.x_, ray.direction_.y_, ray.direction_.z_, ret.distance_);
+   // fmt::print("\nXXX x: {} y: {} z: {} ray: {}\n\n", node_->GetPosition().x_,node_->GetPosition().y_,node_->GetPosition().z_, ret.distance_);
+
 }

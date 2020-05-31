@@ -27,7 +27,7 @@
 #include <Urho3D/Scene/Component.h>
 #include <Urho3D/Scene/Scene.h>
 
-#define DEFAULT_MOVE_SPEED 20.0
+#define DEFAULT_MOVE_SPEED 5.0
 #define DEFAULT_MOVE_SENSITIVITY 0.1
 
 #define DEFAULT_FORWARD Urho3D::KEY_W

@@ -104,7 +104,7 @@ void EmulGlue::handle_compile_order(Urho3D::StringHash, Urho3D::VariantMap& even
     if (!m_vehicle_node)
         m_vehicle_node = node_->CreateChild("EmulGlueVehicle");
 
-    m_vehicle = m_vehicle_node->CreateComponent<Vehicle>();
+    m_vehicle = m_vehicle_node->CreateComponent<SimpleVehicle>();
     m_vehicle->Init();
     setup_attachments(m_bdata, *veh_config_opt);
 

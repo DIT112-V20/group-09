@@ -62,9 +62,11 @@ function(ino_preprocess SOURCE_FILE ARDUINOCLI_PATH)
     set (WORK_FILE "${CMAKE_BINARY_DIR}/source.cpp")
     set (FQBN "arduino:avr:uno")
     execute_process (COMMAND ${ARDUINOCLI_PATH} core update-index --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml")
-    execute_process (COMMAND "${ARDUINOCLI_PATH}" core install esp32:esp32 --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml")
+    execute_process (COMMAND "${ARDUINOCLI_PATH}" core install arduino:avr --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml")
+    execute_process (COMMAND ${ARDUINOCLI_PATH} lib install Servo --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml")
+    execute_process (COMMAND ${ARDUINOCLI_PATH} lib install VL53L0X --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml")
     execute_process (
-            COMMAND "${ARDUINOCLI_PATH}" compile --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml" --libraries "smartcar_shield" -b "${FQBN}" --preprocess "${SOURCE_FILE}"
+            COMMAND "${ARDUINOCLI_PATH}" compile --config-file "${CMAKE_SOURCE_DIR}/arduino-cli.yaml" --libraries "smartcar_shield,VL53L0X" -b "${FQBN}" --preprocess "${SOURCE_FILE}"
             WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
             OUTPUT_FILE "${WORK_FILE}")
 

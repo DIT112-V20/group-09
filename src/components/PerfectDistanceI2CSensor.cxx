@@ -46,10 +46,19 @@ PerfectDistanceI2CSensor::PerfectDistanceI2CSensor(BoardData& bd, Urho3D::Node* 
       switch (reg) {
       case (MEASUREMENT_RESULT + 10): {
           uint16_t dist = measure();
-          std::memcpy(&store.data[reg], &dist, sizeof(dist));
+          store.data[reg+1] = dist & 0xFFu;
+          store.data[reg] = dist >> 8u;
+          //std::memcpy(&store.data[reg], &dist, sizeof(dist));
+            //fmt::print("uint16_t {}\n", dist);
+          //fmt::print("reg: {:#x} data: {:#x} ret front: {:#x}\n", static_cast<uint8_t>(reg), static_cast<uint8_t>(store.data[reg]), ret.front());
+
       } break;
       case (DEVICE_ID):
           store.data[reg] = 0xEE;
+          break;
+      case (0x0):
+          store.data[reg] = 0x0;
+          break;
       default:
           break;
       }

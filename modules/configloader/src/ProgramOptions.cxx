@@ -52,4 +52,19 @@ void ExportProgramOptions(const ProgramOptions& co, const stdfs::path& path) {
     }
 }
 
+ProgramOptions get_default_options() {
+    std::filesystem::path config_path{};
+
+    if (std::filesystem::exists(smce::ProgramOptions::DEFAULT_CONFIG_FILE_NAME)) {
+        config_path = smce::ProgramOptions::DEFAULT_CONFIG_FILE_NAME;
+    } else if (auto* env = std::getenv("SMCE_OPTIONS"); env) {
+        if (std::filesystem::exists(env))
+            config_path = env;
+    } else if (auto tmp = smce::PLATFORM_SMCE_HOME / smce::ProgramOptions::DEFAULT_CONFIG_FILE_NAME; std::filesystem::exists(tmp)) {
+        config_path = tmp;
+    }
+
+    return smce::LoadProgramOptions(config_path);
+}
+
 } // namespace smce

@@ -66,6 +66,7 @@ std::size_t TwoWire::requestFrom(std::uint8_t address, std::size_t quantity, [[m
                    [=](const std::function<void(std::size_t)>& generator) { generator(quantity); },
                },
                device);
+    //fmt::print("send : {:#x} - check : {}\n",device_buf.rx.front().front(), static_cast<uint8_t>(device_buf.rx.front().front()) & 0x01);
     return device_buf.rx.empty() ? 0 : device_buf.rx.front().size();
 }
 

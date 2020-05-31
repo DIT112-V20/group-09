@@ -18,10 +18,11 @@
 #include <array>
 #include <string_view>
 #include "components/PerfectDistanceAnalogSensor.hxx"
-
+#include <fmt/printf.h>
+#include <Urho3D/Scene/Node.h>
 using namespace std::literals;
 
-constexpr static std::array sens_types = {"GP2D120", "GP2Y0A02", "GP2Y0A21"};
+constexpr static std::array sens_types = {"GP2D120"sv, "GP2Y0A02"sv, "GP2Y0A21"sv};
 constexpr static std::array sens_trans = {
     +[](std::uint32_t val) -> std::uint16_t { return (2909 - 5 * val) / (val + 1) ; },
     +[](std::uint32_t val) -> std::uint16_t { return 0.12f * (141 * val + 78850) / val; },
@@ -32,7 +33,7 @@ PerfectDistanceAnalogSensor::PerfectDistanceAnalogSensor(BoardData& bd, Urho3D::
     constexpr auto err{"Attempted to create component PerfectDistanceAnalogSensor with an invalid configuration"};
     if (!conf.HasMember("pin") || !conf.HasMember("type") || conf["pin"].GetUint() >= bd.analog_pin_values.size())
         throw std::runtime_error{err};
-
+    fmt::print("distance type: {}\n", conf["type"].GetString());
     const auto it = std::find(sens_types.begin(), sens_types.end(), conf["type"].GetString());
     if(it == sens_types.end())
         throw std::runtime_error{err};

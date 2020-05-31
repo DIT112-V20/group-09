@@ -22,17 +22,17 @@
 #include <istream>
 #include <thread>
 #include <vector>
-#include "BoardData.hxx"
-#include "BoardInfo.hxx"
-#include "Runtime.hxx"
-#include "Source.hxx"
-#include "Vehicle.hxx"
 #include <Urho3D/Core/Context.h>
 #include <Urho3D/Graphics/Camera.h>
 #include <Urho3D/Graphics/Viewport.h>
 #include <Urho3D/Scene/LogicComponent.h>
 #include <Urho3D/Scene/Scene.h>
 #include <VehicleConf.hxx>
+#include "BoardData.hxx"
+#include "BoardInfo.hxx"
+#include "Runtime.hxx"
+#include "SimpleVehicle.hxx"
+#include "Source.hxx"
 #include "Toolchain.hxx"
 #include "utility.hxx"
 
@@ -41,7 +41,7 @@ class EmulGlue : public Urho3D::LogicComponent {
 
     Urho3D::SharedPtr<Urho3D::Node> m_vehicle_node;
     std::vector<Urho3D::LogicComponent*> m_vehicle_attachments;
-    Urho3D::SharedPtr<Vehicle> m_vehicle;
+    Urho3D::SharedPtr<SimpleVehicle> m_vehicle;
 
     BoardData m_bdata;
     BoardInfo m_binfo;
