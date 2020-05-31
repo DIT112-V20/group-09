@@ -21,3 +21,10 @@ function (hard_patch FILE FIND REPLACE)
             PATCH_OUT "${PATCH_IN}")
     file (WRITE "${FILE}" "${PATCH_OUT}")
 endfunction()
+
+function (hard_patch_regexp FILE FIND REPLACE)
+    file (READ "${FILE}" PATCH_IN)
+    string (REGEX REPLACE "${FIND}" "${REPLACE}"
+            PATCH_OUT "${PATCH_IN}")
+    file (WRITE "${FILE}" "${PATCH_OUT}")
+endfunction()
