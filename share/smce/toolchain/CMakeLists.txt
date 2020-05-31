@@ -34,6 +34,8 @@ message (STATUS "Processing ${SOURCE_FILE}")
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_EXTENSIONS OFF)
 
+add_compile_definitions (SMCE__COMPILING_USERCODE)
+
 include_directories (${CMAKE_SOURCE_DIR}/include/ardpolyfills)
 if (WIN32)
     add_compile_definitions (VC_EXTRALEAN WIN32_LEAN_AND_MEAN)
@@ -56,7 +58,6 @@ endif ()
 file (TO_CMAKE_PATH "${SOURCE_FILE}" SOURCE_FILE)
 add_library (${BUILD_DIRNAME} MODULE)
 target_sources (${BUILD_DIRNAME} PUBLIC "${SOURCE_FILE}")
-target_compile_definitions(${BUILD_DIRNAME} PRIVATE SMCE__COMPILING_USERCODE)
 add_custom_command (
         TARGET ${BUILD_DIRNAME}
         POST_BUILD
