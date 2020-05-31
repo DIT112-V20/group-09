@@ -115,7 +115,9 @@ target_sources (smartcar_emul PRIVATE
         src/components/Servo.cxx
         include/components/Servo.hxx
         src/components/WheelServo.cxx
-        include/components/WheelServo.hxx)
+        include/components/WheelServo.hxx
+        src/components/PerfectGyroscopeI2CSensor.cxx
+        include/components/PerfectGyroscopeI2CSensor.hxx)
 
 file (COPY ${CMAKE_SOURCE_DIR}/share DESTINATION ${CMAKE_BINARY_DIR})
 
