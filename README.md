@@ -87,9 +87,8 @@ ctest                                      # Optional: run tests
 ### Features overview (not exhaustive)
 
 - Run a basic Arduino sketch in the virtual world
-- Support for the Arduino Serial, Wire, Servo, and Bluetooth libraries
+- Support for the Arduino Serial, Wire, Servo, and SPI libraries
 - Support for the current Smartcar configuration
-- Android library to communicate with the virtual Bluetooth
 
 [Detailed list](/DIT112-V20/group-09/wiki) under `Milestone details` in the sidebar
 
@@ -106,6 +105,7 @@ ctest                                      # Optional: run tests
 - Centrifugal force
 - Coriolis force
 - Fluids (lift/drag, buoyancy, ...) in the physics simulation
+- Android library to communicate with the virtual Bluetooth
 - Support for the Arduino WiFi library
 
 #### Will never be part of the project
